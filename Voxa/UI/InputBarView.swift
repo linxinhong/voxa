@@ -32,17 +32,13 @@ struct InputBarView: View {
                     )
                     .frame(maxWidth: .infinity, minHeight: 20)
                     
-                    // ⬇ 插入按钮（当有 pending 时显示）
+                    // 绿色闪烁图标（当有 pending 时闪烁）
                     if appState.hasPending {
-                        Button(action: {
-                            appState.insertPending()
-                        }) {
-                            Image(systemName: "arrow.down.circle.fill")
-                                .font(.system(size: 20))
-                                .foregroundColor(.blue)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .help("插入到光标位置")
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.system(size: 18))
+                            .foregroundColor(.green)
+                            .transition(.opacity)
+                            .animation(.easeInOut(duration: 0.15).repeatCount(3, autoreverses: true), value: appState.hasPending)
                     }
                 }
                 .frame(minWidth: 300, maxWidth: 500, minHeight: 20)

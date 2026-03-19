@@ -75,7 +75,7 @@ class AppState: ObservableObject {
         VoxaLog("[AppState] updatePartial: \"\(text)\"")
     }
     
-    /// 接收 final：保留第1行文本，显示 ⬇ 按钮，等待用户确认
+    /// 接收 final：保留第1行，触发绿色图标闪烁，然后自动插入
     func receiveFinal(_ text: String) {
         // 如果用户正在编辑，暂存
         if isEditing {
@@ -86,19 +86,25 @@ class AppState: ObservableObject {
         // 清洗 final 文本
         let cleaned = Cleaner.clean(text)
         
-        // 保存到 pendingText，设置 hasPending
+        // 保存到 pendingText，设置 hasPending（触发绿色图标闪烁）
         pendingText = cleaned
         hasPending = true
         
-        // 注意：partialText 保持不变（让用户看到完整句子）
-        // ⬇ 按钮出现，等待用户点击
+        VoxaLog("[AppState] receiveFinal: \"\(cleaned)\"")
         
-        VoxaLog("[AppState] receiveFinal: \"\(cleaned)\", 等待用户点击 ⬇")
+        // 延迟执行插入，让用户看到绿色图标闪烁
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 300_000_000)  // 300ms 闪烁时间
+            self.autoInsertPending()
+        }
     }
     
-    /// 用户点击 ⬇ 按钮：将 pendingText 插入到 cursorOffset 位置
-    func insertPending() {
-        guard hasPending && !pendingText.isEmpty else { return }
+    /// 自动插入 pendingText 到 cursorOffset 位置
+    private func autoInsertPending() {
+        guard hasPending && !pendingText.isEmpty else {
+            hasPending = false
+            return
+        }
         
         // 在 cursorOffset 位置插入
         let insertPos = min(cursorOffset, confirmedText.count)
@@ -111,17 +117,19 @@ class AppState: ObservableObject {
         // 光标跟随到插入末尾
         cursorOffset = insertPos + pendingText.count
         
-        VoxaLog("[AppState] insertPending: \"\(pendingText)\" at \(insertPos), cursor now \(cursorOffset)")
+        VoxaLog("[AppState] autoInsert: \"\(pendingText)\" at \(insertPos), cursor now \(cursorOffset)")
         
         // 清空 pending 和第1行
-        clearPending()
-    }
-    
-    /// 清空 pending 状态（插入完成或取消）
-    func clearPending() {
         pendingText = ""
         hasPending = false
         partialText = ""  // 第1行清空
+    }
+    
+    /// 清空 pending 状态
+    func clearPending() {
+        pendingText = ""
+        hasPending = false
+        partialText = ""
     }
     
     /// 用户开始编辑（获取编辑锁）
