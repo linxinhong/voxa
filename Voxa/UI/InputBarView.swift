@@ -44,6 +44,7 @@ struct InputBarView: View {
                 cursorOffset: $appState.cursorOffset,
                 isEditable: !appState.isPolishing
             )
+            .fixedSize(horizontal: false, vertical: true)  // 根据内容自动增高
             .frame(minHeight: 24)
             .padding(.horizontal, 10)
             .padding(.vertical, 6)
@@ -57,6 +58,7 @@ struct InputBarView: View {
                 .shadow(radius: 4)
         )
         .frame(width: 440)
+        .frame(maxHeight: .infinity, alignment: .top)
         .onAppear {
             setupEscapeMonitor()
         }
@@ -111,9 +113,8 @@ struct TextEditorRepresentable: NSViewRepresentable {
         
         let scrollView = NSScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.hasVerticalScroller = true
+        scrollView.hasVerticalScroller = false
         scrollView.hasHorizontalScroller = false
-        scrollView.autohidesScrollers = true
         scrollView.drawsBackground = false
         scrollView.documentView = textView
         scrollView.autoresizingMask = [.width, .height]
@@ -178,13 +179,12 @@ struct TextEditorRepresentable: NSViewRepresentable {
         let textContainer = textView.textContainer!
         layoutManager.ensureLayout(for: textContainer)
         let usedRect = layoutManager.usedRect(for: textContainer)
-        let newHeight = max(24, usedRect.height + 8)
+        let newHeight = max(24, usedRect.height + 16)  // 增加 padding
         if abs(textView.frame.height - newHeight) > 1 {
             textView.frame.size.height = newHeight
             scrollView.frame.size.height = newHeight
-            
-            // 通知外层容器高度变化
-            NotificationCenter.default.post(name: .textHeightDidChange, object: nil)
+            // 同步更新 SwiftUI 偏好大小
+            scrollView.invalidateIntrinsicContentSize()
         }
     }
     

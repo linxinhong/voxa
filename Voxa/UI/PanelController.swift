@@ -60,41 +60,43 @@ class PanelController {
         let contentView = InputBarView(appState: appState)
         
         let hostingView = NSHostingView(rootView: contentView)
-        hostingView.translatesAutoresizingMaskIntoConstraints = false
-        
-        // 设置 hugging 优先级让视图根据内容调整大小
-        hostingView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        hostingView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        hostingView.frame = NSRect(x: 0, y: 0, width: 440, height: 100)
         
         // 启用 layer 并设置圆角遮罩
         hostingView.wantsLayer = true
         hostingView.layer?.cornerRadius = 12
         hostingView.layer?.masksToBounds = true
         
-        let panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: 440, height: 80))
+        let panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: 440, height: 100))
         panel.contentView = hostingView
         
         // 让面板支持自动调整大小（基于内容）
         panel.contentMinSize = NSSize(width: 440, height: 60)
         panel.contentMaxSize = NSSize(width: 440, height: 400)
         
-        // 监听内容高度变化，同步调整窗口
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(textHeightDidChange),
-            name: .textHeightDidChange,
-            object: nil
-        )
+        // 使用计时器定期检查高度变化
+        startHeightMonitor()
         
         self.panel = panel
     }
     
-    @objc private func textHeightDidChange() {
-        guard let panel = panel else { return }
+    private var heightCheckTimer: Timer?
+    private var lastContentHeight: CGFloat = 0
+    
+    private func startHeightMonitor() {
+        heightCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            self?.checkAndUpdateHeight()
+        }
+    }
+    
+    private func checkAndUpdateHeight() {
+        guard let panel = panel,
+              let hostingView = panel.contentView else { return }
         
-        // 使用 fittingSize 获取理想大小
-        if let hostingView = panel.contentView as? NSHostingView<InputBarView> {
-            let fittingSize = hostingView.fittingSize
+        // 获取 fitting size
+        let fittingSize = hostingView.fittingSize
+        if fittingSize.height != lastContentHeight && fittingSize.height > 0 {
+            lastContentHeight = fittingSize.height
             let newHeight = min(max(fittingSize.height, 60), 400)
             
             var frame = panel.frame
