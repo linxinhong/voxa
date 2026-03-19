@@ -37,6 +37,20 @@ class HotkeyManager {
         }
         
         setupHotkey()
+        setupEscHandler()
+    }
+    
+    private func setupEscHandler() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleEscPressed),
+            name: .hidePanel,
+            object: nil
+        )
+    }
+    
+    @objc private func handleEscPressed() {
+        cancelRecording()
     }
     
     /// 更新快捷键配置
@@ -100,6 +114,31 @@ class HotkeyManager {
             stopRecording()
         } else {
             startRecording()
+        }
+    }
+    
+    /// ESC 取消录音：停止但不注入，重置状态
+    func cancelRecording() {
+        Task {
+            // Stop audio capture
+            await audioCapture.stop()
+            
+            // Close ASR connection
+            await asrClient.disconnect()
+            
+            await MainActor.run {
+                appState.isRecording = false
+            }
+            
+            // 丢弃 pending，保留已确认的文本但不注入
+            let _ = appState.finalizeOnStop()
+            
+            VoxaLog("[Voxa] ESC 取消录音")
+            
+            // Hide panel only
+            await MainActor.run {
+                panelController.hide()
+            }
         }
     }
     

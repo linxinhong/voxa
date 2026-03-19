@@ -15,20 +15,6 @@ class PanelController {
     
     init(appState: AppState) {
         self.appState = appState
-        setupNotifications()
-    }
-    
-    private func setupNotifications() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(handleHidePanel),
-            name: .hidePanel,
-            object: nil
-        )
-    }
-    
-    @objc private func handleHidePanel() {
-        hide()
     }
     
     /// Show the floating panel centered on screen
