@@ -5290,3 +5290,699 @@
 [2026-03-19 15:57:48.385] [Voxa] 热键触发: ⌥+SPACE
 [2026-03-19 15:57:48.722] WebSocket connected
 [2026-03-19 15:57:48.722] [ASR] 发送 run-task: {"header":{"streaming":"duplex","task_id":"6CCAC607-179E-4F59-BD02-0D2CADF24E53","action":"run-task"},"payload":{"function":"recognition","model":"paraformer-realtime-v2","task":"asr","input":{},"task_group":"audio","parameters":{"enable_inverse_text_normalization":true,"enable_punctuation_prediction":true,"enable_intermediate_result":true,"format":"pcm","sample_rate":16000}}}
+[2026-03-19 15:57:48.785] [ASR] event: task-started
+[2026-03-19 15:57:48.785] ASR task started
+[2026-03-19 15:57:50.103] [ASR] event: result-generated
+[2026-03-19 15:57:50.104] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:50.104] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 15:57:50.105] [AppState] updatePartial: ""
+[2026-03-19 15:57:50.369] [ASR] event: result-generated
+[2026-03-19 15:57:50.369] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:50.370] [ASR] output.sentence: AsrSentence(text: "Our new", sentence_end: Optional(false))
+[2026-03-19 15:57:50.370] [AppState] updatePartial: "Our new"
+[2026-03-19 15:57:50.551] [ASR] event: result-generated
+[2026-03-19 15:57:50.551] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:50.551] [ASR] output.sentence: AsrSentence(text: "Our new", sentence_end: Optional(false))
+[2026-03-19 15:57:50.552] [AppState] updatePartial: "Our new"
+[2026-03-19 15:57:50.959] [ASR] event: result-generated
+[2026-03-19 15:57:50.960] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:50.960] [ASR] output.sentence: AsrSentence(text: "Our new", sentence_end: Optional(false))
+[2026-03-19 15:57:50.960] [AppState] updatePartial: "Our new"
+[2026-03-19 15:57:51.582] [ASR] event: result-generated
+[2026-03-19 15:57:51.583] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:51.583] [ASR] output.sentence: AsrSentence(text: "26年1月2", sentence_end: Optional(false))
+[2026-03-19 15:57:51.584] [AppState] updatePartial: "26年1月2"
+[2026-03-19 15:57:52.029] [ASR] event: result-generated
+[2026-03-19 15:57:52.030] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:52.030] [ASR] output.sentence: AsrSentence(text: "26年1月28", sentence_end: Optional(false))
+[2026-03-19 15:57:52.030] [AppState] updatePartial: "26年1月28"
+[2026-03-19 15:57:52.591] [ASR] event: result-generated
+[2026-03-19 15:57:52.592] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:52.592] [ASR] output.sentence: AsrSentence(text: "26年1月28日", sentence_end: Optional(false))
+[2026-03-19 15:57:52.592] [AppState] updatePartial: "26年1月28日"
+[2026-03-19 15:57:52.982] [ASR] event: result-generated
+[2026-03-19 15:57:52.982] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:52.982] [ASR] output.sentence: AsrSentence(text: "26年1月28日。使出纽", sentence_end: Optional(false))
+[2026-03-19 15:57:52.982] [AppState] updatePartial: "26年1月28日。使出纽"
+[2026-03-19 15:57:53.469] [ASR] event: result-generated
+[2026-03-19 15:57:53.469] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:53.469] [ASR] output.sentence: AsrSentence(text: "26年1月28日使出纽波特造", sentence_end: Optional(false))
+[2026-03-19 15:57:53.470] [AppState] updatePartial: "26年1月28日使出纽波特造"
+[2026-03-19 15:57:54.006] [ASR] event: result-generated
+[2026-03-19 15:57:54.006] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:54.006] [ASR] output.sentence: AsrSentence(text: "26年1月28日使出纽波特造船厂", sentence_end: Optional(false))
+[2026-03-19 15:57:54.007] [AppState] updatePartial: "26年1月28日使出纽波特造船厂"
+[2026-03-19 15:57:54.407] [ASR] event: result-generated
+[2026-03-19 15:57:54.407] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:54.408] [ASR] output.sentence: AsrSentence(text: "26年1月28日使出纽波特造船厂开始", sentence_end: Optional(false))
+[2026-03-19 15:57:54.408] [AppState] updatePartial: "26年1月28日使出纽波特造船厂开始"
+[2026-03-19 15:57:54.801] [ASR] event: result-generated
+[2026-03-19 15:57:54.801] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:54.802] [ASR] output.sentence: AsrSentence(text: "26年1月28日使出纽波特造船厂开始了首", sentence_end: Optional(false))
+[2026-03-19 15:57:54.802] [AppState] updatePartial: "26年1月28日使出纽波特造船厂开始了首"
+[2026-03-19 15:57:55.768] [ASR] event: result-generated
+[2026-03-19 15:57:55.768] [ASR] result-generated, payload: 有
+[2026-03-19 15:57:55.769] [ASR] output.sentence: AsrSentence(text: "26年1月28日，驶出纽波特造船厂，开始了首次海试。", sentence_end: Optional(true))
+[2026-03-19 15:57:55.770] [AppState] receiveFinal: "26 年 1 月 28 日，驶出纽波特造船厂，开始了首次海试。"
+[2026-03-19 15:57:56.094] [AppState] autoInsert: "26 年 1 月 28 日，驶出纽波特造船厂，开始了首次海试。" at 0, cursor now 31
+[2026-03-19 15:58:02.702] [ASR] event: result-generated
+[2026-03-19 15:58:02.703] [ASR] result-generated, payload: 有
+[2026-03-19 15:58:02.703] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 15:58:02.704] [AppState] updatePartial: ""
+[2026-03-19 15:58:02.770] [ASR] event: result-generated
+[2026-03-19 15:58:02.771] [ASR] result-generated, payload: 有
+[2026-03-19 15:58:02.771] [ASR] output.sentence: AsrSentence(text: "维", sentence_end: Optional(false))
+[2026-03-19 15:58:02.772] [AppState] updatePartial: "维"
+[2026-03-19 15:58:03.572] [ASR] event: result-generated
+[2026-03-19 15:58:03.572] [ASR] result-generated, payload: 有
+[2026-03-19 15:58:03.573] [ASR] output.sentence: AsrSentence(text: "为期一", sentence_end: Optional(false))
+[2026-03-19 15:58:03.573] [AppState] updatePartial: "为期一"
+[2026-03-19 15:58:03.978] [ASR] event: result-generated
+[2026-03-19 15:58:03.979] [ASR] result-generated, payload: 有
+[2026-03-19 15:58:03.979] [ASR] output.sentence: AsrSentence(text: "为期一周", sentence_end: Optional(false))
+[2026-03-19 15:58:03.980] [AppState] updatePartial: "为期一周"
+[2026-03-19 15:58:04.620] [ASR] event: result-generated
+[2026-03-19 15:58:04.621] [ASR] result-generated, payload: 有
+[2026-03-19 15:58:04.621] [ASR] output.sentence: AsrSentence(text: "为期一周，于2月4", sentence_end: Optional(false))
+[2026-03-19 15:58:04.621] [AppState] updatePartial: "为期一周，于2月4"
+[2026-03-19 15:58:05.237] [ASR] event: result-generated
+[2026-03-19 15:58:05.237] [ASR] result-generated, payload: 有
+[2026-03-19 15:58:05.238] [ASR] output.sentence: AsrSentence(text: "为期一周，于2月4日返。", sentence_end: Optional(true))
+[2026-03-19 15:58:05.238] [AppState] receiveFinal: "为期一周，于 2 月 4 日返。"
+[2026-03-19 15:58:05.563] [AppState] autoInsert: "为期一周，于 2 月 4 日返。" at 23, cursor now 39
+[2026-03-19 15:58:20.108] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 15:58:20.162] [ASR] 发送 finish-task
+[2026-03-19 15:58:20.162] [Voxa] 停止录音，最终文本 [47 字]: 26 年 1 月 28 日，驶出纽波特造船厂，为期一周，于 2 月 4 日返。开始了首次海试。...
+[2026-03-19 15:58:20.162] [Voxa] 开始自动润色...
+[2026-03-19 15:58:20.163] WebSocket disconnected
+[2026-03-19 15:58:21.214] [Voxa] 润色完成
+[2026-03-19 15:58:21.215] [Voxa] 原文: 26 年 1 月 28 日，驶出纽波特造船厂，为期一周，于 2 月 4 日返。开始了首次海试。
+[2026-03-19 15:58:21.215] [Voxa] 润色: 2026年1月28日，驶出纽波特造船厂，为期一周，于2月4日返航。开始了首次海试。
+[2026-03-19 15:58:21.232] [Voxa] 准备注入文本到 com.microsoft.edgemac
+[2026-03-19 15:58:21.233] [Injector] 开始注入 41 字到 com.microsoft.edgemac
+[2026-03-19 15:58:21.239] [Injector] 剪贴板已设置: 2026年1月28日，驶出纽波特造船厂，为期一周，于2月4日...
+[2026-03-19 15:58:21.252] [Injector] Voxa 已隐藏
+[2026-03-19 15:58:21.308] [Injector] 目标应用已激活
+[2026-03-19 15:58:21.394] [Injector] 模拟 Cmd+V
+[2026-03-19 15:58:21.435] [Injector] 按键事件已发送
+[2026-03-19 15:58:21.520] [Injector] 注入完成
+[2026-03-19 15:58:21.522] [Injector] 剪贴板已恢复
+[2026-03-19 16:00:37.525] [Voxa] 应用启动中...
+[2026-03-19 16:00:37.525] [Voxa] AppState 初始化完成
+[2026-03-19 16:00:37.525] [Voxa] PanelController 初始化完成
+[2026-03-19 16:00:37.525] [Voxa] AudioCapture 初始化完成
+[2026-03-19 16:00:37.525] [Voxa] AsrClient 初始化完成
+[2026-03-19 16:00:37.525] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 16:00:37.526] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 16:00:37.526] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 16:00:37.552] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 16:00:37.552] [Voxa] 菜单栏设置完成
+[2026-03-19 16:00:37.557] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 16:00:37.557] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 16:01:20.928] [Voxa] 应用启动中...
+[2026-03-19 16:01:20.928] [Voxa] AppState 初始化完成
+[2026-03-19 16:01:20.928] [Voxa] PanelController 初始化完成
+[2026-03-19 16:01:20.928] [Voxa] AudioCapture 初始化完成
+[2026-03-19 16:01:20.928] [Voxa] AsrClient 初始化完成
+[2026-03-19 16:01:20.929] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 16:01:20.929] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 16:01:20.929] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 16:01:20.950] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 16:01:20.950] [Voxa] 菜单栏设置完成
+[2026-03-19 16:01:20.955] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 16:01:20.955] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 16:01:25.235] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:01:25.498] WebSocket connected
+[2026-03-19 16:01:25.499] [ASR] 发送 run-task: {"payload":{"task_group":"audio","task":"asr","function":"recognition","model":"paraformer-realtime-v2","parameters":{"format":"pcm","enable_inverse_text_normalization":true,"enable_punctuation_prediction":true,"sample_rate":16000,"enable_intermediate_result":true},"input":{}},"header":{"action":"run-task","task_id":"44DC9D80-A503-4E87-A821-F3DA0A9E0F24","streaming":"duplex"}}
+[2026-03-19 16:01:25.554] [ASR] event: task-started
+[2026-03-19 16:01:25.554] ASR task started
+[2026-03-19 16:01:31.132] [ASR] event: result-generated
+[2026-03-19 16:01:31.133] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:31.133] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 16:01:31.133] [AppState] updatePartial: ""
+[2026-03-19 16:01:31.215] [ASR] event: result-generated
+[2026-03-19 16:01:31.216] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:31.216] [ASR] output.sentence: AsrSentence(text: "Over, ", sentence_end: Optional(false))
+[2026-03-19 16:01:31.216] [AppState] updatePartial: "Over, "
+[2026-03-19 16:01:31.998] [ASR] event: result-generated
+[2026-03-19 16:01:31.999] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:31.999] [ASR] output.sentence: AsrSentence(text: "Over the past, ", sentence_end: Optional(false))
+[2026-03-19 16:01:31.999] [AppState] updatePartial: "Over the past, "
+[2026-03-19 16:01:32.400] [ASR] event: result-generated
+[2026-03-19 16:01:32.400] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:32.400] [ASR] output.sentence: AsrSentence(text: "Over the past week, ", sentence_end: Optional(false))
+[2026-03-19 16:01:32.400] [AppState] updatePartial: "Over the past week, "
+[2026-03-19 16:01:32.811] [ASR] event: result-generated
+[2026-03-19 16:01:32.812] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:32.812] [ASR] output.sentence: AsrSentence(text: "Over the past week, I\'ve had", sentence_end: Optional(false))
+[2026-03-19 16:01:32.812] [AppState] updatePartial: "Over the past week, I've had"
+[2026-03-19 16:01:33.407] [ASR] event: result-generated
+[2026-03-19 16:01:33.407] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:33.408] [ASR] output.sentence: AsrSentence(text: "Over the past week, I\'ve had the", sentence_end: Optional(false))
+[2026-03-19 16:01:33.408] [AppState] updatePartial: "Over the past week, I've had the"
+[2026-03-19 16:01:33.803] [ASR] event: result-generated
+[2026-03-19 16:01:33.804] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:33.804] [ASR] output.sentence: AsrSentence(text: "Over the past week, I\'ve had the opportunity to", sentence_end: Optional(false))
+[2026-03-19 16:01:33.804] [AppState] updatePartial: "Over the past week, I've had the opportunity to"
+[2026-03-19 16:01:34.505] [ASR] event: result-generated
+[2026-03-19 16:01:34.505] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:34.506] [ASR] output.sentence: AsrSentence(text: "Over the past week, I\'ve had the opportunity to join", sentence_end: Optional(false))
+[2026-03-19 16:01:34.506] [AppState] updatePartial: "Over the past week, I've had the opportunity to join"
+[2026-03-19 16:01:35.219] [ASR] event: result-generated
+[2026-03-19 16:01:35.220] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:35.220] [ASR] output.sentence: AsrSentence(text: "Over the past week, I\'ve had the opportunity to join felshipbuilders. ", sentence_end: Optional(false))
+[2026-03-19 16:01:35.220] [AppState] updatePartial: "Over the past week, I've had the opportunity to join felshipbuilders. "
+[2026-03-19 16:01:35.877] [ASR] event: result-generated
+[2026-03-19 16:01:35.877] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:35.878] [ASR] output.sentence: AsrSentence(text: "Over the past week, I\'ve had the opportunity to join felshipbuilders and", sentence_end: Optional(false))
+[2026-03-19 16:01:35.878] [AppState] updatePartial: "Over the past week, I've had the opportunity to join felshipbuilders and"
+[2026-03-19 16:01:36.214] [ASR] event: result-generated
+[2026-03-19 16:01:36.214] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:36.214] [ASR] output.sentence: AsrSentence(text: "Over the past week, I\'ve had the opportunity to join felshipbuilders and sailors on", sentence_end: Optional(false))
+[2026-03-19 16:01:36.215] [AppState] updatePartial: "Over the past week, I've had the opportunity to join felshipbuilders and sailors on"
+[2026-03-19 16:01:37.157] [ASR] event: result-generated
+[2026-03-19 16:01:37.157] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:37.157] [ASR] output.sentence: AsrSentence(text: "Over the past week, I\'ve had the opportunity to join fellow lowshipbuilders and sailors on our name. ", sentence_end: Optional(true))
+[2026-03-19 16:01:37.158] [AppState] receiveFinal: "Over the past week, I've had the opportunity to join fellow lowshipbuilders and sailors on our name."
+[2026-03-19 16:01:37.480] [AppState] autoInsert: "Over the past week, I've had the opportunity to join fellow lowshipbuilders and sailors on our name." at 0, cursor now 100
+[2026-03-19 16:01:44.512] [ASR] event: result-generated
+[2026-03-19 16:01:44.512] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:44.513] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 16:01:44.513] [AppState] updatePartial: ""
+[2026-03-19 16:01:44.796] [ASR] event: result-generated
+[2026-03-19 16:01:44.796] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:44.797] [ASR] output.sentence: AsrSentence(text: "и. ", sentence_end: Optional(false))
+[2026-03-19 16:01:44.797] [AppState] updatePartial: "и. "
+[2026-03-19 16:01:45.001] [ASR] event: result-generated
+[2026-03-19 16:01:45.002] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:45.002] [ASR] output.sentence: AsrSentence(text: "一", sentence_end: Optional(false))
+[2026-03-19 16:01:45.002] [AppState] updatePartial: "一"
+[2026-03-19 16:01:45.410] [ASR] event: result-generated
+[2026-03-19 16:01:45.411] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:45.411] [ASR] output.sentence: AsrSentence(text: "一艘福特级", sentence_end: Optional(false))
+[2026-03-19 16:01:45.411] [AppState] updatePartial: "一艘福特级"
+[2026-03-19 16:01:46.013] [ASR] event: result-generated
+[2026-03-19 16:01:46.014] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:46.014] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价", sentence_end: Optional(false))
+[2026-03-19 16:01:46.014] [AppState] updatePartial: "一艘福特级的造价"
+[2026-03-19 16:01:46.447] [ASR] event: result-generated
+[2026-03-19 16:01:46.447] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:46.448] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了。一", sentence_end: Optional(false))
+[2026-03-19 16:01:46.448] [AppState] updatePartial: "一艘福特级的造价达到了。一"
+[2026-03-19 16:01:46.848] [ASR] event: result-generated
+[2026-03-19 16:01:46.848] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:46.849] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿", sentence_end: Optional(false))
+[2026-03-19 16:01:46.849] [AppState] updatePartial: "一艘福特级的造价达到了130亿"
+[2026-03-19 16:01:47.430] [ASR] event: result-generated
+[2026-03-19 16:01:47.430] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:47.431] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿美元", sentence_end: Optional(false))
+[2026-03-19 16:01:47.431] [AppState] updatePartial: "一艘福特级的造价达到了130亿美元"
+[2026-03-19 16:01:47.933] [ASR] event: result-generated
+[2026-03-19 16:01:47.933] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:47.934] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿美元。可以", sentence_end: Optional(false))
+[2026-03-19 16:01:47.934] [AppState] updatePartial: "一艘福特级的造价达到了130亿美元。可以"
+[2026-03-19 16:01:48.458] [ASR] event: result-generated
+[2026-03-19 16:01:48.459] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:48.459] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿美元，可以换6艘", sentence_end: Optional(false))
+[2026-03-19 16:01:48.459] [AppState] updatePartial: "一艘福特级的造价达到了130亿美元，可以换6艘"
+[2026-03-19 16:01:49.059] [ASR] event: result-generated
+[2026-03-19 16:01:49.059] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:49.060] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐", sentence_end: Optional(false))
+[2026-03-19 16:01:49.060] [AppState] updatePartial: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐"
+[2026-03-19 16:01:49.286] [ASR] event: result-generated
+[2026-03-19 16:01:49.287] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:49.287] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号。甚", sentence_end: Optional(false))
+[2026-03-19 16:01:49.287] [AppState] updatePartial: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号。甚"
+[2026-03-19 16:01:49.894] [ASR] event: result-generated
+[2026-03-19 16:01:49.895] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:49.895] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号，甚至还有", sentence_end: Optional(false))
+[2026-03-19 16:01:49.895] [AppState] updatePartial: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号，甚至还有"
+[2026-03-19 16:01:50.351] [ASR] event: result-generated
+[2026-03-19 16:01:50.351] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:50.352] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号，甚至还有富余", sentence_end: Optional(false))
+[2026-03-19 16:01:50.352] [AppState] updatePartial: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号，甚至还有富余"
+[2026-03-19 16:01:50.871] [ASR] event: result-generated
+[2026-03-19 16:01:50.871] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:50.872] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号，甚至还有富余如此", sentence_end: Optional(false))
+[2026-03-19 16:01:50.872] [AppState] updatePartial: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号，甚至还有富余如此"
+[2026-03-19 16:01:51.285] [ASR] event: result-generated
+[2026-03-19 16:01:51.285] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:51.286] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号，甚至还有富余。如此恐怖的庞", sentence_end: Optional(false))
+[2026-03-19 16:01:51.286] [AppState] updatePartial: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号，甚至还有富余。如此恐怖的庞"
+[2026-03-19 16:01:52.432] [ASR] event: result-generated
+[2026-03-19 16:01:52.433] [ASR] result-generated, payload: 有
+[2026-03-19 16:01:52.433] [ASR] output.sentence: AsrSentence(text: "一艘福特级的造价达到了130亿美元，可以换6艘代高乐号，甚至还有富余如此恐怖的庞然大物。", sentence_end: Optional(true))
+[2026-03-19 16:01:52.434] [AppState] receiveFinal: "一艘福特级的造价达到了 130 亿美元，可以换 6 艘代高乐号，甚至还有富余如此恐怖的庞然大物。"
+[2026-03-19 16:01:52.759] [AppState] autoInsert: "一艘福特级的造价达到了 130 亿美元，可以换 6 艘代高乐号，甚至还有富余如此恐怖的庞然大物。" at 100, cursor now 148
+[2026-03-19 16:01:55.047] [InputBar] 点击星星，partialText=""
+[2026-03-19 16:01:55.048] [InputBar] partialText 为空，跳过润色
+[2026-03-19 16:01:57.120] [InputBar] 点击星星，partialText=""
+[2026-03-19 16:01:57.120] [InputBar] partialText 为空，跳过润色
+[2026-03-19 16:01:59.085] [InputBar] 点击星星，partialText=""
+[2026-03-19 16:01:59.086] [InputBar] partialText 为空，跳过润色
+[2026-03-19 16:02:09.221] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:02:09.268] [ASR] 发送 finish-task
+[2026-03-19 16:02:09.269] [Voxa] 停止录音，最终文本 [148 字]: Over the past week, I've had the opportunity to jo...
+[2026-03-19 16:02:09.269] [Voxa] 开始自动润色...
+[2026-03-19 16:02:09.270] WebSocket disconnected
+[2026-03-19 16:02:10.423] [Voxa] 润色完成
+[2026-03-19 16:02:10.423] [Voxa] 原文: Over the past week, I've had the opportunity to join fellow lowshipbuilders and sailors on our name.一艘福特级的造价达到了 130 亿美元，可以换 6 艘代高乐号，甚至还有富余如此恐怖的庞然大物。
+[2026-03-19 16:02:10.424] [Voxa] 润色: 在过去的一周里，我有机会和同船厂的造船工人以及水手们一起登上我们的舰船。一艘福特级的造价达到了130亿美元，可以换6艘戴高乐号，甚至还有富余，如此恐怖的庞然大物。
+[2026-03-19 16:02:10.444] [Voxa] 准备注入文本到 com.mitchellh.ghostty
+[2026-03-19 16:02:10.445] [Injector] 开始注入 81 字到 com.mitchellh.ghostty
+[2026-03-19 16:02:10.450] [Injector] 剪贴板已设置: 在过去的一周里，我有机会和同船厂的造船工人以及水手们一起登上...
+[2026-03-19 16:02:10.467] [Injector] Voxa 已隐藏
+[2026-03-19 16:02:10.539] [Injector] 目标应用已激活
+[2026-03-19 16:02:10.626] [Injector] 模拟 Cmd+V
+[2026-03-19 16:02:10.653] [Injector] 按键事件已发送
+[2026-03-19 16:02:10.735] [Injector] 注入完成
+[2026-03-19 16:02:10.736] [Injector] 剪贴板已恢复
+[2026-03-19 16:04:30.707] [Voxa] 应用启动中...
+[2026-03-19 16:04:30.708] [Voxa] AppState 初始化完成
+[2026-03-19 16:04:30.708] [Voxa] PanelController 初始化完成
+[2026-03-19 16:04:30.708] [Voxa] AudioCapture 初始化完成
+[2026-03-19 16:04:30.708] [Voxa] AsrClient 初始化完成
+[2026-03-19 16:04:30.708] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 16:04:30.708] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 16:04:30.708] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 16:04:30.728] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 16:04:30.728] [Voxa] 菜单栏设置完成
+[2026-03-19 16:04:30.733] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 16:04:30.733] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 16:06:27.958] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:06:28.259] WebSocket connected
+[2026-03-19 16:06:28.260] [ASR] 发送 run-task: {"payload":{"task_group":"audio","function":"recognition","input":{},"task":"asr","model":"paraformer-realtime-v2","parameters":{"enable_punctuation_prediction":true,"enable_intermediate_result":true,"enable_inverse_text_normalization":true,"format":"pcm","sample_rate":16000}},"header":{"streaming":"duplex","action":"run-task","task_id":"3B79D36F-87A6-4C2C-8398-F6D21AB54CF6"}}
+[2026-03-19 16:06:28.323] [ASR] event: task-started
+[2026-03-19 16:06:28.323] ASR task started
+[2026-03-19 16:06:35.863] [ASR] event: result-generated
+[2026-03-19 16:06:35.864] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:35.865] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 16:06:35.865] [AppState] updatePartial: ""
+[2026-03-19 16:06:36.008] [ASR] event: result-generated
+[2026-03-19 16:06:36.008] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:36.009] [ASR] output.sentence: AsrSentence(text: "需", sentence_end: Optional(false))
+[2026-03-19 16:06:36.009] [AppState] updatePartial: "需"
+[2026-03-19 16:06:36.781] [ASR] event: result-generated
+[2026-03-19 16:06:36.782] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:36.782] [ASR] output.sentence: AsrSentence(text: "需要巨大的", sentence_end: Optional(false))
+[2026-03-19 16:06:36.782] [AppState] updatePartial: "需要巨大的"
+[2026-03-19 16:06:37.593] [ASR] event: result-generated
+[2026-03-19 16:06:37.593] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:37.594] [ASR] output.sentence: AsrSentence(text: "需要巨大的能源供给", sentence_end: Optional(false))
+[2026-03-19 16:06:37.594] [AppState] updatePartial: "需要巨大的能源供给"
+[2026-03-19 16:06:38.140] [ASR] event: result-generated
+[2026-03-19 16:06:38.141] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:38.141] [ASR] output.sentence: AsrSentence(text: "需要巨大的能源供给。福特级", sentence_end: Optional(false))
+[2026-03-19 16:06:38.141] [AppState] updatePartial: "需要巨大的能源供给。福特级"
+[2026-03-19 16:06:38.553] [ASR] event: result-generated
+[2026-03-19 16:06:38.554] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:38.554] [ASR] output.sentence: AsrSentence(text: "需要巨大的能源供给。福特级航母上", sentence_end: Optional(false))
+[2026-03-19 16:06:38.554] [AppState] updatePartial: "需要巨大的能源供给。福特级航母上"
+[2026-03-19 16:06:39.291] [ASR] event: result-generated
+[2026-03-19 16:06:39.292] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:39.292] [ASR] output.sentence: AsrSentence(text: "需要巨大的能源供给。福特级航母上搭载", sentence_end: Optional(false))
+[2026-03-19 16:06:39.292] [AppState] updatePartial: "需要巨大的能源供给。福特级航母上搭载"
+[2026-03-19 16:06:39.803] [ASR] event: result-generated
+[2026-03-19 16:06:39.804] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:39.804] [ASR] output.sentence: AsrSentence(text: "需要巨大的能源供给。福特级航母上搭载了两。", sentence_end: Optional(true))
+[2026-03-19 16:06:39.804] [AppState] receiveFinal: "需要巨大的能源供给。福特级航母上搭载了两。"
+[2026-03-19 16:06:40.128] [AppState] autoInsert: "需要巨大的能源供给。福特级航母上搭载了两。" at 0, cursor now 21
+[2026-03-19 16:06:46.262] [ASR] event: result-generated
+[2026-03-19 16:06:46.262] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:46.263] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 16:06:46.263] [AppState] updatePartial: ""
+[2026-03-19 16:06:46.333] [ASR] event: result-generated
+[2026-03-19 16:06:46.333] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:46.333] [ASR] output.sentence: AsrSentence(text: "刚台", sentence_end: Optional(false))
+[2026-03-19 16:06:46.334] [AppState] updatePartial: "刚台"
+[2026-03-19 16:06:46.719] [ASR] event: result-generated
+[2026-03-19 16:06:46.719] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:46.719] [ASR] output.sentence: AsrSentence(text: "刚台", sentence_end: Optional(false))
+[2026-03-19 16:06:46.719] [AppState] updatePartial: "刚台"
+[2026-03-19 16:06:47.136] [ASR] event: result-generated
+[2026-03-19 16:06:47.137] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:47.137] [ASR] output.sentence: AsrSentence(text: "两台A1", sentence_end: Optional(false))
+[2026-03-19 16:06:47.138] [AppState] updatePartial: "两台A1"
+[2026-03-19 16:06:47.550] [ASR] event: result-generated
+[2026-03-19 16:06:47.550] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:47.551] [ASR] output.sentence: AsrSentence(text: "两台A1B核反应", sentence_end: Optional(false))
+[2026-03-19 16:06:47.551] [AppState] updatePartial: "两台A1B核反应"
+[2026-03-19 16:06:48.167] [ASR] event: result-generated
+[2026-03-19 16:06:48.167] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:48.168] [ASR] output.sentence: AsrSentence(text: "两台A1B核反应堆", sentence_end: Optional(false))
+[2026-03-19 16:06:48.168] [AppState] updatePartial: "两台A1B核反应堆"
+[2026-03-19 16:06:48.549] [ASR] event: result-generated
+[2026-03-19 16:06:48.550] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:48.550] [ASR] output.sentence: AsrSentence(text: "两台A1B核反应堆总输", sentence_end: Optional(false))
+[2026-03-19 16:06:48.550] [AppState] updatePartial: "两台A1B核反应堆总输"
+[2026-03-19 16:06:49.167] [ASR] event: result-generated
+[2026-03-19 16:06:49.167] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:49.168] [ASR] output.sentence: AsrSentence(text: "两台A1B核反应堆总输出功率", sentence_end: Optional(false))
+[2026-03-19 16:06:49.168] [AppState] updatePartial: "两台A1B核反应堆总输出功率"
+[2026-03-19 16:06:49.670] [ASR] event: result-generated
+[2026-03-19 16:06:49.670] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:49.670] [ASR] output.sentence: AsrSentence(text: "两台A一闭合反应堆总输出功率超过了一", sentence_end: Optional(false))
+[2026-03-19 16:06:49.671] [AppState] updatePartial: "两台A一闭合反应堆总输出功率超过了一"
+[2026-03-19 16:06:50.420] [ASR] event: result-generated
+[2026-03-19 16:06:50.421] [ASR] result-generated, payload: 有
+[2026-03-19 16:06:50.421] [ASR] output.sentence: AsrSentence(text: "两台A一闭合反应堆总输出功率超过了1400。", sentence_end: Optional(true))
+[2026-03-19 16:06:50.422] [AppState] receiveFinal: "两台 A 一闭合反应堆总输出功率超过了 1400。"
+[2026-03-19 16:06:50.746] [AppState] autoInsert: "两台 A 一闭合反应堆总输出功率超过了 1400。" at 10, cursor now 35
+[2026-03-19 16:06:52.689] [InputBar] 点击星星，confirmedText="需要巨大的能源供给。两台 A 一闭合反应堆总输出功率超过了 1400。福特级航母上搭载了两。..."
+[2026-03-19 16:06:52.689] [AppState] 开始润色，锁定文本框
+[2026-03-19 16:06:52.689] [InputBar] 开始执行润色...
+[2026-03-19 16:06:53.518] [InputBar] 润色结果: "需要巨大的能源供给。两台 A 一闭合反应堆总输出功率超过了 1400。福特级航母上搭载了两台。..."
+[2026-03-19 16:06:53.519] [AppState] 润色完成，光标定位到 47
+[2026-03-19 16:07:12.670] [ASR] event: result-generated
+[2026-03-19 16:07:12.670] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:12.670] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 16:07:12.670] [AppState] updatePartial: ""
+[2026-03-19 16:07:12.951] [ASR] event: result-generated
+[2026-03-19 16:07:12.951] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:12.952] [ASR] output.sentence: AsrSentence(text: "Wheryers", sentence_end: Optional(false))
+[2026-03-19 16:07:12.952] [AppState] updatePartial: "Wheryers"
+[2026-03-19 16:07:13.597] [ASR] event: result-generated
+[2026-03-19 16:07:13.597] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:13.597] [ASR] output.sentence: AsrSentence(text: "Wheryers", sentence_end: Optional(false))
+[2026-03-19 16:07:13.597] [AppState] updatePartial: "Wheryers"
+[2026-03-19 16:07:14.152] [ASR] event: result-generated
+[2026-03-19 16:07:14.153] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:14.153] [ASR] output.sentence: AsrSentence(text: "On our nation\'s", sentence_end: Optional(false))
+[2026-03-19 16:07:14.153] [AppState] updatePartial: "On our nation's"
+[2026-03-19 16:07:14.590] [ASR] event: result-generated
+[2026-03-19 16:07:14.591] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:14.591] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest", sentence_end: Optional(false))
+[2026-03-19 16:07:14.591] [AppState] updatePartial: "On our nation's newest"
+[2026-03-19 16:07:15.161] [ASR] event: result-generated
+[2026-03-19 16:07:15.162] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:15.162] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft. ", sentence_end: Optional(false))
+[2026-03-19 16:07:15.162] [AppState] updatePartial: "On our nation's newest aircraft. "
+[2026-03-19 16:07:15.559] [ASR] event: result-generated
+[2026-03-19 16:07:15.559] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:15.559] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft carrier. ", sentence_end: Optional(false))
+[2026-03-19 16:07:15.560] [AppState] updatePartial: "On our nation's newest aircraft carrier. "
+[2026-03-19 16:07:16.579] [ASR] event: result-generated
+[2026-03-19 16:07:16.579] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:16.580] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft carrier. About", sentence_end: Optional(false))
+[2026-03-19 16:07:16.580] [AppState] updatePartial: "On our nation's newest aircraft carrier. About"
+[2026-03-19 16:07:16.950] [ASR] event: result-generated
+[2026-03-19 16:07:16.950] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:16.950] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft carrier. About about", sentence_end: Optional(false))
+[2026-03-19 16:07:16.951] [AppState] updatePartial: "On our nation's newest aircraft carrier. About about"
+[2026-03-19 16:07:17.596] [ASR] event: result-generated
+[2026-03-19 16:07:17.597] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:17.597] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft carrier. About about是航", sentence_end: Optional(false))
+[2026-03-19 16:07:17.597] [AppState] updatePartial: "On our nation's newest aircraft carrier. About about是航"
+[2026-03-19 16:07:17.960] [ASR] event: result-generated
+[2026-03-19 16:07:17.960] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:17.960] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft carrier. About about是航母上的能", sentence_end: Optional(false))
+[2026-03-19 16:07:17.961] [AppState] updatePartial: "On our nation's newest aircraft carrier. About about是航母上的能"
+[2026-03-19 16:07:18.626] [ASR] event: result-generated
+[2026-03-19 16:07:18.626] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:18.627] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft carrier. About about是航母上的能源心", sentence_end: Optional(false))
+[2026-03-19 16:07:18.627] [AppState] updatePartial: "On our nation's newest aircraft carrier. About about是航母上的能源心"
+[2026-03-19 16:07:19.010] [ASR] event: result-generated
+[2026-03-19 16:07:19.010] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:19.011] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft carrier. About about是航母上的能源心脏驱", sentence_end: Optional(false))
+[2026-03-19 16:07:19.011] [AppState] updatePartial: "On our nation's newest aircraft carrier. About about是航母上的能源心脏驱"
+[2026-03-19 16:07:19.366] [ASR] event: result-generated
+[2026-03-19 16:07:19.366] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:19.366] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft carrier. About about是航母上的能源，心脏驱动着船", sentence_end: Optional(false))
+[2026-03-19 16:07:19.366] [AppState] updatePartial: "On our nation's newest aircraft carrier. About about是航母上的能源，心脏驱动着船"
+[2026-03-19 16:07:19.976] [ASR] event: result-generated
+[2026-03-19 16:07:19.977] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:19.977] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft carrier. About about是航母上的能源，心脏驱动着船底的四个", sentence_end: Optional(false))
+[2026-03-19 16:07:19.977] [AppState] updatePartial: "On our nation's newest aircraft carrier. About about是航母上的能源，心脏驱动着船底的四个"
+[2026-03-19 16:07:20.484] [ASR] event: result-generated
+[2026-03-19 16:07:20.484] [ASR] result-generated, payload: 有
+[2026-03-19 16:07:20.485] [ASR] output.sentence: AsrSentence(text: "On our nation\'s newest aircraft carrier. 航母上的能源，心脏驱动着船底的四个物。", sentence_end: Optional(true))
+[2026-03-19 16:07:20.485] [AppState] receiveFinal: "On our nation's newest aircraft carrier.  航母上的能源，心脏驱动着船底的四个物。"
+[2026-03-19 16:07:20.809] [AppState] autoInsert: "On our nation's newest aircraft carrier.  航母上的能源，心脏驱动着船底的四个物。" at 29, cursor now 90
+[2026-03-19 16:07:23.163] [InputBar] 点击星星，confirmedText="需要巨大的能源供给。两台 A 一闭合反应堆总输出功率超过了On our nation's newes..."
+[2026-03-19 16:07:23.163] [AppState] 开始润色，锁定文本框
+[2026-03-19 16:07:23.163] [InputBar] 开始执行润色...
+[2026-03-19 16:07:23.972] [InputBar] 润色结果: "需要巨大的能源供给。两台 A 闭合反应堆总输出功率超过了我们国家最新航空母舰的能源需求，航母上的能源..."
+[2026-03-19 16:07:23.972] [AppState] 润色完成，光标定位到 64
+[2026-03-19 16:08:05.659] [InputBar] 点击星星，confirmedText="需要巨大的能源供给。两台 A 闭合反应堆总输出功率超过了我们国家最新航空母舰的   能源需求，航母上..."
+[2026-03-19 16:08:05.660] [AppState] 开始润色，锁定文本框
+[2026-03-19 16:08:05.660] [InputBar] 开始执行润色...
+[2026-03-19 16:08:06.663] [InputBar] 润色结果: "需要巨大的能源供给。两台 A 闭合反应堆总输出功率超过了我们国家最新航空母舰的能源需求，航母上的能源..."
+[2026-03-19 16:08:06.664] [AppState] 润色完成，光标定位到 61
+[2026-03-19 16:09:27.873] [ASR] event: result-generated
+[2026-03-19 16:09:27.875] [ASR] result-generated, payload: 有
+[2026-03-19 16:09:27.875] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 16:09:27.875] [AppState] updatePartial: ""
+[2026-03-19 16:09:27.936] [ASR] event: result-generated
+[2026-03-19 16:09:27.936] [ASR] result-generated, payload: 有
+[2026-03-19 16:09:27.936] [ASR] output.sentence: AsrSentence(text: "明天，", sentence_end: Optional(false))
+[2026-03-19 16:09:27.937] [AppState] updatePartial: "明天，"
+[2026-03-19 16:09:28.141] [ASR] event: result-generated
+[2026-03-19 16:09:28.141] [ASR] result-generated, payload: 有
+[2026-03-19 16:09:28.142] [ASR] output.sentence: AsrSentence(text: "都年", sentence_end: Optional(false))
+[2026-03-19 16:09:28.142] [AppState] updatePartial: "都年"
+[2026-03-19 16:09:28.752] [ASR] event: result-generated
+[2026-03-19 16:09:28.752] [ASR] result-generated, payload: 有
+[2026-03-19 16:09:28.752] [ASR] output.sentence: AsrSentence(text: "都年天都睇", sentence_end: Optional(false))
+[2026-03-19 16:09:28.753] [AppState] updatePartial: "都年天都睇"
+[2026-03-19 16:09:29.176] [ASR] event: result-generated
+[2026-03-19 16:09:29.177] [ASR] result-generated, payload: 有
+[2026-03-19 16:09:29.177] [ASR] output.sentence: AsrSentence(text: "已经都睇到啦。", sentence_end: Optional(true))
+[2026-03-19 16:09:29.177] [AppState] receiveFinal: "已经都睇到啦。"
+[2026-03-19 16:09:29.499] [AppState] autoInsert: "已经都睇到啦。" at 61, cursor now 68
+[2026-03-19 16:09:33.624] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:09:33.673] [ASR] 发送 finish-task
+[2026-03-19 16:09:33.673] [Voxa] 停止录音，最终文本 [68 字]: 需要巨大的能源供给。两台 A 闭合反应堆总输出功率超过了我们国家最新航空母舰的能源需求，航母上的能源...
+[2026-03-19 16:09:33.673] [Voxa] 开始自动润色...
+[2026-03-19 16:09:33.677] WebSocket disconnected
+[2026-03-19 16:09:34.634] [Voxa] 润色完成
+[2026-03-19 16:09:34.635] [Voxa] 原文: 需要巨大的能源供给。两台 A 闭合反应堆总输出功率超过了我们国家最新航空母舰的能源需求，航母上的能源心脏驱动着船底的四个。已经都睇到啦。
+[2026-03-19 16:09:34.635] [Voxa] 润色: 需要巨大的能源供给。两台 A 闭合反应堆总输出功率超过了我们国家最新航空母舰的能源需求，航母上的能源心脏驱动着船底的四个。都已经看到了。
+[2026-03-19 16:09:34.655] [Voxa] 准备注入文本到 com.mitchellh.ghostty
+[2026-03-19 16:09:34.655] [Injector] 开始注入 68 字到 com.mitchellh.ghostty
+[2026-03-19 16:09:34.658] [Injector] 剪贴板已设置: 需要巨大的能源供给。两台 A 闭合反应堆总输出功率超过了我们...
+[2026-03-19 16:09:34.674] [Injector] Voxa 已隐藏
+[2026-03-19 16:09:34.729] [Injector] 目标应用已激活
+[2026-03-19 16:09:34.815] [Injector] 模拟 Cmd+V
+[2026-03-19 16:09:34.851] [Injector] 按键事件已发送
+[2026-03-19 16:09:34.935] [Injector] 注入完成
+[2026-03-19 16:09:34.936] [Injector] 剪贴板已恢复
+[2026-03-19 16:10:20.283] [Voxa] 应用启动中...
+[2026-03-19 16:10:20.284] [Voxa] AppState 初始化完成
+[2026-03-19 16:10:20.284] [Voxa] PanelController 初始化完成
+[2026-03-19 16:10:20.284] [Voxa] AudioCapture 初始化完成
+[2026-03-19 16:10:20.284] [Voxa] AsrClient 初始化完成
+[2026-03-19 16:10:20.284] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 16:10:20.284] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 16:10:20.284] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 16:10:20.308] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 16:10:20.309] [Voxa] 菜单栏设置完成
+[2026-03-19 16:10:20.314] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 16:10:20.314] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 16:10:33.161] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:10:33.487] WebSocket connected
+[2026-03-19 16:10:33.488] [ASR] 发送 run-task: {"header":{"task_id":"58F7BF4C-FC96-44D8-81DA-2A68BFBC9D48","action":"run-task","streaming":"duplex"},"payload":{"input":{},"parameters":{"format":"pcm","sample_rate":16000,"enable_intermediate_result":true,"enable_punctuation_prediction":true,"enable_inverse_text_normalization":true},"task":"asr","task_group":"audio","model":"paraformer-realtime-v2","function":"recognition"}}
+[2026-03-19 16:10:33.543] [ASR] event: task-started
+[2026-03-19 16:10:33.543] ASR task started
+[2026-03-19 16:10:35.513] [ASR] event: result-generated
+[2026-03-19 16:10:35.513] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:35.513] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 16:10:35.514] [AppState] updatePartial: ""
+[2026-03-19 16:10:35.572] [ASR] event: result-generated
+[2026-03-19 16:10:35.573] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:35.573] [ASR] output.sentence: AsrSentence(text: "We", sentence_end: Optional(false))
+[2026-03-19 16:10:35.573] [AppState] updatePartial: "We"
+[2026-03-19 16:10:35.966] [ASR] event: result-generated
+[2026-03-19 16:10:35.966] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:35.967] [ASR] output.sentence: AsrSentence(text: "We", sentence_end: Optional(false))
+[2026-03-19 16:10:35.967] [AppState] updatePartial: "We"
+[2026-03-19 16:10:36.390] [ASR] event: result-generated
+[2026-03-19 16:10:36.390] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:36.390] [ASR] output.sentence: AsrSentence(text: "五月片螺", sentence_end: Optional(false))
+[2026-03-19 16:10:36.390] [AppState] updatePartial: "五月片螺"
+[2026-03-19 16:10:36.795] [ASR] event: result-generated
+[2026-03-19 16:10:36.795] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:36.795] [ASR] output.sentence: AsrSentence(text: "五月片螺旋桨", sentence_end: Optional(false))
+[2026-03-19 16:10:36.795] [AppState] updatePartial: "五月片螺旋桨"
+[2026-03-19 16:10:37.397] [ASR] event: result-generated
+[2026-03-19 16:10:37.398] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:37.398] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大", sentence_end: Optional(false))
+[2026-03-19 16:10:37.398] [AppState] updatePartial: "五月片。螺旋桨使大"
+[2026-03-19 16:10:37.795] [ASR] event: result-generated
+[2026-03-19 16:10:37.795] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:37.795] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最", sentence_end: Optional(false))
+[2026-03-19 16:10:37.795] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最"
+[2026-03-19 16:10:38.406] [ASR] event: result-generated
+[2026-03-19 16:10:38.406] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:38.406] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速", sentence_end: Optional(false))
+[2026-03-19 16:10:38.406] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速"
+[2026-03-19 16:10:38.888] [ASR] event: result-generated
+[2026-03-19 16:10:38.888] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:38.888] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了6", sentence_end: Optional(false))
+[2026-03-19 16:10:38.888] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了6"
+[2026-03-19 16:10:39.223] [ASR] event: result-generated
+[2026-03-19 16:10:39.223] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:39.224] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里", sentence_end: Optional(false))
+[2026-03-19 16:10:39.224] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里"
+[2026-03-19 16:10:40.025] [ASR] event: result-generated
+[2026-03-19 16:10:40.025] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:40.025] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小", sentence_end: Optional(false))
+[2026-03-19 16:10:40.026] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小"
+[2026-03-19 16:10:40.215] [ASR] event: result-generated
+[2026-03-19 16:10:40.215] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:40.216] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时。是", sentence_end: Optional(false))
+[2026-03-19 16:10:40.216] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时。是"
+[2026-03-19 16:10:40.833] [ASR] event: result-generated
+[2026-03-19 16:10:40.834] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:40.834] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最", sentence_end: Optional(false))
+[2026-03-19 16:10:40.834] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最"
+[2026-03-19 16:10:41.311] [ASR] event: result-generated
+[2026-03-19 16:10:41.311] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:41.311] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空", sentence_end: Optional(false))
+[2026-03-19 16:10:41.312] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空"
+[2026-03-19 16:10:42.023] [ASR] event: result-generated
+[2026-03-19 16:10:42.024] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:42.024] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母", sentence_end: Optional(false))
+[2026-03-19 16:10:42.024] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母"
+[2026-03-19 16:10:42.220] [ASR] event: result-generated
+[2026-03-19 16:10:42.220] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:42.221] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰", sentence_end: Optional(false))
+[2026-03-19 16:10:42.221] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰"
+[2026-03-19 16:10:42.620] [ASR] event: result-generated
+[2026-03-19 16:10:42.620] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:42.620] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰核反应堆", sentence_end: Optional(false))
+[2026-03-19 16:10:42.620] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰核反应堆"
+[2026-03-19 16:10:43.252] [ASR] event: result-generated
+[2026-03-19 16:10:43.252] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:43.252] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰。核反应堆还被航", sentence_end: Optional(false))
+[2026-03-19 16:10:43.253] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰。核反应堆还被航"
+[2026-03-19 16:10:43.722] [ASR] event: result-generated
+[2026-03-19 16:10:43.722] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:43.722] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰。核反应堆还被航母上的一", sentence_end: Optional(false))
+[2026-03-19 16:10:43.722] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰。核反应堆还被航母上的一"
+[2026-03-19 16:10:44.043] [ASR] event: result-generated
+[2026-03-19 16:10:44.043] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:44.043] [ASR] output.sentence: AsrSentence(text: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰。核反应堆还被航母上的一切设施提", sentence_end: Optional(false))
+[2026-03-19 16:10:44.044] [AppState] updatePartial: "五月片。螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰。核反应堆还被航母上的一切设施提"
+[2026-03-19 16:10:44.900] [ASR] event: result-generated
+[2026-03-19 16:10:44.901] [ASR] result-generated, payload: 有
+[2026-03-19 16:10:44.901] [ASR] output.sentence: AsrSentence(text: "五月片螺旋桨使大家伙的最高时速超过了65公里每小时，是目前最快的航空母舰核反应堆，还为航母上的一切设施提供电力。", sentence_end: Optional(true))
+[2026-03-19 16:10:44.902] [AppState] receiveFinal: "五月片螺旋桨使大家伙的最高时速超过了 65 公里每小时，是目前最快的航空母舰核反应堆，还为航母上的一切设施提供电力。"
+[2026-03-19 16:10:45.226] [AppState] autoInsert: "五月片螺旋桨使大家伙的最高时速超过了 65 公里每小时，是目前最快的航空母舰核反应堆，还为航母上的一切设施提供电力。" at 0, cursor now 58
+[2026-03-19 16:10:51.649] [InputBar] 点击星星，confirmedText="五月片螺旋桨使大家伙的最高时速超过了 65 公里每小时，是目前最快的航空母舰核反应堆，还为航母上的一..."
+[2026-03-19 16:10:51.649] [AppState] 开始润色，锁定文本框
+[2026-03-19 16:10:51.649] [InputBar] 开始执行润色...
+[2026-03-19 16:10:52.621] [InputBar] 润色结果: "五月片螺旋桨使大家伙的最高时速超过 65 公里每小时，是目前最快的航空母舰核反应堆，还为航母上的一切..."
+[2026-03-19 16:10:52.621] [AppState] 润色完成，光标定位到 57
+[2026-03-19 16:10:54.866] [InputBar] 点击星星，confirmedText="五月片螺旋桨使大家伙的最高时速超过 65 公里每小时，是目前最快的航空母舰核反应堆，还为航母上的一切..."
+[2026-03-19 16:10:54.867] [AppState] 开始润色，锁定文本框
+[2026-03-19 16:10:54.867] [InputBar] 开始执行润色...
+[2026-03-19 16:10:55.592] [InputBar] 润色结果: "五月片螺旋桨使大家伙的最高时速超过 65 公里每小时，是目前最快的航空母舰核反应堆，还为航母上的一切..."
+[2026-03-19 16:10:55.592] [AppState] 润色完成，光标定位到 57
+[2026-03-19 16:10:58.366] [InputBar] 点击星星，confirmedText="五月片  螺旋桨使大家伙的最高时速超过 65 公里每小时，是目前最快的航空母舰核反应堆，还为航母上的..."
+[2026-03-19 16:10:58.367] [AppState] 开始润色，锁定文本框
+[2026-03-19 16:10:58.367] [InputBar] 开始执行润色...
+[2026-03-19 16:10:59.130] [InputBar] 润色结果: "五月片，螺旋桨使大家伙的最高时速超过 65 公里每小时，是目前最快的航空母舰核反应堆，还为航母上的一..."
+[2026-03-19 16:10:59.130] [AppState] 润色完成，光标定位到 58
+[2026-03-19 16:12:08.771] [Voxa] 应用启动中...
+[2026-03-19 16:12:08.771] [Voxa] AppState 初始化完成
+[2026-03-19 16:12:08.771] [Voxa] PanelController 初始化完成
+[2026-03-19 16:12:08.771] [Voxa] AudioCapture 初始化完成
+[2026-03-19 16:12:08.772] [Voxa] AsrClient 初始化完成
+[2026-03-19 16:12:08.772] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 16:12:08.772] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 16:12:08.772] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 16:12:08.799] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 16:12:08.799] [Voxa] 菜单栏设置完成
+[2026-03-19 16:12:08.804] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 16:12:08.804] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 16:12:19.212] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:12:19.490] WebSocket connected
+[2026-03-19 16:12:19.490] [ASR] 发送 run-task: {"payload":{"parameters":{"enable_inverse_text_normalization":true,"format":"pcm","sample_rate":16000,"enable_intermediate_result":true,"enable_punctuation_prediction":true},"task_group":"audio","input":{},"task":"asr","function":"recognition","model":"paraformer-realtime-v2"},"header":{"streaming":"duplex","task_id":"5C298903-1866-48B1-B004-BE37BA8E07D1","action":"run-task"}}
+[2026-03-19 16:12:19.548] [ASR] event: task-started
+[2026-03-19 16:12:19.549] ASR task started
+[2026-03-19 16:12:28.467] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:12:28.520] [ASR] 发送 finish-task
+[2026-03-19 16:12:28.520] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 16:12:28.523] WebSocket disconnected
+[2026-03-19 16:12:28.536] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 16:12:28.633] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:12:28.837] WebSocket connected
+[2026-03-19 16:12:28.838] [ASR] 发送 run-task: {"header":{"action":"run-task","task_id":"3A066DB8-9CC0-4129-B321-115A9DB527BD","streaming":"duplex"},"payload":{"function":"recognition","task_group":"audio","parameters":{"sample_rate":16000,"enable_inverse_text_normalization":true,"format":"pcm","enable_punctuation_prediction":true,"enable_intermediate_result":true},"task":"asr","model":"paraformer-realtime-v2","input":{}}}
+[2026-03-19 16:12:28.889] [ASR] event: task-started
+[2026-03-19 16:12:28.889] ASR task started
+[2026-03-19 16:13:15.138] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:13:15.193] [ASR] 发送 finish-task
+[2026-03-19 16:13:15.193] [Voxa] 停止录音，最终文本 [55 字]: d dddddddddddddddddddddddddddddddddddddddddddddddd...
+[2026-03-19 16:13:15.193] WebSocket disconnected
+[2026-03-19 16:13:15.194] [Voxa] 开始自动润色...
+[2026-03-19 16:13:15.798] [Voxa] 润色完成
+[2026-03-19 16:13:15.798] [Voxa] 原文: d ddddddddddddddddddddddddddddddddddddddddddddddddddddd
+[2026-03-19 16:13:15.798] [Voxa] 润色: ddddd ddddd ddddd ddddd ddddd ddddd ddddd ddddd ddddd ddddd
+[2026-03-19 16:13:15.815] [Voxa] 准备注入文本到 com.mitchellh.ghostty
+[2026-03-19 16:13:15.816] [Injector] 开始注入 59 字到 com.mitchellh.ghostty
+[2026-03-19 16:13:15.817] [Injector] 剪贴板已设置: ddddd ddddd ddddd ddddd ddddd ...
+[2026-03-19 16:13:15.829] [Injector] Voxa 已隐藏
+[2026-03-19 16:13:15.888] [Injector] 目标应用已激活
+[2026-03-19 16:13:15.972] [Injector] 模拟 Cmd+V
+[2026-03-19 16:13:16.008] [Injector] 按键事件已发送
+[2026-03-19 16:13:16.092] [Injector] 注入完成
+[2026-03-19 16:13:16.093] [Injector] 剪贴板已恢复
+[2026-03-19 16:13:44.736] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:13:44.980] WebSocket connected
+[2026-03-19 16:13:44.981] [ASR] 发送 run-task: {"header":{"action":"run-task","streaming":"duplex","task_id":"B8B52A1A-F705-4A98-93FF-CDD4B02A4D5E"},"payload":{"task_group":"audio","model":"paraformer-realtime-v2","task":"asr","function":"recognition","parameters":{"enable_punctuation_prediction":true,"format":"pcm","enable_intermediate_result":true,"sample_rate":16000,"enable_inverse_text_normalization":true},"input":{}}}
+[2026-03-19 16:13:45.040] [ASR] event: task-started
+[2026-03-19 16:13:45.040] ASR task started
+[2026-03-19 16:13:48.500] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:13:48.557] [ASR] 发送 finish-task
+[2026-03-19 16:13:48.557] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 16:13:48.557] WebSocket disconnected
+[2026-03-19 16:13:48.559] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 16:13:53.218] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:13:53.437] WebSocket connected
+[2026-03-19 16:13:53.438] [ASR] 发送 run-task: {"payload":{"function":"recognition","task":"asr","parameters":{"format":"pcm","enable_inverse_text_normalization":true,"enable_intermediate_result":true,"enable_punctuation_prediction":true,"sample_rate":16000},"input":{},"task_group":"audio","model":"paraformer-realtime-v2"},"header":{"action":"run-task","streaming":"duplex","task_id":"42396F58-1239-45EB-B563-898CEB7896AF"}}
+[2026-03-19 16:13:53.495] [ASR] event: task-started
+[2026-03-19 16:13:53.495] ASR task started
+[2026-03-19 16:13:54.349] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:13:54.398] [ASR] 发送 finish-task
+[2026-03-19 16:13:54.398] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 16:13:54.398] WebSocket disconnected
+[2026-03-19 16:13:54.399] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 16:14:10.935] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:14:11.152] WebSocket connected
+[2026-03-19 16:14:11.153] [ASR] 发送 run-task: {"header":{"action":"run-task","task_id":"AEBC88CD-DAE5-486D-ABD8-F8E6AC31BF04","streaming":"duplex"},"payload":{"task_group":"audio","task":"asr","input":{},"model":"paraformer-realtime-v2","function":"recognition","parameters":{"enable_punctuation_prediction":true,"format":"pcm","enable_intermediate_result":true,"sample_rate":16000,"enable_inverse_text_normalization":true}}}
+[2026-03-19 16:14:11.210] [ASR] event: task-started
+[2026-03-19 16:14:11.210] ASR task started
+[2026-03-19 16:14:21.272] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:14:21.320] [ASR] 发送 finish-task
+[2026-03-19 16:14:21.321] WebSocket disconnected
+[2026-03-19 16:14:21.321] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 16:14:21.323] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 16:15:56.966] [Voxa] 应用启动中...
+[2026-03-19 16:15:56.967] [Voxa] AppState 初始化完成
+[2026-03-19 16:15:56.967] [Voxa] PanelController 初始化完成
+[2026-03-19 16:15:56.967] [Voxa] AudioCapture 初始化完成
+[2026-03-19 16:15:56.967] [Voxa] AsrClient 初始化完成
+[2026-03-19 16:15:56.967] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 16:15:56.967] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 16:15:56.967] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 16:15:56.995] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 16:15:56.995] [Voxa] 菜单栏设置完成
+[2026-03-19 16:15:57.003] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 16:15:57.003] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 16:16:12.514] [Voxa] 应用启动中...
+[2026-03-19 16:16:12.514] [Voxa] AppState 初始化完成
+[2026-03-19 16:16:12.514] [Voxa] PanelController 初始化完成
+[2026-03-19 16:16:12.514] [Voxa] AudioCapture 初始化完成
+[2026-03-19 16:16:12.515] [Voxa] AsrClient 初始化完成
+[2026-03-19 16:16:12.515] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 16:16:12.515] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 16:16:12.515] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 16:16:12.532] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 16:16:12.532] [Voxa] 菜单栏设置完成
+[2026-03-19 16:16:12.537] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 16:16:12.538] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 16:16:13.648] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 16:16:13.940] WebSocket connected
+[2026-03-19 16:16:13.940] [ASR] 发送 run-task: {"payload":{"task":"asr","model":"paraformer-realtime-v2","task_group":"audio","parameters":{"sample_rate":16000,"format":"pcm","enable_punctuation_prediction":true,"enable_inverse_text_normalization":true,"enable_intermediate_result":true},"input":{},"function":"recognition"},"header":{"streaming":"duplex","action":"run-task","task_id":"F378B9C4-6F44-421C-9EC2-EC0D25DA9C18"}}
+[2026-03-19 16:16:14.025] [ASR] event: task-started
+[2026-03-19 16:16:14.025] ASR task started
