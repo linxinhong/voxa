@@ -11,12 +11,12 @@ struct InputBarView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            // 第1行：Partial（mic放左边，左对齐）
-            HStack(spacing: 8) {
+            // 第1行：Partial（mic放左边，垂直居中）
+            HStack(alignment: .center, spacing: 8) {
                 Image(systemName: "mic.fill")
                     .font(.system(size: 12))
                     .foregroundColor(appState.hasPending ? .green : (appState.partialText.isEmpty ? .gray : .green))
-                    .frame(width: 16)
+                    .frame(width: 16, height: 16)
                 Text(appState.partialText.isEmpty ? " " : appState.partialText)
                     .font(.system(size: 14))
                     .foregroundColor(.black)
@@ -29,7 +29,7 @@ struct InputBarView: View {
             .cornerRadius(6)
             
             // 第2行：Confirmed（NSTextView，自动增高）+ 模板标签
-            HStack(alignment: .top, spacing: 8) {
+            HStack(alignment: .center, spacing: 8) {
                 TextEditorRepresentable(
                     text: $appState.confirmedText,
                     cursorOffset: $appState.cursorOffset,
