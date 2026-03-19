@@ -184,17 +184,13 @@ actor AsrClient: NSObject {
         let text = sentence.text
         let isFinal = sentence.sentence_end ?? false
         
-        VoxaLog("[ASR] 收到识别结果: \"\(text)\", isFinal: \(isFinal)")
-        
         Task { @MainActor in
             if isFinal {
-                // Final 结果：在光标位置插入并清洗
-                appState.appendFinal(text)
-                VoxaLog("[ASR] 已追加 final 文本: \"\(text)\"")
+                // Final：保留第1行，显示 ⬇ 按钮等待用户确认
+                appState.receiveFinal(text)
             } else {
-                // Partial 结果：在光标位置插入
+                // Partial：整句覆盖第1行
                 appState.updatePartial(text)
-                VoxaLog("[ASR] 已更新 partial 文本: \"\(text)\"")
             }
         }
     }

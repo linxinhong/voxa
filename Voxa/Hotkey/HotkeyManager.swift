@@ -121,8 +121,8 @@ class HotkeyManager {
                 appState.isRecording = false
             }
             
-            // Get final text
-            var finalText = appState.getFinalText()
+            // 停止录音时的处理：如果有 pending 未确认，自动追加到末尾
+            var finalText = appState.finalizeOnStop()
             
             VoxaLog("[Voxa] 停止录音，最终文本 [\(finalText.count) 字]: \(finalText.prefix(50))...")
             
@@ -134,10 +134,12 @@ class HotkeyManager {
                     VoxaLog("[Voxa] 润色完成")
                     VoxaLog("[Voxa] 原文: \(finalText)")
                     VoxaLog("[Voxa] 润色: \(polishedText)")
+                    finalText = polishedText
+                    // 更新 confirmedText 为润色后的文本
+                    appState.confirmedText = finalText
                 } else {
                     VoxaLog("[Voxa] 润色后无变化")
                 }
-                finalText = polishedText
             }
             
             // Hide panel

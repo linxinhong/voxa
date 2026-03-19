@@ -3176,3 +3176,68 @@
 [2026-03-19 14:36:44.898] [ASR] 收到识别结果: "还是本地的牌？", isFinal: false
 [2026-03-19 14:36:44.898] [AppState] updatePartial: confirmed=0字, partial=7字
 [2026-03-19 14:36:44.898] [ASR] 已更新 partial 文本: "还是本地的牌？"
+[2026-03-19 14:36:45.496] [ASR] event: result-generated
+[2026-03-19 14:36:45.497] [ASR] result-generated, payload: 有
+[2026-03-19 14:36:45.497] [ASR] output.sentence: AsrSentence(text: "还是本地的牌四客", sentence_end: Optional(false))
+[2026-03-19 14:36:45.497] [ASR] 收到识别结果: "还是本地的牌四客", isFinal: false
+[2026-03-19 14:36:45.498] [AppState] updatePartial: confirmed=0字, partial=8字
+[2026-03-19 14:36:45.498] [ASR] 已更新 partial 文本: "还是本地的牌四客"
+[2026-03-19 14:36:45.913] [ASR] event: result-generated
+[2026-03-19 14:36:45.914] [ASR] result-generated, payload: 有
+[2026-03-19 14:36:45.914] [ASR] output.sentence: AsrSentence(text: "还是本地的牌？四客到哪里？", sentence_end: Optional(false))
+[2026-03-19 14:36:45.914] [ASR] 收到识别结果: "还是本地的牌？四客到哪里？", isFinal: false
+[2026-03-19 14:36:45.914] [AppState] updatePartial: confirmed=0字, partial=13字
+[2026-03-19 14:36:45.914] [ASR] 已更新 partial 文本: "还是本地的牌？四客到哪里？"
+[2026-03-19 14:36:46.532] [ASR] event: result-generated
+[2026-03-19 14:36:46.532] [ASR] result-generated, payload: 有
+[2026-03-19 14:36:46.533] [ASR] output.sentence: AsrSentence(text: "还是本地的牌？四客到哪里就已定能", sentence_end: Optional(false))
+[2026-03-19 14:36:46.533] [ASR] 收到识别结果: "还是本地的牌？四客到哪里就已定能", isFinal: false
+[2026-03-19 14:36:46.533] [AppState] updatePartial: confirmed=0字, partial=16字
+[2026-03-19 14:36:46.533] [ASR] 已更新 partial 文本: "还是本地的牌？四客到哪里就已定能"
+[2026-03-19 14:36:46.951] [ASR] event: result-generated
+[2026-03-19 14:36:46.951] [ASR] result-generated, payload: 有
+[2026-03-19 14:36:46.952] [ASR] output.sentence: AsrSentence(text: "还是本地的牌？四客到哪里就已定能适用？", sentence_end: Optional(false))
+[2026-03-19 14:36:46.952] [ASR] 收到识别结果: "还是本地的牌？四客到哪里就已定能适用？", isFinal: false
+[2026-03-19 14:36:46.952] [AppState] updatePartial: confirmed=0字, partial=19字
+[2026-03-19 14:36:46.952] [ASR] 已更新 partial 文本: "还是本地的牌？四客到哪里就已定能适用？"
+[2026-03-19 14:36:47.439] [ASR] event: result-generated
+[2026-03-19 14:36:47.440] [ASR] result-generated, payload: 有
+[2026-03-19 14:36:47.440] [ASR] output.sentence: AsrSentence(text: "还是本地的牌？复刻到哪里就一定能适用？不行了", sentence_end: Optional(false))
+[2026-03-19 14:36:47.440] [ASR] 收到识别结果: "还是本地的牌？复刻到哪里就一定能适用？不行了", isFinal: false
+[2026-03-19 14:36:47.440] [AppState] updatePartial: confirmed=0字, partial=22字
+[2026-03-19 14:36:47.441] [ASR] 已更新 partial 文本: "还是本地的牌？复刻到哪里就一定能适用？不行了"
+[2026-03-19 14:36:48.285] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:36:48.341] [ASR] 发送 finish-task
+[2026-03-19 14:36:48.341] [Voxa] 停止录音，最终文本 [22 字]: 还是本地的牌？复刻到哪里就一定能适用？不行了...
+[2026-03-19 14:36:48.342] [Voxa] 开始润色文本...
+[2026-03-19 14:36:48.343] WebSocket disconnected
+[2026-03-19 14:36:48.345] WebSocket error: Error Domain=NSPOSIXErrorDomain Code=57 "Socket is not connected" UserInfo={NSErrorFailingURLStringKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/, NSErrorFailingURLKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/}
+[2026-03-19 14:36:49.226] [Voxa] 润色完成
+[2026-03-19 14:36:49.227] [Voxa] 原文: 还是本地的牌？复刻到哪里就一定能适用？不行了
+[2026-03-19 14:36:49.227] [Voxa] 润色: 还是本地的牌？复刻到哪里就一定能适用吗？不行了。
+[2026-03-19 14:36:49.233] [Voxa] 准备注入文本到 com.mitchellh.ghostty
+[2026-03-19 14:36:49.234] [Injector] 开始注入 24 字到 com.mitchellh.ghostty
+[2026-03-19 14:36:49.238] [Injector] 剪贴板已设置: 还是本地的牌？复刻到哪里就一定能适用吗？不行了。...
+[2026-03-19 14:36:49.245] [Injector] Voxa 已隐藏
+[2026-03-19 14:36:49.302] [Injector] 目标应用已激活
+[2026-03-19 14:36:49.385] [Injector] 模拟 Cmd+V
+[2026-03-19 14:36:49.421] [Injector] 按键事件已发送
+[2026-03-19 14:36:49.505] [Injector] 注入完成
+[2026-03-19 14:36:49.506] [Injector] 剪贴板已恢复
+[2026-03-19 14:48:22.788] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:48:23.033] WebSocket connected
+[2026-03-19 14:48:23.034] [ASR] 发送 run-task: {"header":{"action":"run-task","task_id":"EEB5DC55-0205-46F0-96BC-005029DC09C1","streaming":"duplex"},"payload":{"task":"asr","input":{},"parameters":{"format":"pcm","sample_rate":16000,"enable_inverse_text_normalization":true,"enable_punctuation_prediction":true,"enable_intermediate_result":true},"task_group":"audio","model":"paraformer-realtime-v2","function":"recognition"}}
+[2026-03-19 14:48:23.107] [ASR] event: task-started
+[2026-03-19 14:48:23.107] ASR task started
+[2026-03-19 15:05:15.852] [Voxa] 应用启动中...
+[2026-03-19 15:05:15.853] [Voxa] AppState 初始化完成
+[2026-03-19 15:05:15.853] [Voxa] PanelController 初始化完成
+[2026-03-19 15:05:15.853] [Voxa] AudioCapture 初始化完成
+[2026-03-19 15:05:15.853] [Voxa] AsrClient 初始化完成
+[2026-03-19 15:05:15.853] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 15:05:15.853] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 15:05:15.853] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 15:05:15.877] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 15:05:15.877] [Voxa] 菜单栏设置完成
+[2026-03-19 15:05:15.882] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 15:05:15.882] [Voxa] 也可以在菜单栏点击 Voxa 图标开始

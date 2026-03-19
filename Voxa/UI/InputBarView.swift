@@ -14,7 +14,7 @@ struct InputBarView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            // Recording indicator
+            // 🔴 录音指示器
             Circle()
                 .fill(appState.isRecording ? Color.red : Color.gray)
                 .frame(width: 8, height: 8)
@@ -23,22 +23,22 @@ struct InputBarView: View {
                 .animation(.easeInOut(duration: 0.3), value: appState.isRecording)
             
             VStack(alignment: .leading, spacing: 4) {
-                // 第一行：Partial 文本 + 插入按钮
+                // 第1行：Partial 区域（灰色，只读）+ ⬇ 按钮
                 HStack(spacing: 8) {
+                    // Partial 文本（整句覆盖显示）
                     PartialTextView(
-                        text: appState.currentPartial,
-                        minHeight: 20,
-                        maxHeight: 60
+                        text: appState.partialText,
+                        minHeight: 20
                     )
                     .frame(maxWidth: .infinity, minHeight: 20)
                     
-                    // 插入按钮 - 当有待插入的 final 时显示
-                    if !appState.pendingFinalText.isEmpty {
+                    // ⬇ 插入按钮（当有 pending 时显示）
+                    if appState.hasPending {
                         Button(action: {
-                            appState.insertPendingFinal()
+                            appState.insertPending()
                         }) {
                             Image(systemName: "arrow.down.circle.fill")
-                                .font(.system(size: 18))
+                                .font(.system(size: 20))
                                 .foregroundColor(.blue)
                         }
                         .buttonStyle(PlainButtonStyle())
@@ -46,20 +46,20 @@ struct InputBarView: View {
                     }
                 }
                 .frame(minWidth: 300, maxWidth: 500, minHeight: 20)
-                .opacity(appState.currentPartial.isEmpty && appState.pendingFinalText.isEmpty ? 0 : 1)
+                // 空时隐藏但保持空间
+                .opacity(appState.partialText.isEmpty && !appState.hasPending ? 0 : 1)
                 
-                // 第二行：Confirmed 文本（黑色，固定）
+                // 第2行：Confirmed 区域（黑色，可编辑）
                 ConfirmedTextView(
-                    text: $appState.text,
-                    confirmedText: appState.confirmedText,
-                    cursorPosition: $appState.cursorPosition,
+                    text: $appState.confirmedText,
+                    cursorOffset: $appState.cursorOffset,
                     minHeight: 24,
                     maxHeight: 120
                 )
                 .frame(minWidth: 300, maxWidth: 500)
             }
             
-            // Polish toggle button
+            // ✨ 润色开关
             Button(action: {
                 appState.polishEnabled.toggle()
             }) {
@@ -81,54 +81,36 @@ struct InputBarView: View {
     }
 }
 
-// MARK: - Partial Text View (灰色，实时)
+// MARK: - 第1行：Partial 文本视图（灰色，只读，整句覆盖）
 
 struct PartialTextView: NSViewRepresentable {
     let text: String
     let minHeight: CGFloat
-    let maxHeight: CGFloat
     
-    func makeNSView(context: Context) -> NSScrollView {
-        let textView = NSTextView()
-        textView.isEditable = false
-        textView.isSelectable = true
-        textView.font = NSFont.systemFont(ofSize: 14)
-        textView.textColor = NSColor.darkGray  // 深灰色，在白色背景上可见
-        textView.backgroundColor = .white
-        textView.isRichText = false
-        
-        // 单行显示
-        textView.isVerticallyResizable = false
-        textView.isHorizontallyResizable = false
-        textView.textContainer?.widthTracksTextView = true
-        textView.textContainer?.heightTracksTextView = true
-        textView.textContainer?.maximumNumberOfLines = 1
-        textView.textContainer?.lineBreakMode = .byTruncatingTail
-        
-        let scrollView = NSScrollView()
-        scrollView.hasVerticalScroller = false
-        scrollView.hasHorizontalScroller = false
-        scrollView.drawsBackground = true
-        scrollView.backgroundColor = .white
-        scrollView.documentView = textView
-        
-        return scrollView
+    func makeNSView(context: Context) -> NSTextField {
+        let textField = NSTextField()
+        textField.isEditable = false
+        textField.isSelectable = false
+        textField.isBordered = false
+        textField.backgroundColor = .clear
+        textField.font = NSFont.systemFont(ofSize: 14)
+        textField.textColor = NSColor.darkGray
+        textField.lineBreakMode = .byTruncatingTail
+        return textField
     }
     
-    func updateNSView(_ nsView: NSScrollView, context: Context) {
-        guard let textView = nsView.documentView as? NSTextView else { return }
-        if textView.string != text {
-            textView.string = text
+    func updateNSView(_ nsView: NSTextField, context: Context) {
+        if nsView.stringValue != text {
+            nsView.stringValue = text
         }
     }
 }
 
-// MARK: - Confirmed Text View (黑色，固定)
+// MARK: - 第2行：Confirmed 文本视图（黑色，可编辑）
 
 struct ConfirmedTextView: NSViewRepresentable {
     @Binding var text: String
-    let confirmedText: String
-    @Binding var cursorPosition: Int
+    @Binding var cursorOffset: Int
     let minHeight: CGFloat
     let maxHeight: CGFloat
     
@@ -138,16 +120,16 @@ struct ConfirmedTextView: NSViewRepresentable {
         textView.isEditable = true
         textView.isSelectable = true
         textView.font = NSFont.systemFont(ofSize: 16)
-        textView.textColor = NSColor.black  // 纯黑色，在白色背景上清晰可见
+        textView.textColor = NSColor.black
         textView.backgroundColor = .white
         textView.isRichText = false
         textView.usesFontPanel = false
         textView.usesInspectorBar = false
         
-        // 设置初始 frame
+        // 初始 frame
         textView.frame = NSRect(x: 0, y: 0, width: 300, height: 24)
         
-        // 垂直方向可扩展
+        // 垂直可扩展
         textView.isVerticallyResizable = true
         textView.isHorizontallyResizable = false
         textView.textContainer?.widthTracksTextView = true
@@ -159,8 +141,8 @@ struct ConfirmedTextView: NSViewRepresentable {
         textView.textContainerInset = NSSize(width: 0, height: 2)
         textView.autoresizingMask = [.width]
         
-        // 设置默认文本
-        textView.string = confirmedText
+        // 初始文本
+        textView.string = text
         
         let scrollView = NSScrollView()
         scrollView.hasVerticalScroller = false
@@ -176,7 +158,7 @@ struct ConfirmedTextView: NSViewRepresentable {
         context.coordinator.textView = textView
         context.coordinator.scrollView = scrollView
         
-        // 监听选择变化
+        // 监听选择变化（光标位置）
         NotificationCenter.default.addObserver(
             context.coordinator,
             selector: #selector(Coordinator.selectionDidChange),
@@ -198,9 +180,9 @@ struct ConfirmedTextView: NSViewRepresentable {
     func updateNSView(_ nsView: NSScrollView, context: Context) {
         guard let textView = nsView.documentView as? NSTextView else { return }
         
-        // 只显示 confirmedText（不包含 partial）
-        if textView.string != confirmedText {
-            context.coordinator.syncConfirmedText(confirmedText)
+        // 同步 confirmedText
+        if textView.string != text {
+            context.coordinator.syncText(text)
         }
     }
     
@@ -227,9 +209,12 @@ struct ConfirmedTextView: NSViewRepresentable {
             guard let textView = textView,
                   notification.object as? NSTextView === textView else { return }
             
-            let newPosition = textView.selectedRange.location
+            // 更新光标位置
+            let newOffset = textView.selectedRange.location
             Task { @MainActor in
-                self.parent.cursorPosition = newPosition
+                if newOffset != self.parent.cursorOffset {
+                    self.parent.cursorOffset = newOffset
+                }
             }
         }
         
@@ -238,31 +223,40 @@ struct ConfirmedTextView: NSViewRepresentable {
                   notification.object as? NSTextView === textView,
                   !isSyncing else { return }
             
-            updateHeight()
-            
-            let newPosition = textView.selectedRange.location
+            // 用户正在编辑，通知 AppState
             Task { @MainActor in
-                self.parent.text = textView.string
-                self.parent.cursorPosition = newPosition
+                // 触发编辑锁
+                // Note: 需要在 AppState 中处理编辑锁
             }
+            
+            // 同步文本到 parent
+            let newText = textView.string
+            Task { @MainActor in
+                self.parent.text = newText
+            }
+            
+            // 更新高度
+            updateHeight()
         }
         
-        func syncConfirmedText(_ text: String) {
+        /// 从外部同步文本
+        func syncText(_ text: String) {
             guard let textView = textView else { return }
             guard !isSyncing else { return }
             
             isSyncing = true
             
-            // 保存当前光标位置
-            let currentPosition = textView.selectedRange.location
+            // 保存当前选择范围
+            let selectedRange = textView.selectedRange
             
             // 更新文本
             textView.string = text
             
-            // 恢复光标位置（如果可能）
+            // 恢复选择范围
             let newLength = text.count
-            let restorePosition = min(currentPosition, newLength)
-            textView.setSelectedRange(NSRange(location: restorePosition, length: 0))
+            if selectedRange.location <= newLength {
+                textView.setSelectedRange(selectedRange)
+            }
             
             // 强制刷新
             textView.layoutManager?.ensureLayout(for: textView.textContainer!)
@@ -286,12 +280,11 @@ struct ConfirmedTextView: NSViewRepresentable {
             let usedRect = layoutManager.usedRect(for: textContainer)
             let textHeight = usedRect.height + textView.textContainerInset.height * 2 + 4
             
-            let newHeight = max(parent.minHeight, min(textHeight, parent.maxHeight))
+            let newHeight = max(24, min(textHeight, 120))
             
             if abs(newHeight - lastHeight) > 2 {
                 lastHeight = newHeight
                 
-                // 调整窗口大小
                 guard let window = scrollView.window else { return }
                 var frame = window.frame
                 let heightDiff = newHeight - scrollView.frame.height
@@ -303,12 +296,10 @@ struct ConfirmedTextView: NSViewRepresentable {
                 window.setFrame(frame, display: true, animate: false)
             }
             
-            let needsScroller = textHeight > parent.maxHeight
+            let needsScroller = textHeight > 120
             if scrollView.hasVerticalScroller != needsScroller {
                 scrollView.hasVerticalScroller = needsScroller
             }
-            
-            textView.scrollRangeToVisible(textView.selectedRange)
         }
     }
 }
