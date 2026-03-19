@@ -27,8 +27,8 @@ struct InputBarView: View {
             .background(Color.gray.opacity(0.15))
             .cornerRadius(6)
             
-            // 第2行：Confirmed（NSTextView，自动增高）
-            HStack(alignment: .top) {
+            // 第2行：Confirmed（NSTextView，自动增高）+ 模板标签
+            HStack(alignment: .top, spacing: 8) {
                 TextEditorRepresentable(
                     text: $appState.confirmedText,
                     cursorOffset: $appState.cursorOffset,
@@ -43,55 +43,22 @@ struct InputBarView: View {
                     .padding(.vertical, 2)
                     .background(Color.orange.opacity(0.15))
                     .cornerRadius(4)
-                
-                PolishButton(isPolishing: appState.isPolishing) {
-                    await polishConfirmed()
-                }
-                .padding(.top, 2)
+                    .frame(minWidth: 50)
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(Color.white)
-            .cornerRadius(6)
+            .cornerRadius(8)
         }
         .padding(12)
-        .background(Color.white.cornerRadius(12).shadow(radius: 4))
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.white)
+                .shadow(radius: 4)
+        )
         .frame(width: 440)
     }
-    
-    func polishConfirmed() async {
-        guard !appState.confirmedText.isEmpty else { return }
-        appState.startPolishing()
-        let polished = await Polisher.polish(appState.confirmedText)
-        appState.finishPolishing(polished)
-    }
 }
-
-// MARK: - 星星按钮
-
-struct PolishButton: View {
-    let isPolishing: Bool
-    let action: () async -> Void
-    @State private var blink = false
-    
-    var body: some View {
-        Button(action: { Task { await action() } }) {
-            Image(systemName: "sparkles")
-                .font(.system(size: 14))
-                .foregroundColor(.orange)
-                .opacity(blink ? 0.3 : 1)
-        }
-        .buttonStyle(PlainButtonStyle())
-        .disabled(isPolishing)
-        .onChange(of: isPolishing) { p in
-            withAnimation(.easeInOut(duration: 0.3).repeatForever(autoreverses: true)) {
-                blink = p
-            }
-        }
-    }
-}
-
-// MARK: - NSTextView 包装（支持 Cmd+A/C/V/X）
 
 struct TextEditorRepresentable: NSViewRepresentable {
     @Binding var text: String
