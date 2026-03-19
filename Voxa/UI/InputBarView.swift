@@ -44,6 +44,7 @@ struct InputBarView: View {
                 cursorOffset: $appState.cursorOffset,
                 isEditable: !appState.isPolishing
             )
+            .frame(minHeight: 24)
             .padding(.horizontal, 10)
             .padding(.vertical, 6)
             .background(Color.white)
