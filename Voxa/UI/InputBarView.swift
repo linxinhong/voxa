@@ -180,16 +180,18 @@ struct TextEditorRepresentable: NSViewRepresentable {
         layoutManager.ensureLayout(for: textContainer)
         let usedRect = layoutManager.usedRect(for: textContainer)
         let newHeight = max(24, usedRect.height + 16)
+        
         if abs(textView.frame.height - newHeight) > 1 {
             textView.frame.size.height = newHeight
             scrollView.frame.size.height = newHeight
-            // 通知窗口调整高度
-            NotificationCenter.default.post(
-                name: .textHeightDidChange,
-                object: nil,
-                userInfo: ["height": newHeight]
-            )
         }
+        
+        // 发送高度通知（确保窗口高度同步）
+        NotificationCenter.default.post(
+            name: .textHeightDidChange,
+            object: nil,
+            userInfo: ["height": newHeight]
+        )
     }
     
     func makeCoordinator() -> Coordinator {
@@ -206,8 +208,28 @@ struct TextEditorRepresentable: NSViewRepresentable {
         }
         
         @objc func textChanged() {
-            guard let textView = textView else { return }
+            guard let textView = textView,
+                  let scrollView = scrollView else { return }
             parent.text = textView.string
+            
+            // 调整高度并发送通知
+            let layoutManager = textView.layoutManager!
+            let textContainer = textView.textContainer!
+            layoutManager.ensureLayout(for: textContainer)
+            let usedRect = layoutManager.usedRect(for: textContainer)
+            let newHeight = max(24, usedRect.height + 16)
+            
+            if abs(textView.frame.height - newHeight) > 1 {
+                textView.frame.size.height = newHeight
+                scrollView.frame.size.height = newHeight
+            }
+            
+            // 每次都发送通知（确保窗口高度更新）
+            NotificationCenter.default.post(
+                name: .textHeightDidChange,
+                object: nil,
+                userInfo: ["height": newHeight]
+            )
         }
         
         @objc func selectionChanged() {
