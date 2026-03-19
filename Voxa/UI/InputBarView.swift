@@ -11,16 +11,17 @@ struct InputBarView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            // 第1行：Partial
-            HStack {
+            // 第1行：Partial（mic放左边，左对齐）
+            HStack(spacing: 8) {
+                Image(systemName: "mic.fill")
+                    .font(.system(size: 12))
+                    .foregroundColor(appState.hasPending ? .green : (appState.partialText.isEmpty ? .gray : .green))
+                    .frame(width: 16)
                 Text(appState.partialText.isEmpty ? " " : appState.partialText)
                     .font(.system(size: 14))
                     .foregroundColor(.black)
                     .lineLimit(1)
                 Spacer()
-                Image(systemName: "mic.fill")
-                    .font(.system(size: 12))
-                    .foregroundColor(appState.hasPending ? .green : (appState.partialText.isEmpty ? .gray : .green))
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
@@ -57,7 +58,24 @@ struct InputBarView: View {
                 .shadow(radius: 4)
         )
         .frame(width: 440)
+        .onAppear {
+            setupEscapeMonitor()
+        }
     }
+    
+    private func setupEscapeMonitor() {
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
+            if event.keyCode == 53 { // ESC key
+                NotificationCenter.default.post(name: .hidePanel, object: nil)
+                return nil
+            }
+            return event
+        }
+    }
+}
+
+extension Notification.Name {
+    static let hidePanel = Notification.Name("hidePanel")
 }
 
 struct TextEditorRepresentable: NSViewRepresentable {

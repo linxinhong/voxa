@@ -15,6 +15,20 @@ class PanelController {
     
     init(appState: AppState) {
         self.appState = appState
+        setupNotifications()
+    }
+    
+    private func setupNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleHidePanel),
+            name: .hidePanel,
+            object: nil
+        )
+    }
+    
+    @objc private func handleHidePanel() {
+        hide()
     }
     
     /// Show the floating panel centered on screen
@@ -62,6 +76,11 @@ class PanelController {
         let hostingView = NSHostingView(rootView: contentView)
         hostingView.translatesAutoresizingMaskIntoConstraints = true
         hostingView.autoresizingMask = [.width, .height]
+        
+        // 启用 layer 并设置圆角遮罩
+        hostingView.wantsLayer = true
+        hostingView.layer?.cornerRadius = 12
+        hostingView.layer?.masksToBounds = true
         
         let panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: 500, height: 60))
         panel.contentView = hostingView
