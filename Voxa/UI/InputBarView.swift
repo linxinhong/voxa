@@ -11,8 +11,8 @@ struct InputBarView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            // 第1行：Partial（mic左对齐，文本居中）
-            HStack(alignment: .center, spacing: 8) {
+            // 第1行：10px【麦克风】10px【partial文本（左对齐）】10px【风格标签】10px
+            HStack(alignment: .center, spacing: 10) {
                 Image(systemName: "mic.fill")
                     .font(.system(size: 12))
                     .foregroundColor(appState.hasPending ? .green : (appState.partialText.isEmpty ? .gray : .green))
@@ -22,40 +22,34 @@ struct InputBarView: View {
                     .font(.system(size: 14))
                     .foregroundColor(.black)
                     .lineLimit(1)
-                    .frame(maxWidth: .infinity, alignment: .center)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
-                // 右侧占位，保持与左侧mic同宽，使文本真正居中
-                Color.clear
-                    .frame(width: 16, height: 16)
-            }
-            .padding(.vertical, 4)
-            .background(Color.gray.opacity(0.15))
-            .cornerRadius(6)
-            
-            // 第2行：Confirmed（NSTextView，自动增高）+ 模板标签
-            HStack(alignment: .center, spacing: 8) {
-                TextEditorRepresentable(
-                    text: $appState.confirmedText,
-                    cursorOffset: $appState.cursorOffset,
-                    isEditable: !appState.isPolishing
-                )
-                
-                // 当前模板名称标签
+                // 风格标签（固定宽度约4个字）
                 Text(appState.currentPolishName)
                     .font(.system(size: 10, weight: .medium))
                     .foregroundColor(.orange)
-                    .padding(.horizontal, 6)
+                    .frame(width: 48, alignment: .center)
                     .padding(.vertical, 2)
                     .background(Color.orange.opacity(0.15))
                     .cornerRadius(4)
-                    .frame(minWidth: 50)
             }
-            .padding(.vertical, 4)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(Color.gray.opacity(0.15))
+            .cornerRadius(6)
+            
+            // 第2行：10px【输入框（自动换行）】10px
+            TextEditorRepresentable(
+                text: $appState.confirmedText,
+                cursorOffset: $appState.cursorOffset,
+                isEditable: !appState.isPolishing
+            )
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
             .background(Color.white)
             .cornerRadius(8)
         }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 12)
+        .padding(10)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color.white)
