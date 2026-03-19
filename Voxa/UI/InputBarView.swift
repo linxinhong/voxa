@@ -177,6 +177,8 @@ struct ConfirmedTextView: NSViewRepresentable {
         textView.isAutomaticDashSubstitutionEnabled = false
         textView.isAutomaticTextReplacementEnabled = false
         
+        // 注意：macOS NSTextView 原生支持 Emacs 快捷键（Ctrl+A/E/F/B 等）
+        
         textView.frame = NSRect(x: 0, y: 0, width: 300, height: 24)
         textView.isVerticallyResizable = true
         textView.isHorizontallyResizable = false

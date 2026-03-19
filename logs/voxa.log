@@ -5247,3 +5247,46 @@
 [2026-03-19 15:56:34.481] [Voxa] 菜单栏设置完成
 [2026-03-19 15:56:34.486] [Voxa] 应用启动完成！按 Option+Space 开始录音
 [2026-03-19 15:56:34.486] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 15:57:24.015] [Voxa] 应用启动中...
+[2026-03-19 15:57:24.015] [Voxa] AppState 初始化完成
+[2026-03-19 15:57:24.015] [Voxa] PanelController 初始化完成
+[2026-03-19 15:57:24.015] [Voxa] AudioCapture 初始化完成
+[2026-03-19 15:57:24.015] [Voxa] AsrClient 初始化完成
+[2026-03-19 15:57:24.015] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 15:57:24.016] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 15:57:24.016] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 15:57:24.030] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 15:57:24.031] [Voxa] 菜单栏设置完成
+[2026-03-19 15:57:24.035] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 15:57:24.035] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 15:57:28.035] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 15:57:28.319] WebSocket connected
+[2026-03-19 15:57:28.320] [ASR] 发送 run-task: {"header":{"task_id":"78B86C11-757C-4DF3-B692-2AD31B407711","action":"run-task","streaming":"duplex"},"payload":{"model":"paraformer-realtime-v2","task":"asr","function":"recognition","task_group":"audio","parameters":{"enable_intermediate_result":true,"enable_punctuation_prediction":true,"enable_inverse_text_normalization":true,"format":"pcm","sample_rate":16000},"input":{}}}
+[2026-03-19 15:57:28.330] WebSocket connected
+[2026-03-19 15:57:28.330] [ASR] 发送 run-task: {"header":{"action":"run-task","task_id":"254FDF1E-3170-46CB-9594-AB809323BFB4","streaming":"duplex"},"payload":{"task":"asr","model":"paraformer-realtime-v2","task_group":"audio","parameters":{"enable_inverse_text_normalization":true,"sample_rate":16000,"format":"pcm","enable_punctuation_prediction":true,"enable_intermediate_result":true},"input":{},"function":"recognition"}}
+[2026-03-19 15:57:28.372] [ASR] event: task-started
+[2026-03-19 15:57:28.372] ASR task started
+[2026-03-19 15:57:28.393] [ASR] event: task-started
+[2026-03-19 15:57:28.393] ASR task started
+[2026-03-19 15:57:29.935] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 15:57:29.985] [ASR] 发送 finish-task
+[2026-03-19 15:57:29.986] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 15:57:29.986] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 15:57:29.986] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 15:57:29.987] WebSocket disconnected
+[2026-03-19 15:57:29.987] WebSocket disconnected
+[2026-03-19 15:57:43.520] [Voxa] 应用启动中...
+[2026-03-19 15:57:43.521] [Voxa] AppState 初始化完成
+[2026-03-19 15:57:43.521] [Voxa] PanelController 初始化完成
+[2026-03-19 15:57:43.521] [Voxa] AudioCapture 初始化完成
+[2026-03-19 15:57:43.521] [Voxa] AsrClient 初始化完成
+[2026-03-19 15:57:43.521] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 15:57:43.521] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 15:57:43.521] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 15:57:43.538] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 15:57:43.538] [Voxa] 菜单栏设置完成
+[2026-03-19 15:57:43.543] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 15:57:43.543] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 15:57:48.385] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 15:57:48.722] WebSocket connected
+[2026-03-19 15:57:48.722] [ASR] 发送 run-task: {"header":{"streaming":"duplex","task_id":"6CCAC607-179E-4F59-BD02-0D2CADF24E53","action":"run-task"},"payload":{"function":"recognition","model":"paraformer-realtime-v2","task":"asr","input":{},"task_group":"audio","parameters":{"enable_inverse_text_normalization":true,"enable_punctuation_prediction":true,"enable_intermediate_result":true,"format":"pcm","sample_rate":16000}}}
