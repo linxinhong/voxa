@@ -42,6 +42,9 @@ class AppState: ObservableObject {
     /// 当前润色模板名称（显示在UI上）
     @Published var currentPolishName: String = ConfigManager.shared.currentTemplate().name
     
+    /// 编辑器高度（用于自动调整窗口）
+    @Published var editorHeight: CGFloat = 24
+    
     // MARK: - Internal State
     
     /// 目标应用
@@ -65,6 +68,7 @@ class AppState: ObservableObject {
         pendingPartial = nil
         pendingFinals = []
         isEditing = false
+        editorHeight = 24  // 重置编辑器高度
     }
     
     /// 接收 partial：整句覆盖第1行（Paraformer partial 是覆盖语义）

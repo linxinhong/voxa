@@ -42,10 +42,12 @@ struct InputBarView: View {
             TextEditorRepresentable(
                 text: $appState.confirmedText,
                 cursorOffset: $appState.cursorOffset,
-                isEditable: !appState.isPolishing
+                isEditable: !appState.isPolishing,
+                onHeightChange: { height in
+                    appState.editorHeight = height
+                }
             )
-            .fixedSize(horizontal: false, vertical: true)  // 根据内容自动增高
-            .frame(minHeight: 24)
+            .frame(height: max(24, appState.editorHeight))  // 根据内容调整高度
             .padding(.horizontal, 10)
             .padding(.vertical, 6)
             .background(Color.white)
@@ -65,9 +67,14 @@ struct InputBarView: View {
     
     private func setupEscapeMonitor() {
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
-            if event.keyCode == 53 { // ESC key
+            // keyCode 36 = Return/Enter, 53 = ESC
+            if event.keyCode == 53 {
                 NotificationCenter.default.post(name: .hidePanel, object: nil)
                 return nil
+            }
+            // 调试：记录回车键
+            if event.keyCode == 36 {
+                VoxaLog("[InputBar] 检测到回车键")
             }
             return event
         }
@@ -83,6 +90,7 @@ struct TextEditorRepresentable: NSViewRepresentable {
     @Binding var text: String
     @Binding var cursorOffset: Int
     let isEditable: Bool
+    let onHeightChange: (CGFloat) -> Void
     
     func makeNSView(context: Context) -> NSView {
         let container = NSView()
@@ -132,21 +140,8 @@ struct TextEditorRepresentable: NSViewRepresentable {
         context.coordinator.scrollView = scrollView
         context.coordinator.parent = self
         
-        // 监听文本变化
-        NotificationCenter.default.addObserver(
-            context.coordinator,
-            selector: #selector(Coordinator.textChanged),
-            name: NSText.didChangeNotification,
-            object: textView
-        )
-        
-        // 监听光标位置变化
-        NotificationCenter.default.addObserver(
-            context.coordinator,
-            selector: #selector(Coordinator.selectionChanged),
-            name: NSTextView.didChangeSelectionNotification,
-            object: textView
-        )
+        // 设置 delegate 来处理文本变化（比 NotificationCenter 更可靠）
+        textView.delegate = context.coordinator
         
         // 成为 first responder
         DispatchQueue.main.async {
@@ -173,6 +168,12 @@ struct TextEditorRepresentable: NSViewRepresentable {
             textView.setSelectedRange(NSRange(location: cursorOffset, length: 0))
         }
         
+        // 确保文本容器宽度正确
+        let containerWidth = scrollView.frame.width
+        if textView.textContainer?.containerSize.width != containerWidth {
+            textView.textContainer?.containerSize = NSSize(width: containerWidth, height: CGFloat.greatestFiniteMagnitude)
+        }
+        
         // 自动调整容器高度
         let layoutManager = textView.layoutManager!
         let textContainer = textView.textContainer!
@@ -185,7 +186,7 @@ struct TextEditorRepresentable: NSViewRepresentable {
             scrollView.frame.size.height = newHeight
         }
         
-        // 发送高度通知（确保窗口高度同步）
+        // 发送高度通知
         NotificationCenter.default.post(
             name: .textHeightDidChange,
             object: nil,
@@ -197,7 +198,7 @@ struct TextEditorRepresentable: NSViewRepresentable {
         Coordinator(self)
     }
     
-    class Coordinator: NSObject {
+    class Coordinator: NSObject, NSTextViewDelegate {
         var parent: TextEditorRepresentable!
         weak var textView: NSTextView?
         weak var scrollView: NSScrollView?
@@ -206,29 +207,75 @@ struct TextEditorRepresentable: NSViewRepresentable {
             self.parent = parent
         }
         
-        @objc func textChanged() {
+        // NSTextViewDelegate 方法：文本变化时调用
+        func textDidChange(_ notification: Notification) {
             guard let textView = textView,
                   let scrollView = scrollView else { return }
+            
             parent.text = textView.string
             
-            // 调整高度并发送通知
-            let layoutManager = textView.layoutManager!
-            let textContainer = textView.textContainer!
-            layoutManager.ensureLayout(for: textContainer)
-            let usedRect = layoutManager.usedRect(for: textContainer)
-            let newHeight = max(24, usedRect.height + 16)
+            // 计算文本高度
+            let text = textView.string as NSString
+            let attributes: [NSAttributedString.Key: Any] = [.font: textView.font ?? NSFont.systemFont(ofSize: 15)]
+            let containerWidth = scrollView.frame.width - 20
+            let size = text.boundingRect(
+                with: NSSize(width: max(containerWidth, 100), height: .greatestFiniteMagnitude),
+                options: [.usesLineFragmentOrigin, .usesFontLeading],
+                attributes: attributes
+            ).size
             
-            if abs(textView.frame.height - newHeight) > 1 {
-                textView.frame.size.height = newHeight
-                scrollView.frame.size.height = newHeight
-            }
+            let newHeight = max(24, size.height + 16)
             
-            // 每次都发送通知（确保窗口高度更新）
+            // 回调给 SwiftUI
+            parent.onHeightChange(newHeight)
+            
+            // 发送通知给 PanelController
             NotificationCenter.default.post(
                 name: .textHeightDidChange,
                 object: nil,
                 userInfo: ["height": newHeight]
             )
+        }
+        
+        // 保持旧方法兼容
+        @objc func textChanged() {
+            guard let textView = textView,
+                  let scrollView = scrollView else { 
+                VoxaLog("[TextEditor] textChanged: textView 或 scrollView 为 nil")
+                return 
+            }
+            
+            VoxaLog("[TextEditor] textChanged 被调用")
+            
+            parent.text = textView.string
+            
+            // 确保文本容器宽度与视图宽度一致
+            let containerWidth = scrollView.frame.width
+            if let textContainer = textView.textContainer {
+                if textContainer.containerSize.width != containerWidth {
+                    textContainer.containerSize = NSSize(width: containerWidth, height: CGFloat.greatestFiniteMagnitude)
+                }
+                
+                // 调整高度并发送通知
+                let layoutManager = textView.layoutManager!
+                layoutManager.ensureLayout(for: textContainer)
+                let usedRect = layoutManager.usedRect(for: textContainer)
+                let newHeight = max(24, usedRect.height + 16)
+                
+                if abs(textView.frame.height - newHeight) > 1 {
+                    textView.frame.size.height = newHeight
+                    scrollView.frame.size.height = newHeight
+                }
+                
+                VoxaLog("[TextEditor] 高度变化: \(Int(newHeight))px, 文本长度: \(textView.string.count)")
+                
+                // 每次都发送通知（确保窗口高度更新）
+                NotificationCenter.default.post(
+                    name: .textHeightDidChange,
+                    object: nil,
+                    userInfo: ["height": newHeight]
+                )
+            }
         }
         
         @objc func selectionChanged() {

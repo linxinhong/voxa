@@ -11,6 +11,7 @@ import AppKit
 @MainActor
 class PanelController {
     private var panel: FloatingPanel?
+    private var hostingView: NSHostingView<InputBarView>?
     private let appState: AppState
     
     init(appState: AppState) {
@@ -19,21 +20,23 @@ class PanelController {
     
     /// Show the floating panel centered on screen
     func show() {
+        let isFirstTime = panel == nil
+        
         if panel == nil {
             createPanel()
         }
         
         guard let panel = panel else { return }
         
-        // Position panel at center of main screen
+        // 每次显示都重置高度到默认值（80px）
         if let screen = NSScreen.main {
             let screenRect = screen.visibleFrame
-            let panelWidth: CGFloat = 500
-            let minPanelHeight: CGFloat = 60  // 最小高度（1行）
+            let panelWidth: CGFloat = 440
+            let defaultHeight: CGFloat = 80
             let x = screenRect.midX - panelWidth / 2
-            let y = screenRect.midY + 100  // Slightly above center
+            let y = screenRect.midY + 100
             
-            panel.setFrame(NSRect(x: x, y: y, width: panelWidth, height: minPanelHeight), display: false)
+            panel.setFrame(NSRect(x: x, y: y, width: panelWidth, height: defaultHeight), display: false)
         }
         
         panel.orderFrontRegardless()
@@ -59,25 +62,27 @@ class PanelController {
     private func createPanel() {
         let contentView = InputBarView(appState: appState)
         
-        let hostingView = NSHostingView(rootView: contentView)
-        hostingView.frame = NSRect(x: 0, y: 0, width: 440, height: 100)
+        let hosting = NSHostingView(rootView: contentView)
+        hosting.frame = NSRect(x: 0, y: 0, width: 440, height: 100)
+        hosting.autoresizingMask = [.width, .height]
         
         // 启用 layer 并设置圆角遮罩
-        hostingView.wantsLayer = true
-        hostingView.layer?.cornerRadius = 12
-        hostingView.layer?.masksToBounds = true
+        hosting.wantsLayer = true
+        hosting.layer?.cornerRadius = 12
+        hosting.layer?.masksToBounds = true
         
         let panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: 440, height: 100))
-        panel.contentView = hostingView
+        panel.contentView = hosting
         
-        // 让面板支持自动调整大小（基于内容）
+        // 让面板支持自动调整大小
         panel.contentMinSize = NSSize(width: 440, height: 60)
         panel.contentMaxSize = NSSize(width: 440, height: 400)
         
+        self.hostingView = hosting
+        self.panel = panel
+        
         // 监听文本高度变化通知
         setupHeightObserver()
-        
-        self.panel = panel
     }
     
     private func setupHeightObserver() {
@@ -90,23 +95,27 @@ class PanelController {
     }
     
     @objc private func handleHeightChange(_ notification: Notification) {
-        guard let panel = panel,
+        guard let panel = self.panel,
               let textHeight = notification.userInfo?["height"] as? CGFloat else { return }
         
-        // 计算总高度：外部padding(10) + 第一行(约32) + spacing(6) + 第二行padding(12) + 输入框高度 + 外部padding(10)
+        // 计算总高度
         let totalHeight = 10 + 32 + 6 + 12 + textHeight + 10
-        let newHeight = min(max(totalHeight, 70), 400)
+        let targetHeight = min(max(totalHeight, 70), 400)
         
-        var frame = panel.frame
-        // 只有变化超过5px才调整
-        guard abs(frame.height - newHeight) > 5 else { return }
-        
-        // 保持顶部位置不变，调整高度
-        frame.origin.y += frame.height - newHeight
-        frame.size.height = newHeight
-        panel.setFrame(frame, display: true, animate: false)
-        
-        VoxaLog("[Panel] 调整窗口高度: \(Int(newHeight))px (文本高度: \(Int(textHeight))px)")
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self, let panel = self.panel else { return }
+            
+            let currentHeight = panel.frame.height
+            guard abs(currentHeight - targetHeight) > 5 else { return }
+            
+            // 调整窗口高度
+            var frame = panel.frame
+            frame.origin.y += currentHeight - targetHeight
+            frame.size.height = targetHeight
+            panel.setFrame(frame, display: true, animate: false)
+            
+            VoxaLog("[Panel] 调整: \(Int(currentHeight))px → \(Int(targetHeight))px")
+        }
     }
     
     private func makeFirstResponder(in view: NSView) {
