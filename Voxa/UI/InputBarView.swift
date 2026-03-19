@@ -35,13 +35,13 @@ struct InputBarView: View {
                     isEditable: !appState.isPolishing
                 )
                 
-                // 当前模板标签
-                Text(appState.currentPolishShortcut)
+                // 当前模板名称标签
+                Text(appState.currentPolishName)
                     .font(.system(size: 10, weight: .medium))
-                    .foregroundColor(.gray)
-                    .padding(.horizontal, 4)
+                    .foregroundColor(.orange)
+                    .padding(.horizontal, 6)
                     .padding(.vertical, 2)
-                    .background(Color.gray.opacity(0.15))
+                    .background(Color.orange.opacity(0.15))
                     .cornerRadius(4)
                 
                 PolishButton(isPolishing: appState.isPolishing) {

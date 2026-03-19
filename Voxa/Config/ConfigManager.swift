@@ -7,6 +7,12 @@
 
 import Foundation
 
+/// 润色模板结构
+struct PolishTemplate: Codable {
+    let name: String    // 显示名称，如 "轻度润色"
+    let prompt: String  // 提示词内容
+}
+
 class ConfigManager {
     static let shared = ConfigManager()
     
@@ -14,21 +20,33 @@ class ConfigManager {
         .appendingPathComponent(".config/voxa")
     private let configFile = "config.json"
     
-    var templates: [String: String] = [:]
+    var templates: [String: PolishTemplate] = [:]
     var currentShortcut: String = "alt+1"
     
-    // 默认配置
-    private let defaultTemplates: [String: String] = [
-        "alt+1": "你是一个语音转文字的轻度润色助手。用户输入是语音识别的原始结果，你只能做以下修改：修正明显的错别字、同音字错误、补全缺失标点、去除重复词。禁止改变用户的表达方式、句式结构、语气和风格。禁止添加任何原文中没有的内容。只输出润色后的文字，不要任何解释。",
-        "alt+2": "转为正式书面语，使用规范的语法和词汇，适合商务邮件和正式文档。保持原意不变。",
-        "alt+3": "转为自然流畅的口语表达，适合日常聊天和即时通讯。保持轻松自然的语气。",
-        "alt+4": "精简文本，去除冗余词汇和重复内容，保留核心信息。保持原意不变。"
+    // 默认配置（带名称）
+    private let defaultTemplates: [String: PolishTemplate] = [
+        "alt+1": PolishTemplate(
+            name: "轻度润色",
+            prompt: "你是一个语音转文字的轻度润色助手。用户输入是语音识别的原始结果，你只能做以下修改：修正明显的错别字、同音字错误、补全缺失标点、去除重复词。禁止改变用户的表达方式、句式结构、语气和风格。禁止添加任何原文中没有的内容。只输出润色后的文字，不要任何解释。"
+        ),
+        "alt+2": PolishTemplate(
+            name: "正式书面",
+            prompt: "转为正式书面语，使用规范的语法和词汇，适合商务邮件和正式文档。保持原意不变。"
+        ),
+        "alt+3": PolishTemplate(
+            name: "自然口语",
+            prompt: "转为自然流畅的口语表达，适合日常聊天和即时通讯。保持轻松自然的语气。"
+        ),
+        "alt+4": PolishTemplate(
+            name: "精简文本",
+            prompt: "精简文本，去除冗余词汇和重复内容，保留核心信息。保持原意不变。"
+        )
     ]
     
     init() {
         VoxaLog("[Config] ConfigManager 初始化开始")
         loadConfig()
-        VoxaLog("[Config] ConfigManager 初始化完成，当前模板: \(currentShortcut)")
+        VoxaLog("[Config] ConfigManager 初始化完成，当前模板: \(currentShortcut) - \(currentTemplate().name)")
     }
     
     /// 加载配置文件
@@ -39,14 +57,43 @@ class ConfigManager {
         if !FileManager.default.fileExists(atPath: filePath.path) {
             // 创建默认配置
             createDefaultConfig()
+            return
         }
         
         // 读取配置
         do {
             let data = try Data(contentsOf: filePath)
+            
+            // 尝试解析新格式（带 name 和 prompt）
+            if let json = try JSONSerialization.jsonObject(with: data) as? [String: [String: String]] {
+                // 新格式: {"alt+1": {"name": "xxx", "prompt": "xxx"}}
+                var newTemplates: [String: PolishTemplate] = [:]
+                for (key, value) in json {
+                    if let name = value["name"], let prompt = value["prompt"] {
+                        newTemplates[key] = PolishTemplate(name: name, prompt: prompt)
+                    }
+                }
+                if !newTemplates.isEmpty {
+                    templates = newTemplates
+                    VoxaLog("[Config] 加载了 \(templates.count) 个润色模板（新格式）")
+                    return
+                }
+            }
+            
+            // 尝试解析旧格式（仅 prompt 字符串）
             if let json = try JSONSerialization.jsonObject(with: data) as? [String: String] {
-                templates = json
-                VoxaLog("[Config] 加载了 \(templates.count) 个润色模板")
+                // 旧格式: {"alt+1": "prompt..."}
+                var migratedTemplates: [String: PolishTemplate] = [:]
+                for (key, prompt) in json {
+                    // 根据快捷键生成默认名称
+                    let defaultName = defaultTemplates[key]?.name ?? "模板 \(key)"
+                    migratedTemplates[key] = PolishTemplate(name: defaultName, prompt: prompt)
+                }
+                templates = migratedTemplates
+                VoxaLog("[Config] 加载了 \(templates.count) 个润色模板（旧格式已迁移）")
+                
+                // 保存为新格式
+                saveConfig()
             }
         } catch {
             VoxaLog("[Config] 读取配置失败: \(error)，使用默认配置")
@@ -63,37 +110,58 @@ class ConfigManager {
                 withIntermediateDirectories: true
             )
             
-            // 写入默认配置
-            let filePath = configDir.appendingPathComponent(configFile)
-            let data = try JSONSerialization.data(
-                withJSONObject: defaultTemplates,
-                options: [.prettyPrinted]
-            )
-            try data.write(to: filePath)
-            
             templates = defaultTemplates
-            VoxaLog("[Config] 创建默认配置: \(filePath.path)")
+            saveConfig()
+            
+            VoxaLog("[Config] 创建默认配置: \(configDir.appendingPathComponent(configFile).path)")
         } catch {
             VoxaLog("[Config] 创建默认配置失败: \(error)")
             templates = defaultTemplates
         }
     }
     
-    /// 获取指定快捷键的提示词
-    func getPrompt(for shortcut: String) -> String? {
+    /// 保存配置到文件
+    private func saveConfig() {
+        do {
+            let filePath = configDir.appendingPathComponent(configFile)
+            
+            // 转换为可序列化的字典
+            var dict: [String: [String: String]] = [:]
+            for (key, template) in templates {
+                dict[key] = ["name": template.name, "prompt": template.prompt]
+            }
+            
+            let data = try JSONSerialization.data(
+                withJSONObject: dict,
+                options: [.prettyPrinted, .sortedKeys]
+            )
+            try data.write(to: filePath)
+        } catch {
+            VoxaLog("[Config] 保存配置失败: \(error)")
+        }
+    }
+    
+    /// 获取指定快捷键的模板
+    func getTemplate(for shortcut: String) -> PolishTemplate? {
         return templates[shortcut]
+    }
+    
+    /// 获取当前模板
+    func currentTemplate() -> PolishTemplate {
+        return templates[currentShortcut] ?? defaultTemplates["alt+1"]!
     }
     
     /// 获取当前提示词
     func currentPrompt() -> String {
-        return templates[currentShortcut] ?? defaultTemplates["alt+1"]!
+        return currentTemplate().prompt
     }
     
     /// 切换到指定模板
     func switchTo(shortcut: String) -> Bool {
         if templates[shortcut] != nil {
             currentShortcut = shortcut
-            VoxaLog("[Config] 切换到模板: \(shortcut)")
+            let template = currentTemplate()
+            VoxaLog("[Config] 切换到模板: \(shortcut) - \(template.name)")
             return true
         }
         return false

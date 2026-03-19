@@ -7619,3 +7619,40 @@
 [2026-03-19 17:33:28.678] [Voxa] 菜单栏设置完成
 [2026-03-19 17:33:28.683] [Voxa] 应用启动完成！按 Option+Space 开始录音
 [2026-03-19 17:33:28.683] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 17:35:01.145] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 17:35:01.424] WebSocket connected
+[2026-03-19 17:35:01.425] [ASR] 发送 run-task: {"header":{"action":"run-task","task_id":"BEC91F2F-238F-4576-BFCA-71A667C526E7","streaming":"duplex"},"payload":{"function":"recognition","task_group":"audio","model":"paraformer-realtime-v2","task":"asr","parameters":{"enable_intermediate_result":true,"enable_inverse_text_normalization":true,"format":"pcm","enable_punctuation_prediction":true,"sample_rate":16000},"input":{}}}
+[2026-03-19 17:35:01.478] [ASR] event: task-started
+[2026-03-19 17:35:01.478] ASR task started
+[2026-03-19 17:35:07.169] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 17:35:07.225] [ASR] 发送 finish-task
+[2026-03-19 17:35:07.225] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 17:35:07.226] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 17:35:07.228] WebSocket disconnected
+[2026-03-19 17:35:07.409] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 17:35:07.650] WebSocket connected
+[2026-03-19 17:35:07.652] [ASR] 发送 run-task: {"payload":{"parameters":{"sample_rate":16000,"format":"pcm","enable_intermediate_result":true,"enable_punctuation_prediction":true,"enable_inverse_text_normalization":true},"function":"recognition","input":{},"task_group":"audio","model":"paraformer-realtime-v2","task":"asr"},"header":{"streaming":"duplex","action":"run-task","task_id":"00CBE95D-5AD9-4EB2-90A1-6D9D94F67983"}}
+[2026-03-19 17:35:07.728] [ASR] event: task-started
+[2026-03-19 17:35:07.728] ASR task started
+[2026-03-19 17:35:08.229] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 17:35:08.279] [ASR] 发送 finish-task
+[2026-03-19 17:35:08.279] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 17:35:08.279] WebSocket disconnected
+[2026-03-19 17:35:08.280] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 17:35:33.548] [Voxa] 应用启动中...
+[2026-03-19 17:35:33.549] [Config] ConfigManager 初始化开始
+[2026-03-19 17:35:33.549] [Config] 加载了 4 个润色模板（旧格式已迁移）
+[2026-03-19 17:35:33.549] [Config] ConfigManager 初始化完成，当前模板: alt+1 - 轻度润色
+[2026-03-19 17:35:33.549] [Voxa] ConfigManager 初始化完成
+[2026-03-19 17:35:33.549] [Voxa] AppState 初始化完成
+[2026-03-19 17:35:33.550] [Voxa] PanelController 初始化完成
+[2026-03-19 17:35:33.550] [Voxa] AudioCapture 初始化完成
+[2026-03-19 17:35:33.550] [Voxa] AsrClient 初始化完成
+[2026-03-19 17:35:33.550] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 17:35:33.550] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 17:35:33.551] [Hotkey] 已注册润色模板快捷键: Alt+1 到 Alt+9
+[2026-03-19 17:35:33.552] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 17:35:33.570] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 17:35:33.570] [Voxa] 菜单栏设置完成
+[2026-03-19 17:35:33.575] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 17:35:33.575] [Voxa] 也可以在菜单栏点击 Voxa 图标开始

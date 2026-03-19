@@ -39,8 +39,8 @@ class AppState: ObservableObject {
     /// 是否正在润色中（锁定文本框）
     @Published var isPolishing: Bool = false
     
-    /// 当前润色模板快捷键（显示在UI上）
-    @Published var currentPolishShortcut: String = "alt+1"
+    /// 当前润色模板名称（显示在UI上）
+    @Published var currentPolishName: String = ConfigManager.shared.currentTemplate().name
     
     // MARK: - Internal State
     
@@ -185,8 +185,8 @@ class AppState: ObservableObject {
     /// 切换到指定润色模板
     func switchPolishTemplate(to shortcut: String) {
         if ConfigManager.shared.switchTo(shortcut: shortcut) {
-            currentPolishShortcut = shortcut
-            VoxaLog("[AppState] 切换到润色模板: \(shortcut)")
+            currentPolishName = ConfigManager.shared.currentTemplate().name
+            VoxaLog("[AppState] 切换到润色模板: \(shortcut) - \(currentPolishName)")
         } else {
             VoxaLog("[AppState] 模板不存在: \(shortcut)")
         }
