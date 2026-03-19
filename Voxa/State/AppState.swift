@@ -37,10 +37,10 @@ class AppState: ObservableObject {
     var targetApp: NSRunningApplication?
     
     /// Confirmed text (excluding current partial)
-    private var confirmedText: String = ""
+    private(set) var confirmedText: String = ""
     
     /// Current partial text (unconfirmed, will be replaced)
-    private var currentPartial: String = ""
+    private(set) var currentPartial: String = ""
     
     // MARK: - Methods
     
@@ -55,7 +55,7 @@ class AppState: ObservableObject {
         isEditing = false
     }
     
-    /// Update partial ASR result - replaces the current partial
+    /// Update partial ASR result - 显示 partial 但不保存到 confirmedText
     func updatePartial(_ partialText: String) {
         // 如果用户正在编辑，暂存更新
         if isEditing {
@@ -63,16 +63,16 @@ class AppState: ObservableObject {
             return
         }
         
-        // 更新当前 partial
+        // 更新 currentPartial
         currentPartial = partialText
         
-        // 重新组合文本：已确认 + 当前 partial
+        // 显示：已确认 + partial（partial 会变化）
         let newText = confirmedText + currentPartial
         
         // 只有当文本真正变化时才更新
         if newText != text {
             text = newText
-            VoxaLog("[AppState] updatePartial: confirmed=\"\(confirmedText)\", partial=\"\(currentPartial)\"")
+            VoxaLog("[AppState] updatePartial: confirmed=\(confirmedText.count)字, partial=\(currentPartial.count)字")
         }
     }
     

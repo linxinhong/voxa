@@ -26,6 +26,8 @@ struct InputBarView: View {
             // Multi-line text input with auto-expansion
             CursorTrackingTextView(
                 text: $appState.text,
+                confirmedText: appState.confirmedText,
+                currentPartial: appState.currentPartial,
                 cursorPosition: $appState.cursorPosition,
                 minHeight: 24,    // 1行高度
                 maxHeight: 120    // 最大5行左右
@@ -58,6 +60,8 @@ struct InputBarView: View {
 
 struct CursorTrackingTextView: NSViewRepresentable {
     @Binding var text: String
+    let confirmedText: String
+    let currentPartial: String
     @Binding var cursorPosition: Int
     let minHeight: CGFloat
     let maxHeight: CGFloat
@@ -69,10 +73,14 @@ struct CursorTrackingTextView: NSViewRepresentable {
         textView.isEditable = true
         textView.isSelectable = true
         textView.font = NSFont.systemFont(ofSize: 16)
+        textView.textColor = NSColor.labelColor  // 自动适应深浅色模式
         textView.backgroundColor = .clear
         textView.isRichText = false
         textView.usesFontPanel = false
         textView.usesInspectorBar = false
+        
+        // 设置初始 frame（关键：宽度不能为 0）
+        textView.frame = NSRect(x: 0, y: 0, width: 300, height: 24)
         
         // 垂直方向可扩展，水平方向固定
         textView.isVerticallyResizable = true
@@ -85,6 +93,9 @@ struct CursorTrackingTextView: NSViewRepresentable {
         )
         textView.textContainerInset = NSSize(width: 0, height: 2)
         
+        // 确保自动调整大小
+        textView.autoresizingMask = [.width]
+        
         // 设置默认文本
         textView.string = self.text
         
@@ -95,7 +106,11 @@ struct CursorTrackingTextView: NSViewRepresentable {
         scrollView.autohidesScrollers = true
         scrollView.drawsBackground = false
         scrollView.documentView = textView
+        
+        // 关键：确保 NSScrollView 和其 contentView 都自动调整大小
+        scrollView.autoresizingMask = [.width, .height]
         scrollView.contentView.autoresizingMask = [.width, .height]
+        scrollView.contentView.autoresizesSubviews = true
         
         // 设置 coordinator 引用
         context.coordinator.textView = textView
@@ -128,10 +143,12 @@ struct CursorTrackingTextView: NSViewRepresentable {
     func updateNSView(_ nsView: NSScrollView, context: Context) {
         guard let textView = nsView.documentView as? NSTextView else { return }
         
-        // 只有当外部文本变化时才更新（忽略 isSyncingFromAppState 检查，避免竞态）
-        if textView.string != self.text {
-            context.coordinator.syncText(from: self.text)
-        }
+        // 使用富文本更新，区分 confirmed 和 partial 颜色
+        context.coordinator.syncText(
+            from: self.text,
+            confirmedText: confirmedText,
+            currentPartial: currentPartial
+        )
     }
     
     func makeCoordinator() -> Coordinator {
@@ -244,31 +261,60 @@ struct CursorTrackingTextView: NSViewRepresentable {
             return textView.selectedRange.location
         }
         
-        /// 从外部同步文本
-        func syncText(from text: String) {
+        /// 从外部同步文本 - 使用富文本显示不同颜色
+        func syncText(from text: String, confirmedText: String, currentPartial: String) {
             guard let textView = textView else { return }
             
             // 避免递归更新
             guard !isSyncingFromAppState else { return }
             isSyncingFromAppState = true
             
-            VoxaLog("[UI] 同步文本到 TextView: \"\(text.prefix(50))\(text.count > 50 ? "..." : "")\"")
+            // 保存当前选择范围
+            let selectedRange = textView.selectedRange
             
-            // 保存当前光标位置
-            let currentPosition = textView.selectedRange.location
+            // 创建富文本
+            let attributedString = NSMutableAttributedString()
             
-            // 更新文本
-            textView.string = text
+            // 1. confirmed 部分 - 黑色
+            if !confirmedText.isEmpty {
+                let confirmedAttr = NSAttributedString(
+                    string: confirmedText,
+                    attributes: [
+                        .font: NSFont.systemFont(ofSize: 16),
+                        .foregroundColor: NSColor.labelColor
+                    ]
+                )
+                attributedString.append(confirmedAttr)
+            }
             
-            // 恢复光标位置（如果可能）
+            // 2. partial 部分 - 灰色
+            if !currentPartial.isEmpty {
+                let partialAttr = NSAttributedString(
+                    string: currentPartial,
+                    attributes: [
+                        .font: NSFont.systemFont(ofSize: 16),
+                        .foregroundColor: NSColor.secondaryLabelColor  // 灰色
+                    ]
+                )
+                attributedString.append(partialAttr)
+            }
+            
+            // 设置富文本
+            textView.textStorage?.setAttributedString(attributedString)
+            
+            // 恢复选择范围（如果位置仍然有效）
             let newLength = text.count
-            let restorePosition = min(currentPosition, newLength)
-            textView.setSelectedRange(NSRange(location: restorePosition, length: 0))
+            if selectedRange.location <= newLength {
+                textView.setSelectedRange(selectedRange)
+            }
+            
+            // 强制刷新
+            textView.layoutManager?.ensureLayout(for: textView.textContainer!)
+            textView.needsDisplay = true
             
             // 更新高度
             updateHeight()
             
-            // 立即重置标志，避免遗漏后续更新
             isSyncingFromAppState = false
         }
         
