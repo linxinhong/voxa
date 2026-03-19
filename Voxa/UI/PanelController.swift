@@ -11,7 +11,6 @@ import AppKit
 @MainActor
 class PanelController {
     private var panel: FloatingPanel?
-    private var hostingView: NSHostingView<InputBarView>?
     private let appState: AppState
     
     init(appState: AppState) {
@@ -60,58 +59,25 @@ class PanelController {
     private func createPanel() {
         let contentView = InputBarView(appState: appState)
         
-        let hosting = NSHostingView(rootView: contentView)
-        hosting.sizingOptions = [.preferredContentSize]
-        hosting.frame = NSRect(x: 0, y: 0, width: 440, height: 100)
+        let hostingView = NSHostingView(rootView: contentView)
+        hostingView.frame = NSRect(x: 0, y: 0, width: 440, height: 100)
         
         // 启用 layer 并设置圆角遮罩
-        hosting.wantsLayer = true
-        hosting.layer?.cornerRadius = 12
-        hosting.layer?.masksToBounds = true
+        hostingView.wantsLayer = true
+        hostingView.layer?.cornerRadius = 12
+        hostingView.layer?.masksToBounds = true
         
         let panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: 440, height: 100))
-        panel.contentView = hosting
+        panel.contentView = hostingView
         
-        // 让面板支持自动调整大小
+        // 让面板支持自动调整大小（基于内容）
         panel.contentMinSize = NSSize(width: 440, height: 60)
         panel.contentMaxSize = NSSize(width: 440, height: 400)
         
-        self.hostingView = hosting
-        self.panel = panel
-        
         // 监听文本高度变化通知
         setupHeightObserver()
-    }
-    
-    /// 根据内容调整窗口大小
-    private func fitPanelToContent(animated: Bool = false) {
-        guard let panel = panel, let hosting = hostingView else { return }
         
-        // 强制布局计算
-        hosting.layoutSubtreeIfNeeded()
-        
-        // 获取内容的理想大小
-        let fittingSize = hosting.fittingSize
-        let newHeight = min(max(fittingSize.height, 60), 400)
-        
-        var frame = panel.frame
-        guard abs(frame.height - newHeight) > 5 else { return }
-        
-        // 保持顶部位置不变，调整高度
-        frame.origin.y += frame.height - newHeight
-        frame.size.height = newHeight
-        
-        if animated {
-            NSAnimationContext.runAnimationGroup { context in
-                context.duration = 0.15
-                context.allowsImplicitAnimation = true
-                panel.animator().setFrame(frame, display: true)
-            }
-        } else {
-            panel.setFrame(frame, display: true)
-        }
-        
-        VoxaLog("[Panel] 调整窗口高度: \(Int(newHeight))px")
+        self.panel = panel
     }
     
     private func setupHeightObserver() {
@@ -124,8 +90,23 @@ class PanelController {
     }
     
     @objc private func handleHeightChange(_ notification: Notification) {
-        // 直接使用 fittingSize 计算高度
-        fitPanelToContent(animated: true)
+        guard let panel = panel,
+              let textHeight = notification.userInfo?["height"] as? CGFloat else { return }
+        
+        // 计算总高度：外部padding(10) + 第一行(约32) + spacing(6) + 第二行padding(12) + 输入框高度 + 外部padding(10)
+        let totalHeight = 10 + 32 + 6 + 12 + textHeight + 10
+        let newHeight = min(max(totalHeight, 70), 400)
+        
+        var frame = panel.frame
+        // 只有变化超过5px才调整
+        guard abs(frame.height - newHeight) > 5 else { return }
+        
+        // 保持顶部位置不变，调整高度
+        frame.origin.y += frame.height - newHeight
+        frame.size.height = newHeight
+        panel.setFrame(frame, display: true, animate: false)
+        
+        VoxaLog("[Panel] 调整窗口高度: \(Int(newHeight))px (文本高度: \(Int(textHeight))px)")
     }
     
     private func makeFirstResponder(in view: NSView) {

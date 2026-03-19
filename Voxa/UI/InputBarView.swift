@@ -58,7 +58,6 @@ struct InputBarView: View {
                 .shadow(radius: 4)
         )
         .frame(width: 440)
-        .frame(maxHeight: .infinity, alignment: .top)
         .onAppear {
             setupEscapeMonitor()
         }
