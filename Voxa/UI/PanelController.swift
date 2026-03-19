@@ -81,32 +81,55 @@ class PanelController {
     }
     
     private var heightCheckTimer: Timer?
-    private var lastContentHeight: CGFloat = 0
+    private var lastTextHeight: CGFloat = 24
     
     private func startHeightMonitor() {
-        heightCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+        heightCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
             self?.checkAndUpdateHeight()
         }
     }
     
     private func checkAndUpdateHeight() {
-        guard let panel = panel,
-              let hostingView = panel.contentView else { return }
+        guard let panel = panel else { return }
         
-        // 获取 fitting size
-        let fittingSize = hostingView.fittingSize
-        if fittingSize.height != lastContentHeight && fittingSize.height > 0 {
-            lastContentHeight = fittingSize.height
-            let newHeight = min(max(fittingSize.height, 60), 400)
+        // 找到 NSTextView 并获取其实际高度
+        if let textView = findTextView(in: panel.contentView) {
+            let textHeight = textView.frame.height
             
-            var frame = panel.frame
-            if abs(frame.height - newHeight) > 5 {
-                // 保持顶部位置不变，调整高度
-                frame.origin.y += frame.height - newHeight
-                frame.size.height = newHeight
-                panel.setFrame(frame, display: true, animate: false)
+            if abs(textHeight - lastTextHeight) > 1 {
+                lastTextHeight = textHeight
+                
+                // 计算总高度：padding(10) + 第一行(约30) + spacing(6) + 输入框高度 + padding(10)
+                let totalHeight = 10 + 30 + 6 + textHeight + 10 + 10  // 额外的 padding
+                let newHeight = min(max(totalHeight, 60), 400)
+                
+                var frame = panel.frame
+                if abs(frame.height - newHeight) > 5 {
+                    // 保持顶部位置不变，调整高度
+                    frame.origin.y += frame.height - newHeight
+                    frame.size.height = newHeight
+                    panel.setFrame(frame, display: true, animate: false)
+                }
             }
         }
+    }
+    
+    private func findTextView(in view: NSView?) -> NSTextView? {
+        guard let view = view else { return nil }
+        
+        for subview in view.subviews {
+            if let textView = subview as? NSTextView {
+                return textView
+            }
+            if let scrollView = subview as? NSScrollView,
+               let textView = scrollView.documentView as? NSTextView {
+                return textView
+            }
+            if let found = findTextView(in: subview) {
+                return found
+            }
+        }
+        return nil
     }
     
     private func makeFirstResponder(in view: NSView) {
