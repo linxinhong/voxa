@@ -126,9 +126,9 @@ class HotkeyManager {
             
             VoxaLog("[Voxa] 停止录音，最终文本 [\(finalText.count) 字]: \(finalText.prefix(50))...")
             
-            // 如果开启润色，执行润色
-            if appState.polishEnabled && !finalText.isEmpty {
-                VoxaLog("[Voxa] 开始润色文本...")
+            // 发送前自动润色（总是执行）
+            if !finalText.isEmpty {
+                VoxaLog("[Voxa] 开始自动润色...")
                 let polishedText = await Polisher.polish(finalText)
                 if polishedText != finalText {
                     VoxaLog("[Voxa] 润色完成")
