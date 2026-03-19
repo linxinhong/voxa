@@ -28,16 +28,19 @@ enum Polisher {
     只输出润色后的文字，不要任何解释。
     """
     
-    /// Polish text using Qwen API
+    /// Polish text using Qwen API with custom prompt
     /// Falls back to original text if API fails or times out (> 1.5s)
-    static func polish(_ text: String) async -> String {
+    static func polish(_ text: String, customPrompt: String? = nil) async -> String {
         guard !apiKey.isEmpty else {
             return text
         }
         
+        // 使用自定义提示词或当前配置的提示词
+        let prompt = customPrompt ?? ConfigManager.shared.currentPrompt()
+        
         do {
             return try await withTimeout(seconds: 1.5) {
-                try await performPolish(text)
+                try await performPolish(text, systemPrompt: prompt)
             }
         } catch {
             VoxaLog("Polish failed or timed out: \(error)")
@@ -45,7 +48,7 @@ enum Polisher {
         }
     }
     
-    private static func performPolish(_ text: String) async throws -> String {
+    private static func performPolish(_ text: String, systemPrompt: String) async throws -> String {
         let requestBody: [String: Any] = [
             "model": "qwen-turbo",
             "input": [

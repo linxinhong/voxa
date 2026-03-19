@@ -18,6 +18,7 @@ class HotkeyManager {
     
     private var hotKey: HotKey?
     private var currentConfig: ShortcutConfig
+    private var templateHotKeys: [HotKey] = []  // 保存模板快捷键引用
     
     init(appState: AppState, panelController: PanelController, audioCapture: AudioCapture, asrClient: AsrClient) {
         self.appState = appState
@@ -71,6 +72,26 @@ class HotkeyManager {
     
     private func setupHotkey() {
         _ = updateShortcut(currentConfig)
+        setupPolishTemplateHotkeys()
+    }
+    
+    /// 设置润色模板快捷键 Alt+1, Alt+2, ...
+    private func setupPolishTemplateHotkeys() {
+        // 注册 Alt+1 到 Alt+9
+        let numberKeys: [Key] = [.one, .two, .three, .four, .five, .six, .seven, .eight, .nine]
+        
+        for (index, key) in numberKeys.enumerated() {
+            let shortcut = "alt+\(index + 1)"
+            let hotKey = HotKey(key: key, modifiers: [.option])
+            hotKey.keyDownHandler = { [weak self] in
+                VoxaLog("[Hotkey] 触发模板切换: \(shortcut)")
+                self?.appState.switchPolishTemplate(to: shortcut)
+            }
+            // 保存引用防止被释放
+            templateHotKeys.append(hotKey)
+        }
+        
+        VoxaLog("[Hotkey] 已注册润色模板快捷键: Alt+1 到 Alt+9")
     }
     
     /// Toggle recording state

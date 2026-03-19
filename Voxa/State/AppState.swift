@@ -39,6 +39,9 @@ class AppState: ObservableObject {
     /// 是否正在润色中（锁定文本框）
     @Published var isPolishing: Bool = false
     
+    /// 当前润色模板快捷键（显示在UI上）
+    @Published var currentPolishShortcut: String = "alt+1"
+    
     // MARK: - Internal State
     
     /// 目标应用
@@ -177,6 +180,16 @@ class AppState: ObservableObject {
         cursorOffset = polishedText.count  // 光标定位到最后
         isPolishing = false
         VoxaLog("[AppState] 润色完成，光标定位到 \(cursorOffset)")
+    }
+    
+    /// 切换到指定润色模板
+    func switchPolishTemplate(to shortcut: String) {
+        if ConfigManager.shared.switchTo(shortcut: shortcut) {
+            currentPolishShortcut = shortcut
+            VoxaLog("[AppState] 切换到润色模板: \(shortcut)")
+        } else {
+            VoxaLog("[AppState] 模板不存在: \(shortcut)")
+        }
     }
     
     /// 停止录音时的处理：如果有 pending 未确认，自动追加到末尾
