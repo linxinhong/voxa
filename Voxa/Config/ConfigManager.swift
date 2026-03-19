@@ -26,7 +26,9 @@ class ConfigManager {
     ]
     
     init() {
+        VoxaLog("[Config] ConfigManager 初始化开始")
         loadConfig()
+        VoxaLog("[Config] ConfigManager 初始化完成，当前模板: \(currentShortcut)")
     }
     
     /// 加载配置文件

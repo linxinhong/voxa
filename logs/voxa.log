@@ -7596,3 +7596,26 @@
 [2026-03-19 17:13:00.023] [Voxa] 菜单栏设置完成
 [2026-03-19 17:13:00.029] [Voxa] 应用启动完成！按 Option+Space 开始录音
 [2026-03-19 17:13:00.029] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 17:27:59.344] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 17:27:59.614] WebSocket connected
+[2026-03-19 17:27:59.614] [ASR] 发送 run-task: {"payload":{"task_group":"audio","model":"paraformer-realtime-v2","task":"asr","parameters":{"enable_punctuation_prediction":true,"enable_inverse_text_normalization":true,"enable_intermediate_result":true,"format":"pcm","sample_rate":16000},"function":"recognition","input":{}},"header":{"task_id":"CB371B72-07CC-4EEC-ADBD-4B012363FFCC","action":"run-task","streaming":"duplex"}}
+[2026-03-19 17:27:59.667] [ASR] event: task-started
+[2026-03-19 17:27:59.667] ASR task started
+[2026-03-19 17:33:28.658] [Voxa] 应用启动中...
+[2026-03-19 17:33:28.658] [Config] ConfigManager 初始化开始
+[2026-03-19 17:33:28.659] [Config] 创建默认配置: /Users/linxinhong/.config/voxa/config.json
+[2026-03-19 17:33:28.659] [Config] 加载了 4 个润色模板
+[2026-03-19 17:33:28.659] [Config] ConfigManager 初始化完成，当前模板: alt+1
+[2026-03-19 17:33:28.659] [Voxa] ConfigManager 初始化完成
+[2026-03-19 17:33:28.659] [Voxa] AppState 初始化完成
+[2026-03-19 17:33:28.659] [Voxa] PanelController 初始化完成
+[2026-03-19 17:33:28.659] [Voxa] AudioCapture 初始化完成
+[2026-03-19 17:33:28.659] [Voxa] AsrClient 初始化完成
+[2026-03-19 17:33:28.659] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 17:33:28.659] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 17:33:28.660] [Hotkey] 已注册润色模板快捷键: Alt+1 到 Alt+9
+[2026-03-19 17:33:28.660] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 17:33:28.678] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 17:33:28.678] [Voxa] 菜单栏设置完成
+[2026-03-19 17:33:28.683] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 17:33:28.683] [Voxa] 也可以在菜单栏点击 Voxa 图标开始

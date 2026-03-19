@@ -23,6 +23,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         VoxaLog("[Voxa] 应用启动中...")
         
+        // Initialize ConfigManager first (creates config if needed)
+        _ = ConfigManager.shared
+        VoxaLog("[Voxa] ConfigManager 初始化完成")
+        
         // Initialize app state
         appState = AppState()
         VoxaLog("[Voxa] AppState 初始化完成")
