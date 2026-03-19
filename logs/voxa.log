@@ -105,3 +105,313 @@
 [2026-03-19 13:22:38.273] [Voxa] 菜单栏设置完成
 [2026-03-19 13:22:38.278] [Voxa] 应用启动完成！按 Option+Space 开始录音
 [2026-03-19 13:22:38.279] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 13:24:51.810] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 13:24:52.103] WebSocket connected
+[2026-03-19 13:24:52.103] [ASR] 发送 run-task: {"payload":{"model":"paraformer-realtime-v2","task_group":"audio","function":"recognition","parameters":{"sample_rate":16000,"enable_intermediate_result":true,"format":"pcm","enable_punctuation_prediction":true,"enable_inverse_text_normalization":true},"input":{},"task":"asr"},"header":{"action":"run-task","task_id":"0C75A3D2-A5DD-4192-8EAB-C121AB77DB4A","streaming":"duplex"}}
+[2026-03-19 13:24:52.167] [ASR] event: task-started
+[2026-03-19 13:24:52.167] ASR task started
+[2026-03-19 13:25:05.705] [ASR] event: result-generated
+[2026-03-19 13:25:05.705] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:05.706] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 13:25:05.706] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 13:25:05.706] [ASR] 已更新 partial 文本: ""
+[2026-03-19 13:25:05.752] [ASR] event: result-generated
+[2026-03-19 13:25:05.752] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:05.752] [ASR] output.sentence: AsrSentence(text: "大家", sentence_end: Optional(false))
+[2026-03-19 13:25:05.752] [ASR] 收到识别结果: "大家", isFinal: false
+[2026-03-19 13:25:05.753] [AppState] updatePartial: confirmed="", partial="大家"
+[2026-03-19 13:25:05.753] [ASR] 已更新 partial 文本: "大家"
+[2026-03-19 13:25:05.753] [UI] 同步文本到 TextView: "大家"
+[2026-03-19 13:25:05.943] [ASR] event: result-generated
+[2026-03-19 13:25:05.943] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:05.944] [ASR] output.sentence: AsrSentence(text: "大家", sentence_end: Optional(false))
+[2026-03-19 13:25:05.944] [ASR] 收到识别结果: "大家", isFinal: false
+[2026-03-19 13:25:05.944] [ASR] 已更新 partial 文本: "大家"
+[2026-03-19 13:25:06.573] [ASR] event: result-generated
+[2026-03-19 13:25:06.574] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:06.575] [ASR] output.sentence: AsrSentence(text: "他相当于", sentence_end: Optional(false))
+[2026-03-19 13:25:06.575] [ASR] 收到识别结果: "他相当于", isFinal: false
+[2026-03-19 13:25:06.575] [AppState] updatePartial: confirmed="", partial="他相当于"
+[2026-03-19 13:25:06.575] [ASR] 已更新 partial 文本: "他相当于"
+[2026-03-19 13:25:06.576] [UI] 同步文本到 TextView: "他相当于"
+[2026-03-19 13:25:07.050] [ASR] event: result-generated
+[2026-03-19 13:25:07.050] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:07.050] [ASR] output.sentence: AsrSentence(text: "他相当于一体", sentence_end: Optional(false))
+[2026-03-19 13:25:07.051] [ASR] 收到识别结果: "他相当于一体", isFinal: false
+[2026-03-19 13:25:07.051] [AppState] updatePartial: confirmed="", partial="他相当于一体"
+[2026-03-19 13:25:07.051] [ASR] 已更新 partial 文本: "他相当于一体"
+[2026-03-19 13:25:07.052] [UI] 同步文本到 TextView: "他相当于一体"
+[2026-03-19 13:25:07.451] [ASR] event: result-generated
+[2026-03-19 13:25:07.451] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:07.452] [ASR] output.sentence: AsrSentence(text: "他相当于一体化的问", sentence_end: Optional(false))
+[2026-03-19 13:25:07.452] [ASR] 收到识别结果: "他相当于一体化的问", isFinal: false
+[2026-03-19 13:25:07.452] [AppState] updatePartial: confirmed="", partial="他相当于一体化的问"
+[2026-03-19 13:25:07.452] [ASR] 已更新 partial 文本: "他相当于一体化的问"
+[2026-03-19 13:25:07.453] [UI] 同步文本到 TextView: "他相当于一体化的问"
+[2026-03-19 13:25:08.018] [ASR] event: result-generated
+[2026-03-19 13:25:08.019] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:08.019] [ASR] output.sentence: AsrSentence(text: "他相当于一体化的问题就是", sentence_end: Optional(false))
+[2026-03-19 13:25:08.019] [ASR] 收到识别结果: "他相当于一体化的问题就是", isFinal: false
+[2026-03-19 13:25:08.019] [AppState] updatePartial: confirmed="", partial="他相当于一体化的问题就是"
+[2026-03-19 13:25:08.020] [ASR] 已更新 partial 文本: "他相当于一体化的问题就是"
+[2026-03-19 13:25:08.020] [UI] 同步文本到 TextView: "他相当于一体化的问题就是"
+[2026-03-19 13:25:08.505] [ASR] event: result-generated
+[2026-03-19 13:25:08.506] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:08.506] [ASR] output.sentence: AsrSentence(text: "他相当于一体化的问题，就是直接", sentence_end: Optional(false))
+[2026-03-19 13:25:08.506] [ASR] 收到识别结果: "他相当于一体化的问题，就是直接", isFinal: false
+[2026-03-19 13:25:08.506] [AppState] updatePartial: confirmed="", partial="他相当于一体化的问题，就是直接"
+[2026-03-19 13:25:08.506] [ASR] 已更新 partial 文本: "他相当于一体化的问题，就是直接"
+[2026-03-19 13:25:08.507] [UI] 同步文本到 TextView: "他相当于一体化的问题，就是直接"
+[2026-03-19 13:25:09.218] [ASR] event: result-generated
+[2026-03-19 13:25:09.219] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:09.219] [ASR] output.sentence: AsrSentence(text: "它相当于一体化的问题，就是直接本", sentence_end: Optional(false))
+[2026-03-19 13:25:09.219] [ASR] 收到识别结果: "它相当于一体化的问题，就是直接本", isFinal: false
+[2026-03-19 13:25:09.219] [AppState] updatePartial: confirmed="", partial="它相当于一体化的问题，就是直接本"
+[2026-03-19 13:25:09.220] [ASR] 已更新 partial 文本: "它相当于一体化的问题，就是直接本"
+[2026-03-19 13:25:09.220] [UI] 同步文本到 TextView: "它相当于一体化的问题，就是直接本"
+[2026-03-19 13:25:09.469] [ASR] event: result-generated
+[2026-03-19 13:25:09.469] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:09.469] [ASR] output.sentence: AsrSentence(text: "它相当于一体化的问题，就是直接本机", sentence_end: Optional(false))
+[2026-03-19 13:25:09.470] [ASR] 收到识别结果: "它相当于一体化的问题，就是直接本机", isFinal: false
+[2026-03-19 13:25:09.470] [AppState] updatePartial: confirmed="", partial="它相当于一体化的问题，就是直接本机"
+[2026-03-19 13:25:09.470] [ASR] 已更新 partial 文本: "它相当于一体化的问题，就是直接本机"
+[2026-03-19 13:25:09.470] [UI] 同步文本到 TextView: "它相当于一体化的问题，就是直接本机"
+[2026-03-19 13:25:09.882] [ASR] event: result-generated
+[2026-03-19 13:25:09.882] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:09.883] [ASR] output.sentence: AsrSentence(text: "它相当于一体化的问题，就是直接本机接受流量", sentence_end: Optional(false))
+[2026-03-19 13:25:09.883] [ASR] 收到识别结果: "它相当于一体化的问题，就是直接本机接受流量", isFinal: false
+[2026-03-19 13:25:09.883] [AppState] updatePartial: confirmed="", partial="它相当于一体化的问题，就是直接本机接受流量"
+[2026-03-19 13:25:09.883] [ASR] 已更新 partial 文本: "它相当于一体化的问题，就是直接本机接受流量"
+[2026-03-19 13:25:09.884] [UI] 同步文本到 TextView: "它相当于一体化的问题，就是直接本机接受流量"
+[2026-03-19 13:25:10.392] [ASR] event: result-generated
+[2026-03-19 13:25:10.393] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:10.393] [ASR] output.sentence: AsrSentence(text: "它相当于一体化的问题，就是直接本机接受流量，然后本", sentence_end: Optional(false))
+[2026-03-19 13:25:10.393] [ASR] 收到识别结果: "它相当于一体化的问题，就是直接本机接受流量，然后本", isFinal: false
+[2026-03-19 13:25:10.393] [AppState] updatePartial: confirmed="", partial="它相当于一体化的问题，就是直接本机接受流量，然后本"
+[2026-03-19 13:25:10.393] [ASR] 已更新 partial 文本: "它相当于一体化的问题，就是直接本机接受流量，然后本"
+[2026-03-19 13:25:10.394] [UI] 同步文本到 TextView: "它相当于一体化的问题，就是直接本机接受流量，然后本"
+[2026-03-19 13:25:11.519] [ASR] event: result-generated
+[2026-03-19 13:25:11.519] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:11.520] [ASR] output.sentence: AsrSentence(text: "它相当于一体化的问题，就是直接本机接受流量，然后本机自动。", sentence_end: Optional(true))
+[2026-03-19 13:25:11.520] [ASR] 收到识别结果: "它相当于一体化的问题，就是直接本机接受流量，然后本机自动。", isFinal: true
+[2026-03-19 13:25:11.520] [AppState] applyFinal: added="它相当于一体化的问题，直接本机接受流量，本机自动。", confirmed="它相当于一体化的问题，直接本机接受流量，本机自动。"
+[2026-03-19 13:25:11.521] [ASR] 已追加 final 文本: "它相当于一体化的问题，就是直接本机接受流量，然后本机自动。"
+[2026-03-19 13:25:11.521] [UI] 同步文本到 TextView: "它相当于一体化的问题，直接本机接受流量，本机自动。"
+[2026-03-19 13:25:11.718] [ASR] event: result-generated
+[2026-03-19 13:25:11.719] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:11.719] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 13:25:11.719] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 13:25:11.719] [ASR] 已更新 partial 文本: ""
+[2026-03-19 13:25:11.984] [ASR] event: result-generated
+[2026-03-19 13:25:11.984] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:11.985] [ASR] output.sentence: AsrSentence(text: "就不", sentence_end: Optional(false))
+[2026-03-19 13:25:11.985] [ASR] 收到识别结果: "就不", isFinal: false
+[2026-03-19 13:25:11.985] [AppState] updatePartial: confirmed="它相当于一体化的问题，直接本机接受流量，本机自动。", partial="就不"
+[2026-03-19 13:25:11.986] [ASR] 已更新 partial 文本: "就不"
+[2026-03-19 13:25:11.986] [UI] 同步文本到 TextView: "它相当于一体化的问题，直接本机接受流量，本机自动。就不"
+[2026-03-19 13:25:12.145] [ASR] event: result-generated
+[2026-03-19 13:25:12.146] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:12.146] [ASR] output.sentence: AsrSentence(text: "就不", sentence_end: Optional(false))
+[2026-03-19 13:25:12.146] [ASR] 收到识别结果: "就不", isFinal: false
+[2026-03-19 13:25:12.146] [ASR] 已更新 partial 文本: "就不"
+[2026-03-19 13:25:12.550] [ASR] event: result-generated
+[2026-03-19 13:25:12.551] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:12.551] [ASR] output.sentence: AsrSentence(text: "就不是太", sentence_end: Optional(false))
+[2026-03-19 13:25:12.551] [ASR] 收到识别结果: "就不是太", isFinal: false
+[2026-03-19 13:25:12.551] [AppState] updatePartial: confirmed="它相当于一体化的问题，直接本机接受流量，本机自动。", partial="就不是太"
+[2026-03-19 13:25:12.552] [ASR] 已更新 partial 文本: "就不是太"
+[2026-03-19 13:25:12.552] [UI] 同步文本到 TextView: "它相当于一体化的问题，直接本机接受流量，本机自动。就不是太"
+[2026-03-19 13:25:13.158] [ASR] event: result-generated
+[2026-03-19 13:25:13.159] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:13.159] [ASR] output.sentence: AsrSentence(text: "就不是太能接到", sentence_end: Optional(false))
+[2026-03-19 13:25:13.159] [ASR] 收到识别结果: "就不是太能接到", isFinal: false
+[2026-03-19 13:25:13.160] [AppState] updatePartial: confirmed="它相当于一体化的问题，直接本机接受流量，本机自动。", partial="就不是太能接到"
+[2026-03-19 13:25:13.160] [ASR] 已更新 partial 文本: "就不是太能接到"
+[2026-03-19 13:25:13.161] [UI] 同步文本到 TextView: "它相当于一体化的问题，直接本机接受流量，本机自动。就不是太能接到"
+[2026-03-19 13:25:14.245] [ASR] event: result-generated
+[2026-03-19 13:25:14.246] [ASR] result-generated, payload: 有
+[2026-03-19 13:25:14.246] [ASR] output.sentence: AsrSentence(text: "就不是太能接到，发到太赶。", sentence_end: Optional(true))
+[2026-03-19 13:25:14.246] [ASR] 收到识别结果: "就不是太能接到，发到太赶。", isFinal: true
+[2026-03-19 13:25:14.247] [AppState] applyFinal: added="就不是太能接到，发到太赶。", confirmed="它相当于一体化的问题，直接本机接受流量，本机自动。就不是太能接到，发到太赶。"
+[2026-03-19 13:25:14.247] [ASR] 已追加 final 文本: "就不是太能接到，发到太赶。"
+[2026-03-19 13:25:14.247] [UI] 同步文本到 TextView: "它相当于一体化的问题，直接本机接受流量，本机自动。就不是太能接到，发到太赶。"
+[2026-03-19 13:25:19.641] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 13:25:19.661] [ASR] 发送 finish-task
+[2026-03-19 13:25:19.661] [Voxa] 开始润色文本...
+[2026-03-19 13:25:19.663] WebSocket disconnected
+[2026-03-19 13:25:19.665] WebSocket error: Error Domain=NSPOSIXErrorDomain Code=57 "Socket is not connected" UserInfo={NSErrorFailingURLStringKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/, NSErrorFailingURLKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/}
+[2026-03-19 13:25:20.633] [Voxa] 润色后无变化
+[2026-03-19 13:26:30.638] [Voxa] 应用启动中...
+[2026-03-19 13:26:30.639] [Voxa] AppState 初始化完成
+[2026-03-19 13:26:30.639] [Voxa] PanelController 初始化完成
+[2026-03-19 13:26:30.639] [Voxa] AudioCapture 初始化完成
+[2026-03-19 13:26:30.639] [Voxa] AsrClient 初始化完成
+[2026-03-19 13:26:30.639] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 13:26:30.639] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 13:26:30.639] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 13:26:30.655] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 13:26:30.655] [Voxa] 菜单栏设置完成
+[2026-03-19 13:26:30.659] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 13:26:30.659] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 13:27:21.655] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 13:27:21.922] WebSocket connected
+[2026-03-19 13:27:21.923] [ASR] 发送 run-task: {"payload":{"input":{},"task_group":"audio","function":"recognition","parameters":{"enable_intermediate_result":true,"format":"pcm","enable_punctuation_prediction":true,"sample_rate":16000,"enable_inverse_text_normalization":true},"task":"asr","model":"paraformer-realtime-v2"},"header":{"streaming":"duplex","action":"run-task","task_id":"15FEDC23-F3BE-410E-B4E1-68831086F5B5"}}
+[2026-03-19 13:27:21.978] [ASR] event: task-started
+[2026-03-19 13:27:21.979] ASR task started
+[2026-03-19 13:27:22.918] [ASR] event: result-generated
+[2026-03-19 13:27:22.918] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:22.918] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 13:27:22.919] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 13:27:22.919] [ASR] 已更新 partial 文本: ""
+[2026-03-19 13:27:22.975] [ASR] event: result-generated
+[2026-03-19 13:27:22.976] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:22.976] [ASR] output.sentence: AsrSentence(text: "送你", sentence_end: Optional(false))
+[2026-03-19 13:27:22.976] [ASR] 收到识别结果: "送你", isFinal: false
+[2026-03-19 13:27:22.976] [AppState] updatePartial: confirmed="", partial="送你"
+[2026-03-19 13:27:22.976] [ASR] 已更新 partial 文本: "送你"
+[2026-03-19 13:27:22.977] [UI] 同步文本到 TextView: "送你"
+[2026-03-19 13:27:23.165] [ASR] event: result-generated
+[2026-03-19 13:27:23.166] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:23.166] [ASR] output.sentence: AsrSentence(text: "送你", sentence_end: Optional(false))
+[2026-03-19 13:27:23.166] [ASR] 收到识别结果: "送你", isFinal: false
+[2026-03-19 13:27:23.166] [ASR] 已更新 partial 文本: "送你"
+[2026-03-19 13:27:23.778] [ASR] event: result-generated
+[2026-03-19 13:27:23.778] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:23.779] [ASR] output.sentence: AsrSentence(text: "送你3000", sentence_end: Optional(false))
+[2026-03-19 13:27:23.779] [ASR] 收到识别结果: "送你3000", isFinal: false
+[2026-03-19 13:27:23.779] [AppState] updatePartial: confirmed="", partial="送你3000"
+[2026-03-19 13:27:23.779] [ASR] 已更新 partial 文本: "送你3000"
+[2026-03-19 13:27:23.780] [UI] 同步文本到 TextView: "送你3000"
+[2026-03-19 13:27:24.624] [ASR] event: result-generated
+[2026-03-19 13:27:24.625] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:24.625] [ASR] output.sentence: AsrSentence(text: "我收你3000块钱。", sentence_end: Optional(true))
+[2026-03-19 13:27:24.625] [ASR] 收到识别结果: "我收你3000块钱。", isFinal: true
+[2026-03-19 13:27:24.626] [AppState] applyFinal: added="我收你 300 块钱。", confirmed="我收你 300 块钱。"
+[2026-03-19 13:27:24.626] [ASR] 已追加 final 文本: "我收你3000块钱。"
+[2026-03-19 13:27:24.626] [UI] 同步文本到 TextView: "我收你 300 块钱。"
+[2026-03-19 13:27:24.917] [ASR] event: result-generated
+[2026-03-19 13:27:24.918] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:24.918] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 13:27:24.918] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 13:27:24.918] [ASR] 已更新 partial 文本: ""
+[2026-03-19 13:27:24.985] [ASR] event: result-generated
+[2026-03-19 13:27:24.986] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:24.986] [ASR] output.sentence: AsrSentence(text: "我在", sentence_end: Optional(false))
+[2026-03-19 13:27:24.986] [ASR] 收到识别结果: "我在", isFinal: false
+[2026-03-19 13:27:24.987] [AppState] updatePartial: confirmed="我收你 300 块钱。", partial="我在"
+[2026-03-19 13:27:24.987] [ASR] 已更新 partial 文本: "我在"
+[2026-03-19 13:27:24.987] [UI] 同步文本到 TextView: "我收你 300 块钱。我在"
+[2026-03-19 13:27:25.788] [ASR] event: result-generated
+[2026-03-19 13:27:25.789] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:25.789] [ASR] output.sentence: AsrSentence(text: "我在想", sentence_end: Optional(false))
+[2026-03-19 13:27:25.789] [ASR] 收到识别结果: "我在想", isFinal: false
+[2026-03-19 13:27:25.789] [AppState] updatePartial: confirmed="我收你 300 块钱。", partial="我在想"
+[2026-03-19 13:27:25.789] [ASR] 已更新 partial 文本: "我在想"
+[2026-03-19 13:27:25.790] [UI] 同步文本到 TextView: "我收你 300 块钱。我在想"
+[2026-03-19 13:27:26.845] [ASR] event: result-generated
+[2026-03-19 13:27:26.845] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:26.845] [ASR] output.sentence: AsrSentence(text: "我在想他是不是", sentence_end: Optional(false))
+[2026-03-19 13:27:26.845] [ASR] 收到识别结果: "我在想他是不是", isFinal: false
+[2026-03-19 13:27:26.845] [AppState] updatePartial: confirmed="我收你 300 块钱。", partial="我在想他是不是"
+[2026-03-19 13:27:26.845] [ASR] 已更新 partial 文本: "我在想他是不是"
+[2026-03-19 13:27:26.846] [UI] 同步文本到 TextView: "我收你 300 块钱。我在想他是不是"
+[2026-03-19 13:27:27.189] [ASR] event: result-generated
+[2026-03-19 13:27:27.190] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:27.190] [ASR] output.sentence: AsrSentence(text: "我在想他是不是怎么", sentence_end: Optional(false))
+[2026-03-19 13:27:27.190] [ASR] 收到识别结果: "我在想他是不是怎么", isFinal: false
+[2026-03-19 13:27:27.190] [AppState] updatePartial: confirmed="我收你 300 块钱。", partial="我在想他是不是怎么"
+[2026-03-19 13:27:27.191] [ASR] 已更新 partial 文本: "我在想他是不是怎么"
+[2026-03-19 13:27:27.191] [UI] 同步文本到 TextView: "我收你 300 块钱。我在想他是不是怎么"
+[2026-03-19 13:27:27.603] [ASR] event: result-generated
+[2026-03-19 13:27:27.604] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:27.604] [ASR] output.sentence: AsrSentence(text: "我在想他是不是怎么可能现在还", sentence_end: Optional(false))
+[2026-03-19 13:27:27.605] [ASR] 收到识别结果: "我在想他是不是怎么可能现在还", isFinal: false
+[2026-03-19 13:27:27.605] [AppState] updatePartial: confirmed="我收你 300 块钱。", partial="我在想他是不是怎么可能现在还"
+[2026-03-19 13:27:27.605] [ASR] 已更新 partial 文本: "我在想他是不是怎么可能现在还"
+[2026-03-19 13:27:27.606] [UI] 同步文本到 TextView: "我收你 300 块钱。我在想他是不是怎么可能现在还"
+[2026-03-19 13:27:28.278] [ASR] event: result-generated
+[2026-03-19 13:27:28.279] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:28.279] [ASR] output.sentence: AsrSentence(text: "我在想他是不是怎么可能现在还要钱呢？", sentence_end: Optional(false))
+[2026-03-19 13:27:28.279] [ASR] 收到识别结果: "我在想他是不是怎么可能现在还要钱呢？", isFinal: false
+[2026-03-19 13:27:28.279] [AppState] updatePartial: confirmed="我收你 300 块钱。", partial="我在想他是不是怎么可能现在还要钱呢？"
+[2026-03-19 13:27:28.279] [ASR] 已更新 partial 文本: "我在想他是不是怎么可能现在还要钱呢？"
+[2026-03-19 13:27:28.279] [UI] 同步文本到 TextView: "我收你 300 块钱。我在想他是不是怎么可能现在还要钱呢？"
+[2026-03-19 13:27:28.846] [ASR] event: result-generated
+[2026-03-19 13:27:28.846] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:28.846] [ASR] output.sentence: AsrSentence(text: "我在想他是不是怎么可能现在还要钱呢？他。", sentence_end: Optional(true))
+[2026-03-19 13:27:28.847] [ASR] 收到识别结果: "我在想他是不是怎么可能现在还要钱呢？他。", isFinal: true
+[2026-03-19 13:27:28.847] [AppState] applyFinal: added="我在想他是不是怎么可能现在还要钱呢？他。", confirmed="我收你 300 块钱。我在想他是不是怎么可能现在还要钱呢？他。"
+[2026-03-19 13:27:28.847] [ASR] 已追加 final 文本: "我在想他是不是怎么可能现在还要钱呢？他。"
+[2026-03-19 13:27:28.848] [UI] 同步文本到 TextView: "我收你 300 块钱。我在想他是不是怎么可能现在还要钱呢？他。"
+[2026-03-19 13:27:28.919] [ASR] event: result-generated
+[2026-03-19 13:27:28.919] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:28.919] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 13:27:28.920] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 13:27:28.920] [ASR] 已更新 partial 文本: ""
+[2026-03-19 13:27:28.981] [ASR] event: result-generated
+[2026-03-19 13:27:28.981] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:28.982] [ASR] output.sentence: AsrSentence(text: "有", sentence_end: Optional(false))
+[2026-03-19 13:27:28.982] [ASR] 收到识别结果: "有", isFinal: false
+[2026-03-19 13:27:28.982] [AppState] updatePartial: confirmed="我收你 300 块钱。我在想他是不是怎么可能现在还要钱呢？他。", partial="有"
+[2026-03-19 13:27:28.982] [ASR] 已更新 partial 文本: "有"
+[2026-03-19 13:27:28.983] [UI] 同步文本到 TextView: "我收你 300 块钱。我在想他是不是怎么可能现在还要钱呢？他。有"
+[2026-03-19 13:27:29.776] [ASR] event: result-generated
+[2026-03-19 13:27:29.777] [ASR] result-generated, payload: 有
+[2026-03-19 13:27:29.777] [ASR] output.sentence: AsrSentence(text: "什么？", sentence_end: Optional(false))
+[2026-03-19 13:27:29.777] [ASR] 收到识别结果: "什么？", isFinal: false
+[2026-03-19 13:27:29.778] [AppState] updatePartial: confirmed="我收你 300 块钱。我在想他是不是怎么可能现在还要钱呢？他。", partial="什么？"
+[2026-03-19 13:27:29.778] [ASR] 已更新 partial 文本: "什么？"
+[2026-03-19 13:27:29.778] [UI] 同步文本到 TextView: "我收你 300 块钱。我在想他是不是怎么可能现在还要钱呢？他。什么？"
+[2026-03-19 13:27:29.855] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 13:27:29.877] [ASR] 发送 finish-task
+[2026-03-19 13:27:29.877] [Voxa] 停止录音，最终文本 [34 字]: 我收你 300 块钱。我在想他是不是怎么可能现在还要钱呢？他。什么？...
+[2026-03-19 13:27:29.877] [Voxa] 开始润色文本...
+[2026-03-19 13:27:29.879] WebSocket disconnected
+[2026-03-19 13:27:29.880] WebSocket error: Error Domain=NSPOSIXErrorDomain Code=57 "Socket is not connected" UserInfo={NSErrorFailingURLStringKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/, NSErrorFailingURLKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/}
+[2026-03-19 13:27:30.596] [Voxa] 润色完成
+[2026-03-19 13:27:30.597] [Voxa] 原文: 我收你 300 块钱。我在想他是不是怎么可能现在还要钱呢？他。什么？
+[2026-03-19 13:27:30.597] [Voxa] 润色: 我收你300块钱。我在想他是不是怎么可能现在还要钱呢？他，什么？
+[2026-03-19 13:27:30.598] [Voxa] 准备注入文本到 com.mitchellh.ghostty
+[2026-03-19 13:27:30.598] [Injector] 开始注入 32 字到 com.mitchellh.ghostty
+[2026-03-19 13:27:30.600] [Injector] 剪贴板已设置: 我收你300块钱。我在想他是不是怎么可能现在还要钱呢？他，什...
+[2026-03-19 13:27:30.608] [Injector] Voxa 已隐藏
+[2026-03-19 13:27:30.664] [Injector] 目标应用已激活
+[2026-03-19 13:27:30.747] [Injector] 模拟 Cmd+V
+[2026-03-19 13:27:30.849] [Injector] 注入完成
+[2026-03-19 13:27:30.850] [Injector] 剪贴板已恢复
+[2026-03-19 13:28:54.370] [Voxa] 应用启动中...
+[2026-03-19 13:28:54.371] [Voxa] AppState 初始化完成
+[2026-03-19 13:28:54.371] [Voxa] PanelController 初始化完成
+[2026-03-19 13:28:54.371] [Voxa] AudioCapture 初始化完成
+[2026-03-19 13:28:54.371] [Voxa] AsrClient 初始化完成
+[2026-03-19 13:28:54.371] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 13:28:54.372] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 13:28:54.372] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 13:28:54.390] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 13:28:54.390] [Voxa] 菜单栏设置完成
+[2026-03-19 13:28:54.396] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 13:28:54.396] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 13:31:05.272] [Voxa] 应用启动中...
+[2026-03-19 13:31:05.272] [Voxa] AppState 初始化完成
+[2026-03-19 13:31:05.272] [Voxa] PanelController 初始化完成
+[2026-03-19 13:31:05.272] [Voxa] AudioCapture 初始化完成
+[2026-03-19 13:31:05.273] [Voxa] AsrClient 初始化完成
+[2026-03-19 13:31:05.273] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 13:31:05.273] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 13:31:05.273] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 13:31:05.295] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 13:31:05.295] [Voxa] 菜单栏设置完成
+[2026-03-19 13:31:05.299] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 13:31:05.299] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 13:33:16.427] [Voxa] 应用启动中...
+[2026-03-19 13:33:16.428] [Voxa] AppState 初始化完成
+[2026-03-19 13:33:16.428] [Voxa] PanelController 初始化完成
+[2026-03-19 13:33:16.428] [Voxa] AudioCapture 初始化完成
+[2026-03-19 13:33:16.428] [Voxa] AsrClient 初始化完成
+[2026-03-19 13:33:16.428] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 13:33:16.428] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 13:33:16.428] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 13:33:16.445] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 13:33:16.446] [Voxa] 菜单栏设置完成
+[2026-03-19 13:33:16.451] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 13:33:16.451] [Voxa] 也可以在菜单栏点击 Voxa 图标开始

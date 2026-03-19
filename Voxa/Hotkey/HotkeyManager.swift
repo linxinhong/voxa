@@ -124,6 +124,8 @@ class HotkeyManager {
             // Get final text
             var finalText = appState.getFinalText()
             
+            VoxaLog("[Voxa] 停止录音，最终文本 [\(finalText.count) 字]: \(finalText.prefix(50))...")
+            
             // 如果开启润色，执行润色
             if appState.polishEnabled && !finalText.isEmpty {
                 VoxaLog("[Voxa] 开始润色文本...")
@@ -143,7 +145,10 @@ class HotkeyManager {
             
             // Inject text if not empty
             if !finalText.isEmpty {
+                VoxaLog("[Voxa] 准备注入文本到 \(appState.targetApp?.bundleIdentifier ?? "未知应用")")
                 await injectText(finalText)
+            } else {
+                VoxaLog("[Voxa] 最终文本为空，跳过注入")
             }
         }
     }
