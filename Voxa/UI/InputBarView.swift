@@ -14,13 +14,12 @@ struct InputBarView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            // 🔴 录音指示器
-            Circle()
-                .fill(appState.isRecording ? Color.red : Color.gray)
-                .frame(width: 8, height: 8)
-                .padding(.top, 8)
-                .opacity(appState.isRecording ? 1.0 : 0.5)
-                .animation(.easeInOut(duration: 0.3), value: appState.isRecording)
+            // 🎤 录音指示器（麦克风图标）
+            Image(systemName: "mic.fill")
+                .font(.system(size: 16))
+                .foregroundColor(appState.isRecording ? .green : .gray)
+                .frame(width: 24, height: 24)
+                .padding(.top, 4)
             
             VStack(alignment: .leading, spacing: 4) {
                 // 第1行：Partial 区域（灰色，只读）+ ⬇ 按钮
@@ -41,7 +40,7 @@ struct InputBarView: View {
                             .animation(.easeInOut(duration: 0.15).repeatCount(3, autoreverses: true), value: appState.hasPending)
                     }
                 }
-                .frame(minWidth: 300, maxWidth: 500, minHeight: 20)
+                .frame(maxWidth: .infinity, minHeight: 20)
                 // 空时隐藏但保持空间
                 .opacity(appState.partialText.isEmpty && !appState.hasPending ? 0 : 1)
                 
@@ -52,7 +51,7 @@ struct InputBarView: View {
                     minHeight: 24,
                     maxHeight: 120
                 )
-                .frame(minWidth: 300, maxWidth: 500)
+                .frame(maxWidth: .infinity)
             }
             
             // ✨ 润色开关
