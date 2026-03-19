@@ -1,0 +1,107 @@
+[2026-03-19 13:20:27.633] [Voxa] 应用启动中...
+[2026-03-19 13:20:27.634] [Voxa] AppState 初始化完成
+[2026-03-19 13:20:27.634] [Voxa] PanelController 初始化完成
+[2026-03-19 13:20:27.634] [Voxa] AudioCapture 初始化完成
+[2026-03-19 13:20:27.634] [Voxa] AsrClient 初始化完成
+[2026-03-19 13:20:27.634] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 13:20:27.634] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 13:20:27.634] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 13:20:27.650] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 13:20:27.650] [Voxa] 菜单栏设置完成
+[2026-03-19 13:20:27.655] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 13:20:27.655] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 13:21:00.837] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 13:21:01.097] WebSocket connected
+[2026-03-19 13:21:01.098] [ASR] 发送 run-task: {"payload":{"task_group":"audio","function":"recognition","task":"asr","parameters":{"format":"pcm","enable_inverse_text_normalization":true,"enable_intermediate_result":true,"enable_punctuation_prediction":true,"sample_rate":16000},"model":"paraformer-realtime-v2","input":{}},"header":{"task_id":"86565F90-F0B3-4AC5-9C9A-AC858A5F7269","streaming":"duplex","action":"run-task"}}
+[2026-03-19 13:21:01.155] [ASR] event: task-started
+[2026-03-19 13:21:01.155] ASR task started
+[2026-03-19 13:21:02.880] [ASR] event: result-generated
+[2026-03-19 13:21:02.881] [ASR] result-generated, payload: 有
+[2026-03-19 13:21:02.881] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 13:21:02.881] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 13:21:02.881] [ASR] 已更新 partial 文本: ""
+[2026-03-19 13:21:03.141] [ASR] event: result-generated
+[2026-03-19 13:21:03.142] [ASR] result-generated, payload: 有
+[2026-03-19 13:21:03.142] [ASR] output.sentence: AsrSentence(text: "0", sentence_end: Optional(false))
+[2026-03-19 13:21:03.142] [ASR] 收到识别结果: "0", isFinal: false
+[2026-03-19 13:21:03.142] [ASR] 已更新 partial 文本: "0"
+[2026-03-19 13:21:03.143] [UI] 同步文本到 TextView: "0"
+[2026-03-19 13:21:03.748] [ASR] event: result-generated
+[2026-03-19 13:21:03.748] [ASR] result-generated, payload: 有
+[2026-03-19 13:21:03.749] [ASR] output.sentence: AsrSentence(text: "那个这些", sentence_end: Optional(false))
+[2026-03-19 13:21:03.749] [ASR] 收到识别结果: "那个这些", isFinal: false
+[2026-03-19 13:21:03.749] [ASR] 已更新 partial 文本: "那个这些"
+[2026-03-19 13:21:03.749] [UI] 同步文本到 TextView: "那个这些"
+[2026-03-19 13:21:04.375] [ASR] event: result-generated
+[2026-03-19 13:21:04.376] [ASR] result-generated, payload: 有
+[2026-03-19 13:21:04.376] [ASR] output.sentence: AsrSentence(text: "那个这些方向", sentence_end: Optional(false))
+[2026-03-19 13:21:04.376] [ASR] 收到识别结果: "那个这些方向", isFinal: false
+[2026-03-19 13:21:04.377] [ASR] 已更新 partial 文本: "那个这些方向"
+[2026-03-19 13:21:04.377] [UI] 同步文本到 TextView: "那个这些方向"
+[2026-03-19 13:21:05.246] [ASR] event: result-generated
+[2026-03-19 13:21:05.247] [ASR] result-generated, payload: 有
+[2026-03-19 13:21:05.247] [ASR] output.sentence: AsrSentence(text: "那个这些方向对不对？", sentence_end: Optional(true))
+[2026-03-19 13:21:05.247] [ASR] 收到识别结果: "那个这些方向对不对？", isFinal: true
+[2026-03-19 13:21:05.247] [ASR] 已追加 final 文本: "那个这些方向对不对？"
+[2026-03-19 13:21:05.248] [UI] 同步文本到 TextView: "这些方向对不对？那个这些方向"
+[2026-03-19 13:21:06.873] [ASR] event: result-generated
+[2026-03-19 13:21:06.873] [ASR] result-generated, payload: 有
+[2026-03-19 13:21:06.873] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 13:21:06.874] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 13:21:06.874] [ASR] 已更新 partial 文本: ""
+[2026-03-19 13:21:07.754] [ASR] event: result-generated
+[2026-03-19 13:21:07.755] [ASR] result-generated, payload: 有
+[2026-03-19 13:21:07.755] [ASR] output.sentence: AsrSentence(text: "其实，", sentence_end: Optional(false))
+[2026-03-19 13:21:07.755] [ASR] 收到识别结果: "其实，", isFinal: false
+[2026-03-19 13:21:07.756] [ASR] 已更新 partial 文本: "其实，"
+[2026-03-19 13:21:07.756] [UI] 同步文本到 TextView: "其实，这些方向对不对？那个这些方向"
+[2026-03-19 13:21:08.594] [ASR] event: result-generated
+[2026-03-19 13:21:08.595] [ASR] result-generated, payload: 有
+[2026-03-19 13:21:08.595] [ASR] output.sentence: AsrSentence(text: "其实其实", sentence_end: Optional(false))
+[2026-03-19 13:21:08.595] [ASR] 收到识别结果: "其实其实", isFinal: false
+[2026-03-19 13:21:08.595] [ASR] 已更新 partial 文本: "其实其实"
+[2026-03-19 13:21:08.596] [UI] 同步文本到 TextView: "其实其实这些方向对不对？那个这些方向"
+[2026-03-19 13:21:08.810] [ASR] event: result-generated
+[2026-03-19 13:21:08.810] [ASR] result-generated, payload: 有
+[2026-03-19 13:21:08.810] [ASR] output.sentence: AsrSentence(text: "其实其实也是", sentence_end: Optional(false))
+[2026-03-19 13:21:08.810] [ASR] 收到识别结果: "其实其实也是", isFinal: false
+[2026-03-19 13:21:08.811] [ASR] 已更新 partial 文本: "其实其实也是"
+[2026-03-19 13:21:08.811] [UI] 同步文本到 TextView: "其实其实也是这些方向对不对？那个这些方向"
+[2026-03-19 13:21:09.209] [ASR] event: result-generated
+[2026-03-19 13:21:09.209] [ASR] result-generated, payload: 有
+[2026-03-19 13:21:09.209] [ASR] output.sentence: AsrSentence(text: "其实其实也是安卓有", sentence_end: Optional(false))
+[2026-03-19 13:21:09.209] [ASR] 收到识别结果: "其实其实也是安卓有", isFinal: false
+[2026-03-19 13:21:09.210] [ASR] 已更新 partial 文本: "其实其实也是安卓有"
+[2026-03-19 13:21:09.210] [UI] 同步文本到 TextView: "其实其实也是安卓有这些方向对不对？那个这些方向"
+[2026-03-19 13:21:09.774] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 13:21:09.793] [ASR] 发送 finish-task
+[2026-03-19 13:21:09.793] [Voxa] 开始润色文本...
+[2026-03-19 13:21:09.795] WebSocket disconnected
+[2026-03-19 13:21:09.796] WebSocket error: Error Domain=NSPOSIXErrorDomain Code=57 "Socket is not connected" UserInfo={NSErrorFailingURLStringKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/, NSErrorFailingURLKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/}
+[2026-03-19 13:21:10.414] [Voxa] 润色完成
+[2026-03-19 13:21:10.414] [Voxa] 原文: 其实其实也是安卓有这些方向对不对？那个这些方向
+[2026-03-19 13:21:10.414] [Voxa] 润色: 其实也是安卓有这些方向，对不对？那些方向。
+[2026-03-19 13:21:45.270] [Voxa] 应用启动中...
+[2026-03-19 13:21:45.270] [Voxa] AppState 初始化完成
+[2026-03-19 13:21:45.270] [Voxa] PanelController 初始化完成
+[2026-03-19 13:21:45.270] [Voxa] AudioCapture 初始化完成
+[2026-03-19 13:21:45.270] [Voxa] AsrClient 初始化完成
+[2026-03-19 13:21:45.270] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 13:21:45.270] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 13:21:45.270] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 13:21:45.288] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 13:21:45.288] [Voxa] 菜单栏设置完成
+[2026-03-19 13:21:45.293] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 13:21:45.293] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 13:22:38.252] [Voxa] 应用启动中...
+[2026-03-19 13:22:38.252] [Voxa] AppState 初始化完成
+[2026-03-19 13:22:38.252] [Voxa] PanelController 初始化完成
+[2026-03-19 13:22:38.252] [Voxa] AudioCapture 初始化完成
+[2026-03-19 13:22:38.252] [Voxa] AsrClient 初始化完成
+[2026-03-19 13:22:38.252] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 13:22:38.254] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 13:22:38.254] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 13:22:38.273] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 13:22:38.273] [Voxa] 菜单栏设置完成
+[2026-03-19 13:22:38.278] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 13:22:38.279] [Voxa] 也可以在菜单栏点击 Voxa 图标开始

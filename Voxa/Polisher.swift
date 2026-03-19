@@ -40,7 +40,7 @@ enum Polisher {
                 try await performPolish(text)
             }
         } catch {
-            NSLog("Polish failed or timed out: \(error)")
+            VoxaLog("Polish failed or timed out: \(error)")
             return text
         }
     }

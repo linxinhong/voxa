@@ -40,7 +40,7 @@ struct ShortcutConfig: Codable, Equatable {
         
         // 验证 key
         guard Key.from(string: keyPart) != nil else {
-            NSLog("[Voxa] 不支持的快捷键: \(keyPart)")
+            VoxaLog("[Voxa] 不支持的快捷键: \(keyPart)")
             return nil
         }
         
@@ -48,8 +48,8 @@ struct ShortcutConfig: Codable, Equatable {
         let validModifiers = ["command", "option", "control", "shift"]
         let invalidModifiers = modifierParts.filter { !validModifiers.contains($0) }
         if !invalidModifiers.isEmpty {
-            NSLog("[Voxa] 不支持的修饰键: \(invalidModifiers)")
-            NSLog("[Voxa] 支持的修饰键: command, option, control, shift")
+            VoxaLog("[Voxa] 不支持的修饰键: \(invalidModifiers)")
+            VoxaLog("[Voxa] 支持的修饰键: command, option, control, shift")
             return nil
         }
         

@@ -31,12 +31,14 @@ enum Injector {
         // Clear and set new text
         pasteboard.clearContents()
         guard pasteboard.setString(text, forType: .string) else {
-            NSLog("[Voxa] 设置剪贴板失败")
+            VoxaLog("[Voxa] 设置剪贴板失败")
             return
         }
         
         // 先让当前应用（Voxa）放弃 Key Window 状态
-        NSApp.hide(nil)
+        await MainActor.run {
+            NSApp.hide(nil)
+        }
         
         // 等待 Voxa 隐藏
         try? await Task.sleep(nanoseconds: 50_000_000)  // 50ms
@@ -59,7 +61,7 @@ enum Injector {
         if let savedItems = savedItems, !savedItems.isEmpty {
             let success = pasteboard.writeObjects(savedItems)
             if !success {
-                NSLog("[Voxa] 恢复剪贴板失败，尝试恢复字符串")
+                VoxaLog("[Voxa] 恢复剪贴板失败，尝试恢复字符串")
                 if let savedString = savedString {
                     pasteboard.setString(savedString, forType: .string)
                 }

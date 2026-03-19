@@ -21,23 +21,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var mainWindow: NSWindow?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        NSLog("[Voxa] 应用启动中...")
+        VoxaLog("[Voxa] 应用启动中...")
         
         // Initialize app state
         appState = AppState()
-        NSLog("[Voxa] AppState 初始化完成")
+        VoxaLog("[Voxa] AppState 初始化完成")
         
         // Initialize panel controller
         panelController = PanelController(appState: appState)
-        NSLog("[Voxa] PanelController 初始化完成")
+        VoxaLog("[Voxa] PanelController 初始化完成")
         
         // Initialize audio capture
         audioCapture = AudioCapture()
-        NSLog("[Voxa] AudioCapture 初始化完成")
+        VoxaLog("[Voxa] AudioCapture 初始化完成")
         
         // Initialize ASR client
         asrClient = AsrClient(appState: appState)
-        NSLog("[Voxa] AsrClient 初始化完成")
+        VoxaLog("[Voxa] AsrClient 初始化完成")
         
         // Initialize hotkey manager
         hotkeyManager = HotkeyManager(
@@ -46,11 +46,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             audioCapture: audioCapture,
             asrClient: asrClient
         )
-        NSLog("[Voxa] HotkeyManager 初始化完成")
+        VoxaLog("[Voxa] HotkeyManager 初始化完成")
         
         // Setup menu bar
         setupMenuBar()
-        NSLog("[Voxa] 菜单栏设置完成")
+        VoxaLog("[Voxa] 菜单栏设置完成")
         
         // Setup main menu
         setupMainMenu()
@@ -58,8 +58,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Check permissions
         checkPermissions()
         
-        NSLog("[Voxa] 应用启动完成！按 Option+Space 开始录音")
-        NSLog("[Voxa] 也可以在菜单栏点击 Voxa 图标开始")
+        VoxaLog("[Voxa] 应用启动完成！按 Option+Space 开始录音")
+        VoxaLog("[Voxa] 也可以在菜单栏点击 Voxa 图标开始")
     }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
@@ -101,6 +101,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if let button = statusItem?.button {
             button.image = NSImage(systemSymbolName: "waveform", accessibilityDescription: "Voxa")
+        }
+        
+        // Set log file path for user reference
+        let fileManager = FileManager.default
+        let possibleLogPaths = [
+            fileManager.currentDirectoryPath + "/logs/voxa.log",
+            fileManager.homeDirectoryForCurrentUser.path + "/.voxa/logs/voxa.log",
+            "/tmp/voxa-logs/voxa.log"
+        ]
+        for path in possibleLogPaths {
+            if fileManager.fileExists(atPath: path) {
+                VoxaLog("[Voxa] 日志文件: \(path)")
+                break
+            }
         }
         
         let menu = NSMenu()
@@ -166,7 +180,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Check accessibility permission
         let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true] as CFDictionary
         if !AXIsProcessTrustedWithOptions(options) {
-            NSLog("[Voxa] 辅助功能权限未授予")
+            VoxaLog("[Voxa] 辅助功能权限未授予")
         }
     }
     

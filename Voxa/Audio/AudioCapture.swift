@@ -53,7 +53,7 @@ actor AudioCapture {
             try engine?.start()
             isRunning = true
         } catch {
-            NSLog("Failed to start audio engine: \(error)")
+            VoxaLog("Failed to start audio engine: \(error)")
         }
     }
     
@@ -116,7 +116,7 @@ actor AudioCapture {
         converter.convert(to: outputBuffer, error: &error, withInputFrom: inputBlock)
         
         if let error = error {
-            NSLog("Conversion error: \(error)")
+            VoxaLog("Conversion error: \(error)")
             return
         }
         

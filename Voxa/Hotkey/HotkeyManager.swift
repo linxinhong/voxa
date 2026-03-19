@@ -29,10 +29,10 @@ class HotkeyManager {
         if let shortcutString = ProcessInfo.processInfo.environment["VOXA_SHORTCUT"],
            let config = ShortcutConfig(from: shortcutString) {
             self.currentConfig = config
-            NSLog("[Voxa] 从环境变量读取快捷键配置: \(config.displayString)")
+            VoxaLog("[Voxa] 从环境变量读取快捷键配置: \(config.displayString)")
         } else {
             self.currentConfig = .default
-            NSLog("[Voxa] 使用默认快捷键: \(ShortcutConfig.default.displayString)")
+            VoxaLog("[Voxa] 使用默认快捷键: \(ShortcutConfig.default.displayString)")
         }
         
         setupHotkey()
@@ -42,8 +42,8 @@ class HotkeyManager {
     func updateShortcut(_ config: ShortcutConfig) -> Bool {
         // 检查是否包含 fn 键
         if config.modifiers.contains("function") {
-            NSLog("[Voxa] 警告: fn 键在 macOS 上通常不能作为全局热键的修饰键")
-            NSLog("[Voxa] 建议使用 ctrl+space, ctrl+option+space 或 ctrl+cmd+space 替代")
+            VoxaLog("[Voxa] 警告: fn 键在 macOS 上通常不能作为全局热键的修饰键")
+            VoxaLog("[Voxa] 建议使用 ctrl+space, ctrl+option+space 或 ctrl+cmd+space 替代")
             // 仍然尝试注册，但可能不工作
         }
         
@@ -52,7 +52,7 @@ class HotkeyManager {
         
         // 设置新的热键
         guard let key = config.hotKey else {
-            NSLog("[Voxa] 无效的快捷键 key: \(config.key)")
+            VoxaLog("[Voxa] 无效的快捷键 key: \(config.key)")
             return false
         }
         
@@ -60,12 +60,12 @@ class HotkeyManager {
         
         hotKey = HotKey(key: key, modifiers: modifiers)
         hotKey?.keyDownHandler = { [weak self] in
-            NSLog("[Voxa] 热键触发: \(config.displayString)")
+            VoxaLog("[Voxa] 热键触发: \(config.displayString)")
             self?.toggle()
         }
         
         currentConfig = config
-        NSLog("[Voxa] 热键已更新为: \(config.displayString)")
+        VoxaLog("[Voxa] 热键已更新为: \(config.displayString)")
         return true
     }
     
@@ -126,14 +126,14 @@ class HotkeyManager {
             
             // 如果开启润色，执行润色
             if appState.polishEnabled && !finalText.isEmpty {
-                NSLog("[Voxa] 开始润色文本...")
+                VoxaLog("[Voxa] 开始润色文本...")
                 let polishedText = await Polisher.polish(finalText)
                 if polishedText != finalText {
-                    NSLog("[Voxa] 润色完成")
-                    NSLog("[Voxa] 原文: \(finalText)")
-                    NSLog("[Voxa] 润色: \(polishedText)")
+                    VoxaLog("[Voxa] 润色完成")
+                    VoxaLog("[Voxa] 原文: \(finalText)")
+                    VoxaLog("[Voxa] 润色: \(polishedText)")
                 } else {
-                    NSLog("[Voxa] 润色后无变化")
+                    VoxaLog("[Voxa] 润色后无变化")
                 }
                 finalText = polishedText
             }

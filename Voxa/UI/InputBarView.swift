@@ -252,7 +252,7 @@ struct CursorTrackingTextView: NSViewRepresentable {
             guard !isSyncingFromAppState else { return }
             isSyncingFromAppState = true
             
-            NSLog("[UI] 同步文本到 TextView: \"\(text.prefix(50))\(text.count > 50 ? "..." : "")\"")
+            VoxaLog("[UI] 同步文本到 TextView: \"\(text.prefix(50))\(text.count > 50 ? "..." : "")\"")
             
             // 保存当前光标位置
             let currentPosition = textView.selectedRange.location

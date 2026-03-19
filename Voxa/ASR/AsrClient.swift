@@ -35,7 +35,7 @@ actor AsrClient: NSObject {
         guard !isConnected else { return }
         
         guard !apiKey.isEmpty else {
-            NSLog("Error: DASHSCOPE_API_KEY not set")
+            VoxaLog("Error: DASHSCOPE_API_KEY not set")
             return
         }
         
@@ -56,9 +56,10 @@ actor AsrClient: NSObject {
             let data = try JSONEncoder().encode(runTask)
             if let json = String(data: data, encoding: .utf8) {
                 try await webSocketTask?.send(.string(json))
+                VoxaLog("[ASR] 发送 run-task: \(json)")
             }
         } catch {
-            NSLog("Failed to send run-task: \(error)")
+            VoxaLog("Failed to send run-task: \(error)")
         }
         
         // Start receiving
@@ -74,9 +75,10 @@ actor AsrClient: NSObject {
             let data = try JSONEncoder().encode(finishTask)
             if let json = String(data: data, encoding: .utf8) {
                 try await webSocketTask?.send(.string(json))
+                VoxaLog("[ASR] 发送 finish-task")
             }
         } catch {
-            NSLog("Failed to send finish-task: \(error)")
+            VoxaLog("Failed to send finish-task: \(error)")
         }
         
         webSocketTask?.cancel(with: .normalClosure, reason: nil)
@@ -92,7 +94,7 @@ actor AsrClient: NSObject {
         do {
             try await webSocketTask?.send(.data(data))
         } catch {
-            NSLog("Failed to send audio: \(error)")
+            VoxaLog("Failed to send audio: \(error)")
         }
     }
     
@@ -122,7 +124,7 @@ actor AsrClient: NSObject {
             receiveMessage()
             
         case .failure(let error):
-            NSLog("WebSocket error: \(error)")
+            VoxaLog("WebSocket error: \(error)")
             isConnected = false
         }
     }
@@ -135,41 +137,41 @@ actor AsrClient: NSObject {
         do {
             let response = try JSONDecoder().decode(AsrResponse.self, from: data)
             
-            NSLog("[ASR] event: \(response.header.event)")
+            VoxaLog("[ASR] event: \(response.header.event)")
             
             switch response.header.event {
             case "task-started":
                 isConnected = true
-                NSLog("ASR task started")
+                VoxaLog("ASR task started")
                 
             case "task-finished":
                 isConnected = false
-                NSLog("ASR task finished")
+                VoxaLog("ASR task finished")
                 
             case "result-generated":
-                NSLog("[ASR] result-generated, payload: \(response.payload != nil ? "有" : "无")")
+                VoxaLog("[ASR] result-generated, payload: \(response.payload != nil ? "有" : "无")")
                 if let output = response.payload?.output {
-                    NSLog("[ASR] output: \(output)")
                     if let sentence = output.sentence {
+                        VoxaLog("[ASR] output.sentence: \(sentence)")
                         handleSentence(sentence)
                     } else {
-                        NSLog("[ASR] sentence 为空")
+                        VoxaLog("[ASR] sentence 为空")
                     }
                 } else {
-                    NSLog("[ASR] payload 或 output 为空")
+                    VoxaLog("[ASR] payload 或 output 为空")
                 }
                 
             case "error":
                 if let errorCode = response.header.error_code {
-                    NSLog("ASR error: \(errorCode) - \(response.header.error_message ?? "")")
+                    VoxaLog("ASR error: \(errorCode) - \(response.header.error_message ?? "")")
                 }
                 
             default:
-                NSLog("[ASR] 未知事件: \(response.header.event)")
+                VoxaLog("[ASR] 未知事件: \(response.header.event)")
             }
         } catch {
-            NSLog("Failed to decode response: \(error)")
-            NSLog("[ASR] 原始数据: \(text)")
+            VoxaLog("Failed to decode response: \(error)")
+            VoxaLog("[ASR] 原始数据: \(text)")
         }
     }
     
@@ -182,16 +184,17 @@ actor AsrClient: NSObject {
         let text = sentence.text
         let isFinal = sentence.sentence_end ?? false
         
-        NSLog("[ASR] 收到识别结果: \"\(text)\", isFinal: \(isFinal)")
+        VoxaLog("[ASR] 收到识别结果: \"\(text)\", isFinal: \(isFinal)")
         
         Task { @MainActor in
             if isFinal {
                 // Final 结果：在光标位置插入并清洗
                 appState.appendFinal(text)
-                NSLog("[ASR] 已追加 final 文本: \"\(text)\"")
+                VoxaLog("[ASR] 已追加 final 文本: \"\(text)\"")
             } else {
                 // Partial 结果：在光标位置插入
                 appState.updatePartial(text)
+                VoxaLog("[ASR] 已更新 partial 文本: \"\(text)\"")
             }
         }
     }
@@ -213,11 +216,11 @@ extension AsrClient: URLSessionWebSocketDelegate {
     }
     
     private func handleConnected() {
-        NSLog("WebSocket connected")
+        VoxaLog("WebSocket connected")
     }
     
     private func handleDisconnected() {
-        NSLog("WebSocket disconnected")
+        VoxaLog("WebSocket disconnected")
         isConnected = false
     }
 }
