@@ -179,12 +179,16 @@ struct TextEditorRepresentable: NSViewRepresentable {
         let textContainer = textView.textContainer!
         layoutManager.ensureLayout(for: textContainer)
         let usedRect = layoutManager.usedRect(for: textContainer)
-        let newHeight = max(24, usedRect.height + 16)  // 增加 padding
+        let newHeight = max(24, usedRect.height + 16)
         if abs(textView.frame.height - newHeight) > 1 {
             textView.frame.size.height = newHeight
             scrollView.frame.size.height = newHeight
-            // 同步更新 SwiftUI 偏好大小
-            scrollView.invalidateIntrinsicContentSize()
+            // 通知窗口调整高度
+            NotificationCenter.default.post(
+                name: .textHeightDidChange,
+                object: nil,
+                userInfo: ["height": newHeight]
+            )
         }
     }
     

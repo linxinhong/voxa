@@ -74,62 +74,39 @@ class PanelController {
         panel.contentMinSize = NSSize(width: 440, height: 60)
         panel.contentMaxSize = NSSize(width: 440, height: 400)
         
-        // 使用计时器定期检查高度变化
-        startHeightMonitor()
+        // 监听文本高度变化通知
+        setupHeightObserver()
         
         self.panel = panel
     }
     
-    private var heightCheckTimer: Timer?
-    private var lastTextHeight: CGFloat = 24
-    
-    private func startHeightMonitor() {
-        heightCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
-            self?.checkAndUpdateHeight()
-        }
+    private func setupHeightObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleHeightChange(_:)),
+            name: .textHeightDidChange,
+            object: nil
+        )
     }
     
-    private func checkAndUpdateHeight() {
-        guard let panel = panel else { return }
+    @objc private func handleHeightChange(_ notification: Notification) {
+        guard let panel = panel,
+              let textHeight = notification.userInfo?["height"] as? CGFloat else { return }
         
-        // 找到 NSTextView 并获取其实际高度
-        if let textView = findTextView(in: panel.contentView) {
-            let textHeight = textView.frame.height
-            
-            if abs(textHeight - lastTextHeight) > 1 {
-                lastTextHeight = textHeight
-                
-                // 计算总高度：padding(10) + 第一行(约30) + spacing(6) + 输入框高度 + padding(10)
-                let totalHeight = 10 + 30 + 6 + textHeight + 10 + 10  // 额外的 padding
-                let newHeight = min(max(totalHeight, 60), 400)
-                
-                var frame = panel.frame
-                if abs(frame.height - newHeight) > 5 {
-                    // 保持顶部位置不变，调整高度
-                    frame.origin.y += frame.height - newHeight
-                    frame.size.height = newHeight
-                    panel.setFrame(frame, display: true, animate: false)
-                }
-            }
-        }
-    }
-    
-    private func findTextView(in view: NSView?) -> NSTextView? {
-        guard let view = view else { return nil }
+        // 计算总高度：外部padding(10) + 第一行(约32) + spacing(6) + 第二行padding(12) + 输入框高度 + 外部padding(10)
+        let totalHeight = 10 + 32 + 6 + 12 + textHeight + 10
+        let newHeight = min(max(totalHeight, 70), 400)
         
-        for subview in view.subviews {
-            if let textView = subview as? NSTextView {
-                return textView
-            }
-            if let scrollView = subview as? NSScrollView,
-               let textView = scrollView.documentView as? NSTextView {
-                return textView
-            }
-            if let found = findTextView(in: subview) {
-                return found
-            }
-        }
-        return nil
+        var frame = panel.frame
+        // 只有变化超过5px才调整
+        guard abs(frame.height - newHeight) > 5 else { return }
+        
+        // 保持顶部位置不变，调整高度
+        frame.origin.y += frame.height - newHeight
+        frame.size.height = newHeight
+        panel.setFrame(frame, display: true, animate: false)
+        
+        VoxaLog("[Panel] 调整窗口高度: \(Int(newHeight))px (文本高度: \(Int(textHeight))px)")
     }
     
     private func makeFirstResponder(in view: NSView) {
