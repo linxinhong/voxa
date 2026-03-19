@@ -128,10 +128,14 @@ actor AsrClient: NSObject {
     }
     
     private func handleJSON(_ text: String) {
+        NSLog("[ASR] 收到 JSON: \(text.prefix(200))...")
+        
         guard let data = text.data(using: .utf8) else { return }
         
         do {
             let response = try JSONDecoder().decode(AsrResponse.self, from: data)
+            
+            NSLog("[ASR] event: \(response.header.event)")
             
             switch response.header.event {
             case "task-started":
@@ -143,8 +147,16 @@ actor AsrClient: NSObject {
                 NSLog("ASR task finished")
                 
             case "result-generated":
-                if let sentence = response.payload?.output?.sentence {
-                    handleSentence(sentence)
+                NSLog("[ASR] result-generated, payload: \(response.payload != nil ? "有" : "无")")
+                if let output = response.payload?.output {
+                    NSLog("[ASR] output: \(output)")
+                    if let sentence = output.sentence {
+                        handleSentence(sentence)
+                    } else {
+                        NSLog("[ASR] sentence 为空")
+                    }
+                } else {
+                    NSLog("[ASR] payload 或 output 为空")
                 }
                 
             case "error":
@@ -153,10 +165,11 @@ actor AsrClient: NSObject {
                 }
                 
             default:
-                break
+                NSLog("[ASR] 未知事件: \(response.header.event)")
             }
         } catch {
             NSLog("Failed to decode response: \(error)")
+            NSLog("[ASR] 原始数据: \(text)")
         }
     }
     
