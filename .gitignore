@@ -25,3 +25,11 @@ Package.resolved
 # Build artifacts
 *.app
 *.dmg
+
+# Logs
+logs/
+*.log
+
+# Local config & data
+config.json
+stats.json
