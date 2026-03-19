@@ -36,6 +36,9 @@ class AppState: ObservableObject {
     /// 是否用户正在编辑（编辑锁）
     @Published var isEditing: Bool = false
     
+    /// 是否正在润色中（锁定文本框）
+    @Published var isPolishing: Bool = false
+    
     // MARK: - Internal State
     
     /// 目标应用
@@ -134,6 +137,7 @@ class AppState: ObservableObject {
     
     /// 用户开始编辑（获取编辑锁）
     func beginEditing() {
+        guard !isPolishing else { return }  // 润色中禁止编辑
         isEditing = true
         if pendingPartial != nil || !pendingFinals.isEmpty {
             VoxaLog("[AppState] 开始编辑，暂停 ASR 更新")
@@ -159,6 +163,20 @@ class AppState: ObservableObject {
             cursorOffset = confirmedText.count
             pendingFinals = []
         }
+    }
+    
+    /// 开始润色：锁定文本框
+    func startPolishing() {
+        isPolishing = true
+        VoxaLog("[AppState] 开始润色，锁定文本框")
+    }
+    
+    /// 完成润色：替换文本，光标定位到最后，解锁
+    func finishPolishing(_ polishedText: String) {
+        confirmedText = polishedText
+        cursorOffset = polishedText.count  // 光标定位到最后
+        isPolishing = false
+        VoxaLog("[AppState] 润色完成，光标定位到 \(cursorOffset)")
     }
     
     /// 停止录音时的处理：如果有 pending 未确认，自动追加到末尾

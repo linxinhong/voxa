@@ -12,92 +12,22 @@ import Combine
 struct InputBarView: View {
     @ObservedObject var appState: AppState
     
-    /// 润色 partial 文本
-    func polishPartial() async {
-        let textToPolish = appState.partialText
-        guard !textToPolish.isEmpty else { return }
-        
-        let polished = await Polisher.polish(textToPolish)
-        if polished != textToPolish {
-            appState.partialText = polished
-        }
-    }
-    
     var body: some View {
-        HStack(alignment: .top, spacing: 12) {
-            // 🎤 录音指示器（麦克风图标）
-            Image(systemName: "mic.fill")
-                .font(.system(size: 16))
-                .foregroundColor(appState.isRecording ? .green : .gray)
-                .frame(width: 24, height: 24)
-                .padding(.top, 4)
+        VStack(alignment: .leading, spacing: 4) {
+            // 第1行：Partial（浅灰背景 + 右侧麦克风）
+            PartialRowView(
+                partialText: appState.partialText,
+                hasPending: appState.hasPending,
+                isRecording: appState.isRecording
+            )
+            .frame(maxWidth: .infinity)
             
-            VStack(alignment: .leading, spacing: 4) {
-                // 第1行：Partial 区域（灰色，只读）+ ⬇ 按钮
-                // Partial 区域：浅灰背景 + 文本 + 星星润色按钮
-                HStack(spacing: 8) {
-                    // Partial 文本
-                    PartialTextView(
-                        text: appState.partialText,
-                        minHeight: 20
-                    )
-                    .frame(maxWidth: .infinity, minHeight: 20)
-                    
-                    // 右侧图标区域
-                    HStack(spacing: 4) {
-                        // 绿色闪烁图标（final 时）
-                        if appState.hasPending {
-                            Image(systemName: "checkmark.circle.fill")
-                                .font(.system(size: 16))
-                                .foregroundColor(.green)
-                                .transition(.opacity)
-                                .animation(.easeInOut(duration: 0.15).repeatCount(3, autoreverses: true), value: appState.hasPending)
-                        }
-                        
-                        // 星星润色按钮（点击润色 partial 文本）
-                        if !appState.partialText.isEmpty {
-                            Button(action: {
-                                Task {
-                                    await polishPartial()
-                                }
-                            }) {
-                                Image(systemName: "sparkles")
-                                    .font(.system(size: 14))
-                                    .foregroundColor(.orange)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            .help("润色当前文本")
-                        }
-                    }
-                }
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.gray.opacity(0.15))
-                .cornerRadius(6)
-                .frame(maxWidth: .infinity, minHeight: 28)
-                // 空时隐藏但保持空间
-                .opacity(appState.partialText.isEmpty && !appState.hasPending ? 0 : 1)
-                
-                // 第2行：Confirmed 区域（黑色，可编辑）
-                ConfirmedTextView(
-                    text: $appState.confirmedText,
-                    cursorOffset: $appState.cursorOffset,
-                    minHeight: 24,
-                    maxHeight: 120
-                )
-                .frame(maxWidth: .infinity)
-            }
-            
-            // ✨ 润色开关
-            Button(action: {
-                appState.polishEnabled.toggle()
-            }) {
-                Image(systemName: appState.polishEnabled ? "sparkles" : "sparkles.slash")
-                    .foregroundColor(appState.polishEnabled ? .yellow : .gray)
-            }
-            .buttonStyle(PlainButtonStyle())
-            .help(appState.polishEnabled ? "润色已开启" : "润色已关闭")
-            .padding(.top, 4)
+            // 第2行：Confirmed（白色背景）+ 星星按钮
+            ConfirmedRowView(
+                appState: appState,
+                onPolish: polishPartial
+            )
+            .frame(maxWidth: .infinity)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
@@ -108,45 +38,131 @@ struct InputBarView: View {
         )
         .frame(minWidth: 400, maxWidth: 600)
     }
+    
+    /// 润色 partial 文本并全量更新 confirmedText（带锁定）
+    func polishPartial() async {
+        let textToPolish = appState.partialText
+        guard !textToPolish.isEmpty else { return }
+        
+        // 1. 开始润色：锁定文本框
+        appState.startPolishing()
+        
+        // 2. 执行润色
+        let polished = await Polisher.polish(textToPolish)
+        
+        // 3. 完成润色：替换文本，光标定位到最后，解锁
+        appState.finishPolishing(polished)
+    }
 }
 
-// MARK: - 第1行：Partial 文本视图（灰色，只读，整句覆盖）
+// MARK: - 第1行：Partial（浅灰背景）
 
-struct PartialTextView: NSViewRepresentable {
-    let text: String
-    let minHeight: CGFloat
+struct PartialRowView: View {
+    let partialText: String
+    let hasPending: Bool
+    let isRecording: Bool
     
-    func makeNSView(context: Context) -> NSTextField {
-        let textField = NSTextField()
-        textField.isEditable = false
-        textField.isSelectable = false
-        textField.isBordered = false
-        textField.backgroundColor = .clear
-        textField.font = NSFont.systemFont(ofSize: 14)
-        textField.textColor = NSColor.darkGray
-        textField.lineBreakMode = .byTruncatingTail
-        return textField
-    }
-    
-    func updateNSView(_ nsView: NSTextField, context: Context) {
-        if nsView.stringValue != text {
-            nsView.stringValue = text
+    var body: some View {
+        HStack(spacing: 8) {
+            // Partial 文本（黑色，背景是灰色）
+            Text(partialText.isEmpty ? " " : partialText)
+                .font(.system(size: 14))
+                .foregroundColor(.black)
+                .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            // 右侧：麦克风图标（常驻）
+            if hasPending {
+                // Final 到达：绿色闪烁
+                Image(systemName: "mic.fill")
+                    .font(.system(size: 14))
+                    .foregroundColor(.green)
+                    .transition(.opacity)
+                    .animation(.easeInOut(duration: 0.15).repeatCount(3, autoreverses: true), value: hasPending)
+            } else {
+                // 常驻灰色麦克风，有 partial 时闪烁
+                MicBlinkingView(hasContent: !partialText.isEmpty)
+            }
         }
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .background(Color.gray.opacity(0.15))
+        .cornerRadius(6)
+        .frame(minHeight: 28)
     }
 }
 
-// MARK: - 第2行：Confirmed 文本视图（黑色，可编辑）
+// 麦克风闪烁视图（灰色-绿色-灰色-绿色）
+struct MicBlinkingView: View {
+    let hasContent: Bool
+    @State private var isGreen = false
+    
+    var body: some View {
+        Image(systemName: "mic.fill")
+            .font(.system(size: 14))
+            .foregroundColor(isGreen ? .green : .gray)
+            .onChange(of: hasContent) { newValue in
+                if newValue {
+                    // 有内容时开始闪烁
+                    withAnimation(.easeInOut(duration: 0.3).repeatForever(autoreverses: true)) {
+                        isGreen = true
+                    }
+                } else {
+                    // 无内容时停止闪烁，恢复灰色
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        isGreen = false
+                    }
+                }
+            }
+    }
+}
+
+// MARK: - 第2行：Confirmed（白色背景 + 星星按钮）
+
+struct ConfirmedRowView: View {
+    @ObservedObject var appState: AppState
+    let onPolish: () async -> Void
+    
+    var body: some View {
+        HStack(spacing: 8) {
+            // Confirmed 文本编辑区（润色时锁定）
+            ConfirmedTextView(
+                text: $appState.confirmedText,
+                cursorOffset: $appState.cursorOffset,
+                isEditable: !appState.isPolishing
+            )
+            .frame(maxWidth: .infinity)
+            
+            // 星星润色按钮（常驻橙色，点击润色并全量更新）
+            Button(action: {
+                Task { await onPolish() }
+            }) {
+                Image(systemName: "sparkles")
+                    .font(.system(size: 14))
+                    .foregroundColor(.orange)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .help("润色当前文本并替换全部内容")
+        }
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .background(Color.white)
+        .cornerRadius(6)
+        .frame(minHeight: 28)
+    }
+}
+
+// MARK: - Confirmed 文本编辑视图
 
 struct ConfirmedTextView: NSViewRepresentable {
     @Binding var text: String
     @Binding var cursorOffset: Int
-    let minHeight: CGFloat
-    let maxHeight: CGFloat
+    let isEditable: Bool
     
     func makeNSView(context: Context) -> NSScrollView {
         let textView = NSTextView()
         textView.delegate = context.coordinator
-        textView.isEditable = true
+        textView.isEditable = isEditable
         textView.isSelectable = true
         textView.font = NSFont.systemFont(ofSize: 16)
         textView.textColor = NSColor.black
@@ -155,10 +171,13 @@ struct ConfirmedTextView: NSViewRepresentable {
         textView.usesFontPanel = false
         textView.usesInspectorBar = false
         
-        // 初始 frame
-        textView.frame = NSRect(x: 0, y: 0, width: 300, height: 24)
+        // 启用标准编辑行为（Cmd+A/C/V/X 等）
+        textView.allowsUndo = true
+        textView.isAutomaticQuoteSubstitutionEnabled = false
+        textView.isAutomaticDashSubstitutionEnabled = false
+        textView.isAutomaticTextReplacementEnabled = false
         
-        // 垂直可扩展
+        textView.frame = NSRect(x: 0, y: 0, width: 300, height: 24)
         textView.isVerticallyResizable = true
         textView.isHorizontallyResizable = false
         textView.textContainer?.widthTracksTextView = true
@@ -169,8 +188,6 @@ struct ConfirmedTextView: NSViewRepresentable {
         )
         textView.textContainerInset = NSSize(width: 0, height: 2)
         textView.autoresizingMask = [.width]
-        
-        // 初始文本
         textView.string = text
         
         let scrollView = NSScrollView()
@@ -187,7 +204,6 @@ struct ConfirmedTextView: NSViewRepresentable {
         context.coordinator.textView = textView
         context.coordinator.scrollView = scrollView
         
-        // 监听选择变化（光标位置）
         NotificationCenter.default.addObserver(
             context.coordinator,
             selector: #selector(Coordinator.selectionDidChange),
@@ -195,7 +211,6 @@ struct ConfirmedTextView: NSViewRepresentable {
             object: textView
         )
         
-        // 监听文本变化
         NotificationCenter.default.addObserver(
             context.coordinator,
             selector: #selector(Coordinator.textDidChange),
@@ -209,7 +224,10 @@ struct ConfirmedTextView: NSViewRepresentable {
     func updateNSView(_ nsView: NSScrollView, context: Context) {
         guard let textView = nsView.documentView as? NSTextView else { return }
         
-        // 同步 confirmedText，并设置光标到正确位置
+        // 更新可编辑状态
+        textView.isEditable = isEditable
+        
+        // 同步文本
         if textView.string != text {
             context.coordinator.syncText(text, cursorPosition: cursorOffset)
         }
@@ -238,7 +256,6 @@ struct ConfirmedTextView: NSViewRepresentable {
             guard let textView = textView,
                   notification.object as? NSTextView === textView else { return }
             
-            // 更新光标位置
             let newOffset = textView.selectedRange.location
             Task { @MainActor in
                 if newOffset != self.parent.cursorOffset {
@@ -252,41 +269,31 @@ struct ConfirmedTextView: NSViewRepresentable {
                   notification.object as? NSTextView === textView,
                   !isSyncing else { return }
             
-            // 用户正在编辑，通知 AppState
-            Task { @MainActor in
-                // 触发编辑锁
-                // Note: 需要在 AppState 中处理编辑锁
-            }
+            // 润色中时不更新
+            guard self.parent.isEditable else { return }
             
-            // 同步文本到 parent
             let newText = textView.string
             Task { @MainActor in
                 self.parent.text = newText
             }
             
-            // 更新高度
             updateHeight()
         }
         
-        /// 从外部同步文本，并设置光标位置
         func syncText(_ text: String, cursorPosition: Int) {
             guard let textView = textView else { return }
             guard !isSyncing else { return }
             
             isSyncing = true
             
-            // 更新文本
             textView.string = text
             
-            // 设置光标到指定位置（确保不超过文本长度）
             let validPosition = min(cursorPosition, text.count)
             textView.setSelectedRange(NSRange(location: validPosition, length: 0))
             
-            // 强制刷新
             textView.layoutManager?.ensureLayout(for: textView.textContainer!)
             textView.needsDisplay = true
             
-            // 更新高度
             updateHeight()
             
             isSyncing = false

@@ -124,7 +124,13 @@ actor AsrClient: NSObject {
             receiveMessage()
             
         case .failure(let error):
-            VoxaLog("WebSocket error: \(error)")
+            // 忽略 socket 已断开的错误（正常关闭时的竞态条件）
+            let nsError = error as NSError
+            if nsError.domain == NSPOSIXErrorDomain && nsError.code == 57 {
+                // Socket is not connected - 正常关闭，忽略
+            } else {
+                VoxaLog("WebSocket error: \(error)")
+            }
             isConnected = false
         }
     }
