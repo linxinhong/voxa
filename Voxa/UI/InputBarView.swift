@@ -11,19 +11,23 @@ struct InputBarView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            // 第1行：Partial（mic放左边，垂直居中）
+            // 第1行：Partial（mic左对齐，文本居中）
             HStack(alignment: .center, spacing: 8) {
                 Image(systemName: "mic.fill")
                     .font(.system(size: 12))
                     .foregroundColor(appState.hasPending ? .green : (appState.partialText.isEmpty ? .gray : .green))
                     .frame(width: 16, height: 16)
+                
                 Text(appState.partialText.isEmpty ? " " : appState.partialText)
                     .font(.system(size: 14))
                     .foregroundColor(.black)
                     .lineLimit(1)
-                Spacer()
+                    .frame(maxWidth: .infinity, alignment: .center)
+                
+                // 右侧占位，保持与左侧mic同宽，使文本真正居中
+                Color.clear
+                    .frame(width: 16, height: 16)
             }
-            .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(Color.gray.opacity(0.15))
             .cornerRadius(6)
@@ -46,12 +50,12 @@ struct InputBarView: View {
                     .cornerRadius(4)
                     .frame(minWidth: 50)
             }
-            .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(Color.white)
             .cornerRadius(8)
         }
-        .padding(12)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 12)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color.white)
