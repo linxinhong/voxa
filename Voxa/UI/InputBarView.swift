@@ -2,84 +2,58 @@
 //  InputBarView.swift
 //  Voxa
 //
-//  SwiftUI view for the floating input bar.
-//
 
 import SwiftUI
 import AppKit
-import Combine
 
 struct InputBarView: View {
     @ObservedObject var appState: AppState
     
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            // 第1行：Partial（浅灰背景）
-            HStack(spacing: 8) {
+            // 第1行：Partial
+            HStack {
                 Text(appState.partialText.isEmpty ? " " : appState.partialText)
                     .font(.system(size: 14))
                     .foregroundColor(.black)
                     .lineLimit(1)
-                
                 Spacer()
-                
-                // 麦克风图标
-                if appState.hasPending {
-                    Image(systemName: "mic.fill")
-                        .font(.system(size: 12))
-                        .foregroundColor(.green)
-                } else {
-                    Image(systemName: "mic.fill")
-                        .font(.system(size: 12))
-                        .foregroundColor(appState.partialText.isEmpty ? .gray : .green)
-                }
+                Image(systemName: "mic.fill")
+                    .font(.system(size: 12))
+                    .foregroundColor(appState.hasPending ? .green : (appState.partialText.isEmpty ? .gray : .green))
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(Color.gray.opacity(0.15))
             .cornerRadius(6)
             
-            // 第2行：Confirmed（白色背景 + 星星）
-            HStack(spacing: 8) {
-                // NSTextView 包装
-                TextEditorView(
+            // 第2行：Confirmed（NSTextView，自动增高）
+            HStack(alignment: .top) {
+                TextEditorRepresentable(
                     text: $appState.confirmedText,
                     cursorOffset: $appState.cursorOffset,
                     isEditable: !appState.isPolishing
                 )
-                .frame(height: max(24, min(120, estimateHeight(appState.confirmedText))))
                 
-                // 星星按钮
                 PolishButton(isPolishing: appState.isPolishing) {
-                    await polishPartial()
+                    await polishConfirmed()
                 }
+                .padding(.top, 2)
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(Color.white)
             .cornerRadius(6)
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
-        .background(
-            Color.white
-                .cornerRadius(12)
-                .shadow(radius: 4)
-        )
-        .frame(width: 450)
+        .padding(12)
+        .background(Color.white.cornerRadius(12).shadow(radius: 4))
+        .frame(width: 440)
     }
     
-    func estimateHeight(_ text: String) -> CGFloat {
-        let lineCount = text.split(separator: "\n").count
-        return CGFloat(lineCount) * 20 + 8
-    }
-    
-    func polishPartial() async {
-        let textToPolish = appState.confirmedText
-        guard !textToPolish.isEmpty else { return }
-        
+    func polishConfirmed() async {
+        guard !appState.confirmedText.isEmpty else { return }
         appState.startPolishing()
-        let polished = await Polisher.polish(textToPolish)
+        let polished = await Polisher.polish(appState.confirmedText)
         appState.finishPolishing(polished)
     }
 }
@@ -89,61 +63,60 @@ struct InputBarView: View {
 struct PolishButton: View {
     let isPolishing: Bool
     let action: () async -> Void
-    @State private var isBlinking = false
+    @State private var blink = false
     
     var body: some View {
-        Button(action: {
-            Task { await action() }
-        }) {
+        Button(action: { Task { await action() } }) {
             Image(systemName: "sparkles")
                 .font(.system(size: 14))
                 .foregroundColor(.orange)
-                .opacity(isBlinking ? 0.3 : 1.0)
+                .opacity(blink ? 0.3 : 1)
         }
         .buttonStyle(PlainButtonStyle())
         .disabled(isPolishing)
-        .onChange(of: isPolishing) { polishing in
-            if polishing {
-                withAnimation(.easeInOut(duration: 0.3).repeatForever(autoreverses: true)) {
-                    isBlinking = true
-                }
-            } else {
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    isBlinking = false
-                }
+        .onChange(of: isPolishing) { p in
+            withAnimation(.easeInOut(duration: 0.3).repeatForever(autoreverses: true)) {
+                blink = p
             }
         }
     }
 }
 
-// MARK: - NSTextView 包装
+// MARK: - NSTextView 包装（支持 Cmd+A/C/V/X）
 
-struct TextEditorView: NSViewRepresentable {
+struct TextEditorRepresentable: NSViewRepresentable {
     @Binding var text: String
     @Binding var cursorOffset: Int
     let isEditable: Bool
     
-    func makeNSView(context: Context) -> NSScrollView {
+    func makeNSView(context: Context) -> NSView {
+        let container = NSView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.autoresizingMask = [.width, .height]
+        
         let textView = NSTextView()
-        textView.delegate = context.coordinator
         textView.isEditable = isEditable
         textView.isSelectable = true
         textView.font = NSFont.systemFont(ofSize: 15)
-        textView.textColor = NSColor.black
+        textView.textColor = .black
         textView.backgroundColor = .white
         textView.isRichText = false
         textView.usesFontPanel = false
         textView.usesInspectorBar = false
         textView.allowsUndo = true
         
-        // 自动换行
+        // 设置初始 frame，否则可能看不到
+        textView.frame = NSRect(x: 0, y: 0, width: 360, height: 24)
+        textView.minSize = NSSize(width: 0, height: 24)
+        textView.maxSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
         textView.isVerticallyResizable = true
         textView.isHorizontallyResizable = false
         textView.textContainer?.widthTracksTextView = true
         textView.textContainer?.lineBreakMode = .byWordWrapping
-        textView.textContainer?.containerSize = NSSize(width: 0, height: CGFloat.greatestFiniteMagnitude)
+        textView.string = text
         
         let scrollView = NSScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.hasVerticalScroller = true
         scrollView.hasHorizontalScroller = false
         scrollView.autohidesScrollers = true
@@ -151,24 +124,70 @@ struct TextEditorView: NSViewRepresentable {
         scrollView.documentView = textView
         scrollView.autoresizingMask = [.width, .height]
         
-        context.coordinator.textView = textView
+        container.addSubview(scrollView)
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: container.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            scrollView.widthAnchor.constraint(greaterThanOrEqualToConstant: 360),
+            scrollView.heightAnchor.constraint(greaterThanOrEqualToConstant: 24)
+        ])
         
+        context.coordinator.textView = textView
+        context.coordinator.scrollView = scrollView
+        context.coordinator.parent = self
+        
+        // 监听文本变化
         NotificationCenter.default.addObserver(
             context.coordinator,
-            selector: #selector(Coordinator.textDidChange),
+            selector: #selector(Coordinator.textChanged),
             name: NSText.didChangeNotification,
             object: textView
         )
         
-        return scrollView
+        // 监听光标位置变化
+        NotificationCenter.default.addObserver(
+            context.coordinator,
+            selector: #selector(Coordinator.selectionChanged),
+            name: NSTextView.didChangeSelectionNotification,
+            object: textView
+        )
+        
+        // 成为 first responder
+        DispatchQueue.main.async {
+            textView.window?.makeFirstResponder(textView)
+        }
+        
+        return container
     }
     
-    func updateNSView(_ nsView: NSScrollView, context: Context) {
-        guard let textView = nsView.documentView as? NSTextView else { return }
+    func updateNSView(_ nsView: NSView, context: Context) {
+        guard let scrollView = nsView.subviews.first as? NSScrollView,
+              let textView = scrollView.documentView as? NSTextView else { return }
+        
         textView.isEditable = isEditable
+        
+        // 同步文本
         if textView.string != text {
             textView.string = text
-            textView.setSelectedRange(NSRange(location: min(cursorOffset, text.count), length: 0))
+        }
+        
+        // 同步光标位置（如果不同）
+        let currentRange = textView.selectedRange
+        if currentRange.location != cursorOffset && cursorOffset <= text.count {
+            textView.setSelectedRange(NSRange(location: cursorOffset, length: 0))
+        }
+        
+        // 自动调整容器高度
+        let layoutManager = textView.layoutManager!
+        let textContainer = textView.textContainer!
+        layoutManager.ensureLayout(for: textContainer)
+        let usedRect = layoutManager.usedRect(for: textContainer)
+        let newHeight = max(24, usedRect.height + 8)
+        if abs(textView.frame.height - newHeight) > 1 {
+            textView.frame.size.height = newHeight
+            scrollView.frame.size.height = newHeight
         }
     }
     
@@ -176,18 +195,27 @@ struct TextEditorView: NSViewRepresentable {
         Coordinator(self)
     }
     
-    class Coordinator: NSObject, NSTextViewDelegate {
-        var parent: TextEditorView
+    class Coordinator: NSObject {
+        var parent: TextEditorRepresentable!
         weak var textView: NSTextView?
+        weak var scrollView: NSScrollView?
         
-        init(_ parent: TextEditorView) {
+        init(_ parent: TextEditorRepresentable) {
             self.parent = parent
         }
         
-        @objc func textDidChange(_ notification: Notification) {
+        @objc func textChanged() {
             guard let textView = textView else { return }
             parent.text = textView.string
-            parent.cursorOffset = textView.selectedRange.location
+        }
+        
+        @objc func selectionChanged() {
+            guard let textView = textView else { return }
+            // 同步光标位置到 AppState
+            let newOffset = textView.selectedRange.location
+            if newOffset >= 0 && newOffset != parent.cursorOffset {
+                parent.cursorOffset = newOffset
+            }
         }
     }
 }
