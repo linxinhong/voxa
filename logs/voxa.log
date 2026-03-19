@@ -2079,3 +2079,1100 @@
 [2026-03-19 14:07:25.433] [ASR] 发送 run-task: {"payload":{"task":"asr","task_group":"audio","function":"recognition","parameters":{"format":"pcm","enable_intermediate_result":true,"sample_rate":16000,"enable_punctuation_prediction":true,"enable_inverse_text_normalization":true},"model":"paraformer-realtime-v2","input":{}},"header":{"action":"run-task","streaming":"duplex","task_id":"1DD00F01-791C-441F-99D8-4998B9AFEBFD"}}
 [2026-03-19 14:07:25.491] [ASR] event: task-started
 [2026-03-19 14:07:25.492] ASR task started
+[2026-03-19 14:07:32.028] [ASR] event: result-generated
+[2026-03-19 14:07:32.029] [ASR] result-generated, payload: 有
+[2026-03-19 14:07:32.029] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:07:32.029] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:07:32.029] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:07:32.095] [ASR] event: result-generated
+[2026-03-19 14:07:32.096] [ASR] result-generated, payload: 有
+[2026-03-19 14:07:32.096] [ASR] output.sentence: AsrSentence(text: "你要是", sentence_end: Optional(false))
+[2026-03-19 14:07:32.097] [ASR] 收到识别结果: "你要是", isFinal: false
+[2026-03-19 14:07:32.097] [AppState] updatePartial: confirmed=0字, partial=3字
+[2026-03-19 14:07:32.097] [ASR] 已更新 partial 文本: "你要是"
+[2026-03-19 14:07:32.286] [ASR] event: result-generated
+[2026-03-19 14:07:32.286] [ASR] result-generated, payload: 有
+[2026-03-19 14:07:32.286] [ASR] output.sentence: AsrSentence(text: "你要是", sentence_end: Optional(false))
+[2026-03-19 14:07:32.286] [ASR] 收到识别结果: "你要是", isFinal: false
+[2026-03-19 14:07:32.287] [ASR] 已更新 partial 文本: "你要是"
+[2026-03-19 14:07:32.906] [ASR] event: result-generated
+[2026-03-19 14:07:32.906] [ASR] result-generated, payload: 有
+[2026-03-19 14:07:32.907] [ASR] output.sentence: AsrSentence(text: "你要是因为", sentence_end: Optional(false))
+[2026-03-19 14:07:32.907] [ASR] 收到识别结果: "你要是因为", isFinal: false
+[2026-03-19 14:07:32.907] [AppState] updatePartial: confirmed=0字, partial=5字
+[2026-03-19 14:07:32.907] [ASR] 已更新 partial 文本: "你要是因为"
+[2026-03-19 14:07:34.013] [ASR] event: result-generated
+[2026-03-19 14:07:34.013] [ASR] result-generated, payload: 有
+[2026-03-19 14:07:34.014] [ASR] output.sentence: AsrSentence(text: "你就是因为我加上那。", sentence_end: Optional(true))
+[2026-03-19 14:07:34.014] [ASR] 收到识别结果: "你就是因为我加上那。", isFinal: true
+[2026-03-19 14:07:34.014] [AppState] applyFinal: added="你因为我加上那。", confirmed="你因为我加上那。"
+[2026-03-19 14:07:34.014] [ASR] 已追加 final 文本: "你就是因为我加上那。"
+[2026-03-19 14:07:37.035] [ASR] event: result-generated
+[2026-03-19 14:07:37.035] [ASR] result-generated, payload: 有
+[2026-03-19 14:07:37.035] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:07:37.035] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:07:37.036] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:07:37.509] [ASR] event: result-generated
+[2026-03-19 14:07:37.509] [ASR] result-generated, payload: 有
+[2026-03-19 14:07:37.509] [ASR] output.sentence: AsrSentence(text: "然之，", sentence_end: Optional(false))
+[2026-03-19 14:07:37.510] [ASR] 收到识别结果: "然之，", isFinal: false
+[2026-03-19 14:07:37.510] [AppState] updatePartial: confirmed=8字, partial=3字
+[2026-03-19 14:07:37.510] [ASR] 已更新 partial 文本: "然之，"
+[2026-03-19 14:07:38.138] [ASR] event: result-generated
+[2026-03-19 14:07:38.139] [ASR] result-generated, payload: 有
+[2026-03-19 14:07:38.139] [ASR] output.sentence: AsrSentence(text: "然之你可睇。", sentence_end: Optional(true))
+[2026-03-19 14:07:38.139] [ASR] 收到识别结果: "然之你可睇。", isFinal: true
+[2026-03-19 14:07:38.140] [AppState] applyFinal: added="然之你可睇。", confirmed="你因为我加上那。然之你可睇。"
+[2026-03-19 14:07:38.140] [ASR] 已追加 final 文本: "然之你可睇。"
+[2026-03-19 14:10:01.875] [Voxa] 应用启动中...
+[2026-03-19 14:10:01.876] [Voxa] AppState 初始化完成
+[2026-03-19 14:10:01.876] [Voxa] PanelController 初始化完成
+[2026-03-19 14:10:01.876] [Voxa] AudioCapture 初始化完成
+[2026-03-19 14:10:01.876] [Voxa] AsrClient 初始化完成
+[2026-03-19 14:10:01.876] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 14:10:01.877] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 14:10:01.877] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 14:10:01.898] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 14:10:01.898] [Voxa] 菜单栏设置完成
+[2026-03-19 14:10:01.906] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 14:10:01.906] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 14:10:05.575] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:10:05.861] WebSocket connected
+[2026-03-19 14:10:05.862] [ASR] 发送 run-task: {"header":{"task_id":"B9AB5D40-EB7E-4A0B-B04B-CB0B6F4D9379","action":"run-task","streaming":"duplex"},"payload":{"task":"asr","input":{},"model":"paraformer-realtime-v2","task_group":"audio","function":"recognition","parameters":{"enable_punctuation_prediction":true,"sample_rate":16000,"enable_inverse_text_normalization":true,"enable_intermediate_result":true,"format":"pcm"}}}
+[2026-03-19 14:10:05.921] [ASR] event: task-started
+[2026-03-19 14:10:05.921] ASR task started
+[2026-03-19 14:10:06.855] [ASR] event: result-generated
+[2026-03-19 14:10:06.856] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:06.856] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:10:06.856] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:10:06.856] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:10:06.915] [ASR] event: result-generated
+[2026-03-19 14:10:06.915] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:06.916] [ASR] output.sentence: AsrSentence(text: "在", sentence_end: Optional(false))
+[2026-03-19 14:10:06.916] [ASR] 收到识别结果: "在", isFinal: false
+[2026-03-19 14:10:06.916] [AppState] updatePartial: confirmed=0字, partial=1字
+[2026-03-19 14:10:06.916] [ASR] 已更新 partial 文本: "在"
+[2026-03-19 14:10:07.720] [ASR] event: result-generated
+[2026-03-19 14:10:07.720] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:07.721] [ASR] output.sentence: AsrSentence(text: "在使用", sentence_end: Optional(false))
+[2026-03-19 14:10:07.721] [ASR] 收到识别结果: "在使用", isFinal: false
+[2026-03-19 14:10:07.721] [AppState] updatePartial: confirmed=0字, partial=3字
+[2026-03-19 14:10:07.721] [ASR] 已更新 partial 文本: "在使用"
+[2026-03-19 14:10:08.148] [ASR] event: result-generated
+[2026-03-19 14:10:08.148] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:08.148] [ASR] output.sentence: AsrSentence(text: "在使用上看有", sentence_end: Optional(false))
+[2026-03-19 14:10:08.149] [ASR] 收到识别结果: "在使用上看有", isFinal: false
+[2026-03-19 14:10:08.149] [AppState] updatePartial: confirmed=0字, partial=6字
+[2026-03-19 14:10:08.149] [ASR] 已更新 partial 文本: "在使用上看有"
+[2026-03-19 14:10:08.734] [ASR] event: result-generated
+[2026-03-19 14:10:08.734] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:08.735] [ASR] output.sentence: AsrSentence(text: "在使用上看有没有什", sentence_end: Optional(false))
+[2026-03-19 14:10:08.735] [ASR] 收到识别结果: "在使用上看有没有什", isFinal: false
+[2026-03-19 14:10:08.735] [AppState] updatePartial: confirmed=0字, partial=9字
+[2026-03-19 14:10:08.735] [ASR] 已更新 partial 文本: "在使用上看有没有什"
+[2026-03-19 14:10:09.138] [ASR] event: result-generated
+[2026-03-19 14:10:09.138] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:09.138] [ASR] output.sentence: AsrSentence(text: "在使用上看有没有什么", sentence_end: Optional(false))
+[2026-03-19 14:10:09.138] [ASR] 收到识别结果: "在使用上看有没有什么", isFinal: false
+[2026-03-19 14:10:09.138] [AppState] updatePartial: confirmed=0字, partial=10字
+[2026-03-19 14:10:09.138] [ASR] 已更新 partial 文本: "在使用上看有没有什么"
+[2026-03-19 14:10:09.542] [ASR] event: result-generated
+[2026-03-19 14:10:09.542] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:09.543] [ASR] output.sentence: AsrSentence(text: "在使用上看有没有什么需要", sentence_end: Optional(false))
+[2026-03-19 14:10:09.543] [ASR] 收到识别结果: "在使用上看有没有什么需要", isFinal: false
+[2026-03-19 14:10:09.543] [AppState] updatePartial: confirmed=0字, partial=12字
+[2026-03-19 14:10:09.543] [ASR] 已更新 partial 文本: "在使用上看有没有什么需要"
+[2026-03-19 14:10:10.464] [ASR] event: result-generated
+[2026-03-19 14:10:10.464] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:10.464] [ASR] output.sentence: AsrSentence(text: "在使用上看有没有什么需要优化的。", sentence_end: Optional(true))
+[2026-03-19 14:10:10.465] [ASR] 收到识别结果: "在使用上看有没有什么需要优化的。", isFinal: true
+[2026-03-19 14:10:10.465] [AppState] applyFinal: added="在使用上看有没有什么需要优化的。", confirmed="在使用上看有没有什么需要优化的。"
+[2026-03-19 14:10:10.465] [ASR] 已追加 final 文本: "在使用上看有没有什么需要优化的。"
+[2026-03-19 14:10:11.857] [ASR] event: result-generated
+[2026-03-19 14:10:11.857] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:11.857] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:10:11.857] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:10:11.857] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:10:12.122] [ASR] event: result-generated
+[2026-03-19 14:10:12.122] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:12.123] [ASR] output.sentence: AsrSentence(text: "他扫", sentence_end: Optional(false))
+[2026-03-19 14:10:12.123] [ASR] 收到识别结果: "他扫", isFinal: false
+[2026-03-19 14:10:12.123] [AppState] updatePartial: confirmed=16字, partial=2字
+[2026-03-19 14:10:12.123] [ASR] 已更新 partial 文本: "他扫"
+[2026-03-19 14:10:12.317] [ASR] event: result-generated
+[2026-03-19 14:10:12.318] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:12.318] [ASR] output.sentence: AsrSentence(text: "他扫", sentence_end: Optional(false))
+[2026-03-19 14:10:12.319] [ASR] 收到识别结果: "他扫", isFinal: false
+[2026-03-19 14:10:12.319] [ASR] 已更新 partial 文本: "他扫"
+[2026-03-19 14:10:13.162] [ASR] event: result-generated
+[2026-03-19 14:10:13.162] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:13.162] [ASR] output.sentence: AsrSentence(text: "他扫完之后的", sentence_end: Optional(false))
+[2026-03-19 14:10:13.162] [ASR] 收到识别结果: "他扫完之后的", isFinal: false
+[2026-03-19 14:10:13.162] [AppState] updatePartial: confirmed=16字, partial=6字
+[2026-03-19 14:10:13.163] [ASR] 已更新 partial 文本: "他扫完之后的"
+[2026-03-19 14:10:13.329] [ASR] event: result-generated
+[2026-03-19 14:10:13.329] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:13.330] [ASR] output.sentence: AsrSentence(text: "他扫完之后的话，他", sentence_end: Optional(false))
+[2026-03-19 14:10:13.330] [ASR] 收到识别结果: "他扫完之后的话，他", isFinal: false
+[2026-03-19 14:10:13.330] [AppState] updatePartial: confirmed=16字, partial=9字
+[2026-03-19 14:10:13.330] [ASR] 已更新 partial 文本: "他扫完之后的话，他"
+[2026-03-19 14:10:13.745] [ASR] event: result-generated
+[2026-03-19 14:10:13.745] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:13.745] [ASR] output.sentence: AsrSentence(text: "他扫完之后的话，他就只扫到", sentence_end: Optional(false))
+[2026-03-19 14:10:13.745] [ASR] 收到识别结果: "他扫完之后的话，他就只扫到", isFinal: false
+[2026-03-19 14:10:13.745] [AppState] updatePartial: confirmed=16字, partial=13字
+[2026-03-19 14:10:13.746] [ASR] 已更新 partial 文本: "他扫完之后的话，他就只扫到"
+[2026-03-19 14:10:14.353] [ASR] event: result-generated
+[2026-03-19 14:10:14.353] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:14.353] [ASR] output.sentence: AsrSentence(text: "他扫完之后的话，他就只扫到一个低", sentence_end: Optional(false))
+[2026-03-19 14:10:14.353] [ASR] 收到识别结果: "他扫完之后的话，他就只扫到一个低", isFinal: false
+[2026-03-19 14:10:14.354] [AppState] updatePartial: confirmed=16字, partial=16字
+[2026-03-19 14:10:14.354] [ASR] 已更新 partial 文本: "他扫完之后的话，他就只扫到一个低"
+[2026-03-19 14:10:15.057] [ASR] event: result-generated
+[2026-03-19 14:10:15.057] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:15.058] [ASR] output.sentence: AsrSentence(text: "他扫完之后的话，他就只扫到一个低V的。", sentence_end: Optional(true))
+[2026-03-19 14:10:15.058] [ASR] 收到识别结果: "他扫完之后的话，他就只扫到一个低V的。", isFinal: true
+[2026-03-19 14:10:15.059] [AppState] applyFinal: added="他扫完之后的话，他就只扫到一个低 V 的。", confirmed="在使用上看有没有什么需要优化的。他扫完之后的话，他就只扫到一个低 V 的。"
+[2026-03-19 14:10:15.059] [ASR] 已追加 final 文本: "他扫完之后的话，他就只扫到一个低V的。"
+[2026-03-19 14:10:15.665] [ASR] event: result-generated
+[2026-03-19 14:10:15.665] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:15.665] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:10:15.665] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:10:15.665] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:10:15.726] [ASR] event: result-generated
+[2026-03-19 14:10:15.727] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:15.727] [ASR] output.sentence: AsrSentence(text: "手数？", sentence_end: Optional(false))
+[2026-03-19 14:10:15.727] [ASR] 收到识别结果: "手数？", isFinal: false
+[2026-03-19 14:10:15.727] [AppState] updatePartial: confirmed=37字, partial=3字
+[2026-03-19 14:10:15.728] [ASR] 已更新 partial 文本: "手数？"
+[2026-03-19 14:10:15.921] [ASR] event: result-generated
+[2026-03-19 14:10:15.921] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:15.921] [ASR] output.sentence: AsrSentence(text: "扫不", sentence_end: Optional(false))
+[2026-03-19 14:10:15.921] [ASR] 收到识别结果: "扫不", isFinal: false
+[2026-03-19 14:10:15.922] [AppState] updatePartial: confirmed=37字, partial=2字
+[2026-03-19 14:10:15.922] [ASR] 已更新 partial 文本: "扫不"
+[2026-03-19 14:10:16.877] [ASR] event: result-generated
+[2026-03-19 14:10:16.878] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:16.878] [ASR] output.sentence: AsrSentence(text: "扫不出来。", sentence_end: Optional(true))
+[2026-03-19 14:10:16.878] [ASR] 收到识别结果: "扫不出来。", isFinal: true
+[2026-03-19 14:10:16.879] [AppState] applyFinal: added="扫不出来。", confirmed="在使用上看有没有什么需要优化的。他扫完之后的话，他就只扫到一个低 V 的。扫不出来。"
+[2026-03-19 14:10:16.879] [ASR] 已追加 final 文本: "扫不出来。"
+[2026-03-19 14:10:16.879] [ASR] event: result-generated
+[2026-03-19 14:10:16.879] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:16.880] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:10:16.880] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:10:16.888] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:10:17.777] [ASR] event: result-generated
+[2026-03-19 14:10:17.777] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:17.777] [ASR] output.sentence: AsrSentence(text: "然后，", sentence_end: Optional(false))
+[2026-03-19 14:10:17.777] [ASR] 收到识别结果: "然后，", isFinal: false
+[2026-03-19 14:10:17.778] [AppState] updatePartial: confirmed=42字, partial=3字
+[2026-03-19 14:10:17.778] [ASR] 已更新 partial 文本: "然后，"
+[2026-03-19 14:10:18.562] [ASR] event: result-generated
+[2026-03-19 14:10:18.562] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:18.562] [ASR] output.sentence: AsrSentence(text: "然后我问他。", sentence_end: Optional(true))
+[2026-03-19 14:10:18.562] [ASR] 收到识别结果: "然后我问他。", isFinal: true
+[2026-03-19 14:10:18.563] [AppState] applyFinal: added="我问他。", confirmed="在使用上看有没有什么需要优化的。他扫完之后的话，他就只扫到一个低 V 的。扫不出来。我问他。"
+[2026-03-19 14:10:18.563] [ASR] 已追加 final 文本: "然后我问他。"
+[2026-03-19 14:10:19.656] [ASR] event: result-generated
+[2026-03-19 14:10:19.657] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:19.657] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:10:19.657] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:10:19.657] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:10:19.718] [ASR] event: result-generated
+[2026-03-19 14:10:19.719] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:19.719] [ASR] output.sentence: AsrSentence(text: "可他", sentence_end: Optional(false))
+[2026-03-19 14:10:19.719] [ASR] 收到识别结果: "可他", isFinal: false
+[2026-03-19 14:10:19.720] [AppState] updatePartial: confirmed=46字, partial=2字
+[2026-03-19 14:10:19.720] [ASR] 已更新 partial 文本: "可他"
+[2026-03-19 14:10:19.907] [ASR] event: result-generated
+[2026-03-19 14:10:19.907] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:19.907] [ASR] output.sentence: AsrSentence(text: "可他", sentence_end: Optional(false))
+[2026-03-19 14:10:19.907] [ASR] 收到识别结果: "可他", isFinal: false
+[2026-03-19 14:10:19.907] [ASR] 已更新 partial 文本: "可他"
+[2026-03-19 14:10:20.524] [ASR] event: result-generated
+[2026-03-19 14:10:20.524] [ASR] result-generated, payload: 有
+[2026-03-19 14:10:20.524] [ASR] output.sentence: AsrSentence(text: "可他这个他", sentence_end: Optional(false))
+[2026-03-19 14:10:20.524] [ASR] 收到识别结果: "可他这个他", isFinal: false
+[2026-03-19 14:10:20.524] [AppState] updatePartial: confirmed=46字, partial=5字
+[2026-03-19 14:10:20.524] [ASR] 已更新 partial 文本: "可他这个他"
+[2026-03-19 14:10:21.029] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:10:21.048] [ASR] 发送 finish-task
+[2026-03-19 14:10:21.049] [Voxa] 停止录音，最终文本 [51 字]: 在使用上看有没有什么需要优化的。他扫完之后的话，他就只扫到一个低 V 的。扫不出来。我问他。可他这个...
+[2026-03-19 14:10:21.049] [Voxa] 开始润色文本...
+[2026-03-19 14:10:21.051] WebSocket disconnected
+[2026-03-19 14:10:21.052] WebSocket error: Error Domain=NSPOSIXErrorDomain Code=57 "Socket is not connected" UserInfo={NSErrorFailingURLStringKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/, NSErrorFailingURLKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/}
+[2026-03-19 14:10:22.465] [Voxa] 润色完成
+[2026-03-19 14:10:22.465] [Voxa] 原文: 在使用上看有没有什么需要优化的。他扫完之后的话，他就只扫到一个低 V 的。扫不出来。我问他。可他这个他
+[2026-03-19 14:10:22.465] [Voxa] 润色: 在使用上看有没有什么需要优化的？他扫完之后，他就只扫到一个低 V 的，扫不出来。我问他，可他这个他。
+[2026-03-19 14:10:22.485] [Voxa] 准备注入文本到 com.mitchellh.ghostty
+[2026-03-19 14:10:22.486] [Injector] 开始注入 50 字到 com.mitchellh.ghostty
+[2026-03-19 14:10:22.495] [Injector] 剪贴板已设置: 在使用上看有没有什么需要优化的？他扫完之后，他就只扫到一个低...
+[2026-03-19 14:10:22.505] [Injector] Voxa 已隐藏
+[2026-03-19 14:10:22.559] [Injector] 目标应用已激活
+[2026-03-19 14:10:22.644] [Injector] 模拟 Cmd+V
+[2026-03-19 14:10:22.683] [Injector] 按键事件已发送
+[2026-03-19 14:10:22.769] [Injector] 注入完成
+[2026-03-19 14:10:22.769] [Injector] 剪贴板已恢复
+[2026-03-19 14:11:17.966] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:11:18.230] WebSocket connected
+[2026-03-19 14:11:18.231] [ASR] 发送 run-task: {"header":{"task_id":"830ECBB2-9FC7-42CD-9464-49AC75BB03AA","action":"run-task","streaming":"duplex"},"payload":{"task":"asr","input":{},"model":"paraformer-realtime-v2","task_group":"audio","parameters":{"enable_inverse_text_normalization":true,"format":"pcm","enable_intermediate_result":true,"sample_rate":16000,"enable_punctuation_prediction":true},"function":"recognition"}}
+[2026-03-19 14:11:18.285] [ASR] event: task-started
+[2026-03-19 14:11:18.285] ASR task started
+[2026-03-19 14:11:20.198] [ASR] event: result-generated
+[2026-03-19 14:11:20.199] [ASR] result-generated, payload: 有
+[2026-03-19 14:11:20.199] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:11:20.200] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:11:20.200] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:11:20.248] [ASR] event: result-generated
+[2026-03-19 14:11:20.249] [ASR] result-generated, payload: 有
+[2026-03-19 14:11:20.249] [ASR] output.sentence: AsrSentence(text: "他，", sentence_end: Optional(false))
+[2026-03-19 14:11:20.249] [ASR] 收到识别结果: "他，", isFinal: false
+[2026-03-19 14:11:20.250] [AppState] updatePartial: confirmed=0字, partial=2字
+[2026-03-19 14:11:20.250] [ASR] 已更新 partial 文本: "他，"
+[2026-03-19 14:11:21.053] [ASR] event: result-generated
+[2026-03-19 14:11:21.054] [ASR] result-generated, payload: 有
+[2026-03-19 14:11:21.054] [ASR] output.sentence: AsrSentence(text: "它开", sentence_end: Optional(false))
+[2026-03-19 14:11:21.054] [ASR] 收到识别结果: "它开", isFinal: false
+[2026-03-19 14:11:21.055] [AppState] updatePartial: confirmed=0字, partial=2字
+[2026-03-19 14:11:21.055] [ASR] 已更新 partial 文本: "它开"
+[2026-03-19 14:11:21.930] [ASR] event: result-generated
+[2026-03-19 14:11:21.930] [ASR] result-generated, payload: 有
+[2026-03-19 14:11:21.931] [ASR] output.sentence: AsrSentence(text: "他开放了什么服务？", sentence_end: Optional(true))
+[2026-03-19 14:11:21.931] [ASR] 收到识别结果: "他开放了什么服务？", isFinal: true
+[2026-03-19 14:11:21.931] [AppState] applyFinal: added="他开放了什么服务？", confirmed="他开放了什么服务？"
+[2026-03-19 14:11:21.932] [ASR] 已追加 final 文本: "他开放了什么服务？"
+[2026-03-19 14:11:22.001] [ASR] event: result-generated
+[2026-03-19 14:11:22.001] [ASR] result-generated, payload: 有
+[2026-03-19 14:11:22.002] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:11:22.002] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:11:22.002] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:11:22.050] [ASR] event: result-generated
+[2026-03-19 14:11:22.050] [ASR] result-generated, payload: 有
+[2026-03-19 14:11:22.051] [ASR] output.sentence: AsrSentence(text: "这就是", sentence_end: Optional(false))
+[2026-03-19 14:11:22.051] [ASR] 收到识别结果: "这就是", isFinal: false
+[2026-03-19 14:11:22.051] [AppState] updatePartial: confirmed=9字, partial=3字
+[2026-03-19 14:11:22.051] [ASR] 已更新 partial 文本: "这就是"
+[2026-03-19 14:11:22.241] [ASR] event: result-generated
+[2026-03-19 14:11:22.242] [ASR] result-generated, payload: 有
+[2026-03-19 14:11:22.242] [ASR] output.sentence: AsrSentence(text: "这就是", sentence_end: Optional(false))
+[2026-03-19 14:11:22.243] [ASR] 收到识别结果: "这就是", isFinal: false
+[2026-03-19 14:11:22.243] [ASR] 已更新 partial 文本: "这就是"
+[2026-03-19 14:11:22.853] [ASR] event: result-generated
+[2026-03-19 14:11:22.854] [ASR] result-generated, payload: 有
+[2026-03-19 14:11:22.854] [ASR] output.sentence: AsrSentence(text: "这就是跟", sentence_end: Optional(false))
+[2026-03-19 14:11:22.855] [ASR] 收到识别结果: "这就是跟", isFinal: false
+[2026-03-19 14:11:22.855] [AppState] updatePartial: confirmed=9字, partial=4字
+[2026-03-19 14:11:22.855] [ASR] 已更新 partial 文本: "这就是跟"
+[2026-03-19 14:11:23.259] [ASR] event: result-generated
+[2026-03-19 14:11:23.259] [ASR] result-generated, payload: 有
+[2026-03-19 14:11:23.260] [ASR] output.sentence: AsrSentence(text: "这就是跟那个", sentence_end: Optional(false))
+[2026-03-19 14:11:23.260] [ASR] 收到识别结果: "这就是跟那个", isFinal: false
+[2026-03-19 14:11:23.260] [AppState] updatePartial: confirmed=9字, partial=6字
+[2026-03-19 14:11:23.261] [ASR] 已更新 partial 文本: "这就是跟那个"
+[2026-03-19 14:11:23.899] [ASR] event: result-generated
+[2026-03-19 14:11:23.900] [ASR] result-generated, payload: 有
+[2026-03-19 14:11:23.900] [ASR] output.sentence: AsrSentence(text: "这就是跟那个指纹也有，", sentence_end: Optional(false))
+[2026-03-19 14:11:23.901] [ASR] 收到识别结果: "这就是跟那个指纹也有，", isFinal: false
+[2026-03-19 14:11:23.901] [AppState] updatePartial: confirmed=9字, partial=11字
+[2026-03-19 14:11:23.901] [ASR] 已更新 partial 文本: "这就是跟那个指纹也有，"
+[2026-03-19 14:11:24.677] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:11:24.732] [ASR] 发送 finish-task
+[2026-03-19 14:11:24.733] [Voxa] 停止录音，最终文本 [20 字]: 他开放了什么服务？这就是跟那个指纹也有，...
+[2026-03-19 14:11:24.733] WebSocket disconnected
+[2026-03-19 14:11:24.733] [Voxa] 开始润色文本...
+[2026-03-19 14:11:24.734] WebSocket error: Error Domain=NSPOSIXErrorDomain Code=57 "Socket is not connected" UserInfo={NSErrorFailingURLStringKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/, NSErrorFailingURLKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/}
+[2026-03-19 14:11:25.076] [Voxa] 润色完成
+[2026-03-19 14:11:25.076] [Voxa] 原文: 他开放了什么服务？这就是跟那个指纹也有，
+[2026-03-19 14:11:25.076] [Voxa] 润色: 他开放了什么服务？这跟那个指纹也有。
+[2026-03-19 14:11:25.081] [Voxa] 准备注入文本到 com.mitchellh.ghostty
+[2026-03-19 14:11:25.082] [Injector] 开始注入 18 字到 com.mitchellh.ghostty
+[2026-03-19 14:11:25.083] [Injector] 剪贴板已设置: 他开放了什么服务？这跟那个指纹也有。...
+[2026-03-19 14:11:25.091] [Injector] Voxa 已隐藏
+[2026-03-19 14:11:25.148] [Injector] 目标应用已激活
+[2026-03-19 14:11:25.233] [Injector] 模拟 Cmd+V
+[2026-03-19 14:11:25.251] [Injector] 按键事件已发送
+[2026-03-19 14:11:25.335] [Injector] 注入完成
+[2026-03-19 14:11:25.336] [Injector] 剪贴板已恢复
+[2026-03-19 14:12:04.260] [Voxa] 应用启动中...
+[2026-03-19 14:12:04.260] [Voxa] AppState 初始化完成
+[2026-03-19 14:12:04.261] [Voxa] PanelController 初始化完成
+[2026-03-19 14:12:04.261] [Voxa] AudioCapture 初始化完成
+[2026-03-19 14:12:04.261] [Voxa] AsrClient 初始化完成
+[2026-03-19 14:12:04.261] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 14:12:04.261] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 14:12:04.261] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 14:12:04.288] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 14:12:04.288] [Voxa] 菜单栏设置完成
+[2026-03-19 14:12:04.294] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 14:12:04.294] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 14:12:30.671] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:12:30.951] WebSocket connected
+[2026-03-19 14:12:30.952] [ASR] 发送 run-task: {"header":{"task_id":"2A6D313F-1B5D-4CD0-99BC-192DEB2357E1","action":"run-task","streaming":"duplex"},"payload":{"input":{},"function":"recognition","parameters":{"enable_intermediate_result":true,"enable_punctuation_prediction":true,"format":"pcm","enable_inverse_text_normalization":true,"sample_rate":16000},"task_group":"audio","task":"asr","model":"paraformer-realtime-v2"}}
+[2026-03-19 14:12:31.009] [ASR] event: task-started
+[2026-03-19 14:12:31.009] ASR task started
+[2026-03-19 14:12:37.740] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:12:37.791] [ASR] 发送 finish-task
+[2026-03-19 14:12:37.792] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 14:12:37.793] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 14:12:37.794] WebSocket disconnected
+[2026-03-19 14:12:37.796] WebSocket error: Error Domain=NSPOSIXErrorDomain Code=57 "Socket is not connected" UserInfo={NSErrorFailingURLStringKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/, NSErrorFailingURLKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/}
+[2026-03-19 14:15:37.092] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:15:37.977] WebSocket connected
+[2026-03-19 14:15:37.978] [ASR] 发送 run-task: {"header":{"task_id":"DB1B6D8B-2D03-44C2-89EB-67C879F86452","streaming":"duplex","action":"run-task"},"payload":{"task_group":"audio","parameters":{"enable_punctuation_prediction":true,"enable_inverse_text_normalization":true,"format":"pcm","sample_rate":16000,"enable_intermediate_result":true},"function":"recognition","task":"asr","model":"paraformer-realtime-v2","input":{}}}
+[2026-03-19 14:15:38.045] [ASR] event: task-started
+[2026-03-19 14:15:38.045] ASR task started
+[2026-03-19 14:15:38.990] [ASR] event: result-generated
+[2026-03-19 14:15:38.991] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:38.991] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:15:38.991] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:15:38.992] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:15:40.026] [ASR] event: result-generated
+[2026-03-19 14:15:40.026] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:40.027] [ASR] output.sentence: AsrSentence(text: "对呀。", sentence_end: Optional(true))
+[2026-03-19 14:15:40.027] [ASR] 收到识别结果: "对呀。", isFinal: true
+[2026-03-19 14:15:40.027] [AppState] applyFinal: added="对呀。", confirmed="对呀。"
+[2026-03-19 14:15:40.027] [ASR] 已追加 final 文本: "对呀。"
+[2026-03-19 14:15:47.769] [ASR] event: result-generated
+[2026-03-19 14:15:47.769] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:47.769] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:15:47.770] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:15:47.770] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:15:47.883] [ASR] event: result-generated
+[2026-03-19 14:15:47.883] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:47.884] [ASR] output.sentence: AsrSentence(text: "就", sentence_end: Optional(false))
+[2026-03-19 14:15:47.884] [ASR] 收到识别结果: "就", isFinal: false
+[2026-03-19 14:15:47.884] [AppState] updatePartial: confirmed=3字, partial=1字
+[2026-03-19 14:15:47.884] [ASR] 已更新 partial 文本: "就"
+[2026-03-19 14:15:48.531] [ASR] event: result-generated
+[2026-03-19 14:15:48.532] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:48.532] [ASR] output.sentence: AsrSentence(text: "就说太", sentence_end: Optional(false))
+[2026-03-19 14:15:48.532] [ASR] 收到识别结果: "就说太", isFinal: false
+[2026-03-19 14:15:48.532] [AppState] updatePartial: confirmed=3字, partial=3字
+[2026-03-19 14:15:48.533] [ASR] 已更新 partial 文本: "就说太"
+[2026-03-19 14:15:49.098] [ASR] event: result-generated
+[2026-03-19 14:15:49.098] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:49.098] [ASR] output.sentence: AsrSentence(text: "就说太太什么", sentence_end: Optional(false))
+[2026-03-19 14:15:49.098] [ASR] 收到识别结果: "就说太太什么", isFinal: false
+[2026-03-19 14:15:49.099] [AppState] updatePartial: confirmed=3字, partial=6字
+[2026-03-19 14:15:49.099] [ASR] 已更新 partial 文本: "就说太太什么"
+[2026-03-19 14:15:49.284] [ASR] event: result-generated
+[2026-03-19 14:15:49.285] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:49.285] [ASR] output.sentence: AsrSentence(text: "就说太太什么放的很，", sentence_end: Optional(false))
+[2026-03-19 14:15:49.285] [ASR] 收到识别结果: "就说太太什么放的很，", isFinal: false
+[2026-03-19 14:15:49.286] [AppState] updatePartial: confirmed=3字, partial=10字
+[2026-03-19 14:15:49.286] [ASR] 已更新 partial 文本: "就说太太什么放的很，"
+[2026-03-19 14:15:50.155] [ASR] event: result-generated
+[2026-03-19 14:15:50.155] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:50.155] [ASR] output.sentence: AsrSentence(text: "就说太太什么放的很快", sentence_end: Optional(false))
+[2026-03-19 14:15:50.156] [ASR] 收到识别结果: "就说太太什么放的很快", isFinal: false
+[2026-03-19 14:15:50.156] [AppState] updatePartial: confirmed=3字, partial=10字
+[2026-03-19 14:15:50.156] [ASR] 已更新 partial 文本: "就说太太什么放的很快"
+[2026-03-19 14:15:50.332] [ASR] event: result-generated
+[2026-03-19 14:15:50.333] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:50.333] [ASR] output.sentence: AsrSentence(text: "就说太太什么放的很快逼的", sentence_end: Optional(false))
+[2026-03-19 14:15:50.333] [ASR] 收到识别结果: "就说太太什么放的很快逼的", isFinal: false
+[2026-03-19 14:15:50.333] [AppState] updatePartial: confirmed=3字, partial=12字
+[2026-03-19 14:15:50.333] [ASR] 已更新 partial 文本: "就说太太什么放的很快逼的"
+[2026-03-19 14:15:50.977] [ASR] event: result-generated
+[2026-03-19 14:15:50.978] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:50.978] [ASR] output.sentence: AsrSentence(text: "就说太太什么上的很快逼的", sentence_end: Optional(false))
+[2026-03-19 14:15:50.978] [ASR] 收到识别结果: "就说太太什么上的很快逼的", isFinal: false
+[2026-03-19 14:15:50.979] [AppState] updatePartial: confirmed=3字, partial=12字
+[2026-03-19 14:15:50.979] [ASR] 已更新 partial 文本: "就说太太什么上的很快逼的"
+[2026-03-19 14:15:51.561] [ASR] event: result-generated
+[2026-03-19 14:15:51.562] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:51.562] [ASR] output.sentence: AsrSentence(text: "就说太太什么上的很快逼的把", sentence_end: Optional(false))
+[2026-03-19 14:15:51.562] [ASR] 收到识别结果: "就说太太什么上的很快逼的把", isFinal: false
+[2026-03-19 14:15:51.563] [AppState] updatePartial: confirmed=3字, partial=13字
+[2026-03-19 14:15:51.563] [ASR] 已更新 partial 文本: "就说太太什么上的很快逼的把"
+[2026-03-19 14:15:51.811] [ASR] event: result-generated
+[2026-03-19 14:15:51.811] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:51.812] [ASR] output.sentence: AsrSentence(text: "就说太太什么上的很快逼的把他的各种", sentence_end: Optional(false))
+[2026-03-19 14:15:51.812] [ASR] 收到识别结果: "就说太太什么上的很快逼的把他的各种", isFinal: false
+[2026-03-19 14:15:51.812] [AppState] updatePartial: confirmed=3字, partial=17字
+[2026-03-19 14:15:51.812] [ASR] 已更新 partial 文本: "就说太太什么上的很快逼的把他的各种"
+[2026-03-19 14:15:52.802] [ASR] event: result-generated
+[2026-03-19 14:15:52.802] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:52.802] [ASR] output.sentence: AsrSentence(text: "就说太太什么上的很快逼的把他的各种表情", sentence_end: Optional(false))
+[2026-03-19 14:15:52.803] [ASR] 收到识别结果: "就说太太什么上的很快逼的把他的各种表情", isFinal: false
+[2026-03-19 14:15:52.803] [AppState] updatePartial: confirmed=3字, partial=19字
+[2026-03-19 14:15:52.803] [ASR] 已更新 partial 文本: "就说太太什么上的很快逼的把他的各种表情"
+[2026-03-19 14:15:54.050] [ASR] event: result-generated
+[2026-03-19 14:15:54.051] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:54.051] [ASR] output.sentence: AsrSentence(text: "就说太太什么上的，很快逼的演员把他的各种表情嗯你弄。", sentence_end: Optional(true))
+[2026-03-19 14:15:54.051] [ASR] 收到识别结果: "就说太太什么上的，很快逼的演员把他的各种表情嗯你弄。", isFinal: true
+[2026-03-19 14:15:54.052] [AppState] applyFinal: added="就说太太什么上的，很快逼的演员把他的各种表情你弄。", confirmed="对呀。就说太太什么上的，很快逼的演员把他的各种表情你弄。"
+[2026-03-19 14:15:54.052] [ASR] 已追加 final 文本: "就说太太什么上的，很快逼的演员把他的各种表情嗯你弄。"
+[2026-03-19 14:15:54.942] [ASR] event: result-generated
+[2026-03-19 14:15:54.942] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:54.943] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:15:54.943] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:15:54.943] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:15:54.943] [ASR] event: result-generated
+[2026-03-19 14:15:54.944] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:54.944] [ASR] output.sentence: AsrSentence(text: "补充", sentence_end: Optional(false))
+[2026-03-19 14:15:54.944] [ASR] 收到识别结果: "补充", isFinal: false
+[2026-03-19 14:15:54.944] [AppState] updatePartial: confirmed=28字, partial=2字
+[2026-03-19 14:15:54.944] [ASR] 已更新 partial 文本: "补充"
+[2026-03-19 14:15:55.120] [ASR] event: result-generated
+[2026-03-19 14:15:55.120] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:55.120] [ASR] output.sentence: AsrSentence(text: "补充", sentence_end: Optional(false))
+[2026-03-19 14:15:55.121] [ASR] 收到识别结果: "补充", isFinal: false
+[2026-03-19 14:15:55.121] [ASR] 已更新 partial 文本: "补充"
+[2026-03-19 14:15:55.805] [ASR] event: result-generated
+[2026-03-19 14:15:55.806] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:55.806] [ASR] output.sentence: AsrSentence(text: "补捉一", sentence_end: Optional(false))
+[2026-03-19 14:15:55.806] [ASR] 收到识别结果: "补捉一", isFinal: false
+[2026-03-19 14:15:55.807] [AppState] updatePartial: confirmed=28字, partial=3字
+[2026-03-19 14:15:55.807] [ASR] 已更新 partial 文本: "补捉一"
+[2026-03-19 14:15:56.351] [ASR] event: result-generated
+[2026-03-19 14:15:56.351] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:56.352] [ASR] output.sentence: AsrSentence(text: "补捉一下", sentence_end: Optional(false))
+[2026-03-19 14:15:56.352] [ASR] 收到识别结果: "补捉一下", isFinal: false
+[2026-03-19 14:15:56.352] [AppState] updatePartial: confirmed=28字, partial=4字
+[2026-03-19 14:15:56.352] [ASR] 已更新 partial 文本: "补捉一下"
+[2026-03-19 14:15:56.364] [ASR] event: result-generated
+[2026-03-19 14:15:56.365] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:56.365] [ASR] output.sentence: AsrSentence(text: "补捉一下用", sentence_end: Optional(false))
+[2026-03-19 14:15:56.365] [ASR] 收到识别结果: "补捉一下用", isFinal: false
+[2026-03-19 14:15:56.366] [AppState] updatePartial: confirmed=28字, partial=5字
+[2026-03-19 14:15:56.366] [ASR] 已更新 partial 文本: "补捉一下用"
+[2026-03-19 14:15:57.379] [ASR] event: result-generated
+[2026-03-19 14:15:57.380] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:57.381] [ASR] output.sentence: AsrSentence(text: "补捉一下。用拿几", sentence_end: Optional(false))
+[2026-03-19 14:15:57.381] [ASR] 收到识别结果: "补捉一下。用拿几", isFinal: false
+[2026-03-19 14:15:57.382] [AppState] updatePartial: confirmed=28字, partial=8字
+[2026-03-19 14:15:57.382] [ASR] 已更新 partial 文本: "补捉一下。用拿几"
+[2026-03-19 14:15:57.382] [ASR] event: result-generated
+[2026-03-19 14:15:57.382] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:57.382] [ASR] output.sentence: AsrSentence(text: "补捉一下用拿几次或者拿", sentence_end: Optional(false))
+[2026-03-19 14:15:57.382] [ASR] 收到识别结果: "补捉一下用拿几次或者拿", isFinal: false
+[2026-03-19 14:15:57.383] [AppState] updatePartial: confirmed=28字, partial=11字
+[2026-03-19 14:15:57.383] [ASR] 已更新 partial 文本: "补捉一下用拿几次或者拿"
+[2026-03-19 14:15:58.138] [ASR] event: result-generated
+[2026-03-19 14:15:58.138] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:58.138] [ASR] output.sentence: AsrSentence(text: "补捉一下嗯哪几次或者拿几十个演", sentence_end: Optional(false))
+[2026-03-19 14:15:58.138] [ASR] 收到识别结果: "补捉一下嗯哪几次或者拿几十个演", isFinal: false
+[2026-03-19 14:15:58.139] [AppState] updatePartial: confirmed=28字, partial=15字
+[2026-03-19 14:15:58.139] [ASR] 已更新 partial 文本: "补捉一下嗯哪几次或者拿几十个演"
+[2026-03-19 14:15:58.419] [ASR] event: result-generated
+[2026-03-19 14:15:58.419] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:58.420] [ASR] output.sentence: AsrSentence(text: "补捉一下嗯哪几次或者拿几十个演员的表", sentence_end: Optional(false))
+[2026-03-19 14:15:58.420] [ASR] 收到识别结果: "补捉一下嗯哪几次或者拿几十个演员的表", isFinal: false
+[2026-03-19 14:15:58.420] [AppState] updatePartial: confirmed=28字, partial=18字
+[2026-03-19 14:15:58.420] [ASR] 已更新 partial 文本: "补捉一下嗯哪几次或者拿几十个演员的表"
+[2026-03-19 14:15:58.979] [ASR] event: result-generated
+[2026-03-19 14:15:58.979] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:58.980] [ASR] output.sentence: AsrSentence(text: "补捉一下嗯哪几次或者拿几十个演员的表情弄一", sentence_end: Optional(false))
+[2026-03-19 14:15:58.980] [ASR] 收到识别结果: "补捉一下嗯哪几次或者拿几十个演员的表情弄一", isFinal: false
+[2026-03-19 14:15:58.980] [AppState] updatePartial: confirmed=28字, partial=21字
+[2026-03-19 14:15:58.980] [ASR] 已更新 partial 文本: "补捉一下嗯哪几次或者拿几十个演员的表情弄一"
+[2026-03-19 14:15:59.333] [ASR] event: result-generated
+[2026-03-19 14:15:59.334] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:59.334] [ASR] output.sentence: AsrSentence(text: "补捉一下嗯哪几次或者拿几十个演员的表情弄一弄", sentence_end: Optional(false))
+[2026-03-19 14:15:59.334] [ASR] 收到识别结果: "补捉一下嗯哪几次或者拿几十个演员的表情弄一弄", isFinal: false
+[2026-03-19 14:15:59.334] [AppState] updatePartial: confirmed=28字, partial=22字
+[2026-03-19 14:15:59.335] [ASR] 已更新 partial 文本: "补捉一下嗯哪几次或者拿几十个演员的表情弄一弄"
+[2026-03-19 14:15:59.698] [ASR] event: result-generated
+[2026-03-19 14:15:59.698] [ASR] result-generated, payload: 有
+[2026-03-19 14:15:59.698] [ASR] output.sentence: AsrSentence(text: "补捉一下嗯哪几次或者拿几十个演员的表情弄一弄也", sentence_end: Optional(false))
+[2026-03-19 14:15:59.699] [ASR] 收到识别结果: "补捉一下嗯哪几次或者拿几十个演员的表情弄一弄也", isFinal: false
+[2026-03-19 14:15:59.699] [AppState] updatePartial: confirmed=28字, partial=23字
+[2026-03-19 14:15:59.699] [ASR] 已更新 partial 文本: "补捉一下嗯哪几次或者拿几十个演员的表情弄一弄也"
+[2026-03-19 14:16:00.945] [ASR] event: result-generated
+[2026-03-19 14:16:00.946] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:00.946] [ASR] output.sentence: AsrSentence(text: "补捉一下嗯哪几十或者哪几十个演员的表情，弄一弄也就出来了。", sentence_end: Optional(true))
+[2026-03-19 14:16:00.946] [ASR] 收到识别结果: "补捉一下嗯哪几十或者哪几十个演员的表情，弄一弄也就出来了。", isFinal: true
+[2026-03-19 14:16:00.946] [AppState] applyFinal: added="补捉一下哪几十或者哪几十个演员的表情，弄一弄也就出来了。", confirmed="对呀。就说太太什么上的，很快逼的演员把他的各种表情你弄。补捉一下哪几十或者哪几十个演员的表情，弄一弄也就出来了。"
+[2026-03-19 14:16:00.947] [ASR] 已追加 final 文本: "补捉一下嗯哪几十或者哪几十个演员的表情，弄一弄也就出来了。"
+[2026-03-19 14:16:10.357] [ASR] event: result-generated
+[2026-03-19 14:16:10.357] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:10.358] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:16:10.358] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:16:10.358] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:16:10.502] [ASR] event: result-generated
+[2026-03-19 14:16:10.502] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:10.503] [ASR] output.sentence: AsrSentence(text: "我", sentence_end: Optional(false))
+[2026-03-19 14:16:10.503] [ASR] 收到识别结果: "我", isFinal: false
+[2026-03-19 14:16:10.503] [AppState] updatePartial: confirmed=56字, partial=1字
+[2026-03-19 14:16:10.503] [ASR] 已更新 partial 文本: "我"
+[2026-03-19 14:16:11.272] [ASR] event: result-generated
+[2026-03-19 14:16:11.273] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:11.273] [ASR] output.sentence: AsrSentence(text: "我靠这么", sentence_end: Optional(false))
+[2026-03-19 14:16:11.273] [ASR] 收到识别结果: "我靠这么", isFinal: false
+[2026-03-19 14:16:11.274] [AppState] updatePartial: confirmed=56字, partial=4字
+[2026-03-19 14:16:11.274] [ASR] 已更新 partial 文本: "我靠这么"
+[2026-03-19 14:16:11.491] [ASR] event: result-generated
+[2026-03-19 14:16:11.492] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:11.492] [ASR] output.sentence: AsrSentence(text: "我靠，这么快", sentence_end: Optional(false))
+[2026-03-19 14:16:11.492] [ASR] 收到识别结果: "我靠，这么快", isFinal: false
+[2026-03-19 14:16:11.492] [AppState] updatePartial: confirmed=56字, partial=6字
+[2026-03-19 14:16:11.492] [ASR] 已更新 partial 文本: "我靠，这么快"
+[2026-03-19 14:16:11.563] [ASR] event: result-generated
+[2026-03-19 14:16:11.563] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:11.563] [ASR] output.sentence: AsrSentence(text: "我靠，这么快吗？肯定", sentence_end: Optional(false))
+[2026-03-19 14:16:11.563] [ASR] 收到识别结果: "我靠，这么快吗？肯定", isFinal: false
+[2026-03-19 14:16:11.563] [AppState] updatePartial: confirmed=56字, partial=10字
+[2026-03-19 14:16:11.563] [ASR] 已更新 partial 文本: "我靠，这么快吗？肯定"
+[2026-03-19 14:16:12.451] [ASR] event: result-generated
+[2026-03-19 14:16:12.451] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:12.451] [ASR] output.sentence: AsrSentence(text: "我靠，这么快吗？肯定啊。需", sentence_end: Optional(false))
+[2026-03-19 14:16:12.451] [ASR] 收到识别结果: "我靠，这么快吗？肯定啊。需", isFinal: false
+[2026-03-19 14:16:12.452] [AppState] updatePartial: confirmed=56字, partial=13字
+[2026-03-19 14:16:12.452] [ASR] 已更新 partial 文本: "我靠，这么快吗？肯定啊。需"
+[2026-03-19 14:16:12.657] [ASR] event: result-generated
+[2026-03-19 14:16:12.657] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:12.657] [ASR] output.sentence: AsrSentence(text: "我靠，这么快吗？肯定啊，需要六要", sentence_end: Optional(false))
+[2026-03-19 14:16:12.658] [ASR] 收到识别结果: "我靠，这么快吗？肯定啊，需要六要", isFinal: false
+[2026-03-19 14:16:12.658] [AppState] updatePartial: confirmed=56字, partial=16字
+[2026-03-19 14:16:12.658] [ASR] 已更新 partial 文本: "我靠，这么快吗？肯定啊，需要六要"
+[2026-03-19 14:16:13.727] [ASR] event: result-generated
+[2026-03-19 14:16:13.727] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:13.728] [ASR] output.sentence: AsrSentence(text: "我靠，这么快吗？肯定啊，需要6，要不那个", sentence_end: Optional(false))
+[2026-03-19 14:16:13.728] [ASR] 收到识别结果: "我靠，这么快吗？肯定啊，需要6，要不那个", isFinal: false
+[2026-03-19 14:16:13.728] [AppState] updatePartial: confirmed=56字, partial=20字
+[2026-03-19 14:16:13.728] [ASR] 已更新 partial 文本: "我靠，这么快吗？肯定啊，需要6，要不那个"
+[2026-03-19 14:16:13.754] [ASR] event: result-generated
+[2026-03-19 14:16:13.754] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:13.754] [ASR] output.sentence: AsrSentence(text: "我靠，这么快吗？肯定啊，需要6，要不那个先", sentence_end: Optional(false))
+[2026-03-19 14:16:13.754] [ASR] 收到识别结果: "我靠，这么快吗？肯定啊，需要6，要不那个先", isFinal: false
+[2026-03-19 14:16:13.755] [AppState] updatePartial: confirmed=56字, partial=21字
+[2026-03-19 14:16:13.755] [ASR] 已更新 partial 文本: "我靠，这么快吗？肯定啊，需要6，要不那个先"
+[2026-03-19 14:16:13.982] [ASR] event: result-generated
+[2026-03-19 14:16:13.983] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:13.983] [ASR] output.sentence: AsrSentence(text: "我靠，这么快吗？肯定啊，需要6，要不那个先先拿着", sentence_end: Optional(false))
+[2026-03-19 14:16:13.983] [ASR] 收到识别结果: "我靠，这么快吗？肯定啊，需要6，要不那个先先拿着", isFinal: false
+[2026-03-19 14:16:13.983] [AppState] updatePartial: confirmed=56字, partial=24字
+[2026-03-19 14:16:13.983] [ASR] 已更新 partial 文本: "我靠，这么快吗？肯定啊，需要6，要不那个先先拿着"
+[2026-03-19 14:16:15.142] [ASR] event: result-generated
+[2026-03-19 14:16:15.142] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:15.142] [ASR] output.sentence: AsrSentence(text: "我靠，这么快吗？肯定啊，需要，要不那个先先拿着再说。", sentence_end: Optional(true))
+[2026-03-19 14:16:15.143] [ASR] 收到识别结果: "我靠，这么快吗？肯定啊，需要，要不那个先先拿着再说。", isFinal: true
+[2026-03-19 14:16:15.143] [AppState] applyFinal: added="我靠，这么快吗？肯定，需要，要不先先拿着再说。", confirmed="对呀。就说太太什么上的，很快逼的演员把他的各种表情你弄。补捉一下哪几十或者哪几十个演员的表情，弄一弄也就出来了。我靠，这么快吗？肯定，需要，要不先先拿着再说。"
+[2026-03-19 14:16:15.143] [ASR] 已追加 final 文本: "我靠，这么快吗？肯定啊，需要，要不那个先先拿着再说。"
+[2026-03-19 14:16:15.431] [ASR] event: result-generated
+[2026-03-19 14:16:15.432] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:15.432] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:16:15.432] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:16:15.432] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:16:15.563] [ASR] event: result-generated
+[2026-03-19 14:16:15.563] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:15.563] [ASR] output.sentence: AsrSentence(text: "那地", sentence_end: Optional(false))
+[2026-03-19 14:16:15.563] [ASR] 收到识别结果: "那地", isFinal: false
+[2026-03-19 14:16:15.564] [AppState] updatePartial: confirmed=79字, partial=2字
+[2026-03-19 14:16:15.564] [ASR] 已更新 partial 文本: "那地"
+[2026-03-19 14:16:15.728] [ASR] event: result-generated
+[2026-03-19 14:16:15.729] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:15.729] [ASR] output.sentence: AsrSentence(text: "那地", sentence_end: Optional(false))
+[2026-03-19 14:16:15.729] [ASR] 收到识别结果: "那地", isFinal: false
+[2026-03-19 14:16:15.729] [ASR] 已更新 partial 文本: "那地"
+[2026-03-19 14:16:16.663] [ASR] event: result-generated
+[2026-03-19 14:16:16.664] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:16.664] [ASR] output.sentence: AsrSentence(text: "那你不", sentence_end: Optional(false))
+[2026-03-19 14:16:16.664] [ASR] 收到识别结果: "那你不", isFinal: false
+[2026-03-19 14:16:16.665] [AppState] updatePartial: confirmed=79字, partial=3字
+[2026-03-19 14:16:16.665] [ASR] 已更新 partial 文本: "那你不"
+[2026-03-19 14:16:16.869] [ASR] event: result-generated
+[2026-03-19 14:16:16.870] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:16.870] [ASR] output.sentence: AsrSentence(text: "那你不你不不", sentence_end: Optional(false))
+[2026-03-19 14:16:16.870] [ASR] 收到识别结果: "那你不你不不", isFinal: false
+[2026-03-19 14:16:16.870] [AppState] updatePartial: confirmed=79字, partial=6字
+[2026-03-19 14:16:16.871] [ASR] 已更新 partial 文本: "那你不你不不"
+[2026-03-19 14:16:17.869] [ASR] event: result-generated
+[2026-03-19 14:16:17.869] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:17.869] [ASR] output.sentence: AsrSentence(text: "那你不你不不如说找发票", sentence_end: Optional(false))
+[2026-03-19 14:16:17.870] [ASR] 收到识别结果: "那你不你不不如说找发票", isFinal: false
+[2026-03-19 14:16:17.870] [AppState] updatePartial: confirmed=79字, partial=11字
+[2026-03-19 14:16:17.870] [ASR] 已更新 partial 文本: "那你不你不不如说找发票"
+[2026-03-19 14:16:17.945] [ASR] event: result-generated
+[2026-03-19 14:16:17.946] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:17.946] [ASR] output.sentence: AsrSentence(text: "那你不你不不如说找发票给你报", sentence_end: Optional(false))
+[2026-03-19 14:16:17.946] [ASR] 收到识别结果: "那你不你不不如说找发票给你报", isFinal: false
+[2026-03-19 14:16:17.946] [AppState] updatePartial: confirmed=79字, partial=14字
+[2026-03-19 14:16:17.946] [ASR] 已更新 partial 文本: "那你不你不不如说找发票给你报"
+[2026-03-19 14:16:18.076] [ASR] event: result-generated
+[2026-03-19 14:16:18.076] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:18.076] [ASR] output.sentence: AsrSentence(text: "那你不你不不如说找发票给你报算了", sentence_end: Optional(false))
+[2026-03-19 14:16:18.077] [ASR] 收到识别结果: "那你不你不不如说找发票给你报算了", isFinal: false
+[2026-03-19 14:16:18.077] [AppState] updatePartial: confirmed=79字, partial=16字
+[2026-03-19 14:16:18.077] [ASR] 已更新 partial 文本: "那你不你不不如说找发票给你报算了"
+[2026-03-19 14:16:18.994] [ASR] event: result-generated
+[2026-03-19 14:16:18.995] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:18.995] [ASR] output.sentence: AsrSentence(text: "那你不你不不如我找发票给你报算了这种", sentence_end: Optional(false))
+[2026-03-19 14:16:18.995] [ASR] 收到识别结果: "那你不你不不如我找发票给你报算了这种", isFinal: false
+[2026-03-19 14:16:18.996] [AppState] updatePartial: confirmed=79字, partial=18字
+[2026-03-19 14:16:18.996] [ASR] 已更新 partial 文本: "那你不你不不如我找发票给你报算了这种"
+[2026-03-19 14:16:19.091] [ASR] event: result-generated
+[2026-03-19 14:16:19.092] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:19.092] [ASR] output.sentence: AsrSentence(text: "那你不你不不如我找发票给你报算了，这种搞现金", sentence_end: Optional(false))
+[2026-03-19 14:16:19.092] [ASR] 收到识别结果: "那你不你不不如我找发票给你报算了，这种搞现金", isFinal: false
+[2026-03-19 14:16:19.092] [AppState] updatePartial: confirmed=79字, partial=22字
+[2026-03-19 14:16:19.092] [ASR] 已更新 partial 文本: "那你不你不不如我找发票给你报算了，这种搞现金"
+[2026-03-19 14:16:19.914] [ASR] event: result-generated
+[2026-03-19 14:16:19.915] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:19.915] [ASR] output.sentence: AsrSentence(text: "那你不你不不如我找发票给你报算了，这种搞现金没必", sentence_end: Optional(false))
+[2026-03-19 14:16:19.915] [ASR] 收到识别结果: "那你不你不不如我找发票给你报算了，这种搞现金没必", isFinal: false
+[2026-03-19 14:16:19.915] [AppState] updatePartial: confirmed=79字, partial=24字
+[2026-03-19 14:16:19.916] [ASR] 已更新 partial 文本: "那你不你不不如我找发票给你报算了，这种搞现金没必"
+[2026-03-19 14:16:20.197] [ASR] event: result-generated
+[2026-03-19 14:16:20.198] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:20.198] [ASR] output.sentence: AsrSentence(text: "那你不你不不如我找发票给你报算了，这种搞现金没必要。", sentence_end: Optional(true))
+[2026-03-19 14:16:20.198] [ASR] 收到识别结果: "那你不你不不如我找发票给你报算了，这种搞现金没必要。", isFinal: true
+[2026-03-19 14:16:20.199] [AppState] applyFinal: added="那你不你不不如我找发票给你报算了，这种搞现金没必要。", confirmed="对呀。就说太太什么上的，很快逼的演员把他的各种表情你弄。补捉一下哪几十或者哪几十个演员的表情，弄一弄也就出来了。我靠，这么快吗？肯定，需要，要不先先拿着再说。那你不你不不如我找发票给你报算了，这种搞现金没必要。"
+[2026-03-19 14:16:20.199] [ASR] 已追加 final 文本: "那你不你不不如我找发票给你报算了，这种搞现金没必要。"
+[2026-03-19 14:16:20.365] [ASR] event: result-generated
+[2026-03-19 14:16:20.365] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:20.365] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:16:20.365] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:16:20.365] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:16:20.766] [ASR] event: result-generated
+[2026-03-19 14:16:20.767] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:20.767] [ASR] output.sentence: AsrSentence(text: "你不用", sentence_end: Optional(false))
+[2026-03-19 14:16:20.767] [ASR] 收到识别结果: "你不用", isFinal: false
+[2026-03-19 14:16:20.767] [AppState] updatePartial: confirmed=105字, partial=3字
+[2026-03-19 14:16:20.768] [ASR] 已更新 partial 文本: "你不用"
+[2026-03-19 14:16:20.994] [ASR] event: result-generated
+[2026-03-19 14:16:20.994] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:20.995] [ASR] output.sentence: AsrSentence(text: "你不用", sentence_end: Optional(false))
+[2026-03-19 14:16:20.995] [ASR] 收到识别结果: "你不用", isFinal: false
+[2026-03-19 14:16:20.995] [ASR] 已更新 partial 文本: "你不用"
+[2026-03-19 14:16:21.681] [ASR] event: result-generated
+[2026-03-19 14:16:21.681] [ASR] result-generated, payload: 有
+[2026-03-19 14:16:21.681] [ASR] output.sentence: AsrSentence(text: "你不用那个。", sentence_end: Optional(true))
+[2026-03-19 14:16:21.682] [ASR] 收到识别结果: "你不用那个。", isFinal: true
+[2026-03-19 14:16:21.682] [AppState] applyFinal: added="你不用。", confirmed="对呀。就说太太什么上的，很快逼的演员把他的各种表情你弄。补捉一下哪几十或者哪几十个演员的表情，弄一弄也就出来了。我靠，这么快吗？肯定，需要，要不先先拿着再说。那你不你不不如我找发票给你报算了，这种搞现金没必要。你不用。"
+[2026-03-19 14:16:21.682] [ASR] 已追加 final 文本: "你不用那个。"
+[2026-03-19 14:16:39.860] [Voxa] 应用启动中...
+[2026-03-19 14:16:39.860] [Voxa] AppState 初始化完成
+[2026-03-19 14:16:39.860] [Voxa] PanelController 初始化完成
+[2026-03-19 14:16:39.860] [Voxa] AudioCapture 初始化完成
+[2026-03-19 14:16:39.860] [Voxa] AsrClient 初始化完成
+[2026-03-19 14:16:39.861] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 14:16:39.861] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 14:16:39.861] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 14:16:39.877] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 14:16:39.877] [Voxa] 菜单栏设置完成
+[2026-03-19 14:16:39.882] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 14:16:39.882] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 14:17:24.893] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:17:25.769] WebSocket connected
+[2026-03-19 14:17:25.770] [ASR] 发送 run-task: {"payload":{"parameters":{"enable_intermediate_result":true,"enable_inverse_text_normalization":true,"format":"pcm","sample_rate":16000,"enable_punctuation_prediction":true},"function":"recognition","model":"paraformer-realtime-v2","task":"asr","task_group":"audio","input":{}},"header":{"action":"run-task","task_id":"5FF990A6-57BE-4787-85C4-591723C5399E","streaming":"duplex"}}
+[2026-03-19 14:17:25.830] [ASR] event: task-started
+[2026-03-19 14:17:25.830] ASR task started
+[2026-03-19 14:17:27.382] [ASR] event: result-generated
+[2026-03-19 14:17:27.383] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:27.383] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:17:27.383] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:17:27.384] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:17:27.519] [ASR] event: result-generated
+[2026-03-19 14:17:27.520] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:27.520] [ASR] output.sentence: AsrSentence(text: "可能", sentence_end: Optional(false))
+[2026-03-19 14:17:27.520] [ASR] 收到识别结果: "可能", isFinal: false
+[2026-03-19 14:17:27.521] [AppState] updatePartial: confirmed=0字, partial=2字
+[2026-03-19 14:17:27.521] [ASR] 已更新 partial 文本: "可能"
+[2026-03-19 14:17:27.926] [ASR] event: result-generated
+[2026-03-19 14:17:27.927] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:27.927] [ASR] output.sentence: AsrSentence(text: "可能", sentence_end: Optional(false))
+[2026-03-19 14:17:27.927] [ASR] 收到识别结果: "可能", isFinal: false
+[2026-03-19 14:17:27.928] [ASR] 已更新 partial 文本: "可能"
+[2026-03-19 14:17:28.455] [ASR] event: result-generated
+[2026-03-19 14:17:28.455] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:28.456] [ASR] output.sentence: AsrSentence(text: "可能", sentence_end: Optional(false))
+[2026-03-19 14:17:28.456] [ASR] 收到识别结果: "可能", isFinal: false
+[2026-03-19 14:17:28.456] [ASR] 已更新 partial 文本: "可能"
+[2026-03-19 14:17:28.661] [ASR] event: result-generated
+[2026-03-19 14:17:28.662] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:28.662] [ASR] output.sentence: AsrSentence(text: "可能他", sentence_end: Optional(false))
+[2026-03-19 14:17:28.662] [ASR] 收到识别结果: "可能他", isFinal: false
+[2026-03-19 14:17:28.662] [AppState] updatePartial: confirmed=0字, partial=3字
+[2026-03-19 14:17:28.663] [ASR] 已更新 partial 文本: "可能他"
+[2026-03-19 14:17:29.737] [ASR] event: result-generated
+[2026-03-19 14:17:29.738] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:29.738] [ASR] output.sentence: AsrSentence(text: "可能他他会藏起来，", sentence_end: Optional(false))
+[2026-03-19 14:17:29.738] [ASR] 收到识别结果: "可能他他会藏起来，", isFinal: false
+[2026-03-19 14:17:29.738] [AppState] updatePartial: confirmed=0字, partial=9字
+[2026-03-19 14:17:29.738] [ASR] 已更新 partial 文本: "可能他他会藏起来，"
+[2026-03-19 14:17:30.848] [ASR] event: result-generated
+[2026-03-19 14:17:30.849] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:30.849] [ASR] output.sentence: AsrSentence(text: "可能他他会藏起来。对。", sentence_end: Optional(true))
+[2026-03-19 14:17:30.849] [ASR] 收到识别结果: "可能他他会藏起来。对。", isFinal: true
+[2026-03-19 14:17:30.850] [AppState] applyFinal: added="可能他他会藏起来。对。", confirmed="可能他他会藏起来。对。"
+[2026-03-19 14:17:30.850] [ASR] 已追加 final 文本: "可能他他会藏起来。对。"
+[2026-03-19 14:17:33.147] [ASR] event: result-generated
+[2026-03-19 14:17:33.148] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:33.149] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:17:33.149] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:17:33.149] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:17:33.232] [ASR] event: result-generated
+[2026-03-19 14:17:33.233] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:33.233] [ASR] output.sentence: AsrSentence(text: "因为，", sentence_end: Optional(false))
+[2026-03-19 14:17:33.233] [ASR] 收到识别结果: "因为，", isFinal: false
+[2026-03-19 14:17:33.233] [AppState] updatePartial: confirmed=11字, partial=3字
+[2026-03-19 14:17:33.233] [ASR] 已更新 partial 文本: "因为，"
+[2026-03-19 14:17:33.461] [ASR] event: result-generated
+[2026-03-19 14:17:33.461] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:33.461] [ASR] output.sentence: AsrSentence(text: "另外，", sentence_end: Optional(false))
+[2026-03-19 14:17:33.461] [ASR] 收到识别结果: "另外，", isFinal: false
+[2026-03-19 14:17:33.461] [AppState] updatePartial: confirmed=11字, partial=3字
+[2026-03-19 14:17:33.462] [ASR] 已更新 partial 文本: "另外，"
+[2026-03-19 14:17:34.092] [ASR] event: result-generated
+[2026-03-19 14:17:34.093] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:34.093] [ASR] output.sentence: AsrSentence(text: "另外一个。", sentence_end: Optional(true))
+[2026-03-19 14:17:34.093] [ASR] 收到识别结果: "另外一个。", isFinal: true
+[2026-03-19 14:17:34.094] [AppState] applyFinal: added="另外一个。", confirmed="可能他他会藏起来。对。另外一个。"
+[2026-03-19 14:17:34.094] [ASR] 已追加 final 文本: "另外一个。"
+[2026-03-19 14:17:36.182] [ASR] event: result-generated
+[2026-03-19 14:17:36.182] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:36.183] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:17:36.183] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:17:36.183] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:17:36.282] [ASR] event: result-generated
+[2026-03-19 14:17:36.282] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:36.283] [ASR] output.sentence: AsrSentence(text: "有些", sentence_end: Optional(false))
+[2026-03-19 14:17:36.283] [ASR] 收到识别结果: "有些", isFinal: false
+[2026-03-19 14:17:36.283] [AppState] updatePartial: confirmed=16字, partial=2字
+[2026-03-19 14:17:36.283] [ASR] 已更新 partial 文本: "有些"
+[2026-03-19 14:17:36.541] [ASR] event: result-generated
+[2026-03-19 14:17:36.541] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:36.542] [ASR] output.sentence: AsrSentence(text: "有1", sentence_end: Optional(false))
+[2026-03-19 14:17:36.542] [ASR] 收到识别结果: "有1", isFinal: false
+[2026-03-19 14:17:36.542] [AppState] updatePartial: confirmed=16字, partial=2字
+[2026-03-19 14:17:36.542] [ASR] 已更新 partial 文本: "有1"
+[2026-03-19 14:17:37.339] [ASR] event: result-generated
+[2026-03-19 14:17:37.340] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:37.340] [ASR] output.sentence: AsrSentence(text: "有一些东西。", sentence_end: Optional(true))
+[2026-03-19 14:17:37.340] [ASR] 收到识别结果: "有一些东西。", isFinal: true
+[2026-03-19 14:17:37.341] [AppState] applyFinal: added="有一些东西。", confirmed="可能他他会藏起来。对。另外一个。有一些东西。"
+[2026-03-19 14:17:37.341] [ASR] 已追加 final 文本: "有一些东西。"
+[2026-03-19 14:17:37.376] [ASR] event: result-generated
+[2026-03-19 14:17:37.376] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:37.376] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:17:37.376] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:17:37.376] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:17:37.455] [ASR] event: result-generated
+[2026-03-19 14:17:37.456] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:37.456] [ASR] output.sentence: AsrSentence(text: "你", sentence_end: Optional(false))
+[2026-03-19 14:17:37.456] [ASR] 收到识别结果: "你", isFinal: false
+[2026-03-19 14:17:37.456] [AppState] updatePartial: confirmed=22字, partial=1字
+[2026-03-19 14:17:37.457] [ASR] 已更新 partial 文本: "你"
+[2026-03-19 14:17:38.510] [ASR] event: result-generated
+[2026-03-19 14:17:38.510] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:38.511] [ASR] output.sentence: AsrSentence(text: "你也可以拿。", sentence_end: Optional(true))
+[2026-03-19 14:17:38.511] [ASR] 收到识别结果: "你也可以拿。", isFinal: true
+[2026-03-19 14:17:38.511] [AppState] applyFinal: added="你也可以拿。", confirmed="可能他他会藏起来。对。另外一个。有一些东西。你也可以拿。"
+[2026-03-19 14:17:38.511] [ASR] 已追加 final 文本: "你也可以拿。"
+[2026-03-19 14:17:39.784] [ASR] event: result-generated
+[2026-03-19 14:17:39.784] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:39.785] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:17:39.785] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:17:39.785] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:17:39.949] [ASR] event: result-generated
+[2026-03-19 14:17:39.949] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:39.949] [ASR] output.sentence: AsrSentence(text: "我", sentence_end: Optional(false))
+[2026-03-19 14:17:39.949] [ASR] 收到识别结果: "我", isFinal: false
+[2026-03-19 14:17:39.950] [AppState] updatePartial: confirmed=28字, partial=1字
+[2026-03-19 14:17:39.950] [ASR] 已更新 partial 文本: "我"
+[2026-03-19 14:17:40.712] [ASR] event: result-generated
+[2026-03-19 14:17:40.712] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:40.712] [ASR] output.sentence: AsrSentence(text: "我", sentence_end: Optional(false))
+[2026-03-19 14:17:40.712] [ASR] 收到识别结果: "我", isFinal: false
+[2026-03-19 14:17:40.713] [ASR] 已更新 partial 文本: "我"
+[2026-03-19 14:17:41.334] [ASR] event: result-generated
+[2026-03-19 14:17:41.334] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:41.335] [ASR] output.sentence: AsrSentence(text: "我倒是", sentence_end: Optional(false))
+[2026-03-19 14:17:41.335] [ASR] 收到识别结果: "我倒是", isFinal: false
+[2026-03-19 14:17:41.335] [AppState] updatePartial: confirmed=28字, partial=3字
+[2026-03-19 14:17:41.335] [ASR] 已更新 partial 文本: "我倒是"
+[2026-03-19 14:17:41.752] [ASR] event: result-generated
+[2026-03-19 14:17:41.752] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:41.753] [ASR] output.sentence: AsrSentence(text: "我倒是想", sentence_end: Optional(false))
+[2026-03-19 14:17:41.753] [ASR] 收到识别结果: "我倒是想", isFinal: false
+[2026-03-19 14:17:41.753] [AppState] updatePartial: confirmed=28字, partial=4字
+[2026-03-19 14:17:41.753] [ASR] 已更新 partial 文本: "我倒是想"
+[2026-03-19 14:17:42.084] [ASR] event: result-generated
+[2026-03-19 14:17:42.084] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:42.085] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是", sentence_end: Optional(false))
+[2026-03-19 14:17:42.085] [ASR] 收到识别结果: "我倒是想东西是", isFinal: false
+[2026-03-19 14:17:42.086] [AppState] updatePartial: confirmed=28字, partial=7字
+[2026-03-19 14:17:42.086] [ASR] 已更新 partial 文本: "我倒是想东西是"
+[2026-03-19 14:17:42.488] [ASR] event: result-generated
+[2026-03-19 14:17:42.492] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:42.494] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么，就是", sentence_end: Optional(false))
+[2026-03-19 14:17:42.495] [ASR] 收到识别结果: "我倒是想东西是什么，就是", isFinal: false
+[2026-03-19 14:17:42.499] [AppState] updatePartial: confirmed=28字, partial=12字
+[2026-03-19 14:17:42.499] [ASR] 已更新 partial 文本: "我倒是想东西是什么，就是"
+[2026-03-19 14:17:43.183] [ASR] event: result-generated
+[2026-03-19 14:17:43.184] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:43.184] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得", sentence_end: Optional(false))
+[2026-03-19 14:17:43.184] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得", isFinal: false
+[2026-03-19 14:17:43.185] [AppState] updatePartial: confirmed=28字, partial=16字
+[2026-03-19 14:17:43.185] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得"
+[2026-03-19 14:17:43.505] [ASR] event: result-generated
+[2026-03-19 14:17:43.505] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:43.506] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真", sentence_end: Optional(false))
+[2026-03-19 14:17:43.506] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真", isFinal: false
+[2026-03-19 14:17:43.506] [AppState] updatePartial: confirmed=28字, partial=19字
+[2026-03-19 14:17:43.506] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得这个真"
+[2026-03-19 14:17:43.903] [ASR] event: result-generated
+[2026-03-19 14:17:43.904] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:43.904] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真的是一", sentence_end: Optional(false))
+[2026-03-19 14:17:43.904] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真的是一", isFinal: false
+[2026-03-19 14:17:43.904] [AppState] updatePartial: confirmed=28字, partial=22字
+[2026-03-19 14:17:43.905] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得这个真的是一"
+[2026-03-19 14:17:44.499] [ASR] event: result-generated
+[2026-03-19 14:17:44.499] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:44.499] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真的是一个集合", sentence_end: Optional(false))
+[2026-03-19 14:17:44.500] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真的是一个集合", isFinal: false
+[2026-03-19 14:17:44.500] [AppState] updatePartial: confirmed=28字, partial=25字
+[2026-03-19 14:17:44.500] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得这个真的是一个集合"
+[2026-03-19 14:17:45.162] [ASR] event: result-generated
+[2026-03-19 14:17:45.162] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:45.163] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真的是一个集合点", sentence_end: Optional(false))
+[2026-03-19 14:17:45.163] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真的是一个集合点", isFinal: false
+[2026-03-19 14:17:45.163] [AppState] updatePartial: confirmed=28字, partial=26字
+[2026-03-19 14:17:45.163] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得这个真的是一个集合点"
+[2026-03-19 14:17:45.655] [ASR] event: result-generated
+[2026-03-19 14:17:45.655] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:45.655] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对", sentence_end: Optional(false))
+[2026-03-19 14:17:45.656] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对", isFinal: false
+[2026-03-19 14:17:45.656] [AppState] updatePartial: confirmed=28字, partial=29字
+[2026-03-19 14:17:45.656] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对"
+[2026-03-19 14:17:45.929] [ASR] event: result-generated
+[2026-03-19 14:17:45.930] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:45.930] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对吧？", sentence_end: Optional(false))
+[2026-03-19 14:17:45.930] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对吧？", isFinal: false
+[2026-03-19 14:17:45.930] [AppState] updatePartial: confirmed=28字, partial=31字
+[2026-03-19 14:17:45.931] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对吧？"
+[2026-03-19 14:17:46.315] [ASR] event: result-generated
+[2026-03-19 14:17:46.316] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:46.316] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对吧？然", sentence_end: Optional(false))
+[2026-03-19 14:17:46.316] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对吧？然", isFinal: false
+[2026-03-19 14:17:46.317] [AppState] updatePartial: confirmed=28字, partial=32字
+[2026-03-19 14:17:46.317] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对吧？然"
+[2026-03-19 14:17:47.146] [ASR] event: result-generated
+[2026-03-19 14:17:47.147] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:47.147] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对吧？然后", sentence_end: Optional(false))
+[2026-03-19 14:17:47.148] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对吧？然后", isFinal: false
+[2026-03-19 14:17:47.148] [AppState] updatePartial: confirmed=28字, partial=33字
+[2026-03-19 14:17:47.148] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得这个真的是一个聚合点嘛，对吧？然后"
+[2026-03-19 14:17:48.002] [ASR] event: result-generated
+[2026-03-19 14:17:48.002] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:48.003] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真的是一个聚会点嘛，对吧？然后搞得", sentence_end: Optional(false))
+[2026-03-19 14:17:48.003] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真的是一个聚会点嘛，对吧？然后搞得", isFinal: false
+[2026-03-19 14:17:48.003] [AppState] updatePartial: confirmed=28字, partial=35字
+[2026-03-19 14:17:48.003] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得这个真的是一个聚会点嘛，对吧？然后搞得"
+[2026-03-19 14:17:48.811] [ASR] event: result-generated
+[2026-03-19 14:17:48.811] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:48.812] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真的是一个聚会点嘛，对吧？然后搞得起来", sentence_end: Optional(false))
+[2026-03-19 14:17:48.812] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真的是一个聚会点嘛，对吧？然后搞得起来", isFinal: false
+[2026-03-19 14:17:48.812] [AppState] updatePartial: confirmed=28字, partial=37字
+[2026-03-19 14:17:48.813] [ASR] 已更新 partial 文本: "我倒是想东西是什么？就是说我觉得这个真的是一个聚会点嘛，对吧？然后搞得起来"
+[2026-03-19 14:17:49.365] [ASR] event: result-generated
+[2026-03-19 14:17:49.365] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:49.365] [ASR] output.sentence: AsrSentence(text: "我倒是想东西是什么？就是说我觉得这个真的是一个聚会点嘛，对吧？然后搞得起来。", sentence_end: Optional(true))
+[2026-03-19 14:17:49.365] [ASR] 收到识别结果: "我倒是想东西是什么？就是说我觉得这个真的是一个聚会点嘛，对吧？然后搞得起来。", isFinal: true
+[2026-03-19 14:17:49.366] [AppState] applyFinal: added="我倒是想东西是什么？说我觉得真的是一个聚会点嘛，对吧？搞得起来。", confirmed="可能他他会藏起来。对。另外一个。有一些东西。你也可以拿。我倒是想东西是什么？说我觉得真的是一个聚会点嘛，对吧？搞得起来。"
+[2026-03-19 14:17:49.366] [ASR] 已追加 final 文本: "我倒是想东西是什么？就是说我觉得这个真的是一个聚会点嘛，对吧？然后搞得起来。"
+[2026-03-19 14:17:49.625] [ASR] event: result-generated
+[2026-03-19 14:17:49.625] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:49.626] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:17:49.626] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:17:49.626] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:17:49.860] [ASR] event: result-generated
+[2026-03-19 14:17:49.860] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:49.861] [ASR] output.sentence: AsrSentence(text: "So, ", sentence_end: Optional(false))
+[2026-03-19 14:17:49.861] [ASR] 收到识别结果: "So, ", isFinal: false
+[2026-03-19 14:17:49.861] [AppState] updatePartial: confirmed=60字, partial=4字
+[2026-03-19 14:17:49.862] [ASR] 已更新 partial 文本: "So, "
+[2026-03-19 14:17:50.057] [ASR] event: result-generated
+[2026-03-19 14:17:50.057] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:50.057] [ASR] output.sentence: AsrSentence(text: "So, ", sentence_end: Optional(false))
+[2026-03-19 14:17:50.058] [ASR] 收到识别结果: "So, ", isFinal: false
+[2026-03-19 14:17:50.058] [ASR] 已更新 partial 文本: "So, "
+[2026-03-19 14:17:50.470] [ASR] event: result-generated
+[2026-03-19 14:17:50.471] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:50.471] [ASR] output.sentence: AsrSentence(text: "如果以后我", sentence_end: Optional(false))
+[2026-03-19 14:17:50.472] [ASR] 收到识别结果: "如果以后我", isFinal: false
+[2026-03-19 14:17:50.472] [AppState] updatePartial: confirmed=60字, partial=5字
+[2026-03-19 14:17:50.472] [ASR] 已更新 partial 文本: "如果以后我"
+[2026-03-19 14:17:51.577] [ASR] event: result-generated
+[2026-03-19 14:17:51.578] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:51.578] [ASR] output.sentence: AsrSentence(text: "如果以后我要做。", sentence_end: Optional(true))
+[2026-03-19 14:17:51.579] [ASR] 收到识别结果: "如果以后我要做。", isFinal: true
+[2026-03-19 14:17:51.579] [AppState] applyFinal: added="如果以后我要做。", confirmed="可能他他会藏起来。对。另外一个。有一些东西。你也可以拿。我倒是想东西是什么？说我觉得真的是一个聚会点嘛，对吧？搞得起来。如果以后我要做。"
+[2026-03-19 14:17:51.579] [ASR] event: result-generated
+[2026-03-19 14:17:51.579] [ASR] 已追加 final 文本: "如果以后我要做。"
+[2026-03-19 14:17:51.579] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:51.580] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:17:51.580] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:17:51.587] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:17:51.861] [ASR] event: result-generated
+[2026-03-19 14:17:51.862] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:51.862] [ASR] output.sentence: AsrSentence(text: "这", sentence_end: Optional(false))
+[2026-03-19 14:17:51.862] [ASR] 收到识别结果: "这", isFinal: false
+[2026-03-19 14:17:51.863] [AppState] updatePartial: confirmed=68字, partial=1字
+[2026-03-19 14:17:51.863] [ASR] 已更新 partial 文本: "这"
+[2026-03-19 14:17:52.589] [ASR] event: result-generated
+[2026-03-19 14:17:52.590] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:52.591] [ASR] output.sentence: AsrSentence(text: "做段啥？", sentence_end: Optional(false))
+[2026-03-19 14:17:52.591] [ASR] 收到识别结果: "做段啥？", isFinal: false
+[2026-03-19 14:17:52.591] [AppState] updatePartial: confirmed=68字, partial=4字
+[2026-03-19 14:17:52.591] [ASR] 已更新 partial 文本: "做段啥？"
+[2026-03-19 14:17:53.095] [ASR] event: result-generated
+[2026-03-19 14:17:53.096] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:53.096] [ASR] output.sentence: AsrSentence(text: "做段啥我觉得", sentence_end: Optional(false))
+[2026-03-19 14:17:53.097] [ASR] 收到识别结果: "做段啥我觉得", isFinal: false
+[2026-03-19 14:17:53.097] [AppState] updatePartial: confirmed=68字, partial=6字
+[2026-03-19 14:17:53.097] [ASR] 已更新 partial 文本: "做段啥我觉得"
+[2026-03-19 14:17:53.558] [ASR] event: result-generated
+[2026-03-19 14:17:53.558] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:53.559] [ASR] output.sentence: AsrSentence(text: "做段啥。我觉得也", sentence_end: Optional(false))
+[2026-03-19 14:17:53.559] [ASR] 收到识别结果: "做段啥。我觉得也", isFinal: false
+[2026-03-19 14:17:53.559] [AppState] updatePartial: confirmed=68字, partial=8字
+[2026-03-19 14:17:53.559] [ASR] 已更新 partial 文本: "做段啥。我觉得也"
+[2026-03-19 14:17:54.158] [ASR] event: result-generated
+[2026-03-19 14:17:54.159] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:54.159] [ASR] output.sentence: AsrSentence(text: "做段啥我觉得也可以找你", sentence_end: Optional(false))
+[2026-03-19 14:17:54.159] [ASR] 收到识别结果: "做段啥我觉得也可以找你", isFinal: false
+[2026-03-19 14:17:54.160] [AppState] updatePartial: confirmed=68字, partial=11字
+[2026-03-19 14:17:54.160] [ASR] 已更新 partial 文本: "做段啥我觉得也可以找你"
+[2026-03-19 14:17:54.497] [ASR] event: result-generated
+[2026-03-19 14:17:54.497] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:54.498] [ASR] output.sentence: AsrSentence(text: "做段啥我觉得也可以找你们", sentence_end: Optional(false))
+[2026-03-19 14:17:54.498] [ASR] 收到识别结果: "做段啥我觉得也可以找你们", isFinal: false
+[2026-03-19 14:17:54.498] [AppState] updatePartial: confirmed=68字, partial=12字
+[2026-03-19 14:17:54.498] [ASR] 已更新 partial 文本: "做段啥我觉得也可以找你们"
+[2026-03-19 14:17:55.276] [ASR] event: result-generated
+[2026-03-19 14:17:55.277] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:55.277] [ASR] output.sentence: AsrSentence(text: "做段啥我觉得也可以找你们做", sentence_end: Optional(false))
+[2026-03-19 14:17:55.277] [ASR] 收到识别结果: "做段啥我觉得也可以找你们做", isFinal: false
+[2026-03-19 14:17:55.278] [AppState] updatePartial: confirmed=68字, partial=13字
+[2026-03-19 14:17:55.278] [ASR] 已更新 partial 文本: "做段啥我觉得也可以找你们做"
+[2026-03-19 14:17:56.192] [ASR] event: result-generated
+[2026-03-19 14:17:56.193] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:56.193] [ASR] output.sentence: AsrSentence(text: "做段啥我觉得也可以找你们做scale", sentence_end: Optional(false))
+[2026-03-19 14:17:56.193] [ASR] 收到识别结果: "做段啥我觉得也可以找你们做scale", isFinal: false
+[2026-03-19 14:17:56.194] [AppState] updatePartial: confirmed=68字, partial=18字
+[2026-03-19 14:17:56.194] [ASR] 已更新 partial 文本: "做段啥我觉得也可以找你们做scale"
+[2026-03-19 14:17:56.994] [ASR] event: result-generated
+[2026-03-19 14:17:56.994] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:56.995] [ASR] output.sentence: AsrSentence(text: "做段啥我觉得也可以找你们做scale的时", sentence_end: Optional(false))
+[2026-03-19 14:17:56.995] [ASR] 收到识别结果: "做段啥我觉得也可以找你们做scale的时", isFinal: false
+[2026-03-19 14:17:56.995] [AppState] updatePartial: confirmed=68字, partial=20字
+[2026-03-19 14:17:56.995] [ASR] 已更新 partial 文本: "做段啥我觉得也可以找你们做scale的时"
+[2026-03-19 14:17:57.069] [ASR] event: result-generated
+[2026-03-19 14:17:57.070] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:57.070] [ASR] output.sentence: AsrSentence(text: "做段啥我觉得也可以找你们做scale的时候，", sentence_end: Optional(false))
+[2026-03-19 14:17:57.070] [ASR] 收到识别结果: "做段啥我觉得也可以找你们做scale的时候，", isFinal: false
+[2026-03-19 14:17:57.070] [AppState] updatePartial: confirmed=68字, partial=22字
+[2026-03-19 14:17:57.070] [ASR] 已更新 partial 文本: "做段啥我觉得也可以找你们做scale的时候，"
+[2026-03-19 14:17:57.463] [ASR] event: result-generated
+[2026-03-19 14:17:57.464] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:57.464] [ASR] output.sentence: AsrSentence(text: "做段啥我觉得也可以找你们做skill。卖时候可以找", sentence_end: Optional(false))
+[2026-03-19 14:17:57.464] [ASR] 收到识别结果: "做段啥我觉得也可以找你们做skill。卖时候可以找", isFinal: false
+[2026-03-19 14:17:57.464] [AppState] updatePartial: confirmed=68字, partial=25字
+[2026-03-19 14:17:57.465] [ASR] 已更新 partial 文本: "做段啥我觉得也可以找你们做skill。卖时候可以找"
+[2026-03-19 14:17:58.170] [ASR] event: result-generated
+[2026-03-19 14:17:58.171] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:58.171] [ASR] output.sentence: AsrSentence(text: "做段啥我觉得也可以找你们做skill。卖sk的时候可以找你们。", sentence_end: Optional(true))
+[2026-03-19 14:17:58.171] [ASR] 收到识别结果: "做段啥我觉得也可以找你们做skill。卖sk的时候可以找你们。", isFinal: true
+[2026-03-19 14:17:58.172] [AppState] applyFinal: added="做段啥我觉得也可以找你们做 skill。卖 sk 的时候可以找你们。", confirmed="可能他他会藏起来。对。另外一个。有一些东西。你也可以拿。我倒是想东西是什么？说我觉得真的是一个聚会点嘛，对吧？搞得起来。如果以后我要做。做段啥我觉得也可以找你们做 skill。卖 sk 的时候可以找你们。"
+[2026-03-19 14:17:58.172] [ASR] 已追加 final 文本: "做段啥我觉得也可以找你们做skill。卖sk的时候可以找你们。"
+[2026-03-19 14:17:58.178] [ASR] event: result-generated
+[2026-03-19 14:17:58.179] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:58.179] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:17:58.179] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:17:58.186] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:17:58.265] [ASR] event: result-generated
+[2026-03-19 14:17:58.266] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:58.266] [ASR] output.sentence: AsrSentence(text: "我需要", sentence_end: Optional(false))
+[2026-03-19 14:17:58.266] [ASR] 收到识别结果: "我需要", isFinal: false
+[2026-03-19 14:17:58.267] [AppState] updatePartial: confirmed=102字, partial=3字
+[2026-03-19 14:17:58.267] [ASR] 已更新 partial 文本: "我需要"
+[2026-03-19 14:17:58.468] [ASR] event: result-generated
+[2026-03-19 14:17:58.469] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:58.469] [ASR] output.sentence: AsrSentence(text: "我需要", sentence_end: Optional(false))
+[2026-03-19 14:17:58.469] [ASR] 收到识别结果: "我需要", isFinal: false
+[2026-03-19 14:17:58.470] [ASR] 已更新 partial 文本: "我需要"
+[2026-03-19 14:17:59.071] [ASR] event: result-generated
+[2026-03-19 14:17:59.072] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:59.072] [ASR] output.sentence: AsrSentence(text: "我需要培帮", sentence_end: Optional(false))
+[2026-03-19 14:17:59.072] [ASR] 收到识别结果: "我需要培帮", isFinal: false
+[2026-03-19 14:17:59.073] [AppState] updatePartial: confirmed=102字, partial=5字
+[2026-03-19 14:17:59.073] [ASR] 已更新 partial 文本: "我需要培帮"
+[2026-03-19 14:17:59.532] [ASR] event: result-generated
+[2026-03-19 14:17:59.532] [ASR] result-generated, payload: 有
+[2026-03-19 14:17:59.533] [ASR] output.sentence: AsrSentence(text: "我需要培帮主去干", sentence_end: Optional(false))
+[2026-03-19 14:17:59.533] [ASR] 收到识别结果: "我需要培帮主去干", isFinal: false
+[2026-03-19 14:17:59.533] [AppState] updatePartial: confirmed=102字, partial=8字
+[2026-03-19 14:17:59.533] [ASR] 已更新 partial 文本: "我需要培帮主去干"
+[2026-03-19 14:18:00.143] [ASR] event: result-generated
+[2026-03-19 14:18:00.143] [ASR] result-generated, payload: 有
+[2026-03-19 14:18:00.144] [ASR] output.sentence: AsrSentence(text: "我需要培帮主去干事情。因为", sentence_end: Optional(false))
+[2026-03-19 14:18:00.144] [ASR] 收到识别结果: "我需要培帮主去干事情。因为", isFinal: false
+[2026-03-19 14:18:00.144] [AppState] updatePartial: confirmed=102字, partial=13字
+[2026-03-19 14:18:00.144] [ASR] 已更新 partial 文本: "我需要培帮主去干事情。因为"
+[2026-03-19 14:18:00.549] [ASR] event: result-generated
+[2026-03-19 14:18:00.549] [ASR] result-generated, payload: 有
+[2026-03-19 14:18:00.549] [ASR] output.sentence: AsrSentence(text: "我需要培帮主去干事情。因为以", sentence_end: Optional(false))
+[2026-03-19 14:18:00.550] [ASR] 收到识别结果: "我需要培帮主去干事情。因为以", isFinal: false
+[2026-03-19 14:18:00.550] [AppState] updatePartial: confirmed=102字, partial=14字
+[2026-03-19 14:18:00.550] [ASR] 已更新 partial 文本: "我需要培帮主去干事情。因为以"
+[2026-03-19 14:18:00.930] [ASR] event: result-generated
+[2026-03-19 14:18:00.930] [ASR] result-generated, payload: 有
+[2026-03-19 14:18:00.930] [ASR] output.sentence: AsrSentence(text: "我需要培帮主去干事情。因为以前我都", sentence_end: Optional(false))
+[2026-03-19 14:18:00.930] [ASR] 收到识别结果: "我需要培帮主去干事情。因为以前我都", isFinal: false
+[2026-03-19 14:18:00.931] [AppState] updatePartial: confirmed=102字, partial=17字
+[2026-03-19 14:18:00.931] [ASR] 已更新 partial 文本: "我需要培帮主去干事情。因为以前我都"
+[2026-03-19 14:18:01.912] [ASR] event: result-generated
+[2026-03-19 14:18:01.912] [ASR] result-generated, payload: 有
+[2026-03-19 14:18:01.913] [ASR] output.sentence: AsrSentence(text: "我需要培人帮助去干事。情因为以前我都是自己一", sentence_end: Optional(false))
+[2026-03-19 14:18:01.913] [ASR] 收到识别结果: "我需要培人帮助去干事。情因为以前我都是自己一", isFinal: false
+[2026-03-19 14:18:01.913] [AppState] updatePartial: confirmed=102字, partial=22字
+[2026-03-19 14:18:01.913] [ASR] 已更新 partial 文本: "我需要培人帮助去干事。情因为以前我都是自己一"
+[2026-03-19 14:18:02.837] [ASR] event: result-generated
+[2026-03-19 14:18:02.838] [ASR] result-generated, payload: 有
+[2026-03-19 14:18:02.838] [ASR] output.sentence: AsrSentence(text: "我需要培人帮助去干事情，因为以前我都是自己一个人干嘛。", sentence_end: Optional(true))
+[2026-03-19 14:18:02.838] [ASR] 收到识别结果: "我需要培人帮助去干事情，因为以前我都是自己一个人干嘛。", isFinal: true
+[2026-03-19 14:18:02.839] [AppState] applyFinal: added="我需要培人帮助去干事情，因为以前我都是自己一个人干嘛。", confirmed="可能他他会藏起来。对。另外一个。有一些东西。你也可以拿。我倒是想东西是什么？说我觉得真的是一个聚会点嘛，对吧？搞得起来。如果以后我要做。做段啥我觉得也可以找你们做 skill。卖 sk 的时候可以找你们。我需要培人帮助去干事情，因为以前我都是自己一个人干嘛。"
+[2026-03-19 14:18:02.839] [ASR] 已追加 final 文本: "我需要培人帮助去干事情，因为以前我都是自己一个人干嘛。"
+[2026-03-19 14:36:38.423] [Voxa] 应用启动中...
+[2026-03-19 14:36:38.423] [Voxa] AppState 初始化完成
+[2026-03-19 14:36:38.423] [Voxa] PanelController 初始化完成
+[2026-03-19 14:36:38.423] [Voxa] AudioCapture 初始化完成
+[2026-03-19 14:36:38.423] [Voxa] AsrClient 初始化完成
+[2026-03-19 14:36:38.423] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 14:36:38.423] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 14:36:38.423] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 14:36:38.441] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 14:36:38.441] [Voxa] 菜单栏设置完成
+[2026-03-19 14:36:38.446] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 14:36:38.446] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 14:36:42.500] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:36:42.821] WebSocket connected
+[2026-03-19 14:36:42.822] [ASR] 发送 run-task: {"payload":{"task":"asr","task_group":"audio","function":"recognition","parameters":{"sample_rate":16000,"format":"pcm","enable_intermediate_result":true,"enable_punctuation_prediction":true,"enable_inverse_text_normalization":true},"input":{},"model":"paraformer-realtime-v2"},"header":{"action":"run-task","task_id":"644610B2-A389-4101-8179-B9E8FF096FC9","streaming":"duplex"}}
+[2026-03-19 14:36:42.877] [ASR] event: task-started
+[2026-03-19 14:36:42.877] ASR task started
+[2026-03-19 14:36:44.027] [ASR] event: result-generated
+[2026-03-19 14:36:44.027] [ASR] result-generated, payload: 有
+[2026-03-19 14:36:44.028] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:36:44.028] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:36:44.028] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:36:44.297] [ASR] event: result-generated
+[2026-03-19 14:36:44.297] [ASR] result-generated, payload: 有
+[2026-03-19 14:36:44.298] [ASR] output.sentence: AsrSentence(text: "还是本地？", sentence_end: Optional(false))
+[2026-03-19 14:36:44.298] [ASR] 收到识别结果: "还是本地？", isFinal: false
+[2026-03-19 14:36:44.298] [AppState] updatePartial: confirmed=0字, partial=5字
+[2026-03-19 14:36:44.298] [ASR] 已更新 partial 文本: "还是本地？"
+[2026-03-19 14:36:44.477] [ASR] event: result-generated
+[2026-03-19 14:36:44.478] [ASR] result-generated, payload: 有
+[2026-03-19 14:36:44.478] [ASR] output.sentence: AsrSentence(text: "还是本地？", sentence_end: Optional(false))
+[2026-03-19 14:36:44.478] [ASR] 收到识别结果: "还是本地？", isFinal: false
+[2026-03-19 14:36:44.478] [ASR] 已更新 partial 文本: "还是本地？"
+[2026-03-19 14:36:44.897] [ASR] event: result-generated
+[2026-03-19 14:36:44.897] [ASR] result-generated, payload: 有
+[2026-03-19 14:36:44.898] [ASR] output.sentence: AsrSentence(text: "还是本地的牌？", sentence_end: Optional(false))
+[2026-03-19 14:36:44.898] [ASR] 收到识别结果: "还是本地的牌？", isFinal: false
+[2026-03-19 14:36:44.898] [AppState] updatePartial: confirmed=0字, partial=7字
+[2026-03-19 14:36:44.898] [ASR] 已更新 partial 文本: "还是本地的牌？"

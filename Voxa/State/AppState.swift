@@ -42,6 +42,9 @@ class AppState: ObservableObject {
     /// Current partial text (unconfirmed, will be replaced)
     private(set) var currentPartial: String = ""
     
+    /// Pending final text waiting for user to insert
+    @Published var pendingFinalText: String = ""
+    
     // MARK: - Methods
     
     /// Reset state for new recording session
@@ -49,6 +52,7 @@ class AppState: ObservableObject {
         text = ""
         confirmedText = ""
         currentPartial = ""
+        pendingFinalText = ""
         cursorPosition = 0
         pendingPartial = nil
         pendingFinals = []
@@ -90,24 +94,39 @@ class AppState: ObservableObject {
         applyFinal(finalText)
     }
     
-    /// Apply a final ASR result
+    /// 接收 final 但不自动插入，保存到 pendingFinalText 等待用户点击
     private func applyFinal(_ finalText: String) {
         // 清洗 final 文本
         let cleaned = Cleaner.clean(finalText)
         
-        // 将清洗后的文本追加到已确认文本
-        confirmedText += cleaned
+        // 保存到 pendingFinalText，不清空 partial（保持第1行显示）
+        pendingFinalText = cleaned
         
-        // 清空当前 partial（因为已经确认）
+        VoxaLog("[AppState] applyFinal: saved to pendingFinalText=\"\(cleaned)\"")
+    }
+    
+    /// 用户点击插入按钮，将 pendingFinalText 插入到光标位置
+    func insertPendingFinal() {
+        guard !pendingFinalText.isEmpty else { return }
+        
+        // 在光标位置插入文本
+        let insertPos = min(cursorPosition, text.count)
+        let nsText = text as NSString
+        let prefix = nsText.substring(to: insertPos)
+        let suffix = nsText.substring(from: insertPos)
+        
+        let newText = prefix + pendingFinalText + suffix
+        text = newText
+        confirmedText = newText
+        
+        // 更新光标位置到插入文本之后
+        cursorPosition = insertPos + pendingFinalText.count
+        
+        VoxaLog("[AppState] insertPendingFinal: inserted=\"\(pendingFinalText)\" at position \(insertPos)")
+        
+        // 清空 pending 和 partial
+        pendingFinalText = ""
         currentPartial = ""
-        
-        // 更新显示文本
-        text = confirmedText
-        
-        // 更新光标位置到文本末尾
-        cursorPosition = text.count
-        
-        VoxaLog("[AppState] applyFinal: added=\"\(cleaned)\", confirmed=\"\(confirmedText)\"")
     }
     
     /// Called when user starts editing (acquire lock)
@@ -129,9 +148,14 @@ class AppState: ObservableObject {
             pendingPartial = nil
         }
         
-        // 应用暂存的 finals
+        // 应用暂存的 finals（直接插入，因为用户已结束编辑）
         for final in pendingFinals {
-            applyFinal(final)
+            let cleaned = Cleaner.clean(final)
+            confirmedText += cleaned
+        }
+        if !pendingFinals.isEmpty {
+            text = confirmedText
+            pendingFinals = []
         }
         if !pendingFinals.isEmpty {
             VoxaLog("[Voxa] 应用了 \(pendingFinals.count) 条暂存的 final 更新")

@@ -23,15 +23,30 @@ struct InputBarView: View {
                 .animation(.easeInOut(duration: 0.3), value: appState.isRecording)
             
             VStack(alignment: .leading, spacing: 4) {
-                // 第一行：Partial 文本（灰色，实时）
-                if !appState.currentPartial.isEmpty {
+                // 第一行：Partial 文本 + 插入按钮
+                HStack(spacing: 8) {
                     PartialTextView(
                         text: appState.currentPartial,
                         minHeight: 20,
                         maxHeight: 60
                     )
-                    .frame(minWidth: 300, maxWidth: 500)
+                    .frame(maxWidth: .infinity, minHeight: 20)
+                    
+                    // 插入按钮 - 当有待插入的 final 时显示
+                    if !appState.pendingFinalText.isEmpty {
+                        Button(action: {
+                            appState.insertPendingFinal()
+                        }) {
+                            Image(systemName: "arrow.down.circle.fill")
+                                .font(.system(size: 18))
+                                .foregroundColor(.blue)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .help("插入到光标位置")
+                    }
                 }
+                .frame(minWidth: 300, maxWidth: 500, minHeight: 20)
+                .opacity(appState.currentPartial.isEmpty && appState.pendingFinalText.isEmpty ? 0 : 1)
                 
                 // 第二行：Confirmed 文本（黑色，固定）
                 ConfirmedTextView(
@@ -78,7 +93,7 @@ struct PartialTextView: NSViewRepresentable {
         textView.isEditable = false
         textView.isSelectable = true
         textView.font = NSFont.systemFont(ofSize: 14)
-        textView.textColor = NSColor.secondaryLabelColor  // 灰色
+        textView.textColor = NSColor.darkGray  // 深灰色，在白色背景上可见
         textView.backgroundColor = .white
         textView.isRichText = false
         
@@ -123,7 +138,7 @@ struct ConfirmedTextView: NSViewRepresentable {
         textView.isEditable = true
         textView.isSelectable = true
         textView.font = NSFont.systemFont(ofSize: 16)
-        textView.textColor = NSColor.labelColor  // 黑色
+        textView.textColor = NSColor.black  // 纯黑色，在白色背景上清晰可见
         textView.backgroundColor = .white
         textView.isRichText = false
         textView.usesFontPanel = false
