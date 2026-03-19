@@ -60,22 +60,51 @@ class PanelController {
         let contentView = InputBarView(appState: appState)
         
         let hostingView = NSHostingView(rootView: contentView)
-        hostingView.translatesAutoresizingMaskIntoConstraints = true
-        hostingView.autoresizingMask = [.width, .height]
+        hostingView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // 设置 hugging 优先级让视图根据内容调整大小
+        hostingView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        hostingView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         // 启用 layer 并设置圆角遮罩
         hostingView.wantsLayer = true
         hostingView.layer?.cornerRadius = 12
         hostingView.layer?.masksToBounds = true
         
-        let panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: 500, height: 60))
+        let panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: 440, height: 80))
         panel.contentView = hostingView
         
-        // 让面板支持自动调整大小
-        panel.contentMinSize = NSSize(width: 400, height: 60)
-        panel.contentMaxSize = NSSize(width: 600, height: 200)
+        // 让面板支持自动调整大小（基于内容）
+        panel.contentMinSize = NSSize(width: 440, height: 60)
+        panel.contentMaxSize = NSSize(width: 440, height: 400)
+        
+        // 监听内容高度变化，同步调整窗口
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(textHeightDidChange),
+            name: .textHeightDidChange,
+            object: nil
+        )
         
         self.panel = panel
+    }
+    
+    @objc private func textHeightDidChange() {
+        guard let panel = panel else { return }
+        
+        // 使用 fittingSize 获取理想大小
+        if let hostingView = panel.contentView as? NSHostingView<InputBarView> {
+            let fittingSize = hostingView.fittingSize
+            let newHeight = min(max(fittingSize.height, 60), 400)
+            
+            var frame = panel.frame
+            if abs(frame.height - newHeight) > 5 {
+                // 保持顶部位置不变，调整高度
+                frame.origin.y += frame.height - newHeight
+                frame.size.height = newHeight
+                panel.setFrame(frame, display: true, animate: false)
+            }
+        }
     }
     
     private func makeFirstResponder(in view: NSView) {

@@ -74,6 +74,7 @@ struct InputBarView: View {
 
 extension Notification.Name {
     static let hidePanel = Notification.Name("hidePanel")
+    static let textHeightDidChange = Notification.Name("textHeightDidChange")
 }
 
 struct TextEditorRepresentable: NSViewRepresentable {
@@ -180,6 +181,9 @@ struct TextEditorRepresentable: NSViewRepresentable {
         if abs(textView.frame.height - newHeight) > 1 {
             textView.frame.size.height = newHeight
             scrollView.frame.size.height = newHeight
+            
+            // 通知外层容器高度变化
+            NotificationCenter.default.post(name: .textHeightDidChange, object: nil)
         }
     }
     

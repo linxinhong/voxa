@@ -1,17 +1,21 @@
-[2026-03-19 18:01:07.883] [Voxa] 应用启动中...
-[2026-03-19 18:01:07.883] [Config] ConfigManager 初始化开始
-[2026-03-19 18:01:07.884] [Config] 加载了 9 个润色模板（新格式）
-[2026-03-19 18:01:07.884] [Config] ConfigManager 初始化完成，当前模板: alt+1 - 轻度润色
-[2026-03-19 18:01:07.884] [Voxa] ConfigManager 初始化完成
-[2026-03-19 18:01:07.884] [Voxa] AppState 初始化完成
-[2026-03-19 18:01:07.884] [Voxa] PanelController 初始化完成
-[2026-03-19 18:01:07.884] [Voxa] AudioCapture 初始化完成
-[2026-03-19 18:01:07.884] [Voxa] AsrClient 初始化完成
-[2026-03-19 18:01:07.884] [Voxa] 使用默认快捷键: ⌥+SPACE
-[2026-03-19 18:01:07.885] [Voxa] 热键已更新为: ⌥+SPACE
-[2026-03-19 18:01:07.886] [Hotkey] 已注册润色模板快捷键: Alt+1 到 Alt+9
-[2026-03-19 18:01:07.886] [Voxa] HotkeyManager 初始化完成
-[2026-03-19 18:01:07.906] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
-[2026-03-19 18:01:07.906] [Voxa] 菜单栏设置完成
-[2026-03-19 18:01:07.911] [Voxa] 应用启动完成！按 Option+Space 开始录音
-[2026-03-19 18:01:07.911] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+2026-03-19 18:04:20.745 Voxa[2397:38955586] +[IMKClient subclass]: chose IMKClient_Modern
+=== AttributeGraph: cycle detected through attribute 77736 ===
+2026-03-19 18:04:21.053 Voxa[2397:38955988] [ASR] 收到 JSON: {"header":{"task_id":"6825502C-7428-4ACE-8F33-493FC9F5A5F5","event":"task-started","attributes":{}},"payload":{}}...
+figManager 初始化完成
+[2026-03-19 18:04:09.615] [Voxa] AppState 初始化完成
+[2026-03-19 18:04:09.615] [Voxa] PanelController 初始化完成
+[2026-03-19 18:04:09.615] [Voxa] AudioCapture 初始化完成
+[2026-03-19 18:04:09.616] [Voxa] AsrClient 初始化完成
+[2026-03-19 18:04:09.616] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 18:04:09.616] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 18:04:09.616] [Hotkey] 已注册润色模板快捷键: Alt+1 到 Alt+9
+[2026-03-19 18:04:09.616] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 18:04:09.633] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 18:04:09.633] [Voxa] 菜单栏设置完成
+[2026-03-19 18:04:09.638] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 18:04:09.638] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 18:04:20.719] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 18:04:20.992] WebSocket connected
+[2026-03-19 18:04:20.992] [ASR] 发送 run-task: {"header":{"task_id":"6825502C-7428-4ACE-8F33-493FC9F5A5F5","action":"run-task","streaming":"duplex"},"payload":{"function":"recognition","model":"paraformer-realtime-v2","task":"asr","task_group":"audio","parameters":{"sample_rate":16000,"enable_intermediate_result":true,"format":"pcm","enable_punctuation_prediction":true,"enable_inverse_text_normalization":true},"input":{}}}
+[2026-03-19 18:04:21.054] [ASR] event: task-started
+[2026-03-19 18:04:21.054] ASR task started
