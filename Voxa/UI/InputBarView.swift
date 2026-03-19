@@ -58,8 +58,9 @@ struct InputBarView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
         .background(
-            VisualEffectView(material: .hudWindow, blendingMode: .behindWindow)
+            Color.white
                 .cornerRadius(12)
+                .shadow(radius: 4)
         )
         .frame(minWidth: 400, maxWidth: 600)
     }
@@ -78,7 +79,7 @@ struct PartialTextView: NSViewRepresentable {
         textView.isSelectable = true
         textView.font = NSFont.systemFont(ofSize: 14)
         textView.textColor = NSColor.secondaryLabelColor  // 灰色
-        textView.backgroundColor = .clear
+        textView.backgroundColor = .white
         textView.isRichText = false
         
         // 单行显示
@@ -92,7 +93,8 @@ struct PartialTextView: NSViewRepresentable {
         let scrollView = NSScrollView()
         scrollView.hasVerticalScroller = false
         scrollView.hasHorizontalScroller = false
-        scrollView.drawsBackground = false
+        scrollView.drawsBackground = true
+        scrollView.backgroundColor = .white
         scrollView.documentView = textView
         
         return scrollView
@@ -122,7 +124,7 @@ struct ConfirmedTextView: NSViewRepresentable {
         textView.isSelectable = true
         textView.font = NSFont.systemFont(ofSize: 16)
         textView.textColor = NSColor.labelColor  // 黑色
-        textView.backgroundColor = .clear
+        textView.backgroundColor = .white
         textView.isRichText = false
         textView.usesFontPanel = false
         textView.usesInspectorBar = false
@@ -149,7 +151,8 @@ struct ConfirmedTextView: NSViewRepresentable {
         scrollView.hasVerticalScroller = false
         scrollView.hasHorizontalScroller = false
         scrollView.autohidesScrollers = true
-        scrollView.drawsBackground = false
+        scrollView.drawsBackground = true
+        scrollView.backgroundColor = .white
         scrollView.documentView = textView
         scrollView.autoresizingMask = [.width, .height]
         scrollView.contentView.autoresizingMask = [.width, .height]
