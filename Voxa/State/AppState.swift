@@ -12,7 +12,7 @@ import Combine
 class AppState: ObservableObject {
     // MARK: - UI State
     
-    /// 第1行：partial 实时内容（整句覆盖，非追加）
+    /// 第1行：partial 实时内容（整句覆盖，非追加，可被润色修改）
     @Published var partialText: String = ""
     
     /// 第2行：已确认的全部内容
@@ -30,8 +30,8 @@ class AppState: ObservableObject {
     /// 是否正在录音
     @Published var isRecording: Bool = false
     
-    /// 是否开启润色
-    @Published var polishEnabled: Bool = true
+    /// 是否开启自动润色（默认关闭，改为手动点击星星润色）
+    @Published var polishEnabled: Bool = false
     
     /// 是否用户正在编辑（编辑锁）
     @Published var isEditing: Bool = false

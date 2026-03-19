@@ -4270,3 +4270,115 @@
 [2026-03-19 15:20:08.442] [Voxa] 菜单栏设置完成
 [2026-03-19 15:20:08.448] [Voxa] 应用启动完成！按 Option+Space 开始录音
 [2026-03-19 15:20:08.448] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 15:24:12.110] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 15:24:12.401] WebSocket connected
+[2026-03-19 15:24:12.402] [ASR] 发送 run-task: {"payload":{"input":{},"task_group":"audio","parameters":{"enable_inverse_text_normalization":true,"format":"pcm","enable_punctuation_prediction":true,"sample_rate":16000,"enable_intermediate_result":true},"function":"recognition","model":"paraformer-realtime-v2","task":"asr"},"header":{"action":"run-task","streaming":"duplex","task_id":"9C6E949B-B8E3-47C5-878D-12E79CCE2B74"}}
+[2026-03-19 15:24:12.460] [ASR] event: task-started
+[2026-03-19 15:24:12.461] ASR task started
+[2026-03-19 15:24:14.200] [ASR] event: result-generated
+[2026-03-19 15:24:14.200] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:14.201] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 15:24:14.201] [AppState] updatePartial: ""
+[2026-03-19 15:24:14.463] [ASR] event: result-generated
+[2026-03-19 15:24:14.464] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:14.466] [ASR] output.sentence: AsrSentence(text: "这", sentence_end: Optional(false))
+[2026-03-19 15:24:14.466] [AppState] updatePartial: "这"
+[2026-03-19 15:24:15.089] [ASR] event: result-generated
+[2026-03-19 15:24:15.090] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:15.090] [ASR] output.sentence: AsrSentence(text: "测试一下", sentence_end: Optional(false))
+[2026-03-19 15:24:15.090] [AppState] updatePartial: "测试一下"
+[2026-03-19 15:24:15.910] [ASR] event: result-generated
+[2026-03-19 15:24:15.910] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:15.911] [ASR] output.sentence: AsrSentence(text: "测试一下效果。", sentence_end: Optional(true))
+[2026-03-19 15:24:15.911] [AppState] receiveFinal: "测试一下效果。"
+[2026-03-19 15:24:16.235] [AppState] autoInsert: "测试一下效果。" at 0, cursor now 7
+[2026-03-19 15:24:20.626] [ASR] event: result-generated
+[2026-03-19 15:24:20.626] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:20.626] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 15:24:20.627] [AppState] updatePartial: ""
+[2026-03-19 15:24:20.866] [ASR] event: result-generated
+[2026-03-19 15:24:20.866] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:20.866] [ASR] output.sentence: AsrSentence(text: "这", sentence_end: Optional(false))
+[2026-03-19 15:24:20.866] [AppState] updatePartial: "这"
+[2026-03-19 15:24:21.489] [ASR] event: result-generated
+[2026-03-19 15:24:21.489] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:21.490] [ASR] output.sentence: AsrSentence(text: "这是一个", sentence_end: Optional(false))
+[2026-03-19 15:24:21.490] [AppState] updatePartial: "这是一个"
+[2026-03-19 15:24:22.089] [ASR] event: result-generated
+[2026-03-19 15:24:22.090] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:22.090] [ASR] output.sentence: AsrSentence(text: "这是一个新的问", sentence_end: Optional(false))
+[2026-03-19 15:24:22.091] [AppState] updatePartial: "这是一个新的问"
+[2026-03-19 15:24:22.728] [ASR] event: result-generated
+[2026-03-19 15:24:22.728] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:22.729] [ASR] output.sentence: AsrSentence(text: "这是一个新的问容。", sentence_end: Optional(true))
+[2026-03-19 15:24:22.729] [AppState] receiveFinal: "这是一个新的问容。"
+[2026-03-19 15:24:23.055] [AppState] autoInsert: "这是一个新的问容。" at 7, cursor now 16
+[2026-03-19 15:24:27.406] [ASR] event: result-generated
+[2026-03-19 15:24:27.406] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:27.407] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 15:24:27.407] [AppState] updatePartial: ""
+[2026-03-19 15:24:27.672] [ASR] event: result-generated
+[2026-03-19 15:24:27.673] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:27.673] [ASR] output.sentence: AsrSentence(text: "我", sentence_end: Optional(false))
+[2026-03-19 15:24:27.673] [AppState] updatePartial: "我"
+[2026-03-19 15:24:28.273] [ASR] event: result-generated
+[2026-03-19 15:24:28.274] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:28.274] [ASR] output.sentence: AsrSentence(text: "我继续", sentence_end: Optional(false))
+[2026-03-19 15:24:28.274] [AppState] updatePartial: "我继续"
+[2026-03-19 15:24:28.886] [ASR] event: result-generated
+[2026-03-19 15:24:28.886] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:28.887] [ASR] output.sentence: AsrSentence(text: "我继续加一段", sentence_end: Optional(false))
+[2026-03-19 15:24:28.887] [AppState] updatePartial: "我继续加一段"
+[2026-03-19 15:24:29.331] [ASR] event: result-generated
+[2026-03-19 15:24:29.332] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:29.332] [ASR] output.sentence: AsrSentence(text: "我继续加一段话。", sentence_end: Optional(true))
+[2026-03-19 15:24:29.332] [AppState] receiveFinal: "我继续加一段话。"
+[2026-03-19 15:24:29.659] [AppState] autoInsert: "我继续加一段话。" at 6, cursor now 14
+[2026-03-19 15:24:34.199] [ASR] event: result-generated
+[2026-03-19 15:24:34.199] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:34.200] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 15:24:34.200] [AppState] updatePartial: ""
+[2026-03-19 15:24:35.476] [ASR] event: result-generated
+[2026-03-19 15:24:35.477] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:35.478] [ASR] output.sentence: AsrSentence(text: "语音输", sentence_end: Optional(false))
+[2026-03-19 15:24:35.478] [AppState] updatePartial: "语音输"
+[2026-03-19 15:24:35.552] [ASR] event: result-generated
+[2026-03-19 15:24:35.553] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:35.553] [ASR] output.sentence: AsrSentence(text: "语音输入。", sentence_end: Optional(true))
+[2026-03-19 15:24:35.554] [AppState] receiveFinal: "语音输入。"
+[2026-03-19 15:24:35.880] [AppState] autoInsert: "语音输入。" at 4, cursor now 9
+[2026-03-19 15:24:47.203] [ASR] event: result-generated
+[2026-03-19 15:24:47.203] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:47.204] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 15:24:47.204] [AppState] updatePartial: ""
+[2026-03-19 15:24:47.469] [ASR] event: result-generated
+[2026-03-19 15:24:47.470] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:47.471] [ASR] output.sentence: AsrSentence(text: "这", sentence_end: Optional(false))
+[2026-03-19 15:24:47.471] [AppState] updatePartial: "这"
+[2026-03-19 15:24:48.075] [ASR] event: result-generated
+[2026-03-19 15:24:48.075] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:48.075] [ASR] output.sentence: AsrSentence(text: "这已经认", sentence_end: Optional(false))
+[2026-03-19 15:24:48.076] [AppState] updatePartial: "这已经认"
+[2026-03-19 15:24:48.946] [ASR] event: result-generated
+[2026-03-19 15:24:48.947] [ASR] result-generated, payload: 有
+[2026-03-19 15:24:48.947] [ASR] output.sentence: AsrSentence(text: "这已经润色了吗？", sentence_end: Optional(true))
+[2026-03-19 15:24:48.948] [AppState] receiveFinal: "这已经润色了吗？"
+[2026-03-19 15:24:49.273] [AppState] autoInsert: "这已经润色了吗？" at 20, cursor now 28
+[2026-03-19 15:25:01.148] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 15:25:01.196] [ASR] 发送 finish-task
+[2026-03-19 15:25:01.196] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 15:25:01.199] WebSocket disconnected
+[2026-03-19 15:25:01.208] WebSocket error: Error Domain=NSPOSIXErrorDomain Code=57 "Socket is not connected" UserInfo={NSErrorFailingURLStringKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/, NSErrorFailingURLKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/}
+[2026-03-19 15:25:01.214] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 15:27:28.030] [Voxa] 应用启动中...
+[2026-03-19 15:27:28.030] [Voxa] AppState 初始化完成
+[2026-03-19 15:27:28.030] [Voxa] PanelController 初始化完成
+[2026-03-19 15:27:28.030] [Voxa] AudioCapture 初始化完成
+[2026-03-19 15:27:28.030] [Voxa] AsrClient 初始化完成
+[2026-03-19 15:27:28.030] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 15:27:28.031] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 15:27:28.031] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 15:27:28.052] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 15:27:28.052] [Voxa] 菜单栏设置完成
+[2026-03-19 15:27:28.057] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 15:27:28.057] [Voxa] 也可以在菜单栏点击 Voxa 图标开始

@@ -12,6 +12,17 @@ import Combine
 struct InputBarView: View {
     @ObservedObject var appState: AppState
     
+    /// 润色 partial 文本
+    func polishPartial() async {
+        let textToPolish = appState.partialText
+        guard !textToPolish.isEmpty else { return }
+        
+        let polished = await Polisher.polish(textToPolish)
+        if polished != textToPolish {
+            appState.partialText = polished
+        }
+    }
+    
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             // 🎤 录音指示器（麦克风图标）
@@ -23,24 +34,47 @@ struct InputBarView: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 // 第1行：Partial 区域（灰色，只读）+ ⬇ 按钮
+                // Partial 区域：浅灰背景 + 文本 + 星星润色按钮
                 HStack(spacing: 8) {
-                    // Partial 文本（整句覆盖显示）
+                    // Partial 文本
                     PartialTextView(
                         text: appState.partialText,
                         minHeight: 20
                     )
                     .frame(maxWidth: .infinity, minHeight: 20)
                     
-                    // 绿色闪烁图标（当有 pending 时闪烁）
-                    if appState.hasPending {
-                        Image(systemName: "checkmark.circle.fill")
-                            .font(.system(size: 18))
-                            .foregroundColor(.green)
-                            .transition(.opacity)
-                            .animation(.easeInOut(duration: 0.15).repeatCount(3, autoreverses: true), value: appState.hasPending)
+                    // 右侧图标区域
+                    HStack(spacing: 4) {
+                        // 绿色闪烁图标（final 时）
+                        if appState.hasPending {
+                            Image(systemName: "checkmark.circle.fill")
+                                .font(.system(size: 16))
+                                .foregroundColor(.green)
+                                .transition(.opacity)
+                                .animation(.easeInOut(duration: 0.15).repeatCount(3, autoreverses: true), value: appState.hasPending)
+                        }
+                        
+                        // 星星润色按钮（点击润色 partial 文本）
+                        if !appState.partialText.isEmpty {
+                            Button(action: {
+                                Task {
+                                    await polishPartial()
+                                }
+                            }) {
+                                Image(systemName: "sparkles")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.orange)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .help("润色当前文本")
+                        }
                     }
                 }
-                .frame(maxWidth: .infinity, minHeight: 20)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color.gray.opacity(0.15))
+                .cornerRadius(6)
+                .frame(maxWidth: .infinity, minHeight: 28)
                 // 空时隐藏但保持空间
                 .opacity(appState.partialText.isEmpty && !appState.hasPending ? 0 : 1)
                 
