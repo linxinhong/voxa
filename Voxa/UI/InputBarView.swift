@@ -176,9 +176,9 @@ struct ConfirmedTextView: NSViewRepresentable {
     func updateNSView(_ nsView: NSScrollView, context: Context) {
         guard let textView = nsView.documentView as? NSTextView else { return }
         
-        // 同步 confirmedText
+        // 同步 confirmedText，并设置光标到正确位置
         if textView.string != text {
-            context.coordinator.syncText(text)
+            context.coordinator.syncText(text, cursorPosition: cursorOffset)
         }
     }
     
@@ -235,24 +235,19 @@ struct ConfirmedTextView: NSViewRepresentable {
             updateHeight()
         }
         
-        /// 从外部同步文本
-        func syncText(_ text: String) {
+        /// 从外部同步文本，并设置光标位置
+        func syncText(_ text: String, cursorPosition: Int) {
             guard let textView = textView else { return }
             guard !isSyncing else { return }
             
             isSyncing = true
             
-            // 保存当前选择范围
-            let selectedRange = textView.selectedRange
-            
             // 更新文本
             textView.string = text
             
-            // 恢复选择范围
-            let newLength = text.count
-            if selectedRange.location <= newLength {
-                textView.setSelectedRange(selectedRange)
-            }
+            // 设置光标到指定位置（确保不超过文本长度）
+            let validPosition = min(cursorPosition, text.count)
+            textView.setSelectedRange(NSRange(location: validPosition, length: 0))
             
             // 强制刷新
             textView.layoutManager?.ensureLayout(for: textView.textContainer!)
