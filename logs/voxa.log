@@ -1872,3 +1872,193 @@
 [2026-03-19 14:03:12.480] [Injector] 按键事件已发送
 [2026-03-19 14:03:12.582] [Injector] 注入完成
 [2026-03-19 14:03:12.582] [Injector] 剪贴板已恢复
+[2026-03-19 14:04:38.298] [Voxa] 应用启动中...
+[2026-03-19 14:04:38.299] [Voxa] AppState 初始化完成
+[2026-03-19 14:04:38.299] [Voxa] PanelController 初始化完成
+[2026-03-19 14:04:38.299] [Voxa] AudioCapture 初始化完成
+[2026-03-19 14:04:38.299] [Voxa] AsrClient 初始化完成
+[2026-03-19 14:04:38.299] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 14:04:38.299] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 14:04:38.299] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 14:04:38.331] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 14:04:38.332] [Voxa] 菜单栏设置完成
+[2026-03-19 14:04:38.338] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 14:04:38.338] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 14:05:37.730] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:05:38.006] WebSocket connected
+[2026-03-19 14:05:38.006] [ASR] 发送 run-task: {"header":{"streaming":"duplex","task_id":"5F1A6CC9-8137-4CEC-BED4-704D614A4AF9","action":"run-task"},"payload":{"function":"recognition","parameters":{"sample_rate":16000,"enable_intermediate_result":true,"enable_punctuation_prediction":true,"enable_inverse_text_normalization":true,"format":"pcm"},"input":{},"task_group":"audio","model":"paraformer-realtime-v2","task":"asr"}}
+[2026-03-19 14:05:38.061] [ASR] event: task-started
+[2026-03-19 14:05:38.061] ASR task started
+[2026-03-19 14:05:39.998] [ASR] event: result-generated
+[2026-03-19 14:05:39.998] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:39.999] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:05:39.999] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:05:39.999] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:05:40.060] [ASR] event: result-generated
+[2026-03-19 14:05:40.060] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:40.060] [ASR] output.sentence: AsrSentence(text: "那个电", sentence_end: Optional(false))
+[2026-03-19 14:05:40.061] [ASR] 收到识别结果: "那个电", isFinal: false
+[2026-03-19 14:05:40.061] [AppState] updatePartial: confirmed=0字, partial=3字
+[2026-03-19 14:05:40.061] [ASR] 已更新 partial 文本: "那个电"
+[2026-03-19 14:05:40.917] [ASR] event: result-generated
+[2026-03-19 14:05:40.918] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:40.918] [ASR] output.sentence: AsrSentence(text: "那个电池。", sentence_end: Optional(true))
+[2026-03-19 14:05:40.918] [ASR] 收到识别结果: "那个电池。", isFinal: true
+[2026-03-19 14:05:40.918] [AppState] applyFinal: added="电池。", confirmed="电池。"
+[2026-03-19 14:05:40.918] [ASR] 已追加 final 文本: "那个电池。"
+[2026-03-19 14:05:41.854] [ASR] event: result-generated
+[2026-03-19 14:05:41.854] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:41.855] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:05:41.855] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:05:41.855] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:05:42.095] [ASR] event: result-generated
+[2026-03-19 14:05:42.095] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:42.095] [ASR] output.sentence: AsrSentence(text: "买", sentence_end: Optional(false))
+[2026-03-19 14:05:42.095] [ASR] 收到识别结果: "买", isFinal: false
+[2026-03-19 14:05:42.096] [AppState] updatePartial: confirmed=3字, partial=1字
+[2026-03-19 14:05:42.096] [ASR] 已更新 partial 文本: "买"
+[2026-03-19 14:05:43.169] [ASR] event: result-generated
+[2026-03-19 14:05:43.169] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:43.170] [ASR] output.sentence: AsrSentence(text: "买个电子。", sentence_end: Optional(true))
+[2026-03-19 14:05:43.170] [ASR] 收到识别结果: "买个电子。", isFinal: true
+[2026-03-19 14:05:43.170] [AppState] applyFinal: added="买个电子。", confirmed="电池。买个电子。"
+[2026-03-19 14:05:43.170] [ASR] 已追加 final 文本: "买个电子。"
+[2026-03-19 14:05:44.403] [ASR] event: result-generated
+[2026-03-19 14:05:44.404] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:44.404] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:05:44.404] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:05:44.404] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:05:44.465] [ASR] event: result-generated
+[2026-03-19 14:05:44.466] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:44.466] [ASR] output.sentence: AsrSentence(text: "他现", sentence_end: Optional(false))
+[2026-03-19 14:05:44.466] [ASR] 收到识别结果: "他现", isFinal: false
+[2026-03-19 14:05:44.466] [AppState] updatePartial: confirmed=8字, partial=2字
+[2026-03-19 14:05:44.466] [ASR] 已更新 partial 文本: "他现"
+[2026-03-19 14:05:44.870] [ASR] event: result-generated
+[2026-03-19 14:05:44.871] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:44.871] [ASR] output.sentence: AsrSentence(text: "他现", sentence_end: Optional(false))
+[2026-03-19 14:05:44.871] [ASR] 收到识别结果: "他现", isFinal: false
+[2026-03-19 14:05:44.871] [ASR] 已更新 partial 文本: "他现"
+[2026-03-19 14:05:45.271] [ASR] event: result-generated
+[2026-03-19 14:05:45.272] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:45.272] [ASR] output.sentence: AsrSentence(text: "他现在是不", sentence_end: Optional(false))
+[2026-03-19 14:05:45.272] [ASR] 收到识别结果: "他现在是不", isFinal: false
+[2026-03-19 14:05:45.272] [AppState] updatePartial: confirmed=8字, partial=5字
+[2026-03-19 14:05:45.272] [ASR] 已更新 partial 文本: "他现在是不"
+[2026-03-19 14:05:45.677] [ASR] event: result-generated
+[2026-03-19 14:05:45.678] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:45.678] [ASR] output.sentence: AsrSentence(text: "他现在是不插电就", sentence_end: Optional(false))
+[2026-03-19 14:05:45.678] [ASR] 收到识别结果: "他现在是不插电就", isFinal: false
+[2026-03-19 14:05:45.678] [AppState] updatePartial: confirmed=8字, partial=8字
+[2026-03-19 14:05:45.678] [ASR] 已更新 partial 文本: "他现在是不插电就"
+[2026-03-19 14:05:46.476] [ASR] event: result-generated
+[2026-03-19 14:05:46.476] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:46.477] [ASR] output.sentence: AsrSentence(text: "他现在是不插电就开不了", sentence_end: Optional(false))
+[2026-03-19 14:05:46.477] [ASR] 收到识别结果: "他现在是不插电就开不了", isFinal: false
+[2026-03-19 14:05:46.477] [AppState] updatePartial: confirmed=8字, partial=11字
+[2026-03-19 14:05:46.477] [ASR] 已更新 partial 文本: "他现在是不插电就开不了"
+[2026-03-19 14:05:46.678] [ASR] event: result-generated
+[2026-03-19 14:05:46.678] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:46.678] [ASR] output.sentence: AsrSentence(text: "他现在是不插电就开不了吗？", sentence_end: Optional(false))
+[2026-03-19 14:05:46.678] [ASR] 收到识别结果: "他现在是不插电就开不了吗？", isFinal: false
+[2026-03-19 14:05:46.679] [AppState] updatePartial: confirmed=8字, partial=13字
+[2026-03-19 14:05:46.679] [ASR] 已更新 partial 文本: "他现在是不插电就开不了吗？"
+[2026-03-19 14:05:47.574] [ASR] event: result-generated
+[2026-03-19 14:05:47.574] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:47.574] [ASR] output.sentence: AsrSentence(text: "他现在是不插电就开不了了。是。", sentence_end: Optional(true))
+[2026-03-19 14:05:47.574] [ASR] 收到识别结果: "他现在是不插电就开不了了。是。", isFinal: true
+[2026-03-19 14:05:47.574] [AppState] applyFinal: added="他现在是不插电就开不了了。是。", confirmed="电池。买个电子。他现在是不插电就开不了了。是。"
+[2026-03-19 14:05:47.574] [ASR] 已追加 final 文本: "他现在是不插电就开不了了。是。"
+[2026-03-19 14:05:48.200] [ASR] event: result-generated
+[2026-03-19 14:05:48.200] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:48.200] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:05:48.200] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:05:48.200] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:05:48.546] [ASR] event: result-generated
+[2026-03-19 14:05:48.547] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:48.547] [ASR] output.sentence: AsrSentence(text: "我", sentence_end: Optional(false))
+[2026-03-19 14:05:48.547] [ASR] 收到识别结果: "我", isFinal: false
+[2026-03-19 14:05:48.548] [AppState] updatePartial: confirmed=23字, partial=1字
+[2026-03-19 14:05:48.548] [ASR] 已更新 partial 文本: "我"
+[2026-03-19 14:05:49.065] [ASR] event: result-generated
+[2026-03-19 14:05:49.066] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:49.067] [ASR] output.sentence: AsrSentence(text: "我就是", sentence_end: Optional(false))
+[2026-03-19 14:05:49.067] [ASR] 收到识别结果: "我就是", isFinal: false
+[2026-03-19 14:05:49.067] [AppState] updatePartial: confirmed=23字, partial=3字
+[2026-03-19 14:05:49.067] [ASR] 已更新 partial 文本: "我就是"
+[2026-03-19 14:05:49.469] [ASR] event: result-generated
+[2026-03-19 14:05:49.469] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:49.470] [ASR] output.sentence: AsrSentence(text: "我就是发现什", sentence_end: Optional(false))
+[2026-03-19 14:05:49.470] [ASR] 收到识别结果: "我就是发现什", isFinal: false
+[2026-03-19 14:05:49.470] [AppState] updatePartial: confirmed=23字, partial=6字
+[2026-03-19 14:05:49.470] [ASR] 已更新 partial 文本: "我就是发现什"
+[2026-03-19 14:05:50.165] [ASR] event: result-generated
+[2026-03-19 14:05:50.165] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:50.166] [ASR] output.sentence: AsrSentence(text: "你这也就是发现什么行。", sentence_end: Optional(true))
+[2026-03-19 14:05:50.166] [ASR] 收到识别结果: "你这也就是发现什么行。", isFinal: true
+[2026-03-19 14:05:50.166] [AppState] applyFinal: added="你这也发现什么行。", confirmed="电池。买个电子。他现在是不插电就开不了了。是。你这也发现什么行。"
+[2026-03-19 14:05:50.166] [ASR] 已追加 final 文本: "你这也就是发现什么行。"
+[2026-03-19 14:05:57.401] [ASR] event: result-generated
+[2026-03-19 14:05:57.402] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:57.402] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 14:05:57.402] [ASR] 收到识别结果: "", isFinal: false
+[2026-03-19 14:05:57.403] [ASR] 已更新 partial 文本: ""
+[2026-03-19 14:05:57.671] [ASR] event: result-generated
+[2026-03-19 14:05:57.671] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:57.672] [ASR] output.sentence: AsrSentence(text: "啊，不用，", sentence_end: Optional(false))
+[2026-03-19 14:05:57.672] [ASR] 收到识别结果: "啊，不用，", isFinal: false
+[2026-03-19 14:05:57.672] [AppState] updatePartial: confirmed=32字, partial=5字
+[2026-03-19 14:05:57.672] [ASR] 已更新 partial 文本: "啊，不用，"
+[2026-03-19 14:05:57.853] [ASR] event: result-generated
+[2026-03-19 14:05:57.853] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:57.853] [ASR] output.sentence: AsrSentence(text: "啊，不用，", sentence_end: Optional(false))
+[2026-03-19 14:05:57.853] [ASR] 收到识别结果: "啊，不用，", isFinal: false
+[2026-03-19 14:05:57.854] [ASR] 已更新 partial 文本: "啊，不用，"
+[2026-03-19 14:05:58.261] [ASR] event: result-generated
+[2026-03-19 14:05:58.261] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:58.261] [ASR] output.sentence: AsrSentence(text: "啊，不用买了，", sentence_end: Optional(false))
+[2026-03-19 14:05:58.261] [ASR] 收到识别结果: "啊，不用买了，", isFinal: false
+[2026-03-19 14:05:58.261] [AppState] updatePartial: confirmed=32字, partial=7字
+[2026-03-19 14:05:58.261] [ASR] 已更新 partial 文本: "啊，不用买了，"
+[2026-03-19 14:05:58.896] [ASR] event: result-generated
+[2026-03-19 14:05:58.897] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:58.897] [ASR] output.sentence: AsrSentence(text: "啊，不用买了，公司给你", sentence_end: Optional(false))
+[2026-03-19 14:05:58.897] [ASR] 收到识别结果: "啊，不用买了，公司给你", isFinal: false
+[2026-03-19 14:05:58.898] [AppState] updatePartial: confirmed=32字, partial=11字
+[2026-03-19 14:05:58.898] [ASR] 已更新 partial 文本: "啊，不用买了，公司给你"
+[2026-03-19 14:05:59.692] [ASR] event: result-generated
+[2026-03-19 14:05:59.693] [ASR] result-generated, payload: 有
+[2026-03-19 14:05:59.693] [ASR] output.sentence: AsrSentence(text: "那不用买了，公司给你配。", sentence_end: Optional(true))
+[2026-03-19 14:05:59.693] [ASR] 收到识别结果: "那不用买了，公司给你配。", isFinal: true
+[2026-03-19 14:05:59.694] [AppState] applyFinal: added="那不用买了，公司给你配。", confirmed="电池。买个电子。他现在是不插电就开不了了。是。你这也发现什么行。那不用买了，公司给你配。"
+[2026-03-19 14:05:59.694] [ASR] 已追加 final 文本: "那不用买了，公司给你配。"
+[2026-03-19 14:06:01.150] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 14:06:01.167] [ASR] 发送 finish-task
+[2026-03-19 14:06:01.167] [Voxa] 停止录音，最终文本 [44 字]: 电池。买个电子。他现在是不插电就开不了了。是。你这也发现什么行。那不用买了，公司给你配。...
+[2026-03-19 14:06:01.167] [Voxa] 开始润色文本...
+[2026-03-19 14:06:01.169] WebSocket disconnected
+[2026-03-19 14:06:01.170] WebSocket error: Error Domain=NSPOSIXErrorDomain Code=57 "Socket is not connected" UserInfo={NSErrorFailingURLStringKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/, NSErrorFailingURLKey=wss://dashscope.aliyuncs.com/api-ws/v1/inference/}
+[2026-03-19 14:06:02.142] [Voxa] 润色完成
+[2026-03-19 14:06:02.142] [Voxa] 原文: 电池。买个电子。他现在是不插电就开不了了。是。你这也发现什么行。那不用买了，公司给你配。
+[2026-03-19 14:06:02.143] [Voxa] 润色: 电池，买个电子。他现在是不插电就开不了了。是的，你这也发现什么问题。那不用买了，公司给你配。
+[2026-03-19 14:06:02.152] [Voxa] 准备注入文本到 com.mitchellh.ghostty
+[2026-03-19 14:06:02.152] [Injector] 开始注入 46 字到 com.mitchellh.ghostty
+[2026-03-19 14:06:02.166] [Injector] 剪贴板已设置: 电池，买个电子。他现在是不插电就开不了了。是的，你这也发现什...
+[2026-03-19 14:06:02.169] [Injector] Voxa 已隐藏
+[2026-03-19 14:06:02.226] [Injector] 目标应用已激活
+[2026-03-19 14:06:02.311] [Injector] 模拟 Cmd+V
+[2026-03-19 14:06:02.354] [Injector] 按键事件已发送
+[2026-03-19 14:06:02.439] [Injector] 注入完成
+[2026-03-19 14:06:02.439] [Injector] 剪贴板已恢复
+[2026-03-19 14:06:28.819] [Voxa] 应用启动中...
+[2026-03-19 14:06:28.819] [Voxa] AppState 初始化完成
+[2026-03-19 14:06:28.819] [Voxa] PanelController 初始化完成
+[2026-03-19 14:06:28.819] [Voxa] AudioCapture 初始化完成
+[2026-03-19 14:06:28.819] [Voxa] AsrClient 初始化完成
+[2026-03-19 14:06:28.820] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 14:06:28.820] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 14:06:28.820] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 14:06:28.836] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 14:06:28.836] [Voxa] 菜单栏设置完成
+[2026-03-19 14:06:28.841] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 14:06:28.841] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
