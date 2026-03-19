@@ -13,7 +13,6 @@ enum Injector {
     
     /// Inject text into target application using clipboard + Cmd+V
     static func inject(text: String, to targetApp: NSRunningApplication) async {
-        VoxaLog("[Injector] 开始注入 \(text.count) 字到 \(targetApp.bundleIdentifier ?? "未知应用")")
         
         let pasteboard = NSPasteboard.general
         
@@ -36,7 +35,6 @@ enum Injector {
             VoxaLog("[Injector] 设置剪贴板失败")
             return
         }
-        VoxaLog("[Injector] 剪贴板已设置: \(text.prefix(30))...")
         
         // 先让当前应用（Voxa）放弃 Key Window 状态
         await MainActor.run {

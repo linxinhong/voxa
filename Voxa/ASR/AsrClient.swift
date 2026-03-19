@@ -177,7 +177,6 @@ actor AsrClient: NSObject {
             }
         } catch {
             VoxaLog("Failed to decode response: \(error)")
-            VoxaLog("[ASR] 原始数据: \(text)")
         }
     }
     

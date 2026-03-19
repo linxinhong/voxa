@@ -89,8 +89,6 @@ class AppState: ObservableObject {
         
         // 直接覆盖 partialText（不是追加）
         partialText = text
-        
-        VoxaLog("[AppState] updatePartial: \"\(text)\"")
     }
     
     /// 接收 final：保留第1行，触发绿色图标闪烁，然后自动插入
@@ -107,8 +105,6 @@ class AppState: ObservableObject {
         // 保存到 pendingText，设置 hasPending（触发绿色图标闪烁）
         pendingText = cleaned
         hasPending = true
-        
-        VoxaLog("[AppState] receiveFinal: \"\(cleaned)\"")
         
         // 延迟执行插入，让用户看到绿色图标闪烁
         Task { @MainActor in
@@ -134,8 +130,6 @@ class AppState: ObservableObject {
         
         // 光标跟随到插入末尾
         cursorOffset = insertPos + pendingText.count
-        
-        VoxaLog("[AppState] autoInsert: \"\(pendingText)\" at \(insertPos), cursor now \(cursorOffset)")
         
         // 清空 pending 和第1行
         pendingText = ""
