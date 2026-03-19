@@ -52,6 +52,8 @@ class PanelController {
     /// Hide the floating panel
     func hide() {
         panel?.orderOut(nil)
+        // 同时隐藏计费窗口
+        StatsWindowController.shared.hide()
     }
     
     /// Check if panel is visible

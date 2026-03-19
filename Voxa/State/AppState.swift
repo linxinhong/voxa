@@ -30,6 +30,12 @@ class AppState: ObservableObject {
     /// 是否正在录音
     @Published var isRecording: Bool = false
     
+    /// ASR 是否正在处理语音（麦克风绿色时）
+    @Published var isAsrActive: Bool = false
+    
+    /// 录音是否被暂停（点击麦克风暂停）
+    @Published var isPaused: Bool = false
+    
     /// 是否开启自动润色（默认关闭，改为手动点击星星润色）
     @Published var polishEnabled: Bool = false
     
@@ -68,6 +74,8 @@ class AppState: ObservableObject {
         pendingPartial = nil
         pendingFinals = []
         isEditing = false
+        isAsrActive = false  // 重置 ASR 活跃状态
+        isPaused = false     // 重置暂停状态
         editorHeight = 24  // 重置编辑器高度
     }
     

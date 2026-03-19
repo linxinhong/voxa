@@ -1,65 +1,457 @@
-2026-03-19 20:56:13.410 Voxa[23602:39151926] +[IMKClient subclass]: chose IMKClient_Modern
-2026-03-19 20:56:13.790 Voxa[23602:39152402] [ASR] 收到 JSON: {"header":{"task_id":"8B12E2B7-3745-4241-9A28-4B022507F8DE","event":"task-started","attributes":{}},"payload":{}}...
-2026-03-19 20:56:14.595 Voxa[23602:39151926] +[IMKInputSession subclass]: chose IMKInputSession_Modern
-2026-03-19 20:56:15.291 Voxa[23602:39151926] TSM AdjustCapsLockLEDForKeyTransitionHandling - _ISSetPhysicalKeyboardCapsLockLED Inhibit
-2026-03-19 20:56:16.925 Voxa[23602:39152397] [ASR] 收到 JSON: {"header":{"task_id":"01A4A66C-D20C-4DAF-872D-98212B9EE5AD","event":"task-started","attributes":{}},"payload":{}}...
-[2026-03-19 20:55:57.071] [Voxa] 应用启动中...
-[2026-03-19 20:55:57.071] [Config] ConfigManager 初始化开始
-[2026-03-19 20:55:57.072] [Config] 加载了 6 个润色模板（新格式）
-[2026-03-19 20:55:57.072] [Config] ConfigManager 初始化完成，当前模板: alt+1 - 轻度润色
-[2026-03-19 20:55:57.072] [Voxa] ConfigManager 初始化完成
-[2026-03-19 20:55:57.072] [Voxa] AppState 初始化完成
-[2026-03-19 20:55:57.072] [Voxa] PanelController 初始化完成
-[2026-03-19 20:55:57.072] [Voxa] AudioCapture 初始化完成
-[2026-03-19 20:55:57.072] [Voxa] AsrClient 初始化完成
-[2026-03-19 20:55:57.072] [Voxa] 使用默认快捷键: ⌥+SPACE
-[2026-03-19 20:55:57.072] [Voxa] 热键已更新为: ⌥+SPACE
-[2026-03-19 20:55:57.072] [Hotkey] 已注册润色模板快捷键: Alt+1 到 Alt+9
-[2026-03-19 20:55:57.072] [Voxa] HotkeyManager 初始化完成
-[2026-03-19 20:55:57.088] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
-[2026-03-19 20:55:57.088] [Voxa] 菜单栏设置完成
-[2026-03-19 20:55:57.092] [Voxa] 应用启动完成！按 Option+Space 开始录音
-[2026-03-19 20:55:57.092] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
-[2026-03-19 20:56:13.376] [Voxa] 热键触发: ⌥+SPACE
-[2026-03-19 20:56:13.434] [Panel] 调整: 91px → 104px
-[2026-03-19 20:56:13.726] WebSocket connected
-[2026-03-19 20:56:13.726] [ASR] 发送 run-task: {"header":{"streaming":"duplex","action":"run-task","task_id":"8B12E2B7-3745-4241-9A28-4B022507F8DE"},"payload":{"input":{},"model":"paraformer-realtime-v2","function":"recognition","task_group":"audio","parameters":{"enable_intermediate_result":true,"format":"pcm","enable_punctuation_prediction":true,"enable_inverse_text_normalization":true,"sample_rate":16000},"task":"asr"}}
-[2026-03-19 20:56:13.791] [ASR] event: task-started
-[2026-03-19 20:56:13.791] ASR task started
-[2026-03-19 20:56:13.868] [Panel] 调整: 91px → 104px
-[2026-03-19 20:56:14.631] [Panel] 调整: 91px → 104px
-[2026-03-19 20:56:15.282] [InputBar] 检测到回车键
-[2026-03-19 20:56:15.314] [Panel] 调整: 91px → 124px
-[2026-03-19 20:56:15.458] [InputBar] 检测到回车键
-[2026-03-19 20:56:15.588] [InputBar] 检测到回车键
-[2026-03-19 20:56:15.595] [Panel] 调整: 140px → 162px
-[2026-03-19 20:56:15.732] [InputBar] 检测到回车键
-[2026-03-19 20:56:15.742] [Panel] 调整: 159px → 181px
-[2026-03-19 20:56:16.001] [InputBar] 检测到回车键
-[2026-03-19 20:56:16.041] [Panel] 调整: 178px → 200px
-[2026-03-19 20:56:16.042] [Panel] 调整: 200px → 194px
-[2026-03-19 20:56:16.310] [Voxa] 热键触发: ⌥+SPACE
-[2026-03-19 20:56:16.365] [ASR] 发送 finish-task
-[2026-03-19 20:56:16.366] [Voxa] 停止录音，最终文本 [0 字]: ...
-[2026-03-19 20:56:16.368] WebSocket disconnected
-[2026-03-19 20:56:16.376] [Voxa] 最终文本为空，跳过注入
-[2026-03-19 20:56:16.628] [Voxa] 热键触发: ⌥+SPACE
-[2026-03-19 20:56:16.635] [Panel] 调整: 91px → 104px
-[2026-03-19 20:56:16.864] WebSocket connected
-[2026-03-19 20:56:16.865] [ASR] 发送 run-task: {"header":{"task_id":"01A4A66C-D20C-4DAF-872D-98212B9EE5AD","action":"run-task","streaming":"duplex"},"payload":{"task_group":"audio","parameters":{"format":"pcm","enable_punctuation_prediction":true,"enable_inverse_text_normalization":true,"sample_rate":16000,"enable_intermediate_result":true},"task":"asr","model":"paraformer-realtime-v2","function":"recognition","input":{}}}
-[2026-03-19 20:56:16.926] [ASR] event: task-started
-[2026-03-19 20:56:16.926] ASR task started
-[2026-03-19 20:56:16.975] [Panel] 调整: 91px → 104px
-[2026-03-19 20:56:17.676] [Voxa] 热键触发: ⌥+SPACE
-[2026-03-19 20:56:17.722] [ASR] 发送 finish-task
-[2026-03-19 20:56:17.722] [Voxa] 停止录音，最终文本 [0 字]: ...
-[2026-03-19 20:56:17.722] WebSocket disconnected
-[2026-03-19 20:56:17.725] [Voxa] 最终文本为空，跳过注入
-[2026-03-19 20:56:17.728] [Panel] 调整: 91px → 104px
-[2026-03-19 20:56:17.909] [Voxa] 热键触发: ⌥+SPACE
-[2026-03-19 20:56:17.916] [Panel] 调整: 91px → 104px
-[2026-03-19 20:56:18.160] WebSo2026-03-19 20:56:18.229 Voxa[23602:39152397] [ASR] 收到 JSON: {"header":{"task_id":"9E14E955-F6F7-42C4-B963-1D950C104D0E","event":"task-started","attributes":{}},"payload":{}}...
-ters":{"enable_punctuation_prediction":true,"sample_rate":16000,"enable_inverse_text_normalization":true,"enable_intermediate_result":true,"format":"pcm"},"function":"recognition","input":{}},"header":{"task_id":"9E14E955-F6F7-42C4-B963-1D950C104D0E","streaming":"duplex","action":"run-task"}}
-[2026-03-19 20:56:18.229] [ASR] event: task-started
-[2026-03-19 20:56:18.229] ASR task started
-[2026-03-19 20:56:18.263] [Panel] 调整: 91px → 104px
+2026-03-19 21:55:04.234 Voxa[37088:39272436] +[IMKClient subclass]: chose IMKClient_Modern
+2026-03-19 21:55:04.605 Voxa[37088:39272460] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"task-started","attributes":{}},"payload":{}}...
+2026-03-19 21:55:05.369 Voxa[37088:39272457] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"","chan...
+2026-03-19 21:55:06.257 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"可我想","c...
+2026-03-19 21:55:06.668 Voxa[37088:39272461] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"可我想查的",...
+2026-03-19 21:55:07.256 Voxa[37088:39272457] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"可我想查的是"...
+2026-03-19 21:55:07.740 Voxa[37088:39272457] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"可我想查的是历...
+2026-03-19 21:55:08.281 Voxa[37088:39272457] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"可我想查的是历...
+2026-03-19 21:55:08.765 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"可我想查的是历...
+[2026-03-19 21:54:42.826] [Voxa] 应用启动中...
+[2026-03-19 21:54:42.826] [Config] ConfigManager 初始化开始
+[2026-03-19 21:54:42.826] [Config] 加载了 6 个润色模板（新格式）
+[2026-03-19 21:54:42.826] [Config] ConfigManager 初始化完成，当前模板: alt+1 - 轻度润色
+[2026-03-19 21:54:42.827] [Voxa] ConfigManager 初始化完成
+[2026-03-19 21:54:42.827] [Voxa] AppState 初始化完成
+[2026-03-19 21:54:42.827] [Voxa] PanelController 初始化完成
+[2026-03-19 21:54:42.827] [Voxa] AudioCapture 初始化完成
+[2026-03-19 21:54:42.827] [Voxa] AsrClient 初始化完成
+[2026-03-19 21:54:42.827] [Voxa] 使用默认快捷键: ⌥+SPACE
+[2026-03-19 21:54:42.827] [Voxa] 热键已更新为: ⌥+SPACE
+[2026-03-19 21:54:42.827] [Hotkey] 已注册润色模板快捷键: Alt+1 到 Alt+9
+[2026-03-19 21:54:42.828] [Voxa] HotkeyManager 初始化完成
+[2026-03-19 21:54:42.845] [Voxa] 日志文件: /Users/linxinhong/projects/voxa/logs/voxa.log
+[2026-03-19 21:54:42.846] [Voxa] 菜单栏设置完成
+[2026-03-19 21:54:42.857] [Voxa] 应用启动完成！按 Option+Space 开始录音
+[2026-03-19 21:54:42.857] [Voxa] 也可以在菜单栏点击 Voxa 图标开始
+[2026-03-19 21:55:04.189] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:55:04.265] [Panel] 调整: 91px → 104px
+[2026-03-19 21:55:04.541] WebSocket connected
+[2026-03-19 21:55:04.542] [ASR] 发送 run-task: {"payload":{"function":"recognition","task_group":"audio","model":"paraformer-realtime-v2","parameters":{"sample_rate":16000,"enable_inverse_text_normalization":true,"format":"pcm","enable_intermediate_result":true,"enable_punctuation_prediction":true},"input":{},"task":"asr"},"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","streaming":"duplex","action":"run-task"}}
+[2026-03-19 21:55:04.605] [ASR] event: task-started
+[2026-03-19 21:55:04.605] ASR task started
+[2026-03-19 21:55:05.370] [ASR] event: result-generated
+[2026-03-19 21:55:05.371] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:05.371] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 21:55:05.371] [AppState] updatePartial: ""
+[2026-03-19 21:55:06.258] [ASR] event: result-generated
+[2026-03-19 21:55:06.258] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:06.258] [ASR] output.sentence: AsrSentence(text: "可我想", sentence_end: Optional(false))
+[2026-03-19 21:55:06.259] [Stats] ASR 活跃，开始计费
+[2026-03-19 21:55:06.259] [AppState] updatePartial: "可我想"
+[2026-03-19 21:55:06.668] [ASR] event: result-generated
+[2026-03-19 21:55:06.669] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:06.670] [ASR] output.sentence: AsrSentence(text: "可我想查的", sentence_end: Optional(false))
+[2026-03-19 21:55:06.670] [AppState] updatePartial: "可我想查的"
+[2026-03-19 21:55:07.256] [ASR] event: result-generated
+[2026-03-19 21:55:07.257] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:07.257] [ASR] output.sentence: AsrSentence(text: "可我想查的是", sentence_end: Optional(false))
+[2026-03-19 21:55:07.258] [AppState] updatePartial: "可我想查的是"
+[2026-03-19 21:55:07.740] [ASR] event: result-generated
+[2026-03-19 21:55:07.741] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:07.741] [ASR] output.sentence: AsrSentence(text: "可我想查的是历史", sentence_end: Optional(false))
+[2026-03-19 21:55:07.741] [AppState] updatePartial: "可我想查的是历史"
+[2026-03-19 21:55:08.282] [ASR] event: result-generated
+[2026-03-19 21:55:08.283] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:08.283] [ASR] output.sentence: AsrSentence(text: "可我想查的是历史的费", sentence_end: Optional(false))
+[2026-03-19 21:55:08.283] [AppState] updatePartial: "可我想查的是历史的费"
+[2026-03-19 21:55:08.766] [ASR] event: result-generated
+[2026-03-19 21:55:08.767] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:08.767] [ASR] output.sentence: AsrSentence(text: "可我想查的是历史的费用。而", sentence_end: Optional(false))
+[2026-03-19 21:55:08.768] [AppState] updatePartial: "�2026-03-19 21:55:09.086 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"可我想查的是历...
+2026-03-19 21:55:10.309 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"可我想查的是历...
+2026-03-19 21:55:11.195 Voxa[37088:39272461] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"可我想查的是历...
+2026-03-19 21:55:11.305 Voxa[37088:39272461] [ASR] 收到 JSON: {"header":{"task_id":"18ADAE2A-5F06-441A-AEB3-6A4ECF81D3A8","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":5620,"text":"可我想查的是历...
+2026-03-19 21:55:18.835 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"26696F9E-F74C-4BA1-948B-8ED8E151CE8E","event":"task-started","attributes":{}},"payload":{}}...
+2026-03-19 21:55:20.152 Voxa[37088:39272460] [ASR] 收到 JSON: {"header":{"task_id":"26696F9E-F74C-4BA1-948B-8ED8E151CE8E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":620,"end_time":null,"text":"","cha...
+��我想查的是历史的费用。而"
+[2026-03-19 21:55:09.087] [ASR] event: result-generated
+[2026-03-19 21:55:09.088] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:09.088] [ASR] output.sentence: AsrSentence(text: "可我想查的是历史的费用，而不是", sentence_end: Optional(false))
+[2026-03-19 21:55:09.089] [AppState] updatePartial: "可我想查的是历史的费用，而不是"
+[2026-03-19 21:55:10.310] [ASR] event: result-generated
+[2026-03-19 21:55:10.310] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:10.311] [ASR] output.sentence: AsrSentence(text: "可我想查的是历史的费用，而不是当前", sentence_end: Optional(false))
+[2026-03-19 21:55:10.311] [AppState] updatePartial: "可我想查的是历史的费用，而不是当前"
+[2026-03-19 21:55:11.195] [ASR] event: result-generated
+[2026-03-19 21:55:11.196] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:11.196] [ASR] output.sentence: AsrSentence(text: "可我想查的是历史的费用，而不是当前情", sentence_end: Optional(false))
+[2026-03-19 21:55:11.196] [AppState] updatePartial: "可我想查的是历史的费用，而不是当前情"
+[2026-03-19 21:55:11.306] [ASR] event: result-generated
+[2026-03-19 21:55:11.306] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:11.307] [ASR] output.sentence: AsrSentence(text: "可我想查的是历史的费用，而不是当前情况。", sentence_end: Optional(true))
+[2026-03-19 21:55:11.307] [AppState] receiveFinal: "可我想查的是历史的费用，而不是当前情况。"
+[2026-03-19 21:55:11.631] [AppState] autoInsert: "可我想查的是历史的费用，而不是当前情况。" at 0, cursor now 20
+[2026-03-19 21:55:11.636] [TextEditor] 光标位置: 20
+[2026-03-19 21:55:12.296] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:55:12.297] [Stats] ASR 静音，暂停计费，当前累计: 6s
+[2026-03-19 21:55:12.299] [Stats] 会话结束，保存时长: 6s
+[2026-03-19 21:55:12.311] [ASR] 发送 finish-task
+[2026-03-19 21:55:12.312] [Voxa] 停止录音，最终文本 [20 字]: 可我想查的是历史的费用，而不是当前情况。...
+[2026-03-19 21:55:12.312] [Voxa] 开始自动润色...
+[2026-03-19 21:55:12.314] WebSocket disconnected
+[2026-03-19 21:55:12.849] [Voxa] 润色完成
+[2026-03-19 21:55:12.849] [Voxa] 原文: 可我想查的是历史的费用，而不是当前情况。
+[2026-03-19 21:55:12.849] [Voxa] 润色: 我想查的是历史的费用，而不是当前的情况。
+[2026-03-19 21:55:12.851] [Voxa] 准备注入文本到 com.microsoft.edgemac
+[2026-03-19 21:55:12.851] [Injector] 开始注入 20 字到 com.microsoft.edgemac
+[2026-03-19 21:55:12.852] [TextEditor] 光标位置: 20
+[2026-03-19 21:55:12.856] [Injector] 剪贴板已设置: 我想查的是历史的费用，而不是当前的情况。...
+[2026-03-19 21:55:12.871] [Injector] Voxa 已隐藏
+[2026-03-19 21:55:12.929] [Injector] 目标应用已激活
+[2026-03-19 21:55:13.014] [Injector] 模拟 Cmd+V
+[2026-03-19 21:55:13.050] [Injector] 按键事件已发送
+[2026-03-19 21:55:13.135] [Injector] 注入完成
+[2026-03-19 21:55:13.136] [Injector] 剪贴板已恢复
+[2026-03-19 21:55:18.540] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:55:18.547] [Panel] 调整: 91px → 104px
+[2026-03-19 21:55:18.774] WebSocket connected
+[2026-03-19 21:55:18.775] [ASR] 发送 run-task: {"header":{"action":"run-task","task_id":"26696F9E-F74C-4BA1-948B-8ED8E151CE8E","streaming":"duplex"},"payload":{"model":"paraformer-realtime-v2","parameters":{"enable_inverse_text_normalization":true,"format":"pcm","enable_intermediate_result":true,"enable_punctuation_prediction":true,"sample_rate":16000},"task_group":"audio","task":"asr","input":{},"function":"recognition"}}
+[2026-03-19 21:55:18.835] [ASR] event: task-started
+[2026-03-19 21:55:18.836] ASR task started
+[2026-03-19 21:55:20.153] [ASR] event: result-generated
+[2026-03-19 21:55:20.153] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:20.153] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 21:55:20.153] [AppState] 2026-03-19 21:55:20.218 Voxa[37088:39272460] [ASR] 收到 JSON: {"header":{"task_id":"26696F9E-F74C-4BA1-948B-8ED8E151CE8E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":620,"end_time":null,"text":"看看","c...
+2026-03-19 21:55:20.413 Voxa[37088:39273639] [ASR] 收到 JSON: {"header":{"task_id":"26696F9E-F74C-4BA1-948B-8ED8E151CE8E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":620,"end_time":null,"text":"看看","c...
+2026-03-19 21:55:21.017 Voxa[37088:39272460] [ASR] 收到 JSON: {"header":{"task_id":"26696F9E-F74C-4BA1-948B-8ED8E151CE8E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":620,"end_time":null,"text":"看看现在",...
+2026-03-19 21:55:22.104 Voxa[37088:39273639] [ASR] 收到 JSON: {"header":{"task_id":"26696F9E-F74C-4BA1-948B-8ED8E151CE8E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":620,"end_time":2220,"text":"看看现在的效...
+2026-03-19 21:55:23.519 Voxa[37088:39272436] +[IMKInputSession subclass]: chose IMKInputSession_Modern
+2026-03-19 21:55:24.204 Voxa[37088:39272436] TSM AdjustCapsLockLEDForKeyTransitionHandling - _ISSetPhysicalKeyboardCapsLockLED Inhibit
+updatePartial: ""
+[2026-03-19 21:55:20.219] [ASR] event: result-generated
+[2026-03-19 21:55:20.220] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:20.220] [ASR] output.sentence: AsrSentence(text: "看看", sentence_end: Optional(false))
+[2026-03-19 21:55:20.220] [Stats] ASR 活跃，开始计费
+[2026-03-19 21:55:20.220] [AppState] updatePartial: "看看"
+[2026-03-19 21:55:20.413] [ASR] event: result-generated
+[2026-03-19 21:55:20.414] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:20.414] [ASR] output.sentence: AsrSentence(text: "看看", sentence_end: Optional(false))
+[2026-03-19 21:55:20.415] [AppState] updatePartial: "看看"
+[2026-03-19 21:55:21.018] [ASR] event: result-generated
+[2026-03-19 21:55:21.019] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:21.019] [ASR] output.sentence: AsrSentence(text: "看看现在", sentence_end: Optional(false))
+[2026-03-19 21:55:21.019] [AppState] updatePartial: "看看现在"
+[2026-03-19 21:55:22.105] [ASR] event: result-generated
+[2026-03-19 21:55:22.105] [ASR] result-generated, payload: 有
+[2026-03-19 21:55:22.105] [ASR] output.sentence: AsrSentence(text: "看看现在的效果。", sentence_end: Optional(true))
+[2026-03-19 21:55:22.106] [AppState] receiveFinal: "看看现在的效果。"
+[2026-03-19 21:55:22.429] [AppState] autoInsert: "看看现在的效果。" at 0, cursor now 8
+[2026-03-19 21:55:22.430] [TextEditor] 光标位置: 8
+[2026-03-19 21:55:24.198] [InputBar] 检测到回车键
+[2026-03-19 21:55:24.208] [TextEditor] 光标位置: 9
+[2026-03-19 21:55:24.215] [Panel] 调整: 104px → 116px
+[2026-03-19 21:55:24.615] [InputBar] 检测到回车键
+[2026-03-19 21:55:24.622] [TextEditor] 光标位置: 10
+[2026-03-19 21:55:24.630] [Panel] 调整: 116px → 131px
+[2026-03-19 21:55:24.631] [Panel] 调整: 131px → 137px
+[2026-03-19 21:55:24.800] [InputBar] 检测到回车键
+[2026-03-19 21:55:24.804] [TextEditor] 光标位置: 11
+[2026-03-19 21:55:24.814] [Panel] 调整: 137px → 146px
+[2026-03-19 21:55:24.815] [Panel] 调整: 146px → 155px
+[2026-03-19 21:55:33.061] [InputBar] 检测到回车键
+[2026-03-19 21:55:33.068] [TextEditor] 光标位置: 12
+[2026-03-19 21:55:33.076] [Panel] 调整: 155px → 161px
+[2026-03-19 21:55:33.082] [Panel] 调整: 161px → 173px
+[2026-03-19 21:55:33.238] [InputBar] 检测到回车键
+[2026-03-19 21:55:33.241] [TextEditor] 光标位置: 13
+[2026-03-19 21:55:33.246] [Panel] 调整: 173px → 191px
+[2026-03-19 21:55:33.376] [InputBar] 检测到回车键
+[2026-03-19 21:55:33.379] [TextEditor] 光标位置: 14
+[2026-03-19 21:55:33.415] [Panel] 调整: 191px → 209px
+[2026-03-19 21:55:33.534] [InputBar] 检测到回车键
+[2026-03-19 21:55:33.538] [TextEditor] 光标位置: 15
+[2026-03-19 21:55:33.546] [Panel] 调整: 209px → 227px
+[2026-03-19 21:55:33.674] [InputBar] 检测到回车键
+[2026-03-19 21:55:33.677] [TextEditor] 光标位置: 16
+[2026-03-19 21:55:33.682] [Panel] 调整: 227px → 221px
+[2026-03-19 21:55:33.683] [Panel] 调整: 221px → 245px
+[2026-03-19 21:55:33.825] [InputBar] 检测到回车键
+[2026-03-19 21:55:33.829] [TextEditor] 光标位置: 17
+[2026-03-19 21:55:33.834] [Panel] 调整: 245px → 236px
+[2026-03-19 21:55:33.836] [Panel] 调整: 236px → 263px
+[2026-03-19 21:55:33.983] [InputBar] 检测到回车键
+[2026-03-19 21:55:33.986] [TextEditor] 光标位置: 18
+[2026-03-19 21:55:33.991] [Panel] 调整: 263px → 251px
+[2026-03-19 21:55:33.992] [Panel] 调整: 251px → 281px
+[2026-03-19 21:55:34.139] [InputBar] 检测到回车键
+[2026-03-19 21:55:34.143] [TextEditor] 光标位置: 19
+[2026-03-19 21:55:34.149] [Panel] 调整: 281px → 266px
+[2026-03-19 21:55:34.150] [Panel] 调整: 266px → 299px
+[2026-03-19 21:55:34.276] [InputBar] 检测到回车键
+[2026-03-19 21:55:34.279] [TextEditor] 光标位置: 20
+[2026-03-19 21:55:34.283] [Panel] 调整: 299px → 281px
+[2026-03-19 21:55:34.285] [Panel] 调整: 281px → 317px
+[2026-03-19 21:55:38.148] [TextEditor] 光标位置: 9
+[2026-03-19 21:55:43.822] [TextEditor] 光标位置: 15
+[2026-03-19 21:55:46.285] [TextEditor] 光标位置: 0
+[2026-03-19 21:57:02.861 Voxa[37088:39274436] [ASR] 收到 JSON: {"header":{"task_id":"C877D528-89BE-4A0D-8BCA-69F9135C305E","event":"task-started","attributes":{}},"payload":{}}...
+2026-03-19 21:57:03.638 Voxa[37088:39273639] [ASR] 收到 JSON: {"header":{"task_id":"C877D528-89BE-4A0D-8BCA-69F9135C305E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"","chan...
+2026-03-19 21:57:03.647 Voxa[37088:39273639] [ASR] 收到 JSON: {"header":{"task_id":"C877D528-89BE-4A0D-8BCA-69F9135C305E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"позже, ...
+2026-03-19 21:57:04.448 Voxa[37088:39273639] [ASR] 收到 JSON: {"header":{"task_id":"C877D528-89BE-4A0D-8BCA-69F9135C305E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"позже, ...
+2026-03-19 21:57:04.877 Voxa[37088:39273639] [ASR] 收到 JSON: {"header":{"task_id":"C877D528-89BE-4A0D-8BCA-69F9135C305E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"我如何把这个"...
+2026-03-19 21:57:05.448 Voxa[37088:39272460] [ASR] 收到 JSON: {"header":{"task_id":"C877D528-89BE-4A0D-8BCA-69F9135C305E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"我如何把这个问...
+2026-03-19 21:57:05.899 Voxa[37088:39272460] [ASR] 收到 JSON: {"header":{"task_id":"C877D528-89BE-4A0D-8BCA-69F9135C305E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"我如何把这个问...
+2026-03-19 21:57:06.466 Voxa[37088:39272460] [ASR] 收到 JSON: {"header":{"task_id":"C877D528-89BE-4A0D-8BCA-69F9135C305E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"我如何把这个问...
+2026-03-19 21:57:07.352 Voxa[37088:39274436] [ASR] 收到 JSON: {"header":{"task_id":"C877D528-89BE-4A0D-8BCA-69F9135C305E","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":3320,"text":"我如何把这个问...
+2026-03-19 21:55:49.716] [TextEditor] 光标位置: 18
+[2026-03-19 21:55:50.881] [ASR] 发送 finish-task
+[2026-03-19 21:55:50.881] [Voxa] ESC 取消录音
+[2026-03-19 21:55:50.881] WebSocket disconnected
+[2026-03-19 21:57:02.523] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:57:02.535] [Panel] 调整: 91px → 104px
+[2026-03-19 21:57:02.799] WebSocket connected
+[2026-03-19 21:57:02.800] [ASR] 发送 run-task: {"header":{"action":"run-task","task_id":"C877D528-89BE-4A0D-8BCA-69F9135C305E","streaming":"duplex"},"payload":{"parameters":{"sample_rate":16000,"enable_punctuation_prediction":true,"enable_inverse_text_normalization":true,"enable_intermediate_result":true,"format":"pcm"},"task_group":"audio","function":"recognition","model":"paraformer-realtime-v2","task":"asr","input":{}}}
+[2026-03-19 21:57:02.862] [ASR] event: task-started
+[2026-03-19 21:57:02.862] ASR task started
+[2026-03-19 21:57:03.639] [ASR] event: result-generated
+[2026-03-19 21:57:03.639] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:03.640] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 21:57:03.640] [AppState] updatePartial: ""
+[2026-03-19 21:57:03.648] [ASR] event: result-generated
+[2026-03-19 21:57:03.648] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:03.649] [ASR] output.sentence: AsrSentence(text: "позже, ", sentence_end: Optional(false))
+[2026-03-19 21:57:03.649] [AppState] updatePartial: "позже, "
+[2026-03-19 21:57:04.449] [ASR] event: result-generated
+[2026-03-19 21:57:04.450] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:04.450] [ASR] output.sentence: AsrSentence(text: "позже, ", sentence_end: Optional(false))
+[2026-03-19 21:57:04.450] [AppState] updatePartial: "позже, "
+[2026-03-19 21:57:04.877] [ASR] event: result-generated
+[2026-03-19 21:57:04.877] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:04.878] [ASR] output.sentence: AsrSentence(text: "我如何把这个", sentence_end: Optional(false))
+[2026-03-19 21:57:04.878] [AppState] updatePartial: "我如何把这个"
+[2026-03-19 21:57:05.449] [ASR] event: result-generated
+[2026-03-19 21:57:05.450] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:05.450] [ASR] output.sentence: AsrSentence(text: "我如何把这个问题", sentence_end: Optional(false))
+[2026-03-19 21:57:05.450] [AppState] updatePartial: "我如何把这个问题"
+[2026-03-19 21:57:05.899] [ASR] event: result-generated
+[2026-03-19 21:57:05.900] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:05.900] [ASR] output.sentence: AsrSentence(text: "我如何把这个问题描述？", sentence_end: Optional(false))
+[2026-03-19 21:57:05.900] [AppState] updatePartial: "我如何把这个问题描述？"
+[2026-03-19 21:57:06.467] [ASR] event: result-generated
+[2026-03-19 21:57:06.467] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:06.468] [ASR] output.sentence: AsrSentence(text: "我如何把这个问题描述给大木？", sentence_end: Optional(false))
+[2026-03-19 21:57:06.468] [AppState] updatePartial: "我如何把这个问题描述给大木？"
+[2026-03-19 21:57:07.353] [ASR] event: result-generated
+[2026-03-19 21:57:07.353] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:07.354] [ASR] output.sentence: AsrSentence(text: "我如何把这个问题描述给大模型？", sentence_end: Optional(true))
+[2026-03-19 21:57:07.355] [AppState] receiveFinal: "我如何把问题描述给大模型？"
+[2026-03-19 21:57:07.679] [AppState] autoInsert: "我如何把问题描述给大模型？" at 0, cursor now 13
+[2026-03-19 21:57:07.681] [TextEditor] 光标位置: 13
+[2026-03-19 21:57:08.775] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:57:08.776] [Stats] ASR 静音，暂停计费，当前累计: 108s
+[2026-03-19 21:57:08.777] [Stats] 会话结束，保存时长: 108s
+[2026-03-19 21:57:08.795] [ASR] 发送 finish-task
+[2026-03-19 21:57:08.796] [Voxa] 停止录音，最终文本 [13 字]: 我如何把问题描述给大模型？...
+[2026-03-19 21:57:08.796] [Voxa] 开始自动润色...
+[2026-03-19 21:57:08.796] WebSocket discon2026-03-19 21:57:57.947 Voxa[37088:39279599] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"task-started","attributes":{}},"payload":{}}...
+2026-03-19 21:57:58.730 Voxa[37088:39272460] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"","chan...
+2026-03-19 21:57:58.732 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注","cha...
+2026-03-19 21:57:59.537 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提","c...
+2026-03-19 21:57:59.933 Voxa[37088:39279599] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示","...
+2026-03-19 21:58:00.592 Voxa[37088:39279599] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示蓝色"...
+2026-03-19 21:58:00.939 Voxa[37088:39272460] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示，蓝色...
+2026-03-19 21:58:01.552 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示蓝色是...
+2026-03-19 21:58:02.115 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示蓝色是...
+2026-03-19 21:58:02.352 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示蓝色是...
+nected
+[2026-03-19 21:57:09.230] [Voxa] 润色后无变化
+[2026-03-19 21:57:09.235] [Voxa] 准备注入文本到 com.microsoft.edgemac
+[2026-03-19 21:57:09.235] [Injector] 开始注入 13 字到 com.microsoft.edgemac
+[2026-03-19 21:57:09.238] [Injector] 剪贴板已设置: 我如何把问题描述给大模型？...
+[2026-03-19 21:57:09.252] [Injector] Voxa 已隐藏
+[2026-03-19 21:57:09.308] [Injector] 目标应用已激活
+[2026-03-19 21:57:09.392] [Injector] 模拟 Cmd+V
+[2026-03-19 21:57:09.410] [Injector] 按键事件已发送
+[2026-03-19 21:57:09.496] [Injector] 注入完成
+[2026-03-19 21:57:09.497] [Injector] 剪贴板已恢复
+[2026-03-19 21:57:57.617] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:57:57.628] [Panel] 调整: 91px → 104px
+[2026-03-19 21:57:57.886] WebSocket connected
+[2026-03-19 21:57:57.887] [ASR] 发送 run-task: {"payload":{"parameters":{"enable_punctuation_prediction":true,"format":"pcm","sample_rate":16000,"enable_inverse_text_normalization":true,"enable_intermediate_result":true},"model":"paraformer-realtime-v2","task":"asr","task_group":"audio","function":"recognition","input":{}},"header":{"action":"run-task","streaming":"duplex","task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1"}}
+[2026-03-19 21:57:57.947] [ASR] event: task-started
+[2026-03-19 21:57:57.947] ASR task started
+[2026-03-19 21:57:58.731] [ASR] event: result-generated
+[2026-03-19 21:57:58.732] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:58.732] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 21:57:58.732] [AppState] updatePartial: ""
+[2026-03-19 21:57:58.733] [ASR] event: result-generated
+[2026-03-19 21:57:58.733] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:58.733] [ASR] output.sentence: AsrSentence(text: "注", sentence_end: Optional(false))
+[2026-03-19 21:57:58.736] [Stats] ASR 活跃，开始计费
+[2026-03-19 21:57:58.736] [AppState] updatePartial: "注"
+[2026-03-19 21:57:59.538] [ASR] event: result-generated
+[2026-03-19 21:57:59.538] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:59.539] [ASR] output.sentence: AsrSentence(text: "注意提", sentence_end: Optional(false))
+[2026-03-19 21:57:59.539] [AppState] updatePartial: "注意提"
+[2026-03-19 21:57:59.934] [ASR] event: result-generated
+[2026-03-19 21:57:59.935] [ASR] result-generated, payload: 有
+[2026-03-19 21:57:59.935] [ASR] output.sentence: AsrSentence(text: "注意提示", sentence_end: Optional(false))
+[2026-03-19 21:57:59.936] [AppState] updatePartial: "注意提示"
+[2026-03-19 21:58:00.592] [ASR] event: result-generated
+[2026-03-19 21:58:00.593] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:00.593] [ASR] output.sentence: AsrSentence(text: "注意提示蓝色", sentence_end: Optional(false))
+[2026-03-19 21:58:00.593] [AppState] updatePartial: "注意提示蓝色"
+[2026-03-19 21:58:00.940] [ASR] event: result-generated
+[2026-03-19 21:58:00.940] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:00.940] [ASR] output.sentence: AsrSentence(text: "注意提示，蓝色是当", sentence_end: Optional(false))
+[2026-03-19 21:58:00.941] [AppState] updatePartial: "注意提示，蓝色是当"
+[2026-03-19 21:58:01.553] [ASR] event: result-generated
+[2026-03-19 21:58:01.553] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:01.553] [ASR] output.sentence: AsrSentence(text: "注意提示蓝色是当我进行", sentence_end: Optional(false))
+[2026-03-19 21:58:01.554] [AppState] updatePartial: "注意提示蓝色是当我进行"
+[2026-03-19 21:58:02.115] [ASR] event: result-generated
+[2026-03-19 21:58:02.116] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:02.116] [ASR] output.sentence: AsrSentence(text: "注意提示蓝色是当我进行选择的", sentence_end: Optional(false))
+[2026-03-19 21:58:02.116] [AppState] updatePartial: "注意提示蓝色是当我进行选择的"
+[2026-03-19 21:58:02.352] [ASR] event: result-generated
+[2026-03-19 21:58:02.353] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:02.353] [ASR] output.sentence: AsrSentence(text: "注意提示蓝色是当�2026-03-19 21:58:02.955 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示蓝色是...
+2026-03-19 21:58:03.364 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示蓝色是...
+2026-03-19 21:58:03.970 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示蓝色是...
+2026-03-19 21:58:04.448 Voxa[37088:39279599] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示蓝色是...
+2026-03-19 21:58:04.775 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"AF5BCD20-D662-4FE5-B91B-F6B37FE066E1","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":80,"end_time":null,"text":"注意提示蓝色是...
+2026-03-19 21:58:06.673 Voxa[37088:39279584] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"task-started","attributes":{}},"payload":{}}...
+2026-03-19 21:58:07.994 Voxa[37088:39279584] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"","cha...
+2026-03-19 21:58:08.056 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"在","ch...
+2026-03-19 21:58:08.858 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"再强调","...
+��进行选择的时候，", sentence_end: Optional(false))
+[2026-03-19 21:58:02.354] [AppState] updatePartial: "注意提示蓝色是当我进行选择的时候，"
+[2026-03-19 21:58:02.956] [ASR] event: result-generated
+[2026-03-19 21:58:02.956] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:02.957] [ASR] output.sentence: AsrSentence(text: "注意提示蓝色是当我进行选择的时候，反", sentence_end: Optional(false))
+[2026-03-19 21:58:02.957] [AppState] updatePartial: "注意提示蓝色是当我进行选择的时候，反"
+[2026-03-19 21:58:03.364] [ASR] event: result-generated
+[2026-03-19 21:58:03.365] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:03.365] [ASR] output.sentence: AsrSentence(text: "注意提示蓝色是当我进行选择的时候反选出来的", sentence_end: Optional(false))
+[2026-03-19 21:58:03.365] [AppState] updatePartial: "注意提示蓝色是当我进行选择的时候反选出来的"
+[2026-03-19 21:58:03.971] [ASR] event: result-generated
+[2026-03-19 21:58:03.971] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:03.972] [ASR] output.sentence: AsrSentence(text: "注意提示蓝色是当我进行选择的时候反选出来的颜色", sentence_end: Optional(false))
+[2026-03-19 21:58:03.972] [AppState] updatePartial: "注意提示蓝色是当我进行选择的时候反选出来的颜色"
+[2026-03-19 21:58:04.449] [ASR] event: result-generated
+[2026-03-19 21:58:04.450] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:04.450] [ASR] output.sentence: AsrSentence(text: "注意提示蓝色是当我进行选择的时候反选出来的颜色默认", sentence_end: Optional(false))
+[2026-03-19 21:58:04.450] [AppState] updatePartial: "注意提示蓝色是当我进行选择的时候反选出来的颜色默认"
+[2026-03-19 21:58:04.776] [ASR] event: result-generated
+[2026-03-19 21:58:04.776] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:04.776] [ASR] output.sentence: AsrSentence(text: "注意提示蓝色是当我进行选择的时候反选出来的颜色，默认其实是", sentence_end: Optional(false))
+[2026-03-19 21:58:04.777] [AppState] updatePartial: "注意提示蓝色是当我进行选择的时候反选出来的颜色，默认其实是"
+[2026-03-19 21:58:05.540] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:58:05.540] [Stats] ASR 静音，暂停计费，当前累计: 6s
+[2026-03-19 21:58:05.542] [Stats] 会话结束，保存时长: 6s
+[2026-03-19 21:58:05.561] [ASR] 发送 finish-task
+[2026-03-19 21:58:05.561] WebSocket disconnected
+[2026-03-19 21:58:05.561] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 21:58:05.562] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 21:58:06.362] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:58:06.372] [Panel] 调整: 91px → 104px
+[2026-03-19 21:58:06.609] WebSocket connected
+[2026-03-19 21:58:06.609] [ASR] 发送 run-task: {"header":{"streaming":"duplex","action":"run-task","task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB"},"payload":{"task_group":"audio","function":"recognition","task":"asr","parameters":{"enable_inverse_text_normalization":true,"format":"pcm","enable_intermediate_result":true,"enable_punctuation_prediction":true,"sample_rate":16000},"input":{},"model":"paraformer-realtime-v2"}}
+[2026-03-19 21:58:06.674] [ASR] event: task-started
+[2026-03-19 21:58:06.674] ASR task started
+[2026-03-19 21:58:07.995] [ASR] event: result-generated
+[2026-03-19 21:58:07.995] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:07.996] [ASR] output.sentence: AsrSentence(text: "", sentence_end: Optional(false))
+[2026-03-19 21:58:07.996] [AppState] updatePartial: ""
+[2026-03-19 21:58:08.056] [ASR] event: result-generated
+[2026-03-19 21:58:08.057] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:08.057] [ASR] output.sentence: AsrSentence(text: "在", sentence_end: Optional(false))
+[2026-03-19 21:58:08.057] [Stats] ASR 活跃，开始计费
+[2026-03-19 21:58:08.058] [AppState] updatePartial: "在"
+[2026-03-19 21:58:08.859] [ASR] event: result-generated
+[2026-03-19 21:58:08.859] [ASR] result-generated, pay2026-03-19 21:58:09.257 Voxa[37088:39279584] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"再强调一点"...
+2026-03-19 21:58:09.878 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"再强调一点蓝...
+2026-03-19 21:58:10.276 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"再强调一点，...
+2026-03-19 21:58:10.678 Voxa[37088:39279584] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"再强调一点，...
+2026-03-19 21:58:11.355 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"再强调一点，...
+2026-03-19 21:58:11.682 Voxa[37088:39279584] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"再强调一点，...
+2026-03-19 21:58:12.302 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"再强调一点，...
+2026-03-19 21:58:12.704 Voxa[37088:39272459] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":null,"text":"再强调一点，...
+2026-03-19 21:58:13.593 Voxa[37088:39274438] [ASR] 收到 JSON: {"header":{"task_id":"0BF1546C-95AA-46E5-BC72-116E9204C1EB","event":"result-generated","attributes":{}},"payload":{"output":{"sentence":{"sentence_id":1,"begin_time":600,"end_time":5900,"text":"再强调一点，...
+load: 有
+[2026-03-19 21:58:08.860] [ASR] output.sentence: AsrSentence(text: "再强调", sentence_end: Optional(false))
+[2026-03-19 21:58:08.860] [AppState] updatePartial: "再强调"
+[2026-03-19 21:58:09.257] [ASR] event: result-generated
+[2026-03-19 21:58:09.258] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:09.258] [ASR] output.sentence: AsrSentence(text: "再强调一点", sentence_end: Optional(false))
+[2026-03-19 21:58:09.258] [AppState] updatePartial: "再强调一点"
+[2026-03-19 21:58:09.878] [ASR] event: result-generated
+[2026-03-19 21:58:09.879] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:09.879] [ASR] output.sentence: AsrSentence(text: "再强调一点蓝色", sentence_end: Optional(false))
+[2026-03-19 21:58:09.879] [AppState] updatePartial: "再强调一点蓝色"
+[2026-03-19 21:58:10.277] [ASR] event: result-generated
+[2026-03-19 21:58:10.277] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:10.278] [ASR] output.sentence: AsrSentence(text: "再强调一点，蓝色是我反", sentence_end: Optional(false))
+[2026-03-19 21:58:10.278] [AppState] updatePartial: "再强调一点，蓝色是我反"
+[2026-03-19 21:58:10.678] [ASR] event: result-generated
+[2026-03-19 21:58:10.679] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:10.679] [ASR] output.sentence: AsrSentence(text: "再强调一点，蓝色是我反选", sentence_end: Optional(false))
+[2026-03-19 21:58:10.680] [AppState] updatePartial: "再强调一点，蓝色是我反选"
+[2026-03-19 21:58:11.356] [ASR] event: result-generated
+[2026-03-19 21:58:11.357] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:11.357] [ASR] output.sentence: AsrSentence(text: "再强调一点，蓝色是我反选之后，", sentence_end: Optional(false))
+[2026-03-19 21:58:11.357] [AppState] updatePartial: "再强调一点，蓝色是我反选之后，"
+[2026-03-19 21:58:11.684] [ASR] event: result-generated
+[2026-03-19 21:58:11.684] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:11.685] [ASR] output.sentence: AsrSentence(text: "再强调一点，蓝色是我反选之后出来的", sentence_end: Optional(false))
+[2026-03-19 21:58:11.685] [AppState] updatePartial: "再强调一点，蓝色是我反选之后出来的"
+[2026-03-19 21:58:12.302] [ASR] event: result-generated
+[2026-03-19 21:58:12.303] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:12.303] [ASR] output.sentence: AsrSentence(text: "再强调一点，蓝色是我反选之后出来的颜色。默", sentence_end: Optional(false))
+[2026-03-19 21:58:12.303] [AppState] updatePartial: "再强调一点，蓝色是我反选之后出来的颜色。默"
+[2026-03-19 21:58:12.705] [ASR] event: result-generated
+[2026-03-19 21:58:12.705] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:12.706] [ASR] output.sentence: AsrSentence(text: "再强调一点，蓝色是我反选之后出来的颜色，默认是白", sentence_end: Optional(false))
+[2026-03-19 21:58:12.706] [AppState] updatePartial: "再强调一点，蓝色是我反选之后出来的颜色，默认是白"
+[2026-03-19 21:58:13.593] [ASR] event: result-generated
+[2026-03-19 21:58:13.594] [ASR] result-generated, payload: 有
+[2026-03-19 21:58:13.594] [ASR] output.sentence: AsrSentence(text: "再强调一点，蓝色是我反选择后出来的颜色，默认是白色的。", sentence_end: Optional(true))
+[2026-03-19 21:58:13.594] [AppState] receiveFinal: "再强调一点，蓝色是我反选择后出来的颜色，默认是白色的。"
+[2026-03-19 21:58:13.901] [AppState] autoInsert: "再强调一点，蓝色是我反选择后出来的颜色，默认是白色的。" at 0, cursor now 27
+[2026-03-19 21:58:13.903] [TextEditor] 光标位置: 27
+[2026-03-19 21:58:13.912] [Panel] 调整: 104px → 116px
+[2026-03-19 21:58:14.661] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:58:14.662] [Stats] ASR 静音，暂停计费，当前累计: 6s
+[2026-03-19 21:58:14.664] [Stats] 会话结束，保存时长: 6s
+[2026-03-19 21:58:14.676] [ASR] 发送 finish-task
+[2026-03-19 21:58:14.676] WebSocket disconnected
+[2026-03-19 21:58:14.676] 2026-03-19 21:58:40.844 Voxa[37088:39274438] [ASR] 收到 JSON: {"header":{"task_id":"A58ABCA4-0C48-4A5B-ADD0-68ED18D69BAE","event":"task-started","attributes":{}},"payload":{}}...
+2026-03-19 21:58:48.146 Voxa[37088:39272460] [ASR] 收到 JSON: {"header":{"task_id":"7B40B4BB-E727-4DFE-B4F6-6A7CD5DEB349","event":"task-started","attributes":{}},"payload":{}}...
+��是白色的。
+[2026-03-19 21:58:15.353] [Voxa] 润色: 再强调一点，蓝色是我反选后出来的颜色，默认是白色的。
+[2026-03-19 21:58:15.355] [Voxa] 准备注入文本到 com.microsoft.edgemac
+[2026-03-19 21:58:15.355] [Injector] 开始注入 26 字到 com.microsoft.edgemac
+[2026-03-19 21:58:15.356] [Injector] 剪贴板已设置: 再强调一点，蓝色是我反选后出来的颜色，默认是白色的。...
+[2026-03-19 21:58:15.356] [TextEditor] 光标位置: 26
+[2026-03-19 21:58:15.378] [Injector] Voxa 已隐藏
+[2026-03-19 21:58:15.380] [Panel] 调整: 116px → 101px
+[2026-03-19 21:58:15.434] [Injector] 目标应用已激活
+[2026-03-19 21:58:15.520] [Injector] 模拟 Cmd+V
+[2026-03-19 21:58:15.539] [Injector] 按键事件已发送
+[2026-03-19 21:58:15.624] [Injector] 注入完成
+[2026-03-19 21:58:15.625] [Injector] 剪贴板已恢复
+[2026-03-19 21:58:40.486] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:58:40.498] [Panel] 调整: 91px → 104px
+[2026-03-19 21:58:40.776] WebSocket connected
+[2026-03-19 21:58:40.777] [ASR] 发送 run-task: {"header":{"action":"run-task","task_id":"A58ABCA4-0C48-4A5B-ADD0-68ED18D69BAE","streaming":"duplex"},"payload":{"function":"recognition","model":"paraformer-realtime-v2","task":"asr","task_group":"audio","parameters":{"enable_punctuation_prediction":true,"sample_rate":16000,"enable_intermediate_result":true,"format":"pcm","enable_inverse_text_normalization":true},"input":{}}}
+[2026-03-19 21:58:40.845] [ASR] event: task-started
+[2026-03-19 21:58:40.845] ASR task started
+[2026-03-19 21:58:44.555] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:58:44.556] [Stats] 会话结束，保存时长: 0s
+[2026-03-19 21:58:44.574] [ASR] 发送 finish-task
+[2026-03-19 21:58:44.574] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 21:58:44.574] WebSocket disconnected
+[2026-03-19 21:58:44.575] [Voxa] 最终文本为空，跳过注入
+[2026-03-19 21:58:47.838] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:58:47.844] [Panel] 调整: 91px → 104px
+[2026-03-19 21:58:48.081] WebSocket connected
+[2026-03-19 21:58:48.082] [ASR] 发送 run-task: {"payload":{"parameters":{"enable_intermediate_result":true,"enable_punctuation_prediction":true,"format":"pcm","enable_inverse_text_normalization":true,"sample_rate":16000},"task":"asr","input":{},"model":"paraformer-realtime-v2","task_group":"audio","function":"recognition"},"header":{"task_id":"7B40B4BB-E727-4DFE-B4F6-6A7CD5DEB349","action":"run-task","streaming":"duplex"}}
+[2026-03-19 21:58:48.146] [ASR] event: task-started
+[2026-03-19 21:58:48.146] ASR task started
+[2026-03-19 21:58:49.452] [Voxa] 热键触发: ⌥+SPACE
+[2026-03-19 21:58:49.454] [Stats] 会话结束，保存时长: 0s
+[2026-03-19 21:58:49.472] [ASR] 发送 finish-task
+[2026-03-19 21:58:49.473] WebSocket disconnected
+[2026-03-19 21:58:49.473] [Voxa] 停止录音，最终文本 [0 字]: ...
+[2026-03-19 21:58:49.475] [Voxa] 最终文本为空，跳过注入

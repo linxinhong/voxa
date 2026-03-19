@@ -47,6 +47,23 @@ class HotkeyManager {
             name: .hidePanel,
             object: nil
         )
+        
+        // 监听麦克风按钮点击（暂停/恢复）
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handlePauseToggle),
+            name: .togglePauseRecording,
+            object: nil
+        )
+    }
+    
+    @objc private func handlePauseToggle() {
+        VoxaLog("[Hotkey] 麦克风按钮点击，暂停/恢复录音")
+        if appState.isRecording {
+            pauseRecording()
+        } else if appState.isPaused {
+            resumeRecording()
+        }
     }
     
     @objc private func handleEscPressed() {
@@ -108,12 +125,47 @@ class HotkeyManager {
         VoxaLog("[Hotkey] 已注册润色模板快捷键: Alt+1 到 Alt+9")
     }
     
-    /// Toggle recording state
+    /// Toggle recording state（Option+Space：停止/开始，不是暂停）
     func toggle() {
-        if appState.isRecording {
+        if appState.isRecording || appState.isPaused {
             stopRecording()
         } else {
             startRecording()
+        }
+    }
+    
+    /// 暂停录音（不隐藏面板，可恢复）
+    private func pauseRecording() {
+        Task {
+            await audioCapture.stop()
+            await asrClient.disconnect()
+            
+            await MainActor.run {
+                appState.isPaused = true
+                appState.isRecording = false
+                appState.isAsrActive = false
+            }
+            
+            VoxaLog("[Voxa] 录音已暂停")
+        }
+    }
+    
+    /// 恢复录音
+    private func resumeRecording() {
+        Task {
+            await asrClient.connect()
+            await audioCapture.start { [weak self] pcmData in
+                Task { [weak self] in
+                    await self?.asrClient.sendAudio(pcmData)
+                }
+            }
+            
+            await MainActor.run {
+                appState.isPaused = false
+                appState.isRecording = true
+            }
+            
+            VoxaLog("[Voxa] 录音已恢复")
         }
     }
     
@@ -156,12 +208,14 @@ class HotkeyManager {
             // Start ASR connection
             await asrClient.connect()
             
-            // Start audio capture
+            // Start audio capture（实际开始发送音频数据）
             await audioCapture.start { [weak self] pcmData in
                 Task { [weak self] in
                     await self?.asrClient.sendAudio(pcmData)
                 }
             }
+            
+            // 注意：计费在收到 ASR 结果时开始（markAsrActive）
             
             await MainActor.run {
                 appState.isRecording = true
@@ -171,6 +225,9 @@ class HotkeyManager {
     
     private func stopRecording() {
         Task {
+            // 停止计时
+            StatsManager.shared.stopSession()
+            
             // Stop audio capture
             await audioCapture.stop()
             
@@ -179,6 +236,7 @@ class HotkeyManager {
             
             await MainActor.run {
                 appState.isRecording = false
+                appState.isAsrActive = false
             }
             
             // 停止录音时的处理：如果有 pending 未确认，自动追加到末尾

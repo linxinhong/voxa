@@ -8,21 +8,39 @@ import AppKit
 
 struct InputBarView: View {
     @ObservedObject var appState: AppState
+    @StateObject private var statsManager = StatsManager.shared
+    @StateObject private var statsWindowController = StatsWindowController.shared
     
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            // 第1行：10px【麦克风】10px【partial文本（左对齐）】10px【风格标签】10px
+            // 第1行：10px【麦克风】10px【partial文本（左对齐）】10px【时长】10px【风格标签】10px
             HStack(alignment: .center, spacing: 10) {
-                Image(systemName: "mic.fill")
-                    .font(.system(size: 12))
-                    .foregroundColor(appState.hasPending ? .green : (appState.partialText.isEmpty ? .gray : .green))
-                    .frame(width: 16, height: 16)
+                // 麦克风按钮：点击暂停/恢复录音
+                Button(action: {
+                    NotificationCenter.default.post(name: .togglePauseRecording, object: nil)
+                }) {
+                    Image(systemName: appState.isPaused ? "mic.slash.fill" : "mic.fill")
+                        .font(.system(size: 12))
+                        .foregroundColor(appState.isPaused ? .red : (appState.isRecording ? .green : .gray))
+                        .frame(width: 16, height: 16)
+                }
+                .buttonStyle(PlainButtonStyle())
                 
                 Text(appState.partialText.isEmpty ? " " : appState.partialText)
                     .font(.system(size: 14))
                     .foregroundColor(.black)
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                
+                // 时长显示（可点击 toggle）
+                Button(action: {
+                    statsWindowController.toggle()
+                }) {
+                    Text("[\(statsManager.formatDuration(statsManager.currentSessionSeconds))]")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundColor(statsWindowController.isVisible ? .orange : .gray)
+                }
+                .buttonStyle(PlainButtonStyle())
                 
                 // 风格标签（固定宽度约4个字）
                 Text(appState.currentPolishName)
@@ -44,16 +62,18 @@ struct InputBarView: View {
                 cursorOffset: $appState.cursorOffset,
                 isEditable: !appState.isPolishing,
                 onHeightChange: { height in
-                    appState.editorHeight = height
+                    appState.editorHeight = max(24, height)
                 }
             )
-            .frame(height: max(24, appState.editorHeight))  // 根据内容调整高度
+            .frame(minHeight: 24, maxHeight: 400)  // 默认1行（24px），最大400px
             .padding(.horizontal, 10)
             .padding(.vertical, 6)
             .background(Color.white)
             .cornerRadius(8)
+            .padding(.bottom, 10)  // 第二行下方额外 10px，加上 VStack 的 10px = 20px
         }
-        .padding(10)
+        .padding(.horizontal, 10)
+        .padding(.top, 10)
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color.white)
@@ -84,6 +104,8 @@ struct InputBarView: View {
 extension Notification.Name {
     static let hidePanel = Notification.Name("hidePanel")
     static let textHeightDidChange = Notification.Name("textHeightDidChange")
+    static let toggleRecording = Notification.Name("toggleRecording")
+    static let togglePauseRecording = Notification.Name("togglePauseRecording")
 }
 
 struct TextEditorRepresentable: NSViewRepresentable {
@@ -278,9 +300,19 @@ struct TextEditorRepresentable: NSViewRepresentable {
             }
         }
         
+        // NSTextViewDelegate 方法：光标位置变化
+        func textViewDidChangeSelection(_ notification: Notification) {
+            guard let textView = textView else { return }
+            let newOffset = textView.selectedRange.location
+            if newOffset >= 0 && newOffset != parent.cursorOffset {
+                parent.cursorOffset = newOffset
+                VoxaLog("[TextEditor] 光标位置: \(newOffset)")
+            }
+        }
+        
+        // 保持旧方法兼容
         @objc func selectionChanged() {
             guard let textView = textView else { return }
-            // 同步光标位置到 AppState
             let newOffset = textView.selectedRange.location
             if newOffset >= 0 && newOffset != parent.cursorOffset {
                 parent.cursorOffset = newOffset

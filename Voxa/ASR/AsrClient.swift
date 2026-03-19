@@ -191,6 +191,12 @@ actor AsrClient: NSObject {
         let isFinal = sentence.sentence_end ?? false
         
         Task { @MainActor in
+            // 有语音输入，标记 ASR 活跃（麦克风绿色，开始计费）
+            if !text.isEmpty {
+                appState.isAsrActive = true
+                StatsManager.shared.markAsrActive()
+            }
+            
             if isFinal {
                 // Final：保留第1行，显示 ⬇ 按钮等待用户确认
                 appState.receiveFinal(text)
