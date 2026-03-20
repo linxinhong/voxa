@@ -114,7 +114,7 @@ class PanelController {
             var frame = panel.frame
             frame.origin.y += currentHeight - targetHeight
             frame.size.height = targetHeight
-            panel.setFrame(frame, display: true, animate: false)
+            panel.setFrame(frame, display: true, animate: true)
             
             VoxaLog("[Panel] 调整: \(Int(currentHeight))px → \(Int(targetHeight))px")
         }

@@ -14,21 +14,23 @@ struct InputBarView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             // 第1行：10px【麦克风】10px【partial文本（左对齐）】10px【时长】10px【风格标签】10px
-            HStack(alignment: .center, spacing: 10) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
                 // 麦克风按钮：点击暂停/恢复录音
                 Button(action: {
                     NotificationCenter.default.post(name: .togglePauseRecording, object: nil)
                 }) {
                     Image(systemName: appState.isPaused ? "mic.slash.fill" : "mic.fill")
-                        .font(.system(size: 12))
+                        .font(.system(size: 14, weight: .medium))
                         .foregroundColor(appState.isPaused ? .red : (appState.isRecording ? .green : .gray))
-                        .frame(width: 16, height: 16)
+                        .frame(width: 32, height: 32)
                 }
                 .buttonStyle(PlainButtonStyle())
-                
+                .accessibilityLabel(appState.isPaused ? "恢复录音" : "暂停录音")
+                .accessibilityHint(appState.isPaused ? "点击继续录音" : "点击暂停录音")
+
                 Text(appState.partialText.isEmpty ? " " : appState.partialText)
-                    .font(.system(size: 14))
-                    .foregroundColor(.black)
+                    .font(.system(size: 13))
+                    .foregroundColor(.black.opacity(0.7))
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -36,25 +38,44 @@ struct InputBarView: View {
                 Button(action: {
                     statsWindowController.toggle()
                 }) {
-                    Text("[\(statsManager.formatDuration(statsManager.currentSessionSeconds))]")
-                        .font(.system(size: 10, weight: .medium))
-                        .foregroundColor(statsWindowController.isVisible ? .orange : .gray)
+                    HStack(spacing: 4) {
+                        Image(systemName: "clock")
+                            .font(.system(size: 10, weight: .medium))
+                        Text("[\(statsManager.formatDuration(statsManager.currentSessionSeconds))]")
+                            .font(.system(size: 11, weight: .medium))
+                    }
+                    .foregroundColor(statsWindowController.isVisible ? .orange : .gray)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(statsWindowController.isVisible ? Color.orange.opacity(0.15) : Color.clear)
+                    )
+                    .contentShape(Rectangle())
+                    .frame(minHeight: 44)
                 }
                 .buttonStyle(PlainButtonStyle())
+                .accessibilityLabel("使用统计")
+                .accessibilityHint("点击查看使用时长和费用统计")
                 
                 // 风格标签（固定宽度约4个字）
                 Text(appState.currentPolishName)
-                    .font(.system(size: 10, weight: .medium))
+                    .font(.system(size: 11, weight: .medium))
                     .foregroundColor(.orange)
-                    .frame(width: 48, alignment: .center)
-                    .padding(.vertical, 2)
-                    .background(Color.orange.opacity(0.15))
-                    .cornerRadius(4)
+                    .frame(width: 50, alignment: .center)
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(Color.orange.opacity(0.15))
+                    )
             }
-            .padding(.horizontal, 10)
-            .padding(.vertical, 6)
-            .background(Color.gray.opacity(0.15))
-            .cornerRadius(6)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 0)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.gray.opacity(0.15))
+            )
             
             // 第2行：10px【输入框（自动换行）】10px
             TextEditorRepresentable(
@@ -84,7 +105,7 @@ struct InputBarView: View {
             setupEscapeMonitor()
         }
     }
-    
+
     private func setupEscapeMonitor() {
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
             // keyCode 36 = Return/Enter, 53 = ESC
@@ -118,10 +139,11 @@ struct TextEditorRepresentable: NSViewRepresentable {
         let container = NSView()
         container.translatesAutoresizingMaskIntoConstraints = false
         container.autoresizingMask = [.width, .height]
-        
+
         let textView = NSTextView()
         textView.isEditable = isEditable
         textView.isSelectable = true
+        textView.isFieldEditor = false  // 不作为 fieldEditor，允许独立编辑
         textView.font = NSFont.systemFont(ofSize: 15)
         textView.textColor = .black
         textView.backgroundColor = .white
@@ -129,6 +151,9 @@ struct TextEditorRepresentable: NSViewRepresentable {
         textView.usesFontPanel = false
         textView.usesInspectorBar = false
         textView.allowsUndo = true
+        textView.isAutomaticQuoteSubstitutionEnabled = false
+        textView.isAutomaticDashSubstitutionEnabled = false
+        textView.isAutomaticTextReplacementEnabled = false
         
         // 设置初始 frame，否则可能看不到
         textView.frame = NSRect(x: 0, y: 0, width: 360, height: 24)
@@ -147,7 +172,7 @@ struct TextEditorRepresentable: NSViewRepresentable {
         scrollView.drawsBackground = false
         scrollView.documentView = textView
         scrollView.autoresizingMask = [.width, .height]
-        
+
         container.addSubview(scrollView)
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: container.topAnchor),
@@ -176,18 +201,31 @@ struct TextEditorRepresentable: NSViewRepresentable {
     func updateNSView(_ nsView: NSView, context: Context) {
         guard let scrollView = nsView.subviews.first as? NSScrollView,
               let textView = scrollView.documentView as? NSTextView else { return }
-        
+
         textView.isEditable = isEditable
-        
-        // 同步文本
+
+        // 防止循环更新
+        guard !Coordinator.isUpdatingFromBinding else { return }
+
+        // 只在文本真正不同时才更新
         if textView.string != text {
+            // 检查是否有 marked text（输入法正在使用）
+            let hasMarkedText = textView.hasMarkedText()
+
+            // 如果输入法正在使用，跳过更新（不打断用户输入）
+            if hasMarkedText {
+                return
+            }
+
+            Coordinator.isUpdatingFromBinding = true
             textView.string = text
-        }
-        
-        // 同步光标位置（如果不同）
-        let currentRange = textView.selectedRange
-        if currentRange.location != cursorOffset && cursorOffset <= text.count {
-            textView.setSelectedRange(NSRange(location: cursorOffset, length: 0))
+            textView.textColor = .black
+            Coordinator.isUpdatingFromBinding = false
+
+            // 同步光标位置
+            if cursorOffset <= text.count {
+                textView.setSelectedRange(NSRange(location: cursorOffset, length: 0))
+            }
         }
         
         // 确保文本容器宽度正确
@@ -196,24 +234,24 @@ struct TextEditorRepresentable: NSViewRepresentable {
             textView.textContainer?.containerSize = NSSize(width: containerWidth, height: CGFloat.greatestFiniteMagnitude)
         }
         
-        // 自动调整容器高度
+        // 自动调整容器高度（只在高度真正变化时才更新和发送通知）
         let layoutManager = textView.layoutManager!
         let textContainer = textView.textContainer!
         layoutManager.ensureLayout(for: textContainer)
         let usedRect = layoutManager.usedRect(for: textContainer)
         let newHeight = max(24, usedRect.height + 16)
-        
+
         if abs(textView.frame.height - newHeight) > 1 {
             textView.frame.size.height = newHeight
             scrollView.frame.size.height = newHeight
+
+            // 只在高度真正变化时发送通知
+            NotificationCenter.default.post(
+                name: .textHeightDidChange,
+                object: nil,
+                userInfo: ["height": newHeight]
+            )
         }
-        
-        // 发送高度通知
-        NotificationCenter.default.post(
-            name: .textHeightDidChange,
-            object: nil,
-            userInfo: ["height": newHeight]
-        )
     }
     
     func makeCoordinator() -> Coordinator {
@@ -224,39 +262,46 @@ struct TextEditorRepresentable: NSViewRepresentable {
         var parent: TextEditorRepresentable!
         weak var textView: NSTextView?
         weak var scrollView: NSScrollView?
+
+        // 静态标志防止循环更新
+        static var isUpdatingFromBinding = false
         
         init(_ parent: TextEditorRepresentable) {
             self.parent = parent
         }
-        
+
         // NSTextViewDelegate 方法：文本变化时调用
         func textDidChange(_ notification: Notification) {
             guard let textView = textView,
                   let scrollView = scrollView else { return }
-            
-            parent.text = textView.string
-            
-            // 计算文本高度
-            let text = textView.string as NSString
-            let attributes: [NSAttributedString.Key: Any] = [.font: textView.font ?? NSFont.systemFont(ofSize: 15)]
-            let containerWidth = scrollView.frame.width - 20
-            let size = text.boundingRect(
-                with: NSSize(width: max(containerWidth, 100), height: .greatestFiniteMagnitude),
-                options: [.usesLineFragmentOrigin, .usesFontLeading],
-                attributes: attributes
-            ).size
-            
-            let newHeight = max(24, size.height + 16)
-            
-            // 回调给 SwiftUI
-            parent.onHeightChange(newHeight)
-            
-            // 发送通知给 PanelController
-            NotificationCenter.default.post(
-                name: .textHeightDidChange,
-                object: nil,
-                userInfo: ["height": newHeight]
-            )
+
+            // 防止循环更新
+            guard !Coordinator.isUpdatingFromBinding else { return }
+
+            // 更新 binding
+            if parent.text != textView.string {
+                Coordinator.isUpdatingFromBinding = true
+                parent.text = textView.string
+                Coordinator.isUpdatingFromBinding = false
+            }
+
+            // 计算文本高度（只在真正变化时才通知）
+            let layoutManager = textView.layoutManager!
+            let textContainer = textView.textContainer!
+            layoutManager.ensureLayout(for: textContainer)
+            let usedRect = layoutManager.usedRect(for: textContainer)
+            let newHeight = max(24, usedRect.height + 16)
+
+            // 只在高度变化超过阈值时才发送通知
+            if abs(textView.frame.height - newHeight) > 1 {
+                parent.onHeightChange(newHeight)
+
+                NotificationCenter.default.post(
+                    name: .textHeightDidChange,
+                    object: nil,
+                    userInfo: ["height": newHeight]
+                )
+            }
         }
         
         // 保持旧方法兼容
