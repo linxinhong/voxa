@@ -20,6 +20,20 @@ class HotkeyManager {
     private var currentConfig: ShortcutConfig
     private var templateHotKeys: [HotKey] = []  // 保存模板快捷键引用
     
+    // MARK: - 静音超时自动停止
+    
+    /// 静音超时时间（秒）
+    private let silenceTimeout: TimeInterval = 60
+    
+    /// 静音检测定时器
+    private var silenceTimer: Timer?
+    
+    /// 最后检测到声音的时间
+    private var lastVoiceTime: Date = Date()
+    
+    /// 是否正在录音中（用于定时器检查）
+    private var isMonitoringSilence = false
+    
     init(appState: AppState, panelController: PanelController, audioCapture: AudioCapture, asrClient: AsrClient) {
         self.appState = appState
         self.panelController = panelController
@@ -154,12 +168,26 @@ class HotkeyManager {
     private func resumeRecording() {
         Task {
             do {
+                // 恢复静音检测
+                lastVoiceTime = Date()
+                isMonitoringSilence = true
+                startSilenceTimer()
+                
                 try await asrClient.connect()
-                try await audioCapture.start { [weak self] pcmData in
-                    Task { [weak self] in
-                        await self?.asrClient.sendAudio(pcmData)
+                try await audioCapture.start(
+                    audioHandler: { [weak self] pcmData in
+                        Task { [weak self] in
+                            await self?.asrClient.sendAudio(pcmData)
+                        }
+                    },
+                    voiceActivityHandler: { [weak self] hasVoice in
+                        Task { @MainActor [weak self] in
+                            if hasVoice {
+                                self?.lastVoiceTime = Date()
+                            }
+                        }
                     }
-                }
+                )
                 
                 await MainActor.run {
                     appState.isPaused = false
@@ -177,6 +205,9 @@ class HotkeyManager {
     /// ESC 取消录音：停止但不注入，重置状态
     func cancelRecording() {
         Task {
+            // 停止静音检测
+            stopSilenceTimer()
+            
             // Stop audio capture
             await audioCapture.stop()
             
@@ -234,13 +265,27 @@ class HotkeyManager {
                 return
             }
             
+            // 初始化静音检测
+            lastVoiceTime = Date()
+            isMonitoringSilence = true
+            startSilenceTimer()
+            
             // Start audio capture（实际开始发送音频数据）
             do {
-                try await audioCapture.start { [weak self] pcmData in
-                    Task { [weak self] in
-                        await self?.asrClient.sendAudio(pcmData)
+                try await audioCapture.start(
+                    audioHandler: { [weak self] pcmData in
+                        Task { [weak self] in
+                            await self?.asrClient.sendAudio(pcmData)
+                        }
+                    },
+                    voiceActivityHandler: { [weak self] hasVoice in
+                        Task { @MainActor [weak self] in
+                            if hasVoice {
+                                self?.lastVoiceTime = Date()
+                            }
+                        }
                     }
-                }
+                )
             } catch let error as AudioCapture.AudioError {
                 appState.showPermissionError(for: .microphone)
                 VoxaLog("[Hotkey] 音频捕获失败: \(error)")
@@ -259,8 +304,57 @@ class HotkeyManager {
         }
     }
     
+    // MARK: - 静音超时检测
+    
+    /// 启动静音检测定时器
+    private func startSilenceTimer() {
+        silenceTimer?.invalidate()
+        silenceTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { [weak self] _ in
+            Task { @MainActor [weak self] in
+                self?.checkSilenceTimeout()
+            }
+        }
+    }
+    
+    /// 停止静音检测定时器
+    private func stopSilenceTimer() {
+        silenceTimer?.invalidate()
+        silenceTimer = nil
+        isMonitoringSilence = false
+    }
+    
+    /// 检查是否超过静音超时时间
+    private func checkSilenceTimeout() {
+        guard isMonitoringSilence && appState.isRecording else { return }
+        
+        let silenceDuration = Date().timeIntervalSince(lastVoiceTime)
+        
+        if silenceDuration >= silenceTimeout {
+            VoxaLog("[Hotkey] 静音超过 \(silenceTimeout) 秒，自动停止录音")
+            stopRecordingDueToSilence()
+        } else if silenceDuration >= silenceTimeout - 10 {
+            // 提前 10 秒显示提示（可选）
+            let remaining = Int(silenceTimeout - silenceDuration)
+            VoxaLog("[Hotkey] 即将因静音自动停止（还剩 \(remaining) 秒）")
+        }
+    }
+    
+    /// 因静音超时而停止录音
+    private func stopRecordingDueToSilence() {
+        stopSilenceTimer()
+        
+        // 显示提示
+        appState.confirmedText += "\n[已自动停止：超过 60 秒未检测到声音]"
+        
+        // 调用正常停止流程
+        stopRecording()
+    }
+    
     private func stopRecording() {
         Task {
+            // 停止静音检测定时器
+            stopSilenceTimer()
+            
             // 停止计时
             StatsManager.shared.stopSession()
             

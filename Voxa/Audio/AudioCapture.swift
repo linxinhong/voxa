@@ -16,6 +16,18 @@ actor AudioCapture {
     /// Callback for audio data
     private var audioHandler: ((Data) -> Void)?
     
+    /// Callback for voice activity detection (true = 有声音, false = 静音)
+    private var voiceActivityHandler: ((Bool) -> Void)?
+    
+    /// 静音阈值 (RMS 振幅)
+    private let silenceThreshold: Float = 0.01
+    
+    /// 最后检测到声音的时间
+    private var lastVoiceTime: Date = Date()
+    
+    /// 获取最后检测到声音的时间
+    var lastVoiceActivityTime: Date { lastVoiceTime }
+    
     /// Target format: 16kHz, mono, Int16
     private let targetFormat = AVAudioFormat(
         commonFormat: .pcmFormatInt16,
@@ -53,7 +65,10 @@ actor AudioCapture {
     
     // MARK: - Control
     
-    func start(audioHandler: @escaping (Data) -> Void) throws {
+    func start(
+        audioHandler: @escaping (Data) -> Void,
+        voiceActivityHandler: ((Bool) -> Void)? = nil
+    ) throws {
         guard !isRunning else { return }
         
         // 检查麦克风权限
@@ -69,6 +84,8 @@ actor AudioCapture {
         }
         
         self.audioHandler = audioHandler
+        self.voiceActivityHandler = voiceActivityHandler
+        self.lastVoiceTime = Date()
         
         do {
             try setupAudioEngine()
@@ -123,6 +140,13 @@ actor AudioCapture {
     private func processBuffer(_ buffer: AVAudioPCMBuffer) {
         guard let converter = converter else { return }
         
+        // 检测音量（RMS）
+        let hasVoice = detectVoiceActivity(in: buffer)
+        if hasVoice {
+            lastVoiceTime = Date()
+        }
+        voiceActivityHandler?(hasVoice)
+        
         // Create output buffer
         let outputBuffer = AVAudioPCMBuffer(
             pcmFormat: targetFormat,
@@ -151,6 +175,23 @@ actor AudioCapture {
         
         // Send data
         audioHandler?(data)
+    }
+    
+    /// 检测音频缓冲区中是否有语音活动
+    private func detectVoiceActivity(in buffer: AVAudioPCMBuffer) -> Bool {
+        guard let channelData = buffer.floatChannelData else { return false }
+        
+        let frameLength = Int(buffer.frameLength)
+        let samples = channelData[0]
+        
+        // 计算 RMS (Root Mean Square) 振幅
+        var sum: Float = 0
+        for i in 0..<frameLength {
+            sum += samples[i] * samples[i]
+        }
+        let rms = sqrt(sum / Float(frameLength))
+        
+        return rms > silenceThreshold
     }
     
     enum AudioError: Error {
