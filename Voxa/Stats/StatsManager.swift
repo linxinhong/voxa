@@ -147,6 +147,11 @@ class StatsManager: ObservableObject {
         return total
     }
     
+    /// 总时长（秒）- 历史累计
+    func totalDuration() -> Int {
+        return dailyStats.values.reduce(0, +)
+    }
+    
     /// 计算费用
     func calculateCost(seconds: Int) -> Double {
         return Double(seconds) * pricePerSecond

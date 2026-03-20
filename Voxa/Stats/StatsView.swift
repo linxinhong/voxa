@@ -54,6 +54,13 @@ struct StatsView: View {
                 cost: statsManager.calculateCost(seconds: statsManager.monthDuration())
             )
             
+            // 总计（历史累计）
+            StatRow(
+                title: "总计",
+                duration: statsManager.totalDuration(),
+                cost: statsManager.calculateCost(seconds: statsManager.totalDuration())
+            )
+            
             Divider()
             
             // 价格说明
@@ -81,7 +88,7 @@ struct StatsView: View {
             Spacer()
         }
         .padding(20)
-        .frame(width: 280, height: 280)
+        .frame(width: 280, height: 320)
     }
 }
 
@@ -152,7 +159,7 @@ class StatsWindowController: ObservableObject {
         let hostingView = NSHostingView(rootView: contentView)
         
         let panel = NSPanel(
-            contentRect: NSRect(x: 0, y: 0, width: 280, height: 280),
+            contentRect: NSRect(x: 0, y: 0, width: 280, height: 320),
             styleMask: [.borderless, .nonactivatingPanel],
             backing: .buffered,
             defer: false
@@ -173,7 +180,7 @@ class StatsWindowController: ObservableObject {
         if let screen = NSScreen.main {
             let screenRect = screen.visibleFrame
             let x = screenRect.midX - 140
-            let y = screenRect.midY - 140
+            let y = screenRect.midY - 160
             panel.setFrameOrigin(NSPoint(x: x, y: y))
         }
         
