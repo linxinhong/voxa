@@ -212,4 +212,31 @@ class AppState: ObservableObject {
     func getFinalText() -> String {
         return confirmedText.trimmingCharacters(in: .whitespacesAndNewlines)
     }
+    
+    // MARK: - 错误提示
+    
+    /// 在 confirmed 栏显示错误信息（友好提示）
+    func showError(_ message: String) {
+        confirmedText = "⚠️ \(message)"
+        partialText = ""
+        cursorOffset = confirmedText.count
+    }
+    
+    /// 在 confirmed 栏显示权限错误提示
+    func showPermissionError(for type: PermissionType) {
+        switch type {
+        case .microphone:
+            showError("麦克风权限被拒绝。请在「系统设置 > 隐私与安全 > 麦克风」中启用 Voxa 权限，然后重试。")
+        case .accessibility:
+            showError("辅助功能权限被拒绝。请在「系统设置 > 隐私与安全 > 辅助功能」中启用 Voxa 权限，然后重试。")
+        case .apiKey:
+            showError("未配置 API Key。请在 ~/.config/voxa/config.json 中添加 api_key，或设置 DASHSCOPE_API_KEY 环境变量。")
+        }
+    }
+    
+    enum PermissionType {
+        case microphone
+        case accessibility
+        case apiKey
+    }
 }

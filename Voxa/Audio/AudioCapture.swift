@@ -26,25 +26,47 @@ actor AudioCapture {
     
     // MARK: - Permission
     
-    static func checkPermission(completion: @escaping (Bool) -> Void) {
+    static func checkPermission() -> PermissionStatus {
         switch AVAudioSession.sharedInstance().recordPermission {
         case .granted:
-            completion(true)
+            return .granted
         case .denied:
-            completion(false)
+            return .denied
         case .undetermined:
-            AVAudioSession.sharedInstance().requestRecordPermission { granted in
-                completion(granted)
-            }
+            return .undetermined
         @unknown default:
-            completion(false)
+            return .denied
         }
+    }
+    
+    static func requestPermission(completion: @escaping (Bool) -> Void) {
+        AVAudioSession.sharedInstance().requestRecordPermission { granted in
+            completion(granted)
+        }
+    }
+    
+    enum PermissionStatus {
+        case granted
+        case denied
+        case undetermined
     }
     
     // MARK: - Control
     
-    func start(audioHandler: @escaping (Data) -> Void) {
+    func start(audioHandler: @escaping (Data) -> Void) throws {
         guard !isRunning else { return }
+        
+        // 检查麦克风权限
+        let permission = AudioCapture.checkPermission()
+        switch permission {
+        case .denied:
+            throw AudioError.permissionDenied
+        case .undetermined:
+            // 请求权限，但这里不等待，让系统提示
+            break
+        case .granted:
+            break
+        }
         
         self.audioHandler = audioHandler
         
@@ -54,6 +76,7 @@ actor AudioCapture {
             isRunning = true
         } catch {
             VoxaLog("Failed to start audio engine: \(error)")
+            throw AudioError.engineStartFailed(error)
         }
     }
     
@@ -132,6 +155,19 @@ actor AudioCapture {
     
     enum AudioError: Error {
         case converterCreationFailed
+        case permissionDenied
+        case engineStartFailed(Error)
+        
+        var localizedDescription: String {
+            switch self {
+            case .converterCreationFailed:
+                return "音频格式转换器创建失败"
+            case .permissionDenied:
+                return "麦克风权限被拒绝"
+            case .engineStartFailed(let error):
+                return "音频引擎启动失败: \(error.localizedDescription)"
+            }
+        }
     }
 }
 

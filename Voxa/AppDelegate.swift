@@ -167,18 +167,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private func openSettings() {
         let alert = NSAlert()
         alert.messageText = "设置"
-        alert.informativeText = "API Key 设置:\n\n1. 环境变量: export DASHSCOPE_API_KEY=xxx\n2. 或使用 Keychain (待实现)"
+        alert.informativeText = "API Key 设置:\n\n1. 配置文件: ~/.config/voxa/config.json\n   {\"api_key\": \"sk-xxx\", \"templates\": {...}}\n\n2. 环境变量: export DASHSCOPE_API_KEY=sk-xxx"
         alert.runModal()
     }
     
     private func checkPermissions() {
-        // Check microphone permission (macOS will prompt automatically)
-        AudioCapture.checkPermission { granted in
-            Task { @MainActor in
-                if !granted {
-                    self.showPermissionAlert(for: "麦克风")
-                }
-            }
+        // Check microphone permission status
+        let micStatus = AudioCapture.checkPermission()
+        if micStatus == .denied {
+            showPermissionAlert(for: "麦克风")
         }
         
         // Check accessibility permission

@@ -153,19 +153,24 @@ class HotkeyManager {
     /// 恢复录音
     private func resumeRecording() {
         Task {
-            await asrClient.connect()
-            await audioCapture.start { [weak self] pcmData in
-                Task { [weak self] in
-                    await self?.asrClient.sendAudio(pcmData)
+            do {
+                try await asrClient.connect()
+                try await audioCapture.start { [weak self] pcmData in
+                    Task { [weak self] in
+                        await self?.asrClient.sendAudio(pcmData)
+                    }
                 }
+                
+                await MainActor.run {
+                    appState.isPaused = false
+                    appState.isRecording = true
+                }
+                
+                VoxaLog("[Voxa] 录音已恢复")
+            } catch {
+                VoxaLog("[Voxa] 恢复录音失败: \(error)")
+                appState.showError("恢复录音失败: \(error.localizedDescription)")
             }
-            
-            await MainActor.run {
-                appState.isPaused = false
-                appState.isRecording = true
-            }
-            
-            VoxaLog("[Voxa] 录音已恢复")
         }
     }
     
@@ -196,6 +201,17 @@ class HotkeyManager {
     
     private func startRecording() {
         Task {
+            // 先检查 API Key
+            let apiKeyConfigured = await asrClient.hasApiKey
+            guard apiKeyConfigured else {
+                // 显示面板并显示错误
+                appState.reset()
+                panelController.show()
+                appState.showPermissionError(for: .apiKey)
+                VoxaLog("[Hotkey] API Key 未配置")
+                return
+            }
+            
             // Record the target app before showing our UI
             appState.targetApp = NSWorkspace.shared.frontmostApplication
             
@@ -206,13 +222,33 @@ class HotkeyManager {
             panelController.show()
             
             // Start ASR connection
-            await asrClient.connect()
+            do {
+                try await asrClient.connect()
+            } catch {
+                if let asrError = error as? AsrError {
+                    appState.showError(asrError.localizedDescription)
+                } else {
+                    appState.showError("ASR 连接失败: \(error.localizedDescription)")
+                }
+                VoxaLog("[Hotkey] ASR 连接失败: \(error)")
+                return
+            }
             
             // Start audio capture（实际开始发送音频数据）
-            await audioCapture.start { [weak self] pcmData in
-                Task { [weak self] in
-                    await self?.asrClient.sendAudio(pcmData)
+            do {
+                try await audioCapture.start { [weak self] pcmData in
+                    Task { [weak self] in
+                        await self?.asrClient.sendAudio(pcmData)
+                    }
                 }
+            } catch let error as AudioCapture.AudioError {
+                appState.showPermissionError(for: .microphone)
+                VoxaLog("[Hotkey] 音频捕获失败: \(error)")
+                return
+            } catch {
+                appState.showError("音频启动失败: \(error.localizedDescription)")
+                VoxaLog("[Hotkey] 音频捕获失败: \(error)")
+                return
             }
             
             // 注意：计费在收到 ASR 结果时开始（markAsrActive）

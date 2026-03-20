@@ -23,6 +23,9 @@ class ConfigManager {
     var templates: [String: PolishTemplate] = [:]
     var currentShortcut: String = "alt+1"
     
+    // API Key
+    private(set) var apiKey: String = ""
+    
     // 默认配置（带名称）
     private let defaultTemplates: [String: PolishTemplate] = [
         "alt+1": PolishTemplate(
@@ -64,19 +67,55 @@ class ConfigManager {
         do {
             let data = try Data(contentsOf: filePath)
             
-            // 尝试解析新格式（带 name 和 prompt）
-            if let json = try JSONSerialization.jsonObject(with: data) as? [String: [String: String]] {
-                // 新格式: {"alt+1": {"name": "xxx", "prompt": "xxx"}}
-                var newTemplates: [String: PolishTemplate] = [:]
-                for (key, value) in json {
-                    if let name = value["name"], let prompt = value["prompt"] {
-                        newTemplates[key] = PolishTemplate(name: name, prompt: prompt)
+            // 尝试解析完整格式（带 api_key 和 templates）
+            if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                // 读取 API Key
+                if let key = json["api_key"] as? String {
+                    apiKey = key
+                    VoxaLog("[Config] 从配置文件加载 API Key")
+                }
+                
+                // 读取模板配置
+                if let templatesDict = json["templates"] as? [String: [String: String]] {
+                    var newTemplates: [String: PolishTemplate] = [:]
+                    for (key, value) in templatesDict {
+                        if let name = value["name"], let prompt = value["prompt"] {
+                            newTemplates[key] = PolishTemplate(name: name, prompt: prompt)
+                        }
+                    }
+                    if !newTemplates.isEmpty {
+                        templates = newTemplates
+                        VoxaLog("[Config] 加载了 \(templates.count) 个润色模板（完整格式）")
+                        return
                     }
                 }
-                if !newTemplates.isEmpty {
-                    templates = newTemplates
-                    VoxaLog("[Config] 加载了 \(templates.count) 个润色模板（新格式）")
-                    return
+            }
+            
+            // 尝试解析旧格式（仅模板，无 api_key）
+            if let json = try JSONSerialization.jsonObject(with: data) as? [String: [String: String]] {
+                // 检查是否是模板格式（包含 name/prompt 键）
+                var isTemplateFormat = false
+                for (_, value) in json {
+                    if value["name"] != nil && value["prompt"] != nil {
+                        isTemplateFormat = true
+                        break
+                    }
+                }
+                
+                if isTemplateFormat {
+                    var newTemplates: [String: PolishTemplate] = [:]
+                    for (key, value) in json {
+                        if let name = value["name"], let prompt = value["prompt"] {
+                            newTemplates[key] = PolishTemplate(name: name, prompt: prompt)
+                        }
+                    }
+                    if !newTemplates.isEmpty {
+                        templates = newTemplates
+                        VoxaLog("[Config] 加载了 \(templates.count) 个润色模板（模板格式）")
+                        // 迁移到新格式
+                        saveConfig()
+                        return
+                    }
                 }
             }
             
@@ -125,10 +164,19 @@ class ConfigManager {
         do {
             let filePath = configDir.appendingPathComponent(configFile)
             
-            // 转换为可序列化的字典
-            var dict: [String: [String: String]] = [:]
+            // 构建完整配置字典
+            var templatesDict: [String: [String: String]] = [:]
             for (key, template) in templates {
-                dict[key] = ["name": template.name, "prompt": template.prompt]
+                templatesDict[key] = ["name": template.name, "prompt": template.prompt]
+            }
+            
+            var dict: [String: Any] = [
+                "templates": templatesDict
+            ]
+            
+            // 只有当 apiKey 不为空时才保存
+            if !apiKey.isEmpty {
+                dict["api_key"] = apiKey
             }
             
             let data = try JSONSerialization.data(

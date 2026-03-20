@@ -7,6 +7,25 @@
 
 import Foundation
 
+// MARK: - ASR Errors
+
+enum AsrError: Error {
+    case apiKeyMissing
+    case connectionFailed(Error)
+    case sendFailed(Error)
+    
+    var localizedDescription: String {
+        switch self {
+        case .apiKeyMissing:
+            return "未配置 API Key"
+        case .connectionFailed(let error):
+            return "连接失败: \(error.localizedDescription)"
+        case .sendFailed(let error):
+            return "发送失败: \(error.localizedDescription)"
+        }
+    }
+}
+
 actor AsrClient: NSObject {
     private var webSocketTask: URLSessionWebSocketTask?
     private var taskId: String?
@@ -18,25 +37,36 @@ actor AsrClient: NSObject {
     init(appState: AppState) {
         self.appState = appState
         
-        // Get API key from environment or keychain
-        if let envKey = ProcessInfo.processInfo.environment["DASHSCOPE_API_KEY"] {
-            self.apiKey = envKey
+        // 获取 API Key（优先级：环境变量 > 配置文件）
+        var key = ""
+        // 1. 环境变量
+        if let envKey = ProcessInfo.processInfo.environment["DASHSCOPE_API_KEY"], !envKey.isEmpty {
+            key = envKey
         } else {
-            // TODO: Get from keychain
-            self.apiKey = ""
+            // 2. 配置文件
+            let configKey = ConfigManager.shared.apiKey
+            if !configKey.isEmpty {
+                key = configKey
+            }
         }
+        self.apiKey = key
         
         super.init()
     }
     
+    /// 检查 API Key 是否已配置
+    var hasApiKey: Bool {
+        return !apiKey.isEmpty
+    }
+    
     // MARK: - Connection
     
-    func connect() async {
+    func connect() async throws {
         guard !isConnected else { return }
         
         guard !apiKey.isEmpty else {
             VoxaLog("Error: DASHSCOPE_API_KEY not set")
-            return
+            throw AsrError.apiKeyMissing
         }
         
         let url = URL(string: "wss://dashscope.aliyuncs.com/api-ws/v1/inference/")!

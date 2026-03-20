@@ -9,13 +9,19 @@ import Foundation
 
 enum Polisher {
     
-    private static let apiKey: String = {
-        if let envKey = ProcessInfo.processInfo.environment["DASHSCOPE_API_KEY"] {
+    /// 获取 API Key（优先级：环境变量 > 配置文件）
+    private static var apiKey: String {
+        // 1. 环境变量
+        if let envKey = ProcessInfo.processInfo.environment["DASHSCOPE_API_KEY"], !envKey.isEmpty {
             return envKey
         }
-        // TODO: Get from keychain
+        // 2. 配置文件
+        let configKey = ConfigManager.shared.apiKey
+        if !configKey.isEmpty {
+            return configKey
+        }
         return ""
-    }()
+    }
     
     private static let endpoint = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation"
     
