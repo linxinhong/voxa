@@ -80,11 +80,28 @@ class ReportPanelController {
         hosting.layer?.cornerRadius = 12
 
         let panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: 600, height: 500))
-        panel.contentView = hosting
 
-        // 设置浅灰色背景（不透明）- 与 SwiftUI 背景一致
-        panel.backgroundColor = NSColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
-        panel.isOpaque = true
+        // 创建一个带圆角的容器视图
+        let containerView = NSView(frame: hosting.frame)
+        containerView.wantsLayer = true
+        containerView.layer?.backgroundColor = NSColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1).cgColor
+        containerView.layer?.cornerRadius = 12
+
+        // 将 hosting 视图添加到容器中
+        hosting.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(hosting)
+        NSLayoutConstraint.activate([
+            hosting.topAnchor.constraint(equalTo: containerView.topAnchor),
+            hosting.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            hosting.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            hosting.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+
+        panel.contentView = containerView
+
+        // 设置面板背景透明，让 containerView 的背景和圆角生效
+        panel.backgroundColor = .clear
+        panel.isOpaque = false
         panel.alphaValue = 1.0
 
         // 面板大小限制
