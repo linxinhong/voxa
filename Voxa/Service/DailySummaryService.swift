@@ -38,6 +38,9 @@ actor DailySummaryService {
         // 构建用户消息（包含所有记录和目标应用信息）
         let userMessage = buildUserMessage(from: dailyRecords)
 
+        // 保存完整提示词用于调试
+        let fullUserPrompt = userMessage
+
         // 构建请求
         let requestBody: [String: Any] = [
             "model": "qwen-turbo",
@@ -86,9 +89,6 @@ actor DailySummaryService {
             let summaryText = content.trimmingCharacters(in: .whitespacesAndNewlines)
             VoxaLog("[DailySummaryService] 日报生成成功，长度: \(summaryText.count) 字符")
 
-            // 保存提示词用于调试
-            let systemPrompt = ConfigManager.shared.dailyReportPrompt
-
             let summary = DailySummary(
                 date: dailyRecords.date,
                 recordCount: dailyRecords.records.count,
@@ -97,7 +97,8 @@ actor DailySummaryService {
                 summary: summaryText,
                 topicDistribution: nil,
                 insights: nil,
-                systemPrompt: systemPrompt
+                systemPrompt: systemPrompt,
+                userPrompt: fullUserPrompt
             )
 
             return summary
