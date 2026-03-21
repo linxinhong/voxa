@@ -74,9 +74,10 @@ class ReportPanelController {
         hosting.frame = NSRect(x: 0, y: 0, width: 600, height: 500)
         hosting.autoresizingMask = [.width, .height]
 
-        // 设置 hosting 视图的背景
+        // 设置 hosting 视图的背景和圆角
         hosting.wantsLayer = true
         hosting.layer?.backgroundColor = NSColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1).cgColor
+        hosting.layer?.cornerRadius = 12
 
         let panel = FloatingPanel(contentRect: NSRect(x: 0, y: 0, width: 600, height: 500))
         panel.contentView = hosting
