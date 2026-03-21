@@ -44,7 +44,23 @@ class AppState: ObservableObject {
     
     /// 是否正在润色中（锁定文本框）
     @Published var isPolishing: Bool = false
-    
+
+    // MARK: - Memory System
+
+    /// 录音开始时间（用于计算时长）
+    private var recordingStartTime: Date?
+
+    /// 开始录音时记录开始时间
+    func startRecording() {
+        recordingStartTime = Date()
+    }
+
+    /// 获取录音时长（秒）
+    func getRecordingDuration() async -> TimeInterval {
+        guard let start = recordingStartTime else { return 0 }
+        return Date().timeIntervalSince(start)
+    }
+
     /// 当前润色模板名称（显示在UI上）
     @Published var currentPolishName: String = ConfigManager.shared.currentTemplate().name
     
@@ -98,14 +114,16 @@ class AppState: ObservableObject {
             pendingFinals.append(text)
             return
         }
-        
+
         // 清洗 final 文本
         let cleaned = Cleaner.clean(text)
-        
+
         // 保存到 pendingText，设置 hasPending（触发绿色图标闪烁）
         pendingText = cleaned
         hasPending = true
-        
+
+        // 注意：不在这里保存，而是在停止录音润色后再保存
+
         // 延迟执行插入，让用户看到绿色图标闪烁
         Task { @MainActor in
             try? await Task.sleep(nanoseconds: 300_000_000)  // 300ms 闪烁时间

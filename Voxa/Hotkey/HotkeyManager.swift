@@ -190,6 +190,7 @@ class HotkeyManager {
                 )
                 
                 await MainActor.run {
+                    appState.startRecording()  // 记录录音开始时间
                     appState.isPaused = false
                     appState.isRecording = true
                 }
@@ -299,6 +300,7 @@ class HotkeyManager {
             // 注意：计费在收到 ASR 结果时开始（markAsrActive）
             
             await MainActor.run {
+                appState.startRecording()  // 记录录音开始时间
                 appState.isRecording = true
             }
         }
@@ -371,7 +373,7 @@ class HotkeyManager {
             
             // 停止录音时的处理：如果有 pending 未确认，自动追加到末尾
             var finalText = appState.finalizeOnStop()
-            
+
             // 发送前自动润色（不锁定界面，直接执行）
             if !finalText.isEmpty {
                 let polishedText = await Polisher.polish(finalText)
@@ -383,6 +385,51 @@ class HotkeyManager {
                     appState.confirmedText = finalText
                     appState.partialText = ""
                     appState.clearPending()
+                }
+
+                // 【新增】保存润色后的文本到语音记忆系统
+                // 获取目标应用信息
+                let targetAppBundle = appState.targetApp?.bundleIdentifier
+
+                // 加载最近10条记录作为上下文
+                var recentRecords: [VoiceRecord] = []
+                if let dailyRecords = try? await VoiceMemoryStore.shared.loadRecentRecords(days: 1) {
+                    recentRecords = dailyRecords.flatMap { $0.records }.suffix(10)
+                }
+
+                // 创建临时记录用于分类
+                let tempRecord = VoiceRecord(
+                    id: UUID(),
+                    timestamp: Date(),
+                    text: finalText,
+                    duration: await appState.getRecordingDuration(),
+                    targetApp: targetAppBundle,
+                    category: nil,
+                    title: nil,
+                    tags: nil
+                )
+
+                // 使用上下文进行分类
+                let category = await ClassificationService.shared.classify(
+                    tempRecord,
+                    recentRecords: Array(recentRecords)
+                )
+
+                let record = VoiceRecord(
+                    id: UUID(),
+                    timestamp: Date(),
+                    text: finalText,
+                    duration: await appState.getRecordingDuration(),
+                    targetApp: targetAppBundle,
+                    category: category,
+                    title: nil,
+                    tags: nil
+                )
+                do {
+                    try await VoiceMemoryStore.shared.saveRecord(record)
+                    VoxaLog("[Voxa] 已保存润色后的语音记录，分类: \(category?.displayName ?? "无")")
+                } catch {
+                    VoxaLog("[Voxa] 保存记录失败: \(error)")
                 }
             }
             

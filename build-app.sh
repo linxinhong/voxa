@@ -67,4 +67,12 @@ codesign --force --deep --sign - "${APP_BUNDLE}"
 echo "✅ 构建完成: ${APP_BUNDLE}"
 echo ""
 echo "📍 位置: $(pwd)/${APP_BUNDLE}"
-echo "🚀 运行: open ${APP_BUNDLE}"
+
+# 复制到 /Applications
+echo "📲 复制到 /Applications..."
+rm -rf "/Applications/${APP_BUNDLE}"
+cp -R "${APP_BUNDLE}" /Applications/
+echo "✅ 已安装到 /Applications/${APP_BUNDLE}"
+
+echo ""
+echo "🚀 运行: open ${APP_BUNDLE} (或直接双击 /Applications 中的 Voxa.app)"

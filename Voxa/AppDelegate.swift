@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var appState: AppState!
     
     private var statusItem: NSStatusItem?
-    private var mainWindow: NSWindow?
+    private var reportPanelController: ReportPanelController!
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         VoxaLog("[Voxa] 应用启动中...")
@@ -51,6 +51,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             asrClient: asrClient
         )
         VoxaLog("[Voxa] HotkeyManager 初始化完成")
+
+        // Initialize report panel controller
+        reportPanelController = ReportPanelController()
+        VoxaLog("[Voxa] ReportPanelController 初始化完成")
         
         // Setup menu bar
         setupMenuBar()
@@ -140,6 +144,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         settingsItem.target = self
         menu.addItem(settingsItem)
+
+        menu.addItem(NSMenuItem.separator())
+
+        let reportItem = NSMenuItem(
+            title: "查看记录",
+            action: #selector(openDailyReport),
+            keyEquivalent: "d"
+        )
+        reportItem.target = self
+        menu.addItem(reportItem)
         
         menu.addItem(NSMenuItem.separator())
         
@@ -169,6 +183,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.messageText = "设置"
         alert.informativeText = "API Key 设置:\n\n1. 配置文件: ~/.config/voxa/config.json\n   {\"api_key\": \"sk-xxx\", \"templates\": {...}}\n\n2. 环境变量: export DASHSCOPE_API_KEY=sk-xxx"
         alert.runModal()
+    }
+
+    @objc private func openDailyReport() {
+        reportPanelController.toggle()
     }
     
     private func checkPermissions() {
