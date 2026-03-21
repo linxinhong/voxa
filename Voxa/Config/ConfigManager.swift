@@ -26,12 +26,18 @@ class ConfigManager {
     // API Key
     private(set) var apiKey: String = ""
 
-    // 日报提示词
-    private(set) var dailyReportPrompt: String = """
+    // 角色说明（用于日报分析）
+    private(set) var roleDescription: String = "独立开发者，正在构建一个语音输入工具 Voxa。"
+
+    // 日报提示词模板（包含 {ROLE_DESCRIPTION} 占位符）
+    private let dailyReportPromptTemplate = """
 # Role：个人效能分析师与执行力教练
 
 ## 目标
 你现在是我的私人效能分析师。我每天会通过语音输入记录大量的信息，涵盖工作记录、灵感想法、待办事项和日常闲聊。我将提供每天的结构化语音记录数据，请你帮我进行深度的总结与梳理，并重点从"提质增效"和"发现问题"的视角生成一份高质量的个人日报。
+
+## 关于我
+{ROLE_DESCRIPTION}
 
 ## 输入数据格式说明
 我提供的数据格式如下：
@@ -79,6 +85,11 @@ class ConfigManager {
 - 不要只是简单复述我的话，**必须要有你的洞察、归纳，特别是对"应用语境"的深度解读**。
 - 输出排版需清晰美观，适当使用 Emoji，重点内容请使用加粗标记。
 """
+
+    // 日报提示词（计算属性，替换占位符）
+    var dailyReportPrompt: String {
+        return dailyReportPromptTemplate.replacingOccurrences(of: "{ROLE_DESCRIPTION}", with: roleDescription)
+    }
 
     // 默认配置（带名称）
     private let defaultTemplates: [String: PolishTemplate] = [
@@ -129,12 +140,12 @@ class ConfigManager {
                     VoxaLog("[Config] 从配置文件加载 API Key")
                 }
 
-                // 读取日报提示词
-                if let prompt = json["daily_report_prompt"] as? String {
-                    dailyReportPrompt = prompt
-                    VoxaLog("[Config] 从配置文件加载日报提示词")
+                // 读取角色说明
+                if let role = json["role_description"] as? String {
+                    roleDescription = role
+                    VoxaLog("[Config] 从配置文件加载角色说明")
                 }
-                
+
                 // 读取模板配置
                 if let templatesDict = json["templates"] as? [String: [String: String]] {
                     var newTemplates: [String: PolishTemplate] = [:]
@@ -239,8 +250,8 @@ class ConfigManager {
                 dict["api_key"] = apiKey
             }
 
-            // 保存日报提示词
-            dict["daily_report_prompt"] = dailyReportPrompt
+            // 保存角色说明
+            dict["role_description"] = roleDescription
             
             let data = try JSONSerialization.data(
                 withJSONObject: dict,
@@ -277,7 +288,14 @@ class ConfigManager {
         }
         return false
     }
-    
+
+    /// 更新角色说明
+    func updateRoleDescription(_ description: String) {
+        roleDescription = description
+        saveConfig()
+        VoxaLog("[Config] 角色说明已更新")
+    }
+
     /// 获取所有可用的快捷键
     func availableShortcuts() -> [String] {
         return Array(templates.keys).sorted()
