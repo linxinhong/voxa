@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+import MarkdownUI
 
 /// 润色模板结构
 struct PolishTemplate: Codable {
@@ -320,4 +322,16 @@ class ConfigManager {
     func availableShortcuts() -> [String] {
         return Array(templates.keys).sorted()
     }
+}
+
+// MARK: - Custom Markdown Theme
+
+extension Theme {
+    /// GitHub 主题的小字体版本（适用于日报等紧凑场景）
+    /// 基础字体从 16pt 缩小到 11pt
+    static let gitHubCompact: Theme = {
+        var theme = Theme.gitHub
+        theme.text = FontSize(14)
+        return theme
+    }()
 }
