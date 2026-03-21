@@ -269,6 +269,7 @@ struct DailyReportView: View {
                         VStack(alignment: .leading, spacing: 6) {
                             Markdown(summary.summary)
                                 .markdownTheme(.gitHub)
+                                .font(.caption)
                                 .textSelection(.enabled)
                         }
                         .padding(.vertical, 8)
