@@ -112,7 +112,28 @@ actor DailySummaryService {
     // MARK: - 构建用户消息
 
     private func buildUserMessage(from dailyRecords: DailyRecords) -> String {
-        var message = "语音记录日报\n\n"
+        var message = """
+        ## 数据规范
+
+        ### 记录格式
+        每条记录按以下格式组织：
+        [序号][完整时间][时长][分类标签][输入应用]<语音开始>语音转文字内容<语音结束>
+
+        ### 字段说明
+        - [序号]: 记录的顺序编号（从1开始）
+        - [完整时间]: 语音输入的时间戳，格式 YYYY-MM-DD HH:mm:ss
+        - [时长]: 录音时长，如"2分30秒"
+        - [分类标签]: 工作/想法/TODO/闲聊
+        - [输入应用]: 发生语音输入的应用 bundle identifier
+        - <内容>...</内容>: 语音转文字的原始内容
+
+        ### 分析要求
+        - 特别关注不同应用中的输入内容（如 IDE、浏览器、聊天工具）
+        - 识别跨应用的工作流程和上下文关联
+        - 突出在代码编辑器、设计工具等生产力应用中的输入
+
+        ## 数据内容
+        """
 
         // 统计目标应用分布
         let appCounts = Dictionary(grouping: dailyRecords.records, by: { $0.targetApp })
@@ -120,7 +141,7 @@ actor DailySummaryService {
             .sorted(by: { $0.value > $1.value })
 
         if !appCounts.isEmpty {
-            message += "【输入来源】\n"
+            message += "### 输入来源统计\n"
             for (appBundle, count) in appCounts {
                 let appName = appBundle ?? "未知应用"
                 message += "- \(appName): \(count)条\n"
@@ -128,7 +149,7 @@ actor DailySummaryService {
             message += "\n"
         }
 
-        // 格式化记录列表：[序号][完整时间][时长][标签][应用]<语音开始>语音转文字内容<语音结束>
+        // 格式化记录列表
         for (index, record) in dailyRecords.records.enumerated() {
             let indexTag = "[\(index + 1)]"
             let timeStr = formatFullTime(record.timestamp)
@@ -138,19 +159,18 @@ actor DailySummaryService {
                 categoryTag = "[\(category.displayName)]"
             }
             let appTag = record.targetApp != nil ? "[\(record.targetApp!)]" : ""
-            message += "\(indexTag)\(timeStr)\(durationStr)\(categoryTag)\(appTag)<语音开始>\(record.text)<语音结束>\n"
+            message += "\(indexTag)\(timeStr)\(durationStr)\(categoryTag)\(appTag)<内容>\(record.text)</内容>\n"
         }
 
-        // 添加生成要求
-        message += "\n生成日报：概要(记录数/总时长/分类统计)、主要主题、关键要点"
+        message += "\n请根据以上记录生成一份简洁、有条理的日报。"
 
         return message
     }
 
-    // 格式化完整时间（HH:mm:ss）
+    // 格式化完整时间（YYYY-MM-DD HH:mm:ss）
     private func formatFullTime(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter.string(from: date)
     }
 
