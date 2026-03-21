@@ -266,11 +266,12 @@ struct DailyReportView: View {
                     LazyVStack(alignment: .leading, spacing: 0) {
                         // 总结内容卡片
                         VStack(alignment: .leading, spacing: 6) {
-                            Text(summary.summary)
+                            Text(parseMarkdown(summary.summary))
                                 .font(.body)
                                 .foregroundColor(.primary)
                                 .lineSpacing(1.4)
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                                .textSelection(.enabled)
                         }
                         .padding(.vertical, 8)
                         .padding(.horizontal, 12)
@@ -679,6 +680,49 @@ struct RecordWithSendButton: View {
         VoxaLog("[RecordWithSendButton] 发送到: \(targetApp.bundleIdentifier ?? "未知应用")")
         await Injector.inject(text: record.text, to: targetApp)
     }
+}
+
+// MARK: - Markdown Parser
+
+/// 解析 markdown 文本为 AttributedString
+private func parseMarkdown(_ markdown: String) -> AttributedString {
+    var attributedString = AttributedString(markdown)
+    var parsedString = ""
+
+    let lines = markdown.components(separatedBy: .newlines)
+    var isInList = false
+
+    for line in lines {
+        var processedLine = line
+
+        // 处理标题
+        if line.hasPrefix("# ") {
+            let level = line.prefix(while: { $0 == "#" }).count
+            if level <= 6 {
+                let content = String(line.dropFirst(level)).trimmingCharacters(in: .whitespaces)
+                processedLine = "**\(content)**" // 用加粗代替标题
+            }
+        }
+
+        // 处理列表
+        if line.hasPrefix("- ") || line.hasPrefix("* ") {
+            isInList = true
+            let listContent = String(line.dropFirst(2)).trimmingCharacters(in: .whitespaces)
+            processedLine = "• \(listContent)"
+        } else if isInList && !line.isEmpty {
+            isInList = false
+        }
+
+        // 处理加粗 **text**
+        processedLine = processedLine.replacingOccurrences(of: "\\*\\*(.*?)\\*\\*", with: "**$1**", options: .regularExpression)
+
+        // 处理加粗 __text__
+        processedLine = processedLine.replacingOccurrences(of: "__(.*?)__", with: "**$1**", options: .regularExpression)
+
+        parsedString += processedLine + "\n"
+    }
+
+    return AttributedString(parsedString)
 }
 
 // MARK: - Preview
