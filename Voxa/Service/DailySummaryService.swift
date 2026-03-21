@@ -128,23 +128,30 @@ actor DailySummaryService {
             message += "\n"
         }
 
-        // 格式化记录列表（精简版，节约 token）
+        // 格式化记录列表：[序号][完整时间][时长][标签][应用]<语音开始>语音转文字内容<语音结束>
         for (index, record) in dailyRecords.records.enumerated() {
-            let timeStr = formatTime(record.timestamp)
-            // duration 保留2位小数，去掉秒数部分显示
-            let durationMin = String(format: "%.2f", record.duration / 60.0)
+            let indexTag = "[\(index + 1)]"
+            let timeStr = formatFullTime(record.timestamp)
+            let durationStr = formatDuration(record.duration)
             var categoryTag = ""
             if let category = record.category {
                 categoryTag = "[\(category.displayName)]"
             }
             let appTag = record.targetApp != nil ? "[\(record.targetApp!)]" : ""
-            message += "\(index + 1). \(timeStr) \(durationMin)min \(categoryTag) \(appTag) \(record.text)\n"
+            message += "\(indexTag)\(timeStr)\(durationStr)\(categoryTag)\(appTag)<语音开始>\(record.text)<语音结束>\n"
         }
 
         // 添加生成要求
         message += "\n生成日报：概要(记录数/总时长/分类统计)、主要主题、关键要点"
 
         return message
+    }
+
+    // 格式化完整时间（HH:mm:ss）
+    private func formatFullTime(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        return formatter.string(from: date)
     }
 
     // MARK: - 辅助方法
