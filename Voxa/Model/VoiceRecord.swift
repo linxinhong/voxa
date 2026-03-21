@@ -111,12 +111,15 @@ struct DailySummary: Identifiable, Codable {
     /// 关键洞察
     let insights: [String]?
 
+    /// 生成时使用的原始提示词（用于调试）
+    let systemPrompt: String?
+
     struct CategoryCount: Codable {
         let category: VoiceRecord.Category
         let count: Int
     }
 
-    init(id: UUID = UUID(), date: Date, recordCount: Int, totalDuration: TimeInterval, categoryCounts: [CategoryCount], summary: String, topicDistribution: [String: Int]? = nil, insights: [String]? = nil) {
+    init(id: UUID = UUID(), date: Date, recordCount: Int, totalDuration: TimeInterval, categoryCounts: [CategoryCount], summary: String, topicDistribution: [String: Int]? = nil, insights: [String]? = nil, systemPrompt: String? = nil) {
         self.id = id
         self.date = date
         self.recordCount = recordCount
@@ -125,5 +128,6 @@ struct DailySummary: Identifiable, Codable {
         self.summary = summary
         self.topicDistribution = topicDistribution
         self.insights = insights
+        self.systemPrompt = systemPrompt
     }
 }

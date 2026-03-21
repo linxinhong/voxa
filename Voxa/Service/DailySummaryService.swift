@@ -86,6 +86,9 @@ actor DailySummaryService {
             let summaryText = content.trimmingCharacters(in: .whitespacesAndNewlines)
             VoxaLog("[DailySummaryService] 日报生成成功，长度: \(summaryText.count) 字符")
 
+            // 保存提示词用于调试
+            let systemPrompt = ConfigManager.shared.dailyReportPrompt
+
             let summary = DailySummary(
                 date: dailyRecords.date,
                 recordCount: dailyRecords.records.count,
@@ -93,7 +96,8 @@ actor DailySummaryService {
                 categoryCounts: buildCategoryCounts(from: dailyRecords),
                 summary: summaryText,
                 topicDistribution: nil,
-                insights: nil
+                insights: nil,
+                systemPrompt: systemPrompt
             )
 
             return summary
@@ -117,7 +121,7 @@ actor DailySummaryService {
         if !appCounts.isEmpty {
             message += "【输入来源】\n"
             for (appBundle, count) in appCounts {
-                let appName = getAppName(from: appBundle)
+                let appName = appBundle ?? "未知应用"
                 message += "- \(appName): \(count)条\n"
             }
             message += "\n"
@@ -132,7 +136,7 @@ actor DailySummaryService {
             if let category = record.category {
                 categoryTag = "[\(category.displayName)]"
             }
-            let appTag = record.targetApp != nil ? "[\(getAppName(from: record.targetApp))]" : ""
+            let appTag = record.targetApp != nil ? "[\(record.targetApp!)]" : ""
             message += "\(index + 1). \(timeStr) \(durationMin)min \(categoryTag) \(appTag) \(record.text)\n"
         }
 
@@ -140,44 +144,6 @@ actor DailySummaryService {
         message += "\n生成日报：概要(记录数/总时长/分类统计)、主要主题、关键要点"
 
         return message
-    }
-
-    /// 从 bundle identifier 获取应用名称
-    private func getAppName(from bundleId: String?) -> String {
-        guard let bundleId = bundleId else { return "未知应用" }
-
-        // 常见应用映射
-        let appNames: [String: String] = [
-            "com.microsoft.VSCode": "VSCode",
-            "com.figma.Desktop": "Figma",
-            "com.apple.dt.Xcode": "Xcode",
-            "com.jetbrains.intellij": "IntelliJ IDEA",
-            "com.google.Chrome": "Chrome",
-            "com.apple.Safari": "Safari",
-            "com.apple.Terminal": "Terminal",
-            "com.mitchellh.ghostty": "Ghostty",
-            "com.googlecode.iterm2": "iTerm2",
-            "us.zoom.zos": "Zoom",
-            "com.hnc.Discord": "Discord",
-            "com.slack.Slack": "Slack",
-            "com.tencent.xinWeChat": "微信",
-            "com.alibaba.AlibabaIntlUniMP.DingTalkMac": "钉钉",
-            "com.feishu.Feishu": "飞书",
-            "com.apple.Notes": "备忘录",
-            "com.apple.TextEdit": "文本编辑"
-        ]
-
-        if let name = appNames[bundleId] {
-            return name
-        }
-
-        // 从 bundle id 提取名称（如 com.apple.Safari -> Safari）
-        let components = bundleId.split(separator: ".")
-        if let lastComponent = components.last {
-            return String(lastComponent)
-        }
-
-        return bundleId
     }
 
     // MARK: - 辅助方法
