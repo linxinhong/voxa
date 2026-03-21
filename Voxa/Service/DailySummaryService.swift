@@ -125,7 +125,7 @@ actor DailySummaryService {
         - [时长]: 录音时长，如"2分30秒"
         - [分类标签]: 工作/想法/TODO/闲聊
         - [输入应用]: 发生语音输入的应用 bundle identifier
-        - <内容>...</内容>: 语音转文字的原始内容
+        - <语音开始>...</语音结束>: 语音转文字的原始内容
 
         ### 分析要求
         - 特别关注不同应用中的输入内容（如 IDE、浏览器、聊天工具）
@@ -159,7 +159,7 @@ actor DailySummaryService {
                 categoryTag = "[\(category.displayName)]"
             }
             let appTag = record.targetApp != nil ? "[\(record.targetApp!)]" : ""
-            message += "\(indexTag)\(timeStr)\(durationStr)\(categoryTag)\(appTag)<内容>\(record.text)</内容>\n"
+            message += "\(indexTag)\(timeStr)\(durationStr)\(categoryTag)\(appTag)<语音开始>\(record.text)</语音结束>\n"
         }
 
         message += "\n请根据以上记录生成一份简洁、有条理的日报。"
