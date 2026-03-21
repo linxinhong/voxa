@@ -32,7 +32,10 @@ actor DailySummaryService {
 
         VoxaLog("[DailySummaryService] 开始生成日报，记录数: \(dailyRecords.records.count)")
 
-        // 构建用户消息（包含所有记录）
+        // 从配置读取提示词
+        let systemPrompt = ConfigManager.shared.dailyReportPrompt
+
+        // 构建用户消息（包含所有记录和目标应用信息）
         let userMessage = buildUserMessage(from: dailyRecords)
 
         // 构建请求
@@ -101,20 +104,24 @@ actor DailySummaryService {
         }
     }
 
-    // MARK: - 提示词
-
-    private let systemPrompt = """
-    你是一个专业的日报助手。请根据用户提供的语音输入记录，生成一份简洁、有条理的日报。
-
-    要求：
-    1. 使用简洁自然的中文
-    2. 按照指定格式输出
-    3. 突出重点，不要流水账
-    4. 提取关键信息和洞察
-    """
+    // MARK: - 构建用户消息
 
     private func buildUserMessage(from dailyRecords: DailyRecords) -> String {
         var message = "语音记录日报\n\n"
+
+        // 统计目标应用分布
+        let appCounts = Dictionary(grouping: dailyRecords.records, by: { $0.targetApp })
+            .mapValues { $0.count }
+            .sorted(by: { $0.value > $1.value })
+
+        if !appCounts.isEmpty {
+            message += "【输入来源】\n"
+            for (appBundle, count) in appCounts {
+                let appName = getAppName(from: appBundle)
+                message += "- \(appName): \(count)条\n"
+            }
+            message += "\n"
+        }
 
         // 格式化记录列表（精简版，节约 token）
         for (index, record) in dailyRecords.records.enumerated() {
@@ -125,13 +132,52 @@ actor DailySummaryService {
             if let category = record.category {
                 categoryTag = "[\(category.displayName)]"
             }
-            message += "\(index + 1). \(timeStr) \(durationMin)min \(categoryTag) \(record.text)\n"
+            let appTag = record.targetApp != nil ? "[\(getAppName(from: record.targetApp))]" : ""
+            message += "\(index + 1). \(timeStr) \(durationMin)min \(categoryTag) \(appTag) \(record.text)\n"
         }
 
         // 添加生成要求
         message += "\n生成日报：概要(记录数/总时长/分类统计)、主要主题、关键要点"
 
         return message
+    }
+
+    /// 从 bundle identifier 获取应用名称
+    private func getAppName(from bundleId: String?) -> String {
+        guard let bundleId = bundleId else { return "未知应用" }
+
+        // 常见应用映射
+        let appNames: [String: String] = [
+            "com.microsoft.VSCode": "VSCode",
+            "com.figma.Desktop": "Figma",
+            "com.apple.dt.Xcode": "Xcode",
+            "com.jetbrains.intellij": "IntelliJ IDEA",
+            "com.google.Chrome": "Chrome",
+            "com.apple.Safari": "Safari",
+            "com.apple.Terminal": "Terminal",
+            "com.mitchellh.ghostty": "Ghostty",
+            "com.googlecode.iterm2": "iTerm2",
+            "us.zoom.zos": "Zoom",
+            "com.hnc.Discord": "Discord",
+            "com.slack.Slack": "Slack",
+            "com.tencent.xinWeChat": "微信",
+            "com.alibaba.AlibabaIntlUniMP.DingTalkMac": "钉钉",
+            "com.feishu.Feishu": "飞书",
+            "com.apple.Notes": "备忘录",
+            "com.apple.TextEdit": "文本编辑"
+        ]
+
+        if let name = appNames[bundleId] {
+            return name
+        }
+
+        // 从 bundle id 提取名称（如 com.apple.Safari -> Safari）
+        let components = bundleId.split(separator: ".")
+        if let lastComponent = components.last {
+            return String(lastComponent)
+        }
+
+        return bundleId
     }
 
     // MARK: - 辅助方法

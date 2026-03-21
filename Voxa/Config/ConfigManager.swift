@@ -25,7 +25,18 @@ class ConfigManager {
     
     // API Key
     private(set) var apiKey: String = ""
-    
+
+    // 日报提示词
+    private(set) var dailyReportPrompt: String = """
+    你是一个专业的日报助手。请根据用户提供的语音输入记录，生成一份简洁、有条理的日报。
+
+    要求：
+    1. 使用简洁自然的中文
+    2. 按照指定格式输出
+    3. 突出重点，不要流水账
+    4. 提取关键信息和洞察
+    """
+
     // 默认配置（带名称）
     private let defaultTemplates: [String: PolishTemplate] = [
         "alt+1": PolishTemplate(
@@ -73,6 +84,12 @@ class ConfigManager {
                 if let key = json["api_key"] as? String {
                     apiKey = key
                     VoxaLog("[Config] 从配置文件加载 API Key")
+                }
+
+                // 读取日报提示词
+                if let prompt = json["daily_report_prompt"] as? String {
+                    dailyReportPrompt = prompt
+                    VoxaLog("[Config] 从配置文件加载日报提示词")
                 }
                 
                 // 读取模板配置
@@ -173,11 +190,14 @@ class ConfigManager {
             var dict: [String: Any] = [
                 "templates": templatesDict
             ]
-            
+
             // 只有当 apiKey 不为空时才保存
             if !apiKey.isEmpty {
                 dict["api_key"] = apiKey
             }
+
+            // 保存日报提示词
+            dict["daily_report_prompt"] = dailyReportPrompt
             
             let data = try JSONSerialization.data(
                 withJSONObject: dict,
