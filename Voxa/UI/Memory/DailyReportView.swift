@@ -240,7 +240,7 @@ struct DailyReportView: View {
                         }
                     }) {
                         HStack(spacing: 4) {
-                            Text("⭐")
+                            Text("✦")
                             Text("生成日报")
                                 .font(.caption2)
                                 .foregroundColor(.green)
